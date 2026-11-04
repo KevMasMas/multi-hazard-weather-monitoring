@@ -4,10 +4,11 @@ These instructions apply to contributors and coding agents working anywhere in t
 
 ## Before changing files
 
-1. Read `PROJECT_CONTEXT.md`.
-2. Read the active delivery plan and change log under `deliveries/`, then the relevant semester plan/report under `docs/`.
-3. Check the current branch and working tree. Never discard another contributor's work.
-4. Confirm whether the requested work is foundation work, a specific workshop, or final integration. Do not implement a future milestone implicitly.
+1. Read `WORK_BOARD.md` for current ownership and next actions.
+2. Read `PROJECT_CONTEXT.md` for stable requirements and constraints.
+3. Read the active delivery plan and change log under `deliveries/`.
+4. Check the current branch and working tree. Never discard another contributor's work.
+5. Confirm whether the requested work is foundation work, a specific workshop, or final integration. Do not implement a future milestone implicitly.
 
 ## Sources of truth
 
@@ -48,6 +49,7 @@ Professor-issued project and workshop documents outrank repository notes. Record
 
 ## Planning and reporting
 
+- `WORK_BOARD.md` is the only current assignment board. Do not create a second ownership table elsewhere.
 - Keep semester-level, cross-delivery plans in `docs/plans/`.
 - Give every graded or integration milestone a numbered folder in `deliveries/`.
 - Every active delivery must have `IMPLEMENTATION_PLAN.md` and `CHANGE_LOG.md`. Add `DEMO_GUIDE.md` only when a reproducible demonstration exists.

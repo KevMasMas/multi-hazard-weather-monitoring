@@ -108,6 +108,7 @@ The final rubric assigns the greatest weight to historical ingestion (15), incre
 
 ## Documentation and delivery model
 
+- `WORK_BOARD.md` is the operational source of truth for current status, task order, and Kevin/Pablo ownership.
 - `deliveries/` is the historical record of each graded milestone. Each active delivery contains an implementation plan and a chronological change log. Runnable milestones also receive a demo guide.
 - `docs/` contains current, durable knowledge: semester plans, academic reviews, references, and accepted design decisions.
 - `PROJECT_CONTEXT.md` contains requirements and constraints that must survive across deliveries.

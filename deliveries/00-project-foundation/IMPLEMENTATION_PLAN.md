@@ -2,9 +2,10 @@
 
 - **Team:** Team 9 - Pablo Garzon and Kevin Rincon
 - **Prepared:** 2026-11-03
-- **Working branch:** `chore/project-foundation`
+- **Working branch:** `workflow-1`
 - **Base branch/commit:** remote `main` has no commits
-- **Status:** under team review; files are staged but uncommitted
+- **Foundation commit:** `602143d`
+- **Status:** committed and pushed; Pablo's review and the long-term base-branch decision remain pending
 - **Official specifications:** `CourseProject.pdf`, `TeamsDistribution.pdf`, and `Workshop_1.pdf`
 
 ## 1. Requirement interpretation
@@ -33,7 +34,7 @@ From the repository root, a new contributor can identify:
 - Do not mark Workshop 1 requirements as validated.
 - Do not invent region, index formula, results, volumes, quality issues, or event matches.
 - Do not develop directly on `main`.
-- Do not create a commit with an unconfirmed Git identity.
+- Do not create commits with an unconfirmed Git identity.
 
 ## 5. Prioritized scope
 
@@ -55,9 +56,10 @@ Evidence for these items is recorded in `CHANGE_LOG.md` and `REVIEW_CHECKLIST.md
 ### P1 - after team review
 
 - [ ] Confirm the proposed ownership split with both students.
-- [ ] Confirm the Git author identity for the initial commit.
-- [ ] Decide how to establish the first `main` commit and review the foundation branch.
-- [ ] Push the accepted branch and integrate only after review.
+- [x] Correct the Git author identity to `KevMasMas <kevindavidrincon01@gmail.com>`.
+- [x] Push the foundation commit to `origin/workflow-1`.
+- [ ] Decide whether `workflow-1` becomes the long-term base or whether an explicit `main` branch will be created.
+- [ ] Obtain Pablo's review before Workshop 1 implementation begins.
 
 ### Out of scope
 
@@ -71,8 +73,8 @@ Evidence for these items is recorded in `CHANGE_LOG.md` and `REVIEW_CHECKLIST.md
 
 **Reviewer:** Pablo
 
-- [ ] Review the staged repository structure and Git workflow.
-- [ ] Confirm or correct names, identifiers, and Git author identity.
+- [x] Review the repository structure and Git workflow.
+- [x] Correct the Git author identity.
 - [ ] Review `PROJECT_CONTEXT.md` and the delivery workflow.
 - [ ] Present the foundation diff to Pablo before integration.
 
@@ -100,18 +102,18 @@ The foundation must be accepted before Workshop 1 begins. The handoff is the acc
 - [x] The academic review identifies requirements versus teaching examples.
 - [x] All required source and workshop constraints are recorded without validation claims.
 - [x] The repository has a clear location for production code, raw data, tests, notebooks, documentation, and workshop evidence.
-- [x] The branch is independent from `main` and no commit or push was made automatically.
-- [x] `git diff --cached --check` reports no whitespace errors before the HiLes-inspired additions.
-- [ ] Both team members review the final staged diff.
-- [ ] The correct Git identity is configured.
+- [x] The foundation was committed and pushed deliberately to `origin/workflow-1`.
+- [x] The foundation diff passed `git diff --cached --check` before commit.
+- [x] The correct repository-local Git identity is configured.
+- [ ] Both team members review the foundation commit and the organization follow-up.
 
 ## 9. Merge gate
 
 - [ ] Kevin and Pablo approve the documentation and ownership split.
-- [ ] The final staged diff passes `git diff --cached --check`.
+- [ ] The organization follow-up diff passes `git diff --check`.
 - [ ] No API response, credential, bulk data, or fabricated result is tracked.
-- [ ] The first commit uses an approved author identity and an English Conventional Commit message.
-- [ ] The initial `main` integration approach is agreed explicitly because the remote has no base commit.
+- [x] The foundation commit author is `KevMasMas <kevindavidrincon01@gmail.com>`.
+- [ ] The long-term base-branch approach is agreed explicitly because the remote started without `main` history.
 
 ## 10. Required handoff
 

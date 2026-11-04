@@ -1,6 +1,6 @@
 # Documentation
 
-- `plans/`: forward-looking semester and implementation plans.
+- `plans/`: semester-level sequence only. Current assignments live in `WORK_BOARD.md`.
 - `reports/`: evidence-backed reviews and progress summaries.
 - `decisions/`: durable architecture and data-contract decisions.
 - `references/`: concise indexes to authoritative external material.

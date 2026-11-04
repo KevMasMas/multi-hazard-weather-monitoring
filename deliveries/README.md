@@ -2,6 +2,8 @@
 
 This directory keeps the historical execution record for each course milestone. It adapts the strongest practices from the team's HiLeS project while keeping all technical documentation in English.
 
+For current assignments and next actions, use `WORK_BOARD.md` at the repository root. Delivery folders define detailed requirements and preserve evidence; they are not competing task boards.
+
 ## Folder convention
 
 ```text

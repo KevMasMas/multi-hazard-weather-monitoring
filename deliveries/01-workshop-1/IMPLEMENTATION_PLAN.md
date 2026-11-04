@@ -2,8 +2,8 @@
 
 - **Team:** Team 9 - Pablo Garzon and Kevin Rincon
 - **Target date:** not yet recorded in the reviewed specification
-- **Working branch:** to be created after foundation acceptance
-- **Base branch/commit:** accepted project foundation commit
+- **Working branch:** to be agreed after the foundation review
+- **Base branch/commit:** foundation commit `602143d`
 - **Status:** planned; no source query, sample, profile, or validation has started
 - **Official specification:** `Workshop_1.pdf`
 
@@ -88,33 +88,15 @@ Prove that a justified US regional scope can be supported by NOAA Storm Events, 
 
 ## 6. Work allocation
 
-### Kevin - NOAA Storm Events and NWS Alerts
+`WORK_BOARD.md` is the only current assignment board. The Workshop 1 split is:
 
-**Reviewer:** Pablo
+| Owner | Sources | Primary deliverables | Reviewer |
+| --- | --- | --- | --- |
+| Kevin | NOAA Storm Events; NWS Alerts | Documentation research, evidence, profiles, mappings, duplicate keys, ingestion contracts, alert/event correlation constraints | Pablo |
+| Pablo | GHCN-Daily/NCEI; NWS station observations | Documentation research, evidence, profiles, mappings, duplicate keys, ingestion contracts, station/region and historical-baseline constraints | Kevin |
+| Both | Cross-source integration | Region, time windows, canonical model, ER diagram, matching candidates, functional user, stories, index proposal, risks, architecture, notebook and report | Mutual approval |
 
-- [ ] Research official documentation, access, license, and attribution.
-- [ ] Capture authorized raw evidence for both sources.
-- [ ] Profile assigned-source fields and document concrete quality issues.
-- [ ] Draft canonical mappings, duplicate keys, and ingestion contracts for assigned sources.
-- [ ] Contribute alert/event regional correlation constraints.
-
-### Pablo - GHCN-Daily and NWS station observations
-
-**Reviewer:** Kevin
-
-- [ ] Research official documentation, access, license, and attribution.
-- [ ] Capture authorized raw evidence for both sources.
-- [ ] Profile assigned-source fields and document concrete quality issues.
-- [ ] Draft canonical mappings, duplicate keys, and ingestion contracts for assigned sources.
-- [ ] Contribute station/region and historical-baseline constraints.
-
-### Shared decisions and integration
-
-- [ ] Select region, unit of aggregation, historical window, and current-condition window.
-- [ ] Reconcile source mappings into one canonical/domain model and ER diagram.
-- [ ] Evaluate candidate cross-source matches together.
-- [ ] Define functional user, stories, preliminary index, risks, limitations, and architecture.
-- [ ] Review notebook reproducibility and co-author the final report.
+Use the Workshop 1 task IDs listed under Steps 1-4 of `WORK_BOARD.md` in branches, change-log entries, reviews, and commits.
 
 ## 7. Dependencies and handoffs
 

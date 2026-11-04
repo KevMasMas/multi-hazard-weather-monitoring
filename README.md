@@ -6,19 +6,17 @@ Team 9 will build a US regional monitoring system that integrates historical and
 
 ## Current status
 
-This repository is in the **project-foundation stage**. It contains project context, collaboration rules, an academic-material review, and a proposed semester roadmap. It does not yet implement Workshop 1, query weather APIs, or claim any data result.
+The repository foundation is committed on `workflow-1`. Workshop 1 implementation has not started: no weather API has been queried, no source sample has been captured, and no data result has been claimed.
 
-Start with:
+## Start here
 
-1. [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md) - authoritative project requirements and open decisions.
-2. [`AGENTS.md`](AGENTS.md) - repository working rules for people and coding agents.
-3. [`deliveries/README.md`](deliveries/README.md) - delivery workflow and document conventions.
-4. [`deliveries/00-project-foundation/`](deliveries/00-project-foundation/) - current foundation delivery and review evidence.
-5. [`deliveries/01-workshop-1/IMPLEMENTATION_PLAN.md`](deliveries/01-workshop-1/IMPLEMENTATION_PLAN.md) - planned Workshop 1 work; no source validation has started.
-6. [`docs/reports/academic-material-review.md`](docs/reports/academic-material-review.md) - reviewed academic material and its relevance.
-7. [`docs/reports/hiles-delivery-workflow-review.md`](docs/reports/hiles-delivery-workflow-review.md) - delivery practices adopted from HiLes and deliberate adjustments.
-8. [`docs/plans/semester-roadmap.md`](docs/plans/semester-roadmap.md) - semester-level milestone plan.
-9. [`docs/plans/team-work-plan.md`](docs/plans/team-work-plan.md) - initial two-person ownership proposal.
+Read only these three files to begin:
+
+1. [`WORK_BOARD.md`](WORK_BOARD.md) - current status, exact Kevin/Pablo ownership, next tasks, and working sequence.
+2. [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md) - authoritative academic requirements, constraints, and unresolved decisions.
+3. [`deliveries/01-workshop-1/IMPLEMENTATION_PLAN.md`](deliveries/01-workshop-1/IMPLEMENTATION_PLAN.md) - detailed Workshop 1 requirements and acceptance criteria.
+
+Supporting material is indexed under [`docs/`](docs/) and the delivery history under [`deliveries/`](deliveries/). Contributors and coding agents must also follow [`AGENTS.md`](AGENTS.md).
 
 ## Planned repository areas
 
@@ -37,15 +35,15 @@ workshop_1/samples/      Small immutable evidence samples for Workshop 1
 
 These directories are reserved now so later workshop work has a stable destination. Their presence does not mean their deliverables have been implemented.
 
-## Delivery workflow
+## Working model
 
 The repository follows the useful delivery pattern established in the team's HiLeS project:
 
-1. Each milestone gets one numbered folder under `deliveries/`.
-2. Work starts from an implementation plan with scope, priorities, ownership, acceptance criteria, and exclusions.
-3. Every material contribution is recorded in the delivery change log with exact tests, evidence, limitations, handoff, and recovery notes.
-4. A demo guide is created only when the milestone has a runnable or presentable result.
-5. Durable architecture and data-contract decisions are promoted to `docs/`; delivery folders remain the historical record of what was planned and completed.
+1. `WORK_BOARD.md` answers what happens now and who owns it.
+2. Each milestone gets one numbered folder under `deliveries/`.
+3. The implementation plan defines required outputs and acceptance criteria.
+4. The change log records what actually happened, including exact verification and limitations.
+5. Durable architecture and data-contract decisions are promoted to `docs/decisions/`.
 
 ## Team
 

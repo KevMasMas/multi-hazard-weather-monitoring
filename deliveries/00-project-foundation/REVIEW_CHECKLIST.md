@@ -25,11 +25,12 @@ This is a documentation review, not a Workshop 1 validation.
 
 ## Git integration
 
-- [ ] Correct repository-local `user.name` and `user.email` are configured.
-- [ ] Final staged diff has been read by both members.
-- [ ] `git diff --cached --check` passes.
-- [ ] Commit message is in English and uses a Conventional Commit prefix.
-- [ ] The first `main` integration approach is explicitly agreed.
+- [x] Repository-local identity is `KevMasMas <kevindavidrincon01@gmail.com>`.
+- [x] Foundation commit `602143d` is available on `origin/workflow-1`.
+- [ ] Foundation and organization changes have been read by both members.
+- [ ] The organization diff passes `git diff --check` before its next commit.
+- [ ] The next commit message is in English and uses a Conventional Commit prefix.
+- [ ] The long-term base-branch approach is explicitly agreed.
 
 ## Review outcome
 
