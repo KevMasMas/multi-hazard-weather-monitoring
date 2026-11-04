@@ -1,0 +1,40 @@
+# Local environments and secrets
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Data and generated artifacts
+data/raw/**
+!data/raw/.gitkeep
+data/processed/
+data/curated/
+*.parquet
+*.duckdb
+*.sqlite
+*.db
+
+# Reports, coverage, and logs
+htmlcov/
+.coverage
+coverage.xml
+logs/
+*.log
+
+# Containers and local database state
+postgres-data/
+airflow/logs/
+airflow/plugins/__pycache__/
