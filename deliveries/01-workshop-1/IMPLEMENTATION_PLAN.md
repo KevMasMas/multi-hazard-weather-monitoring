@@ -2,14 +2,18 @@
 
 - **Team:** Team 9 - Pablo Garzon and Kevin Rincon
 - **Target date:** not yet recorded in the reviewed specification
-- **Working branch:** to be agreed after the foundation review
-- **Base branch/commit:** foundation commit `602143d`
-- **Status:** planned; no source query, sample, profile, or validation has started
+- **Working branch:** `workflow-1`
+- **Base branch/commit:** project foundation commit `602143d`
+- **Status:** Pablo's source evidence/profiles and draft W1-D01/W1-D04 report sections are recorded; review, shared decisions, and full-notebook execution remain incomplete
 - **Official specification:** `Workshop_1.pdf`
 
 ## 1. Requirement interpretation
 
 Workshop 1 is an evidence-producing source-validation and data-contract milestone. Reading documentation is insufficient: all four assigned sources must be queried for real when this workshop is authorized, their unmodified responses preserved, and factual conclusions tied to evidence.
+
+### Pablo workstream preparation (2026-11-03)
+
+The desk review, qualifying 365-row GHCN-Daily sample, 200-feature NWS station sample, second poll, initial profiles, preliminary mappings, and source-specific contract drafts are recorded in `source-research-ghcn-nws-stations.md` and the evidence register. These cover a candidate Denver test location only. Regional coverage analysis, attribution confirmation, Kevin's review, and shared decisions remain pending; the remaining all-source tasks below remain unchecked.
 
 ## 2. Non-negotiable objective
 
@@ -47,13 +51,13 @@ Prove that a justified US regional scope can be supported by NOAA Storm Events, 
 #### Historical sources
 
 - [ ] Validate NOAA Storm Events access, format, fields, coverage, update/revision policy, license, attribution, identifiers, and partition strategy.
-- [ ] Validate GHCN-Daily/NCEI access, format, fields, coverage, update policy, license, attribution, identifiers, and partition strategy.
+- [x] Capture/profile a qualifying GHCN-Daily sample and draft the source-specific key/partition strategy (see 2026-11-04 W1-P03/W1-P04 change-log entry); [ ] complete regional coverage, revision-policy, license/attribution validation and Kevin review.
 - [ ] Preserve unmodified samples and estimate full historical rows/size without unnecessary bulk downloads.
 
 #### Incremental sources
 
 - [ ] Validate NWS Alerts access, fields, geometry, identifiers, revisions/deletions, headers/timestamps, and User-Agent requirements.
-- [ ] Validate NWS station observations access, station coverage, fields, units, identifiers, revisions, and timestamp behavior.
+- [x] Capture two qualifying NWS station-observation pages at least one hour apart; profile fields and compare IDs/payloads (see 2026-11-04 W1-P03/W1-P04 change-log entry); [ ] complete regional/provider coverage and service-wide revision-policy review with Kevin.
 - [ ] Poll each incremental source twice at least one hour apart, or as otherwise justified by the specification, and record exact differences.
 
 #### Profiling and data quality
@@ -68,10 +72,10 @@ Prove that a justified US regional scope can be supported by NOAA Storm Events, 
 - [ ] Map every source to canonical event fields and define Team 9 domain tables.
 - [ ] Define UTC, WGS84, unit-conversion, severity, duplicate-key, and raw-reference/content-hash rules.
 - [ ] Draft partitioning/pagination, watermark, polling, overlap-window, and halfway-failure recovery per source.
-- [ ] Define functional user and at least six MoSCoW-prioritized user stories covering monitoring, analysis, and trust.
+- [x] Draft a proposed functional user and seven MoSCoW stories (W1-D01; see 2026-11-04 report-draft change-log entry); [ ] confirm user and wording with Kevin/professor.
 - [ ] Draft index inputs/rule/scale/validation approach without claiming validation.
-- [ ] Record at least five risks and mitigations.
-- [ ] Produce a labeled architecture overview, first ER diagram, mapping table, and English PDF report.
+- [x] Draft six risks and mitigations (W1-D01; see 2026-11-04 report-draft change-log entry); [ ] review with Kevin.
+- [ ] Produce a labeled architecture overview, accepted first ER diagram, mapping table, and final English PDF report. An English Markdown manuscript draft exists in `REPORT_DRAFT.md`; finalization depends on shared scope, architecture/model, pair review, notebook run, and peer review.
 
 ### P1 - quality improvements after P0
 

@@ -1,0 +1,40 @@
+{
+  "id": "nws_kden_observations_poll1",
+  "retrievedAtUtc": "2026-11-04T02:49:04.716Z",
+  "retrievedAtAmericaBogota": "2026-11-03, 21:49:04",
+  "request": {
+    "method": "GET",
+    "url": "https://api.weather.gov/stations/KDEN/observations?limit=200",
+    "headers": {
+      "Accept": "application/geo+json",
+      "User-Agent": "Team 9 Multi-Hazard Weather Monitoring Workshop 1 (student course project; contact not supplied)"
+    }
+  },
+  "response": {
+    "status": 200,
+    "statusText": "OK",
+    "headers": {
+      "access-control-allow-origin": "*",
+      "access-control-expose-headers": "X-Correlation-Id, X-Request-Id, X-Server-Id",
+      "cache-control": "public, max-age=300, s-maxage=120",
+      "connection": "keep-alive",
+      "content-encoding": "gzip",
+      "content-length": "19968",
+      "content-type": "application/geo+json",
+      "date": "Wed, 04 Nov 2026 02:49:05 GMT",
+      "expires": "Wed, 04 Nov 2026 02:54:05 GMT",
+      "server": "nginx/1.28.3",
+      "server-timing": "dtTrId;desc=\"db46e5cd2d06c9ecb488c8915b644651\", dtSInfo;desc=\"0\", dtRpid;desc=\"-1187913387\"",
+      "strict-transport-security": "max-age=31536000 ; includeSubDomains ; preload",
+      "vary": "Accept-Encoding, Accept,Feature-Flags,Accept-Language",
+      "x-correlation-id": "6cffe96e",
+      "x-edge-request-id": "923d383",
+      "x-request-id": "01a1a475-cb4d-73a8-ae59-068f06313d6e",
+      "x-server-id": "vm-cprk-api-ops-app8.ncep.noaa.gov"
+    },
+    "bodyPath": "nws_kden_observations_poll1.geojson",
+    "byteLength": 832833,
+    "sha256": "ed3b125abeb90803b649f0e81d0146667517f8f16d6c35ad0448882b09c080b7",
+    "note": "Tracking Set-Cookie header omitted from the metadata copy; response body is saved as returned by fetch after standard HTTP content decoding."
+  }
+}

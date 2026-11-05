@@ -32,7 +32,7 @@ The following sources are assigned starting points and must be validated during 
 | Incremental 1 | NWS Alerts API | Active alerts; GeoJSON/CAP; descriptive User-Agent required | <https://www.weather.gov/documentation/services-web-api> |
 | Incremental 2 | NWS Station Observations | Latest or recent station observations through the NWS API | <https://www.weather.gov/documentation/services-web-api> |
 
-No API availability, rate limit, license, field behavior, record volume, or cross-source overlap is considered verified merely because it appears in this file or in the assignment document. Workshop 1 requires empirical validation with real responses; that work has not started in this foundation branch.
+No API availability, rate limit, license, field behavior, record volume, or cross-source overlap is considered verified merely because it appears in this file or in the assignment document. Workshop 1 requires empirical validation with real responses. Initial samples have since been captured for all four sources. Pablo has captured two NWS station-observation polls at a candidate Denver location and observed one changed same-ID payload; the team-wide regional decision and cross-source overlap remain pending. See `deliveries/01-workshop-1/CHANGE_LOG.md` and `EVIDENCE_REGISTER.md` for current evidence and limitations.
 
 ## Common technical contract
 

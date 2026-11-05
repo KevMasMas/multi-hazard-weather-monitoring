@@ -6,7 +6,7 @@ Team 9 will build a US regional monitoring system that integrates historical and
 
 ## Current status
 
-The repository foundation is committed on `workflow-1`. Workshop 1 implementation has not started: no weather API has been queried, no source sample has been captured, and no data result has been claimed.
+This repository is in **Workshop 1, with source validation and report drafting in progress**. Evidence and initial profiles exist for all four assigned sources. Denver and Oklahoma remain candidate locations, and the team has not chosen a common region. See the active delivery log and evidence register for exact scope and limitations.
 
 ## Start here
 

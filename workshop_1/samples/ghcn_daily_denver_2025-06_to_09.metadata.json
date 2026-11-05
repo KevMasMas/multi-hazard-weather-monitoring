@@ -1,0 +1,32 @@
+{
+  "id": "ghcn_daily_denver_2025-06_to_09",
+  "retrievedAtUtc": "2026-11-04T02:49:04.285Z",
+  "retrievedAtAmericaBogota": "2026-11-03, 21:49:04",
+  "request": {
+    "method": "GET",
+    "url": "https://www.ncei.noaa.gov/access/services/data/v1?dataset=daily-summaries&stations=USW00003017&startDate=2025-06-01&endDate=2025-09-01&dataTypes=PRCP,TMAX,TMIN&format=csv&units=metric&includeAttributes=true&includeStationName=true&includeStationLocation=true",
+    "headers": {
+      "Accept": "text/csv"
+    }
+  },
+  "response": {
+    "status": 200,
+    "statusText": "",
+    "headers": {
+      "access-control-allow-headers": "X-Requested-With, Content-Type",
+      "access-control-allow-origin": "*",
+      "connection": "Keep-Alive",
+      "content-disposition": "attachment; filename=\"daily-summaries-2026-11-04T02-49-05.csv\"",
+      "content-type": "text/csv;charset=utf-8",
+      "date": "Wed, 04 Nov 2026 02:49:05 GMT",
+      "keep-alive": "timeout=3, max=100",
+      "server": "Apache",
+      "strict-transport-security": "max-age=31536000",
+      "transfer-encoding": "chunked",
+      "vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers"
+    },
+    "bodyPath": "ghcn_daily_denver_2025-06_to_09.csv",
+    "byteLength": 12887,
+    "sha256": "9e5f1fed70c5b4ef8194a346a8ea03648b64d12ba57fd90d261d4a807adce901"
+  }
+}

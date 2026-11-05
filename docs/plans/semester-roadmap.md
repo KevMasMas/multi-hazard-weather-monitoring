@@ -1,6 +1,6 @@
 # Semester Roadmap
 
-Status: proposed foundation plan. Workshop implementation has not started.
+Status: Workshop 1 is in progress. Initial source samples and profiles for GHCN-Daily/NCEI and NWS station observations, including two station polls, are recorded in `deliveries/01-workshop-1/`; all-source notebook execution and shared scope decisions remain pending.
 
 Each phase below is executed through a numbered folder in `deliveries/`. The roadmap provides semester direction; delivery plans contain the actionable checklist and evidence gate.
 
