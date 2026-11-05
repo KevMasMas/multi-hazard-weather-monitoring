@@ -50,8 +50,39 @@ nws_station_observations:
   missing_geometry: 0
   next_page_present: true
 
+nws_station_observations_poll_2:
+  evidence_id: W1-REGION-NWS-KOKC-002
+  source: National Weather Service API
+  request_method: GET
+  request_url: https://api.weather.gov/stations/KOKC/observations?limit=200
+  station_id: KOKC
+  file: workshop_1/samples/region_comparison/nws_kokc_observations_poll_2.geojson
+  metadata_file: workshop_1/samples/region_comparison/nws_kokc_observations_poll_2.metadata.json
+  response_headers_file: workshop_1/samples/region_comparison/nws_kokc_observations_poll_2.response_headers.json
+  retrieved_at_utc: "2026-11-05T12:39:36.9519380Z"
+  http_status: 200
+  content_type: application/geo+json
+  bytes: 779027
+  sha256: 7857DD85FB4F35E33FA4A0EEFB0F07E6634E457D96F6A0D4C30560B5CDD07D79
+  features: 200
+  unique_ids: 200
+  oldest_observation_utc: "2026-11-03T23:10:00Z"
+  newest_observation_utc: "2026-11-05T11:52:00Z"
+  missing_geometry: 0
+  next_page_present: true
+
+nws_station_observation_comparison:
+  interval_seconds: 3627.404123
+  shared_ids: 197
+  poll_1_only_ids: 3
+  poll_2_only_ids: 3
+  unchanged_shared_payloads: 197
+  changed_shared_payloads: 0
+  same_timestamp_changed_payloads: 0
+  interpretation: Records entering or leaving a bounded rolling page are not evidence of deletion.
+
 limitations:
-  - HTTP response status and headers were not persisted with these two comparison captures; the bodies parsed successfully and their checksums are recorded.
+  - HTTP response status and headers were not persisted for the first GHCN/KOKC comparison captures; their bodies parsed successfully and their checksums are recorded. Poll 2 includes status and sanitized response headers.
   - One GHCN station does not prove statewide representativeness.
-  - One KOKC snapshot proves profile availability but does not meet the two-poll change-comparison requirement by itself.
+  - Two KOKC bounded pages demonstrate only the observed one-hour interval and do not establish service-wide revision or deletion behavior.
   - The recommended region still requires Pablo's review before the ADR can be accepted.

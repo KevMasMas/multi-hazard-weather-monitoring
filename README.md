@@ -6,7 +6,7 @@ Team 9 will build a US regional monitoring system that integrates historical and
 
 ## Current status
 
-This repository is in **Workshop 1, with source validation and report drafting in progress**. Evidence and initial profiles exist for all four assigned sources. Denver and Oklahoma remain candidate locations, and the team has not chosen a common region. See the active delivery log and evidence register for exact scope and limitations.
+This repository is in **Workshop 1, with source validation and report drafting in progress**. Evidence and executed profiles exist for all four assigned sources. Oklahoma/counties, the 2010-2025 complete-year baseline, and the rolling 24-hour current window are accepted team decisions. Denver evidence is retained as a tested alternative and update-behavior sample. See the active delivery log and evidence register for exact scope and limitations.
 
 ## Start here
 

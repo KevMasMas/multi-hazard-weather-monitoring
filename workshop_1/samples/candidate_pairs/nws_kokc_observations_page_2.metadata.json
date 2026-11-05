@@ -1,0 +1,21 @@
+{
+  "poll_label": "page_2",
+  "station_id": "KOKC",
+  "request_method": "GET",
+  "request_uri": "https://api.weather.gov/stations/KOKC/observations?cursor=eyJzIjoiMjAyNi0xMS0wM1QyMTo1MjowMCswMDowMCJ9",
+  "cursor_supplied": true,
+  "retrieved_at_utc": "2026-11-05T12:52:29.9587295Z",
+  "status_code": 200,
+  "content_type": "application/geo+json",
+  "user_agent": "multi-hazard-weather-monitoring/0.1 (github.com/KevMasMas/multi-hazard-weather-monitoring)",
+  "feature_count": 500,
+  "distinct_feature_ids": 500,
+  "missing_geometry": 0,
+  "oldest_observation_utc": "2026-10-31T04:55:00.0000000+00:00",
+  "newest_observation_utc": "2026-11-03T21:50:00.0000000+00:00",
+  "next_page_present": true,
+  "raw_file": "D:\\usuarios\\Monitores\\Desktop\\Documentos Kevin\\Universidad\\Programacion para analisis de datos\\Multi-Hazard Weather Impact Monitoring\\data\\raw\\nws_station_observations\\page_2_KOKC_20261105T125229Z.geojson",
+  "raw_bytes": 2056851,
+  "sha256": "A13720F4E561AC3B20E56DD15F9D43224A1EF1ABE84D37E58DF5BF5FE38BA5CD",
+  "response_headers_file": "D:\\usuarios\\Monitores\\Desktop\\Documentos Kevin\\Universidad\\Programacion para analisis de datos\\Multi-Hazard Weather Impact Monitoring\\data\\raw\\nws_station_observations\\page_2_KOKC_20261105T125229Z_response_headers.json"
+}

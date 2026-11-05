@@ -4,7 +4,7 @@
 - **Target date:** not yet recorded in the reviewed specification
 - **Working branch:** `workflow-1`
 - **Base branch/commit:** project foundation commit `602143d`
-- **Status:** Pablo's source evidence/profiles and draft W1-D01/W1-D04 report sections are recorded; review, shared decisions, and full-notebook execution remain incomplete
+- **Status:** Source evidence, accepted region/time scope, Pablo workstream review, five candidate pairs and clean notebook execution are recorded; shared model/architecture and final report/PDF gates remain incomplete
 - **Official specification:** `Workshop_1.pdf`
 
 ## 1. Requirement interpretation
@@ -13,7 +13,7 @@ Workshop 1 is an evidence-producing source-validation and data-contract mileston
 
 ### Pablo workstream preparation (2026-11-03)
 
-The desk review, qualifying 365-row GHCN-Daily sample, 200-feature NWS station sample, second poll, initial profiles, preliminary mappings, and source-specific contract drafts are recorded in `source-research-ghcn-nws-stations.md` and the evidence register. Those update-behavior samples cover Denver. Additional 365-row GHCN and 200-feature KOKC captures now demonstrate Oklahoma City coverage and support Oklahoma as the preferred region; Pablo's approval, statewide station selection, attribution confirmation, and shared decisions remain pending.
+The desk review, qualifying GHCN-Daily samples, KDEN/KOKC station polls, profiles, mappings, and source-specific contracts are recorded in the research note and evidence register. Oklahoma/counties and the 2010-2025/24-hour temporal scope are accepted in ADRs 0001 and 0003. ADR 0004 accepts Pablo's station/geographic rule while keeping the full statewide inventory as later implementation work. Pablo's review is recorded in `PABLO_REVIEW.md`.
 
 ## 2. Non-negotiable objective
 
@@ -46,7 +46,8 @@ Prove that a justified US regional scope can be supported by NOAA Storm Events, 
 
 - [ ] Explain compound weather hazards, component severity measures, units, and monitoring value.
 - [x] Compare Oklahoma and Denver/Colorado using all-four-source coverage and manageable volume (see 2026-11-05 W1-S01 change-log entry); [ ] obtain Pablo's review and accept or reject the recommendation.
-- [ ] Select and justify the regional unit, historical window, and definition of current conditions.
+- [x] Select and justify Oklahoma/counties, the 2010-2025 complete-year baseline, rolling 24-hour current window, and separate seven-day operational context (ADRs 0001 and 0003; 2026-11-05 review entry).
+- [x] Draft the preliminary Compound Hazard Index components, formula, missingness policy, and validation plan (see 2026-11-05 W1-D02 change-log entry); [ ] obtain Pablo review and accept final parameters later.
 
 #### Historical sources
 
@@ -57,15 +58,15 @@ Prove that a justified US regional scope can be supported by NOAA Storm Events, 
 #### Incremental sources
 
 - [ ] Validate NWS Alerts access, fields, geometry, identifiers, revisions/deletions, headers/timestamps, and User-Agent requirements.
-- [x] Capture two qualifying NWS station-observation pages at least one hour apart; profile fields and compare IDs/payloads (see 2026-11-04 W1-P03/W1-P04 change-log entry); [ ] complete regional/provider coverage and service-wide revision-policy review with Kevin.
+- [x] Capture and compare two qualifying NWS station-observation pages at least one hour apart for KDEN and for the preferred KOKC common region (see 2026-11-04 and 2026-11-05 change-log entries); [ ] complete multi-station/provider coverage and service-wide revision-policy review.
 - [ ] Poll each incremental source twice at least one hour apart, or as otherwise justified by the specification, and record exact differences.
 
 #### Profiling and data quality
 
-- [ ] Execute `notebooks/01_source_profiling.ipynb` top to bottom with outputs.
+- [x] Execute `notebooks/01_source_profiling.ipynb` top to bottom with outputs (27/27 code cells, execution counts 1-27, zero error outputs; see 2026-11-05 W1-D05 change-log entry); [ ] obtain Pablo's output review.
 - [ ] Report null percentages, ranges, duplicated identifiers, timestamp/time-zone formats, coordinate validity, and unit consistency for each source.
 - [ ] Record at least five concrete data-quality problems with example records across the sources.
-- [ ] Investigate at least five candidate same-event pairs and explain differences in time, position, severity, or identifier.
+- [x] Investigate five NWS Alert/KOKC candidate pairs with explicit temporal/geographic basis and limitations (see 2026-11-05 W1-S04 change-log entry); [ ] obtain Pablo's review and do not promote candidates to confirmed matches.
 
 #### Contracts and project definition
 
@@ -73,9 +74,9 @@ Prove that a justified US regional scope can be supported by NOAA Storm Events, 
 - [ ] Define UTC, WGS84, unit-conversion, severity, duplicate-key, and raw-reference/content-hash rules.
 - [ ] Draft partitioning/pagination, watermark, polling, overlap-window, and halfway-failure recovery per source.
 - [x] Draft a proposed functional user and seven MoSCoW stories (W1-D01; see 2026-11-04 report-draft change-log entry); [ ] confirm user and wording with Kevin/professor.
-- [ ] Draft index inputs/rule/scale/validation approach without claiming validation.
-- [x] Draft six risks and mitigations (W1-D01; see 2026-11-04 report-draft change-log entry); [ ] review with Kevin.
-- [ ] Produce a labeled architecture overview, accepted first ER diagram, mapping table, and final English PDF report. An English Markdown manuscript draft exists in `REPORT_DRAFT.md`; finalization depends on shared scope, architecture/model, pair review, notebook run, and peer review.
+- [x] Draft and jointly review index inputs/rule/scale/validation approach without claiming empirical validation (ADR 0002 and `PABLO_REVIEW.md`).
+- [x] Draft and jointly review six risks and mitigations (W1-D01; see report draft and `PABLO_REVIEW.md`).
+- [x] Produce and accept the first conceptual ER diagram (`docs/architecture/workshop-1-er-model.md`); [ ] complete the labeled architecture overview, field-level mapping table, and final English PDF report.
 
 ### P1 - quality improvements after P0
 
@@ -121,9 +122,9 @@ Use the Workshop 1 task IDs listed under Steps 1-4 of `WORK_BOARD.md` in branche
 
 ## 9. Merge and submission gate
 
-- [ ] Both students review every source contract and shared decision.
-- [ ] Notebook runs top to bottom in a clean environment using documented inputs.
-- [ ] Raw evidence is unmodified, small, attributable, and contains no secret.
+- [x] Both students review the Workshop 1 source contracts, region/time scope, candidate pairs, notebook and preliminary CHI proposal (see `PABLO_REVIEW.md`); [ ] repeat review for final schema/architecture and submission commit.
+- [x] Notebook runs top to bottom in the locked isolated environment using documented inputs (27/27 code cells, zero errors, eleven checksum matches).
+- [x] Registered raw evidence is checksum-protected, attributable, and sanitized of captured cookies; [ ] repeat the secret/artifact audit immediately before submission.
 - [ ] Large-source download instructions are documented instead of committing bulk data.
 - [ ] Report and technical documentation are in English.
 - [ ] Limitations and unresolved questions are explicit.

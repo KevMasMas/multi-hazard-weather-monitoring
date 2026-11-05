@@ -1,0 +1,10 @@
+# Direct dependencies required to execute notebooks/01_source_profiling.ipynb.
+# Exact transitive versions are generated in requirements-workshop1.lock.
+ipykernel
+matplotlib
+nbconvert
+nbformat
+numpy
+pandas
+PyYAML
+seaborn

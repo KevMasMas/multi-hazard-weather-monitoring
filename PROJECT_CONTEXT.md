@@ -32,7 +32,7 @@ The following sources are assigned starting points and must be validated during 
 | Incremental 1 | NWS Alerts API | Active alerts; GeoJSON/CAP; descriptive User-Agent required | <https://www.weather.gov/documentation/services-web-api> |
 | Incremental 2 | NWS Station Observations | Latest or recent station observations through the NWS API | <https://www.weather.gov/documentation/services-web-api> |
 
-No API availability, rate limit, license, field behavior, record volume, or cross-source overlap is considered verified merely because it appears in this file or in the assignment document. Workshop 1 requires empirical validation with real responses. Initial samples have since been captured for all four sources. Pablo captured two NWS station-observation polls at a candidate Denver location and observed one changed same-ID payload. Additional Oklahoma City GHCN and KOKC snapshots now support Oklahoma as the preferred common-region candidate, but Pablo's approval and cross-source overlap analysis remain pending. See `deliveries/01-workshop-1/CHANGE_LOG.md`, `EVIDENCE_REGISTER.md`, and `docs/reports/region-comparison-oklahoma-vs-denver.md` for evidence and limitations.
+No API availability, rate limit, license, field behavior, record volume, or cross-source overlap is considered verified merely because it appears in this file or in the assignment document. Workshop 1 requires empirical validation with real responses. Samples are captured for all four sources. The team accepted Oklahoma/counties after reviewing Denver/Colorado and Oklahoma evidence. The baseline is 2010-2025 complete years; current conditions are a rolling 24-hour window with separate seven-day operational context. Oklahoma City GHCN and KOKC remain pilot station evidence, not statewide coverage. See ADRs 0001, 0003 and 0004 plus the Workshop 1 evidence register for decisions and limitations.
 
 ## Common technical contract
 
@@ -117,12 +117,12 @@ The final rubric assigns the greatest weight to historical ingestion (15), incre
 
 ## Open decisions
 
-The following decisions must be made from evidence during Workshop 1:
+The following accepted decisions and remaining implementation decisions are tracked during Workshop 1:
 
-1. Confirm or reject the preferred Oklahoma study area and county aggregation unit after Pablo reviews the evidence-backed recommendation.
-2. Historical time window and meaning of "current situation."
-3. Hazard components and event types included in the Compound Hazard Index.
-4. Severity units, normalization rules, seasonal baseline, weighting, output scale, and validation method for the index.
+1. Accepted: Oklahoma study area and county aggregation unit (ADR 0001).
+2. Accepted: 2010-2025 complete-year baseline, rolling 24-hour current window, and separate seven-day operational context (ADR 0003).
+3. Accepted for Workshop 1: ADR 0002's flood, wind, heat, cold, and winter components; final field mappings require implementation evidence.
+4. Accepted as preliminary: ADR 0002's normalization, equal starting weights, interaction term, missingness policy, output scale, and validation plan; final parameters require Workshop 4 validation.
 5. Stable source identifiers, update semantics, deletion/revision behavior, watermark, overlap window, and polling frequency per incremental source.
 6. Crosswalks among stations, alert polygons/zones/counties, Storm Events locations, and the chosen region model.
 7. Domain tables, duplicate keys, cross-source event-matching criteria, and treatment of records that cannot be geocoded precisely.

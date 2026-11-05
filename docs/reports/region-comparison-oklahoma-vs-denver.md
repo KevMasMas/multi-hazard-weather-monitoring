@@ -2,7 +2,7 @@
 
 - **Workshop gate:** W1-S01
 - **Date:** 2026-11-05
-- **Status:** Evidence-backed recommendation; Pablo approval pending
+- **Status:** Reviewed and accepted; Oklahoma/counties selected
 - **Prepared by:** Kevin Rincon
 
 ## Question
@@ -45,7 +45,7 @@ screening comparison, not a final geographic crosswalk.
 | Heat signal in the filtered screen | 912 Heat and 567 Excessive Heat records | No Heat or Excessive Heat records in the Colorado 2024 filtered screen | Oklahoma gives the index a stronger hot-weather component in this screen. |
 | Other major observed families | 536 Thunderstorm Wind, 87 Flash Flood, 78 Cold/Wind Chill, 59 High Wind | 439 Heavy Snow, 290 Thunderstorm Wind, 273 Winter Weather, 155 High Wind | Denver/Colorado is more winter-heavy; Oklahoma is broader for a compound-hazard study. |
 | GHCN-Daily qualifying sample | `USW00013967`: 365 rows, 2025, zero null PRCP/TMAX/TMIN values | `USW00003017`: 365 rows, 2025, zero null requested values | Both candidates meet the 200-record profiling threshold at one station. |
-| NWS station observations | KOKC snapshot: 200 unique observations, pagination present, 37.05-hour span | KDEN: two 200-feature polls and one observed same-ID revision | Both have usable station evidence; Denver currently has the stronger update-behavior test because its second poll exists. |
+| NWS station observations | KOKC: two 200-feature polls separated by 3,627.404123 seconds; 197 shared payloads, all unchanged | KDEN: two 200-feature polls and one observed same-ID revision | Both have two-poll evidence. The different observed outcomes show why IDs and content hashes are both required. |
 | NWS Alerts | Oklahoma: two active polls plus a complete observed 238-feature recent-window chain | No registered Denver alert sample | Existing alert evidence already aligns with Oklahoma. |
 
 ## Recommendation
@@ -61,8 +61,9 @@ GHCN-Daily and KOKC station-observation coverage. Selecting Denver would require
 recollecting Kevin's evidence and would leave a narrower, more winter-weighted
 hazard profile in the one-year screen.
 
-This is a recommendation, not an accepted team decision. Pablo must review the
-evidence and agree before ADR 0001 changes to `Accepted`.
+The team accepted Oklahoma/counties in the joint Kevin/Pablo working session on
+2026-11-05. ADR 0001 records the decision; Denver evidence remains preserved as
+an evaluated alternative and source-update example.
 
 ## Consequences and remaining validation
 
@@ -70,9 +71,8 @@ evidence and agree before ADR 0001 changes to `Accepted`.
   completeness are profiled across all selected Oklahoma stations and years.
 - Select more than one Oklahoma GHCN/NWS station using a reproducible coverage
   rule; one Oklahoma City airport station is not statewide representation.
-- Capture a second KOKC observation poll at least one hour after the registered
-  snapshot if the team wants both station evidence and update behavior in the
-  final common region.
+- Review the completed KOKC two-poll comparison and select additional Oklahoma
+  stations through a reproducible coverage rule.
 - Design and review a county/forecast-zone/alert-polygon/station crosswalk.
 - Do not discard the KDEN captures: they remain valid evidence of same-ID
   payload revision behavior and a documented alternative considered.

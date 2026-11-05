@@ -1,0 +1,30 @@
+evidence_id: W1-NWS-KOKC-PAGE-002
+purpose: temporal and geographic candidate-pair investigation
+source: National Weather Service API station observations
+station_id: KOKC
+request_method: GET
+retrieved_at_utc: "2026-11-05T12:52:29.9587295Z"
+http_status: 200
+content_type: application/geo+json
+cursor_source: W1-REGION-NWS-KOKC-001 pagination.next
+raw_page:
+  path: workshop_1/samples/candidate_pairs/nws_kokc_observations_page_2.geojson
+  bytes: 2056851
+  sha256: A13720F4E561AC3B20E56DD15F9D43224A1EF1ABE84D37E58DF5BF5FE38BA5CD
+  features: 500
+  unique_ids: 500
+  missing_geometry: 0
+  oldest_observation_utc: "2026-10-31T04:55:00Z"
+  newest_observation_utc: "2026-11-03T21:50:00Z"
+  next_page_present: true
+derived_pairs:
+  path: workshop_1/samples/candidate_pairs/nws_alerts_kokc_candidate_pairs.csv
+  rows: 5
+  sha256: 09429FE22925B3B1B2F1CCF72BD3F374920548A42290A9733A11A14F366FA275
+  script: scripts/workshop_1/build_candidate_event_pairs.py
+  alert_source_evidence: W1-NWS-ALERTS-PROFILE-001
+  match_status: candidate_not_confirmed
+limitations:
+  - Oklahoma County text and interval overlap do not prove that an alert and station observation describe the same physical event at the station.
+  - KOKC is one point and cannot represent the complete alert geometry or county.
+  - Three warning rows are alert/update messages from the same broader severe-weather episode and are not five independent meteorological episodes.
