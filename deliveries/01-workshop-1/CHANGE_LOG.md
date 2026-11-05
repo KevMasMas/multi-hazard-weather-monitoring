@@ -6,6 +6,23 @@ Use `deliveries/_templates/CHANGE_LOG.md` and include source-query timestamps an
 
 ## Entries
 
+### [2026-11-05 America/Bogota] - W1-P03/W1-P04 - add class-level DataFrame inspection
+
+- **Objective:** make the GHCN-Daily and KOKC sections visibly demonstrate the basic Pandas workflow covered in the current semester through 2026-11-05, without introducing later EDA or modelling topics.
+- **Status:** [x] basic DataFrame inspection and simple aggregation added; [x] notebook executed from top to bottom; [!] teammate review remains part of the submission gate.
+- **Branch or commit:** `workflow-1`; no commit created.
+- **Requirements addressed:** W1-P03/W1-P04 source profiling, reproducible notebook evidence, and course-level explanation of how captured CSV/GeoJSON data becomes a Pandas DataFrame.
+- **Files modified:** `notebooks/01_source_profiling.ipynb` and this change log.
+- **Implementation or documentation completed:** added explicit `head()`, `shape`, column listing, `info()`, `describe()`, and null-count outputs for GHCN and flattened KOKC observations; added a simple monthly GHCN `groupby()` summary plus KOKC condition and observation-date counts. Existing provenance, source-specific QC, polling comparison, and limitation cells were preserved.
+- **Verification and exact result:** the notebook contains 52 cells, including 29 code cells; all 29 code cells have execution counts and there are zero error outputs. The GHCN frame is 365 rows by 12 columns with zero missing values in the captured fields. The flattened KOKC frame is 200 rows by 59 columns; the focused eight-column view exposes 200 missing relative-humidity values, 199 missing wind-gust values, and one missing wind-speed value in this bounded sample. No live weather request was made.
+- **Evidence location:** executed outputs in `notebooks/01_source_profiling.ipynb`; preserved inputs under `workshop_1/samples/region_comparison/`.
+- **Decisions and rationale:** the notebook now follows the current class boundary: loading/displaying DataFrames, types, descriptive statistics, null counts, `value_counts()`, and `groupby()`. Correlation, regression, imputation, outlier treatment, feature engineering, and advanced visualization were deliberately excluded because they are not required for this correction and must not be inferred merely from legacy repository notebooks.
+- **Errors found and correction:** the first execution attempt failed because the sandbox denied `uv` access to its interpreter cache. The same locked project script was rerun with the required filesystem permission and completed successfully. The Windows ZMQ runtime emitted non-fatal local-kernel transport warnings; execution still completed with zero notebook errors.
+- **Risks or limitations:** descriptive values apply only to the registered one-station samples. Missing optional station measurements are observations to investigate, not automatically defects. The monthly GHCN table is descriptive and does not establish a historical baseline or statewide coverage.
+- **Input received from:** Kevin's clarification that the notebook should use only material covered in the current semester through 2026-11-05 and should visibly read and inspect each source as a basic DataFrame.
+- **Handoff to:** Pablo to review and explain the GHCN/KOKC inspection; Kevin to confirm that the source-profile narrative remains consistent with the final report.
+- **Recovery or rollback:** revert this notebook/log change together; the preserved source samples remain unchanged and can regenerate the prior or current notebook outputs.
+
 ### [2026-11-05 America/Bogota] - W1-S01/W1-S03/W1-D02/W1-D04 - accept scope/time and close Pablo's Workshop 1 review
 
 - **Objective:** record the team's final region and temporal decisions and complete Pablo's Workshop 1 design/review responsibilities without fabricating production coverage or personal authorship.
