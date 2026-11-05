@@ -1,0 +1,35 @@
+evidence_id: W1-NWS-ALERTS-001
+source: NWS Alerts API
+endpoint: https://api.weather.gov/alerts/active?area=OK
+area: OK
+request:
+  method: GET
+  accept: application/geo+json
+  user_agent: multi-hazard-weather-monitoring/0.1 (github.com/KevMasMas/multi-hazard-weather-monitoring)
+retrieved_at_utc: "2026-11-04T19:14:33.7862514Z"
+retrieved_at_america_bogota: "2026-11-04T14:14:33.7862514-05:00"
+response:
+  http_status: 200
+  content_type: application/geo+json
+  bytes: 221
+  feature_count: 0
+  distinct_feature_ids: 0
+  missing_geometry_count: 0
+  collection_updated_at: "2026-11-04T19:13:19+00:00"
+  etag: 'W/"17866d6976e21723d6e7ebe16a082ba0:dtagent10337260504112723F6xZ:dtagent10337260504112723F6xZ"'
+  cache_control: public, max-age=5, s-maxage=5
+  request_id: 01a1a7fc-0ec6-72bf-a41e-9ba7ed630ec5
+  correlation_id: 4e5f57ff
+evidence:
+  raw_local_path: data/raw/nws_alerts/poll_1_active_OK_20261104T191433Z.geojson
+  committed_copy_path: workshop_1/samples/nws_alerts/poll_1.geojson
+  sha256: 1D0E2E7AA61FB7F1C43913FB4A7A58BB6FA31922516D6CC4E50166009CCED27D
+capture:
+  script: scripts/workshop_1/capture_nws_alerts.ps1
+  powershell_version: 7.6.5
+status: valid_empty_active_alert_response
+limitations:
+  - Oklahoma had no active alerts at retrieval time, so this poll cannot profile alert-level fields.
+  - A second poll at least one hour later is still required even if it is also empty.
+  - The active endpoint is current state and does not provide a historical archive.
+

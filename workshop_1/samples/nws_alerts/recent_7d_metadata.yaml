@@ -1,0 +1,80 @@
+evidence_id: W1-NWS-ALERTS-PROFILE-001
+source: NWS Alerts API
+endpoint: https://api.weather.gov/alerts?area=OK
+area: OK
+purpose: alert-field profiling; does not replace the two active-state polls
+retrieved_at_utc: "2026-11-04T21:43:09Z"
+retrieved_at_america_bogota: "2026-11-04T16:43:09-05:00"
+request:
+  method: GET
+  accept: application/geo+json
+  user_agent: multi-hazard-weather-monitoring/0.1 (github.com/KevMasMas/multi-hazard-weather-monitoring)
+  initial_http_status: not persisted by the manual command
+pagination:
+  complete_observed_chain: true
+  pages_requested: 2
+  page_1:
+    path: workshop_1/samples/nws_alerts/recent_7d_page_1.geojson
+    bytes: 1418905
+    features: 238
+    sha256: 70AD394CF9E7399ACCB5CEA7B0A3B8E55526F01C314E68136439EA8442E966C3
+    next_cursor_present: true
+  page_2:
+    path: workshop_1/samples/nws_alerts/recent_7d_page_2.geojson
+    retrieved_at_utc: "2026-11-04T21:45:50Z"
+    bytes: 213
+    features: 0
+    sha256: 4CB866FDD600EAC1EBDFFEF103B4F8B27E84D15EB8221914167420D158261574
+    next_cursor_present: false
+profile_baseline:
+  total_features: 238
+  distinct_feature_ids: 238
+  distinct_property_ids: 238
+  exact_duplicate_identifier_count: 0
+  collection_updated_at: "2026-11-03T09:57:13Z"
+  sent_min_utc: "2026-10-31T02:11:00Z"
+  sent_max_utc: "2026-11-03T09:56:00Z"
+  null_geometry: 42
+  geometry_polygon: 196
+  null_ends: 42
+  null_instruction: 79
+  null_required_profile_fields:
+    id: 0
+    event: 0
+    message_type: 0
+    severity: 0
+    certainty: 0
+    urgency: 0
+    sent: 0
+    effective: 0
+    onset: 0
+    expires: 0
+    area_description: 0
+    headline: 0
+    description: 0
+event_counts:
+  Severe Thunderstorm Warning: 136
+  Special Weather Statement: 42
+  Tornado Watch: 32
+  Tornado Warning: 18
+  Dense Fog Advisory: 6
+  Wind Advisory: 4
+message_type_counts:
+  Alert: 109
+  Update: 84
+  Cancel: 45
+severity_counts:
+  Extreme: 32
+  Severe: 110
+  Moderate: 51
+  Minor: 45
+status_counts:
+  Actual: 238
+category_counts:
+  Met: 238
+limitations:
+  - The endpoint retains only the API's recent alert window; it is not a long-term archive.
+  - The manual page-1 command did not persist response headers or HTTP status, although the body parsed as a valid GeoJSON FeatureCollection.
+  - Null geometry requires affected-zone and geocode analysis before it is classified as a data-quality defect.
+  - These are preliminary reproducible aggregates; the required notebook must perform and display the full profile.
+

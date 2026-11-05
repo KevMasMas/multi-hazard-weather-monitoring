@@ -1,0 +1,32 @@
+source: NWS Alerts API
+area: OK
+comparison_status: completed_no_active_alerts_observed
+poll_1:
+  evidence_id: W1-NWS-ALERTS-001
+  retrieved_at_utc: "2026-11-04T19:14:33Z"
+  collection_updated_at: "2026-11-04T19:13:19+00:00"
+  feature_count: 0
+  sha256: 1D0E2E7AA61FB7F1C43913FB4A7A58BB6FA31922516D6CC4E50166009CCED27D
+poll_2:
+  evidence_id: W1-NWS-ALERTS-002
+  retrieved_at_utc: "2026-11-04T20:49:29Z"
+  collection_updated_at: "2026-11-04T20:45:06+00:00"
+  feature_count: 0
+  sha256: 5932B237B6751B92C46BFB5B6BD6A2F444522F4614B12D6DD1E72FC65C56716C
+interval:
+  seconds: 5696
+  human_readable: 1 hour 34 minutes 56 seconds
+feature_comparison:
+  new: 0
+  no_longer_active: 0
+  changed: 0
+  unchanged: 0
+observations:
+  - Both requests returned HTTP 200 GeoJSON FeatureCollections.
+  - Both feature collections were empty.
+  - The collection updated timestamp and document checksum changed between polls.
+  - No alert identifier, revision, expiration, geometry, severity, or content behavior could be observed.
+next_evidence_needed:
+  - Capture a separately labeled Oklahoma recent-alert response from the seven-day alerts endpoint for field profiling.
+  - Do not treat the recent-alert sample as a replacement for these two active-state polls.
+

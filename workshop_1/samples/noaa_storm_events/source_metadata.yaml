@@ -1,0 +1,60 @@
+evidence_id: W1-NOAA-SE-001
+source: NOAA NCEI Storm Events Database
+table: details
+source_url: https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/StormEvents_details-ftp_v1.0_d2024_c20260728.csv.gz
+official_documentation: https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/Storm-Data-Bulk-csv-Format.pdf
+retrieved_at: "2026-11-04T13:56:42-05:00"
+retrieval_timezone: America/Bogota
+http_status: 200
+source_data_year: 2024
+source_creation_date_from_filename: 2026-07-28
+raw_archive:
+  committed_to_git: false
+  local_path: data/raw/noaa_storm_events/details/year=2024/StormEvents_details-ftp_v1.0_d2024_c20260728.csv.gz
+  bytes: 12693243
+  sha256: 2070B83ECCAB041B36360AB73645B9A249C3EEFC5B92B5B3FC0CBBA4D9FCC09C
+decompressed_source:
+  rows: 69801
+  columns: 51
+sample:
+  evidence_type: derived_source_subset
+  path: workshop_1/samples/noaa_storm_events/details_sample.csv
+  bytes: 276358
+  rows: 250
+  columns: 51
+  distinct_event_ids: 250
+  exact_duplicate_rows: 0
+  represented_event_types: 14
+  sha256: 987F5C641B6B85BF89477A823B52757D50D2C5376895FD53056A9AFE9F79403A
+selection:
+  state: OKLAHOMA
+  data_year: 2024
+  row_limit: 250
+  strategy: seed up to 25 chronologically ordered rows per event type, then fill remaining slots chronologically
+  event_types:
+    - Heavy Rain
+    - Flash Flood
+    - Flood
+    - Strong Wind
+    - High Wind
+    - Thunderstorm Wind
+    - Excessive Heat
+    - Heat
+    - Cold/Wind Chill
+    - Extreme Cold/Wind Chill
+    - Heavy Snow
+    - Ice Storm
+    - Winter Storm
+    - Winter Weather
+extraction:
+  tool: PowerShell
+  tool_version: 7.6.5
+  script: scripts/workshop_1/extract_noaa_storm_events_sample.ps1
+  logical_query: workshop_1/samples/noaa_storm_events/sample_query.sql
+status: captured_basic_integrity_verified_full_profile_pending
+limitations:
+  - The committed CSV is a deterministic derived subset; the untouched official gzip archive is preserved locally and ignored by Git.
+  - This sample covers one complete year and cannot establish the final 2010-2025 historical window.
+  - Oklahoma is a feasibility candidate and has not been approved as the final region.
+  - HTTP response headers other than status were not captured during this retrieval.
+

@@ -8,11 +8,11 @@ This is the single operational entry point for Team 9. Read this file to know th
 | --- | --- |
 | Repository foundation | Committed and pushed as `602143d` on `workflow-1` |
 | Git author | Corrected to `KevMasMas <kevindavidrincon01@gmail.com>` |
-| Workshop 1 implementation | Not started |
-| Weather-source queries | None performed |
-| Selected US region | Undecided; must be supported by evidence |
+| Workshop 1 implementation | Kevin's NOAA/NWS evidence captured and notebook sections created; notebook execution, Pablo's sections, and reviews pending |
+| Weather-source queries | NOAA 2024 archive retrieved; two empty NWS active polls plus a complete observed 238-alert recent pagination chain captured |
+| Selected US region | Undecided; Oklahoma/counties recorded as a candidate, not an accepted decision |
 | Compound Hazard Index formula | Undecided; only a preliminary proposal belongs in Workshop 1 |
-| Immediate goal | Review the foundation together, then start Workshop 1 source validation |
+| Immediate goal | Execute the NOAA/NWS notebook sections in a real Python environment; Pablo must add GHCN and station evidence |
 
 ## Permanent ownership
 

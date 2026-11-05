@@ -4,6 +4,7 @@
 - `reports/`: evidence-backed reviews and progress summaries.
 - `decisions/`: durable architecture and data-contract decisions.
 - `references/`: concise indexes to authoritative external material.
+- `sources/`: source-specific research, access notes, and validation contracts.
 
 Avoid duplicating professor-issued documents. Link to them, summarize only what is necessary for decisions, and state the date or commit reviewed.
 
