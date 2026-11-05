@@ -1,0 +1,59 @@
+version: 1
+status: workshop_1_draft
+study_area:
+  country: US
+  state: Oklahoma
+  analytical_region: county
+temporal_scope:
+  historical_start: 2010-01-01
+  historical_end: 2025-12-31
+  current_window: PT24H
+  context_window: P7D
+
+sources:
+  noaa_storm_events:
+    role: historical
+    owner: NOAA National Centers for Environmental Information
+    url: https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/
+    format: gzip_csv
+    schedule: manual_year_partition
+    watermark_field: null
+    partition_field: BEGIN_YEARMONTH
+    duplicate_key: EVENT_ID
+    change_detection: archive_checksum_and_record_content_hash
+
+  ghcn_daily:
+    role: historical
+    owner: NOAA National Centers for Environmental Information
+    url: https://www.ncei.noaa.gov/access/services/data/v1
+    format: csv
+    schedule: manual_station_year_partition
+    watermark_field: DATE
+    partition_field: station_and_year
+    duplicate_key: [STATION, DATE]
+    change_detection: partition_checksum_and_measurement_attributes
+
+  nws_alerts:
+    role: incremental
+    owner: US National Weather Service
+    url: https://api.weather.gov/alerts/active?area=OK
+    format: geojson
+    schedule: proposed_hourly
+    watermark_field: properties.sent
+    duplicate_key: properties.id
+    change_detection: stable_identifier_and_content_hash
+
+  nws_station_observations:
+    role: incremental
+    owner: US National Weather Service
+    url_template: https://api.weather.gov/stations/{station_id}/observations
+    format: geojson
+    schedule: proposed_hourly
+    watermark_field: properties.timestamp
+    duplicate_key: properties.@id
+    change_detection: stable_identifier_and_content_hash
+
+notes:
+  - This file is a Workshop 1 contract draft, not an implemented scheduler configuration.
+  - Incremental schedules and overlap windows require final team review before Workshop 3.
+  - Raw captures must be persisted before parsing and state must advance only after a successful commit.

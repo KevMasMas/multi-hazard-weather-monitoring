@@ -8,13 +8,13 @@ This is the single operational entry point for Team 9. Read this file to know th
 | --- | --- |
 | Repository foundation | Committed and pushed as `602143d` on `workflow-1` |
 | Git author | Corrected to `KevMasMas <kevindavidrincon01@gmail.com>` |
-| Workshop 1 implementation | All four source samples are present; Oklahoma evidence includes two KOKC polls; the 49-cell notebook executed cleanly with 27/27 code cells and zero errors; shared analysis and teammate review remain pending |
+| Workshop 1 implementation | All four source samples are present; Oklahoma evidence includes two KOKC polls; the 52-cell notebook executed cleanly with 29/29 code cells and zero errors; required repository scaffolding, configuration draft, field mapping and architecture overview are present; final rubric closure remains pending |
 | Weather-source queries | NOAA 2024 archive retrieved; two empty NWS active polls plus a complete observed 238-alert recent pagination chain captured |
 | Selected US region | Accepted: Oklahoma study area with counties as analytical regions (ADR 0001) |
 | Temporal scope | Accepted: 2010-2025 complete-year baseline; rolling 24-hour current window; separate seven-day context (ADR 0003) |
 | Compound Hazard Index formula | Accepted as the Workshop 1 preliminary five-component proposal; empirical validation remains for Workshop 4 |
 | Pablo review | Recorded in `deliveries/01-workshop-1/PABLO_REVIEW.md`; implementation limitations remain explicit |
-| Immediate goal | Complete the shared canonical model, ER/architecture, traceability matrix, concrete quality-record examples, and final PDF review |
+| Immediate goal | Complete concrete quality-record examples, requirement-to-evidence traceability, four-source contract gaps, final English PDF, and submission review |
 
 ## Permanent ownership
 

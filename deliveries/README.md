@@ -10,14 +10,17 @@ For current assignments and next actions, use `WORK_BOARD.md` at the repository 
 deliveries/
 ├── 00-project-foundation/
 ├── 01-workshop-1/
-├── 02-workshop-2/          created when its official specification is available
-├── 03-workshop-3/          created when its official specification is available
-├── 04-workshop-4/          created when its official specification is available
+├── 02-workshop-2/          created after its official specification is reviewed
+├── 03-workshop-3/          created after its official specification is reviewed
+├── 04-workshop-4/          created after its official specification is reviewed
 ├── 05-final-project/       created for final integration
 └── _templates/
 ```
 
-Do not pre-fill future workshop claims. Create or refine a delivery folder only after reviewing the professor's applicable specification.
+The professor repository published Workshop 2-4 specifications on 2026-11-05.
+Do not pre-fill future workshop claims or open their active delivery folders while
+Workshop 1 is being closed. Create each folder after reviewing its specification
+and beginning that milestone.
 
 ## Required documents
 

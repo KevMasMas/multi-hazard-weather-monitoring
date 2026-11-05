@@ -4,6 +4,12 @@
 
 Reviewed on 2026-11-03 from professor repository commit `387ec69a66294158f012253e5ee12c7a30bf94ac` (`Project update DAP`) and the local copies of `CourseProject.pdf`, `TeamsDistribution.pdf`, `Workshop_1.pdf`, and `Airflow-PostgreSQL-ETL.pdf`.
 
+Update observed on 2026-11-05: professor repository commit
+`5a6ec8d` added `Workshop_2.pdf`, `Workshop_3.pdf`, and `Workshop_4.pdf`.
+Their publication is indexed, but their detailed requirement review belongs to
+the start of each corresponding milestone and is not silently incorporated into
+Workshop 1 claims.
+
 The team repository was also inspected and had no commits or tracked files before this foundation branch.
 
 ## Authoritative requirements
@@ -77,7 +83,7 @@ The following remain choices or examples: exact US region, exact hazard componen
 
 ## Gaps and open work
 
-- Only Workshop 1 has a detailed standalone specification in the reviewed repository. Workshops 2-4 are described at milestone level in the course project and team-assignment documents; later workshop PDFs must be reviewed when published.
+- The initial 2026-11-03 review contained only the detailed Workshop 1 specification. Workshop 2-4 PDFs were published on 2026-11-05 and require separate, milestone-specific review before implementation begins.
 - The exact US region and index definition are not specified and must be selected from validated source coverage and manageable volume.
 - No Team 9 source behavior, samples, profiles, data-quality issues, record overlap, or index validation has been established yet.
 - The project needs a source-status log because operational sources can revise records and interfaces.

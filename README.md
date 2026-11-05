@@ -2,7 +2,7 @@
 
 Semester project for **Data Analysis Programming (2026-II)** at Universidad Distrital Francisco Jose de Caldas.
 
-Team 9 will build a US regional monitoring system that integrates historical and periodically updated weather information and eventually produces a **Compound Hazard Index per region**. The exact US region, time windows, indicator formula, and validation strategy are intentionally undecided until the required source-validation work is completed.
+Team 9 will build an Oklahoma county-level monitoring system that integrates historical and periodically updated weather information and eventually produces a **Compound Hazard Index per region**. Oklahoma/counties, the 2010-2025 complete-year baseline, a rolling 24-hour current window, and a preliminary Workshop 1 indicator proposal are accepted team decisions. The indicator still requires empirical validation in Workshop 4.
 
 ## Current status
 
@@ -18,7 +18,7 @@ Read only these three files to begin:
 
 Supporting material is indexed under [`docs/`](docs/) and the delivery history under [`deliveries/`](deliveries/). Contributors and coding agents must also follow [`AGENTS.md`](AGENTS.md).
 
-## Planned repository areas
+## Repository areas
 
 ```text
 config/                 Source and application configuration
@@ -26,14 +26,27 @@ dashboard/              Plotly Dash application
 data/raw/               Raw landing zone (bulk data ignored by Git)
 deliveries/              Per-milestone plans, change logs, evidence, and demo guides
 docs/                    Plans, reports, decisions, and references
+ingest.py                Required CLI contract stub for Workshop 1
 notebooks/               Reproducible analysis and profiling notebooks
 sql/                     Database schema and analytical views
-src/                     Production ingestion and processing package
+src/                     Production ingestion package boundaries
 tests/fixtures/          Tests and small recorded source fixtures
+workshop_1/mapping.md     Preliminary canonical field mapping
 workshop_1/samples/      Small immutable evidence samples for Workshop 1
 ```
 
-These directories are reserved now so later workshop work has a stable destination. Their presence does not mean their deliverables have been implemented.
+The Workshop 1 scaffolds explicitly say when implementation belongs to a later
+milestone. Their presence does not mean that Docker, ingestion, database,
+orchestration, tests, or the dashboard have already been implemented.
+
+The current CLI placeholder can be inspected without performing ingestion:
+
+```powershell
+python ingest.py --mode status
+```
+
+It returns `status: not_implemented` until the corresponding workshop work is
+completed.
 
 ## Working model
 

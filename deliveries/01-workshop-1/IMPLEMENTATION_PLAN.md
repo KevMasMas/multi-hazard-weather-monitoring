@@ -63,20 +63,20 @@ Prove that a justified US regional scope can be supported by NOAA Storm Events, 
 
 #### Profiling and data quality
 
-- [x] Execute `notebooks/01_source_profiling.ipynb` top to bottom with outputs (27/27 code cells, execution counts 1-27, zero error outputs; see 2026-11-05 W1-D05 change-log entry); [ ] obtain Pablo's output review.
+- [x] Execute `notebooks/01_source_profiling.ipynb` top to bottom with outputs (29/29 code cells, execution counts 1-29, zero error outputs; see 2026-11-05 change-log entries); [x] Pablo's Workshop 1 review is recorded in `PABLO_REVIEW.md`; repeat review after final report changes.
 - [ ] Report null percentages, ranges, duplicated identifiers, timestamp/time-zone formats, coordinate validity, and unit consistency for each source.
 - [ ] Record at least five concrete data-quality problems with example records across the sources.
 - [x] Investigate five NWS Alert/KOKC candidate pairs with explicit temporal/geographic basis and limitations (see 2026-11-05 W1-S04 change-log entry); [ ] obtain Pablo's review and do not promote candidates to confirmed matches.
 
 #### Contracts and project definition
 
-- [ ] Map every source to canonical event fields and define Team 9 domain tables.
-- [ ] Define UTC, WGS84, unit-conversion, severity, duplicate-key, and raw-reference/content-hash rules.
+- [x] Draft the four-source canonical field mapping and Team 9 domain tables in `workshop_1/mapping.md`; [ ] complete final field-level team review.
+- [x] Draft UTC, WGS84, unit/severity, duplicate-key, and raw-reference/content-hash rules in the mapping and ADRs; [ ] close the explicitly listed open field-level decisions.
 - [ ] Draft partitioning/pagination, watermark, polling, overlap-window, and halfway-failure recovery per source.
 - [x] Draft a proposed functional user and seven MoSCoW stories (W1-D01; see 2026-11-04 report-draft change-log entry); [ ] confirm user and wording with Kevin/professor.
 - [x] Draft and jointly review index inputs/rule/scale/validation approach without claiming empirical validation (ADR 0002 and `PABLO_REVIEW.md`).
 - [x] Draft and jointly review six risks and mitigations (W1-D01; see report draft and `PABLO_REVIEW.md`).
-- [x] Produce and accept the first conceptual ER diagram (`docs/architecture/workshop-1-er-model.md`); [ ] complete the labeled architecture overview, field-level mapping table, and final English PDF report.
+- [x] Produce the conceptual ER diagram, labeled architecture overview, and independent field-level mapping table; [ ] complete the final English PDF report and submission review.
 
 ### P1 - quality improvements after P0
 
@@ -123,7 +123,7 @@ Use the Workshop 1 task IDs listed under Steps 1-4 of `WORK_BOARD.md` in branche
 ## 9. Merge and submission gate
 
 - [x] Both students review the Workshop 1 source contracts, region/time scope, candidate pairs, notebook and preliminary CHI proposal (see `PABLO_REVIEW.md`); [ ] repeat review for final schema/architecture and submission commit.
-- [x] Notebook runs top to bottom in the locked isolated environment using documented inputs (27/27 code cells, zero errors, eleven checksum matches).
+- [x] Notebook runs top to bottom in the locked isolated environment using documented inputs (29/29 code cells, zero errors, eleven checksum matches).
 - [x] Registered raw evidence is checksum-protected, attributable, and sanitized of captured cookies; [ ] repeat the secret/artifact audit immediately before submission.
 - [ ] Large-source download instructions are documented instead of committing bulk data.
 - [ ] Report and technical documentation are in English.

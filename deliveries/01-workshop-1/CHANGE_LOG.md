@@ -6,6 +6,24 @@ Use `deliveries/_templates/CHANGE_LOG.md` and include source-query timestamps an
 
 ## Entries
 
+### [2026-11-05 America/Bogota] - W1-S02/W1-D03 - align repository scaffolding with Workshop 1
+
+- **Objective:** reconcile the repository root and Workshop 1 artifacts with the professor's explicit repository-setup checklist while keeping later workshop implementation out of scope.
+- **Status:** [x] required root scaffolding, configuration draft, independent mapping, architecture overview, and source-status log added; [!] final report and remaining rubric evidence are not complete.
+- **Branch or commit:** `workflow-1`; no commit created.
+- **Requirements addressed:** Workshop 1 repository setup, four-entry `config/sources.yaml`, required CLI stub, canonical mapping artifact, labeled architecture overview, source-status tracking, and stable future-workshop boundaries.
+- **Files created:** `ingest.py`, `config/sources.yaml`, `src/multi_hazard_weather_monitoring/` package boundaries, area READMEs under `dashboard/`, `sql/`, `tests/` and `tests/fixtures/`, `workshop_1/mapping.md`, `docs/architecture/workshop-1-overview.md`, `docs/sources/SOURCE_STATUS.md`, and `docs/reports/workshop-1-compliance-review.md`.
+- **Files modified:** `README.md`, `WORK_BOARD.md`, `deliveries/README.md`, `deliveries/01-workshop-1/IMPLEMENTATION_PLAN.md`, `docs/references/academic-materials.md`, `docs/reports/academic-material-review.md`, and this change log.
+- **Implementation or documentation completed:** replaced empty-directory-only placeholders with explicit package and milestone boundaries; added all four assigned sources with URL, format, schedule state, watermark field, duplicate key and change-detection proposal; separated the high-level pipeline diagram from the conceptual ER model; created the professor-requested standalone source-to-canonical mapping; updated outdated notebook execution counts and indexed the Workshop 2-4 PDFs published on 2026-11-05.
+- **Verification and exact result:** `ingest.py` compiled and `python ingest.py --mode status` returned JSON with `status=not_implemented` and `milestone=workshop_1_scaffold`; `config/sources.yaml` parsed successfully and contains exactly four source entries; all 17 checked professor-required scaffold paths exist; `git diff --check` passed apart from informational CRLF-to-LF warnings.
+- **Evidence location:** repository root, `config/sources.yaml`, `workshop_1/mapping.md`, `docs/architecture/`, and the professor-issued `Workshop_1.pdf` repository-setup section.
+- **Decisions and rationale:** scaffolding is present now because Workshop 1 explicitly requires it. Docker, SQL schema, adapters, scheduling, tests and dashboard behavior remain unimplemented and are labeled with their correct later milestones. Proposed hourly incremental schedules remain drafts pending final contract review.
+- **Errors found and correction:** directories existed only as `.gitkeep` placeholders, so `rg --files` and a fresh-clone reviewer could not understand their intended boundaries. Required explanatory/package files were added without deleting existing files. The academic index also still implied that Workshops 2-4 were unpublished; it now records their 2026-11-05 publication without claiming they were fully reviewed.
+- **Risks or limitations:** structural compliance is not delivery completion. The final English PDF, exact quality-problem example records, requirement-to-evidence matrix, license/attribution closure, source-volume estimates, final ingestion-contract decisions, and final review remain pending.
+- **Input received from:** Kevin's request to organize the project and verify it against the professor's requirements.
+- **Handoff to:** Kevin for NOAA/Alerts contract and traceability closure; Pablo for GHCN/station contract and final report review; both for the final Workshop 1 merge gate.
+- **Recovery or rollback:** revert this additive scaffold/mapping documentation set together. Preserved samples and notebook evidence are unchanged.
+
 ### [2026-11-05 America/Bogota] - W1-P03/W1-P04 - add class-level DataFrame inspection
 
 - **Objective:** make the GHCN-Daily and KOKC sections visibly demonstrate the basic Pandas workflow covered in the current semester through 2026-11-05, without introducing later EDA or modelling topics.
