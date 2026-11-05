@@ -1,0 +1,57 @@
+comparison_gate: W1-S01
+status: captured_for_scope_comparison_not_yet_team_approved
+captured_by: Kevin Rincon
+capture_date: "2026-11-05"
+
+ghcn_daily:
+  evidence_id: W1-REGION-GHCN-OK-001
+  source: NOAA NCEI Access Data Service daily-summaries
+  request_method: GET
+  request_parameters:
+    dataset: daily-summaries
+    stations: USW00013967
+    startDate: "2025-01-01"
+    endDate: "2025-12-31"
+    format: csv
+    units: metric
+    includeAttributes: true
+    includeStationName: true
+  file: workshop_1/samples/region_comparison/ghcn_okc_usw00013967_2025.csv
+  bytes: 54843
+  sha256: D8EE9E0AFBFE25897C17BABE4A88DC0E12D4FECE8B74C26E8D817D5309FFB5AE
+  rows: 365
+  columns: 12
+  station_id: USW00013967
+  station_name: "OKLAHOMA CITY WILL ROGERS WORLD AIRPORT, OK US"
+  latitude: 35.38843
+  longitude: -97.60035
+  first_date: "2025-01-01"
+  last_date: "2025-12-31"
+  requested_value_nulls:
+    PRCP: 0
+    TMAX: 0
+    TMIN: 0
+
+nws_station_observations:
+  evidence_id: W1-REGION-NWS-KOKC-001
+  source: National Weather Service API
+  request_method: GET
+  request_url: https://api.weather.gov/stations/KOKC/observations?limit=200
+  station_id: KOKC
+  file: workshop_1/samples/region_comparison/nws_kokc_observations_snapshot.geojson
+  bytes: 779031
+  sha256: 391C49B75E7E05C225FE0EB63BB7BB822004169FFBB0F8FF6DDA006F236B0E68
+  local_capture_time_utc: "2026-11-05T11:39:09.5478154Z"
+  features: 200
+  unique_ids: 200
+  oldest_observation_utc: "2026-11-03T21:52:00Z"
+  newest_observation_utc: "2026-11-05T10:55:00Z"
+  observation_span_hours: 37.05
+  missing_geometry: 0
+  next_page_present: true
+
+limitations:
+  - HTTP response status and headers were not persisted with these two comparison captures; the bodies parsed successfully and their checksums are recorded.
+  - One GHCN station does not prove statewide representativeness.
+  - One KOKC snapshot proves profile availability but does not meet the two-poll change-comparison requirement by itself.
+  - The recommended region still requires Pablo's review before the ADR can be accepted.

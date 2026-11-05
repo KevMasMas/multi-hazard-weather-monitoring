@@ -32,7 +32,7 @@ The following sources are assigned starting points and must be validated during 
 | Incremental 1 | NWS Alerts API | Active alerts; GeoJSON/CAP; descriptive User-Agent required | <https://www.weather.gov/documentation/services-web-api> |
 | Incremental 2 | NWS Station Observations | Latest or recent station observations through the NWS API | <https://www.weather.gov/documentation/services-web-api> |
 
-No API availability, rate limit, license, field behavior, record volume, or cross-source overlap is considered verified merely because it appears in this file or in the assignment document. Workshop 1 requires empirical validation with real responses. Initial samples have since been captured for all four sources. Pablo has captured two NWS station-observation polls at a candidate Denver location and observed one changed same-ID payload; the team-wide regional decision and cross-source overlap remain pending. See `deliveries/01-workshop-1/CHANGE_LOG.md` and `EVIDENCE_REGISTER.md` for current evidence and limitations.
+No API availability, rate limit, license, field behavior, record volume, or cross-source overlap is considered verified merely because it appears in this file or in the assignment document. Workshop 1 requires empirical validation with real responses. Initial samples have since been captured for all four sources. Pablo captured two NWS station-observation polls at a candidate Denver location and observed one changed same-ID payload. Additional Oklahoma City GHCN and KOKC snapshots now support Oklahoma as the preferred common-region candidate, but Pablo's approval and cross-source overlap analysis remain pending. See `deliveries/01-workshop-1/CHANGE_LOG.md`, `EVIDENCE_REGISTER.md`, and `docs/reports/region-comparison-oklahoma-vs-denver.md` for evidence and limitations.
 
 ## Common technical contract
 
@@ -119,7 +119,7 @@ The final rubric assigns the greatest weight to historical ingestion (15), incre
 
 The following decisions must be made from evidence during Workshop 1:
 
-1. Exact US region and regional aggregation unit (state, county, NWS forecast zone, or another justified unit).
+1. Confirm or reject the preferred Oklahoma study area and county aggregation unit after Pablo reviews the evidence-backed recommendation.
 2. Historical time window and meaning of "current situation."
 3. Hazard components and event types included in the Compound Hazard Index.
 4. Severity units, normalization rules, seasonal baseline, weighting, output scale, and validation method for the index.

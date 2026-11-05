@@ -13,7 +13,7 @@ Workshop 1 is an evidence-producing source-validation and data-contract mileston
 
 ### Pablo workstream preparation (2026-11-03)
 
-The desk review, qualifying 365-row GHCN-Daily sample, 200-feature NWS station sample, second poll, initial profiles, preliminary mappings, and source-specific contract drafts are recorded in `source-research-ghcn-nws-stations.md` and the evidence register. These cover a candidate Denver test location only. Regional coverage analysis, attribution confirmation, Kevin's review, and shared decisions remain pending; the remaining all-source tasks below remain unchecked.
+The desk review, qualifying 365-row GHCN-Daily sample, 200-feature NWS station sample, second poll, initial profiles, preliminary mappings, and source-specific contract drafts are recorded in `source-research-ghcn-nws-stations.md` and the evidence register. Those update-behavior samples cover Denver. Additional 365-row GHCN and 200-feature KOKC captures now demonstrate Oklahoma City coverage and support Oklahoma as the preferred region; Pablo's approval, statewide station selection, attribution confirmation, and shared decisions remain pending.
 
 ## 2. Non-negotiable objective
 
@@ -45,7 +45,7 @@ Prove that a justified US regional scope can be supported by NOAA Storm Events, 
 #### Hazard and scope
 
 - [ ] Explain compound weather hazards, component severity measures, units, and monitoring value.
-- [ ] Compare candidate US regions using all-four-source coverage and manageable volume.
+- [x] Compare Oklahoma and Denver/Colorado using all-four-source coverage and manageable volume (see 2026-11-05 W1-S01 change-log entry); [ ] obtain Pablo's review and accept or reject the recommendation.
 - [ ] Select and justify the regional unit, historical window, and definition of current conditions.
 
 #### Historical sources

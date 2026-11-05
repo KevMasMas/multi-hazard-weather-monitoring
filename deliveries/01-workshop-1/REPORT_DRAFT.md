@@ -5,13 +5,13 @@
 **Status:** Working draft for review; not ready for PDF export or submission  
 **Scope:** Workshop 1 source validation and project definition only
 
-> This draft distinguishes observed evidence, official documentation, and team proposals. Denver/KDEN and Oklahoma are evidence-collection candidates, not an approved shared region. No Compound Hazard Index, event match, or cross-source coverage claim is presented as validated.
+> This draft distinguishes observed evidence, official documentation, and team proposals. Oklahoma/counties is now the evidence-backed preferred scope, but it is not accepted until Pablo reviews it. No Compound Hazard Index or cross-source event match is presented as validated.
 
 ## 1. Executive summary
 
 The project will investigate a monitoring system that combines historical weather records with current or recently updated observations and alerts. Its purpose is to help a regional analyst understand observed hazards alongside a historical baseline. It is not a hazard-forecasting system and must not replace official warnings.
 
-The repository contains first evidence for all four assigned sources. Kevin's evidence covers NOAA Storm Events and NWS Alerts for Oklahoma. Pablo's evidence covers GHCN-Daily and NWS station observations for a Denver candidate. The Pablo samples meet the 200-record threshold: 365 GHCN-Daily rows and 200 features in each of two NWS station-observation pages. One same-ID station observation changed between the two pages. The teams have not established a common region or cross-source event overlap, so the project scope and final data contract remain open.
+The repository contains evidence for all four assigned sources. Kevin's NOAA Storm Events and NWS Alerts evidence covers Oklahoma. Pablo's qualifying Denver samples contain 365 GHCN-Daily rows and two 200-feature NWS station pages; one same-ID observation changed between the pages. A separate Oklahoma City coverage check now contains 365 GHCN-Daily rows and 200 KOKC observations. The one-year comparison favors Oklahoma over Denver because it aligns all four source families and offers a broader hazard mix. Pablo's approval and cross-source event overlap remain open, so the scope is preferred rather than accepted and the final data contract remains open.
 
 ## 2. Problem and proposed user
 
@@ -43,6 +43,24 @@ These stories describe a proposal. Region, user confirmation, historical window,
 | NWS station observations (Pablo) | KDEN first pages, `limit=200`, on two dates separated by 80,124.882 seconds. Each response contains 200 features and `pagination.next`. | 200 unique observation IDs per page; 96 IDs overlap; 95 overlapping payloads are unchanged and one same-ID/same-timestamp payload changed. Units and missingness are profiled in the source note/notebook. | Bounded pages roll forward; absence from the later page is not a deletion. Two polls do not establish a general revision policy. |
 
 The evidence files, retrieval metadata, and checksums are indexed in [`EVIDENCE_REGISTER.md`](EVIDENCE_REGISTER.md). Detailed Pablo source research is in [`source-research-ghcn-nws-stations.md`](source-research-ghcn-nws-stations.md). Kevin's source documentation is in [`docs/sources/noaa-storm-events.md`](../../docs/sources/noaa-storm-events.md) and [`docs/sources/nws-alerts.md`](../../docs/sources/nws-alerts.md).
+
+### 4.1 Region comparison and recommendation
+
+The same 14-family filter applied to the official 2024 Storm Events archive
+produced 2,317 Oklahoma rows across all 14 selected event types, compared with
+1,350 Colorado rows across 11 types and only 21 Denver-name rows across six
+types. Oklahoma included substantial heat, convective wind, flood, cold, high
+wind, and winter evidence; the Colorado screen was more strongly concentrated
+in snow, winter weather, thunderstorm wind, and high wind.
+
+Both candidates have a qualifying 365-row single-station GHCN sample and a
+200-feature NWS station page. Oklahoma additionally aligns with the registered
+NWS Alerts evidence, including 238 recent features. The recommendation is
+therefore **Oklahoma as the study area and counties as the primary analytical
+unit**, with forecast zones and polygons retained for explicit crosswalking.
+Pablo must approve this recommendation before ADR 0001 becomes accepted. Exact
+counts, checksums, methodology, and limitations are in
+[`region-comparison-oklahoma-vs-denver.md`](../../docs/reports/region-comparison-oklahoma-vs-denver.md).
 
 ## 5. Data-quality observations and handling proposals
 
@@ -119,7 +137,7 @@ This diagram only frames Pablo's station/region relationship. It is not the team
 
 ## 9. Open shared decisions and report completion gate
 
-- Choose a single region and aggregation unit only after all four sources have coverage evidence; Oklahoma and Denver remain candidates.
+- Have Pablo review the all-four-source comparison and accept or reject Oklahoma/counties as the preferred region.
 - Agree the historical baseline and the meaning of “current conditions.”
 - Complete five cross-source candidate-pair investigations or document why the evidence does not support defensible pairs.
 - Have Kevin review Pablo's station coordinates, GHCN key/revision handling, and source mappings; have Pablo review NOAA and NWS Alerts findings.

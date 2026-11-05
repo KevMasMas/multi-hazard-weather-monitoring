@@ -1,0 +1,15 @@
+# Source evidence must preserve the exact bytes used for registered checksums.
+workshop_1/samples/**/*.csv -text
+workshop_1/samples/**/*.geojson -text
+workshop_1/samples/*.csv -text
+workshop_1/samples/*.geojson -text
+
+# Project text files use stable line endings across Windows and Unix runtimes.
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.ipynb text eol=lf
+*.py text eol=lf
+*.sql text eol=lf
+*.ps1 text eol=crlf
