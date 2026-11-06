@@ -22,7 +22,7 @@ that one person manually authored every changed line.
 | Time scope | ADR 0003 | Accept 2010-2025 complete-year baseline, rolling 24-hour current window, and separate seven-day context. |
 | Geographic/station contract | ADR 0004 | Accept deterministic coverage-based station selection and versioned county/zone/polygon relations. |
 | Candidate pairs | `W1-NWS-KOKC-PAGE-002` and derived CSV | Accept five rows for investigation only; keep `candidate_not_confirmed`. |
-| Notebook | `notebooks/01_source_profiling.ipynb` | Accept clean execution evidence: 27/27 code cells, zero error outputs, eleven checksum matches. |
+| Notebook | `notebooks/01_source_profiling.ipynb` | Accept clean execution evidence: 29/29 code cells, zero error outputs, eleven checksum matches (current execution record; older change-log entries describe the earlier 27-cell run). |
 | CHI proposal | ADR 0002 | Accept as the Workshop 1 preliminary proposal; weights, thresholds and validation remain provisional until Workshop 4. |
 | Report claims | `REPORT_DRAFT.md` | Accept integration after replacing outdated candidate/pending language with the decisions above. |
 
@@ -44,6 +44,10 @@ that one person manually authored every changed line.
 - Confirmed physical-event matches.
 - Validated CHI weights, thresholds, accuracy, or interpretation bands.
 - Final PDF visual review and professor acceptance.
+
+## Follow-up review after report completion
+
+The report now includes exact quality-example IDs, source-specific draft contracts, and a requirement-to-evidence matrix. Kevin cross-review of these additions and the source contract caveats remains a team handoff; no new joint approval is implied by this update. The final PDF export and visual review are deferred.
 
 ## Handoff
 

@@ -9,7 +9,6 @@ temporal_scope:
   historical_end: 2025-12-31
   current_window: PT24H
   context_window: P7D
-
 sources:
   noaa_storm_events:
     role: historical
@@ -18,42 +17,70 @@ sources:
     format: gzip_csv
     schedule: manual_year_partition
     watermark_field: null
-    partition_field: BEGIN_YEARMONTH
-    duplicate_key: EVENT_ID
+    partition_field: archive_year
+    duplicate_key:
+    - EVENT_ID
     change_detection: archive_checksum_and_record_content_hash
-
+    row_partition_field: BEGIN_YEARMONTH
+    revision_check: archive_filename_creation_date_and_checksum
   ghcn_daily:
     role: historical
     owner: NOAA National Centers for Environmental Information
     url: https://www.ncei.noaa.gov/access/services/data/v1
     format: csv
     schedule: manual_station_year_partition
-    watermark_field: DATE
-    partition_field: station_and_year
-    duplicate_key: [STATION, DATE]
+    watermark_field: null
+    partition_field:
+    - station_id
+    - calendar_year
+    duplicate_key:
+    - STATION
+    - DATE
     change_detection: partition_checksum_and_measurement_attributes
-
+    normalized_record_key:
+    - STATION
+    - DATE
+    - element_code
   nws_alerts:
     role: incremental
     owner: US National Weather Service
     url: https://api.weather.gov/alerts/active?area=OK
     format: geojson
-    schedule: proposed_hourly
-    watermark_field: properties.sent
+    schedule: proposed_hourly_full_snapshot
+    watermark_field: null
     duplicate_key: properties.id
     change_detection: stable_identifier_and_content_hash
-
+    poll_interval: PT1H
+    overlap: reprocess_complete_active_collection_each_poll
+    revision_detection: full_feature_content_hash
+    deletion_policy: do_not_infer_from_absence; interpret status, expiry, and cancellation
+      semantics
   nws_station_observations:
     role: incremental
     owner: US National Weather Service
     url_template: https://api.weather.gov/stations/{station_id}/observations
     format: geojson
-    schedule: proposed_hourly
+    schedule: proposed_hourly_per_station
     watermark_field: properties.timestamp
     duplicate_key: properties.@id
     change_detection: stable_identifier_and_content_hash
-
+    poll_interval: PT1H
+    overlap: PT1H
+    reconciliation_interval: P1D
+    reconciliation_window: P7D
+    retention_limit: P7D
+    revision_detection: full_feature_content_hash
 notes:
-  - This file is a Workshop 1 contract draft, not an implemented scheduler configuration.
-  - Incremental schedules and overlap windows require final team review before Workshop 3.
-  - Raw captures must be persisted before parsing and state must advance only after a successful commit.
+- This file is a Workshop 1 proposal, not an implemented scheduler configuration.
+- NOAA uses yearly archive files; BEGIN_YEARMONTH is a row attribute, not the archive
+  partition key.
+- GHCN duplicate_key applies to the raw wide response; normalized_record_key adds
+  element_code after reshaping.
+- NWS Alerts is polled as a full active-state snapshot with no record watermark; record
+  sent/effective timestamps remain source attributes.
+- NWS station polling proposes a one-hour overlap (greater than the documented up-to-20-minute
+  lateness) plus a daily seven-day reconciliation to detect same-ID revisions within
+  retention. Validate request cost and query parameters before implementation.
+- All polling intervals and overlap/reconciliation policies require team review before
+  Workshop 3.
+- Persist raw captures before parsing; advance checkpoints only after successful commit.

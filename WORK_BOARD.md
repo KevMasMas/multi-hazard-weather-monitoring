@@ -14,7 +14,7 @@ This is the single operational entry point for Team 9. Read this file to know th
 | Temporal scope | Accepted: 2010-2025 complete-year baseline; rolling 24-hour current window; separate seven-day context (ADR 0003) |
 | Compound Hazard Index formula | Accepted as the Workshop 1 preliminary five-component proposal; empirical validation remains for Workshop 4 |
 | Pablo review | Recorded in `deliveries/01-workshop-1/PABLO_REVIEW.md`; implementation limitations remain explicit |
-| Immediate goal | Complete concrete quality-record examples, requirement-to-evidence traceability, four-source contract gaps, final English PDF, and submission review |
+| Immediate goal | Kevin cross-review of updated contracts/quality examples; rerun the edited notebook in the locked environment; complete remaining evidence/review gates; produce the English PDF only when Pablo requests it |
 
 ## Permanent ownership
 

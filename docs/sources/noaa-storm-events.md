@@ -3,7 +3,7 @@
 **Owner:** Kevin Rincon  
 **Reviewer:** Pablo Garzon  
 **Task IDs:** W1-K01 (documentation), W1-K03 (sample and profile)  
-**Status:** documentation prepared; live evidence not captured yet
+**Status:** official documentation, preserved sample and executed profile recorded; accepted Oklahoma scope; full multi-year regional volume remains a rough screen
 
 ## Why this source is required
 
@@ -83,9 +83,7 @@ deterministic filter is:
 
 The equivalent SQL lives in
 `workshop_1/samples/noaa_storm_events/sample_query.sql`, and the executed
-PowerShell extraction lives under `scripts/workshop_1/`. The state and proposed
-2010-2025 historical window remain open decisions. Capturing this one-year
-sample does not approve either decision.
+PowerShell extraction lives under `scripts/workshop_1/`. Oklahoma and the 2010-2025 historical window are accepted project scope. This one-year sample does not establish full-period volume or statewide completeness.
 
 For the evidence to be accepted, Kevin must record:
 
@@ -130,8 +128,7 @@ quarantine, or source-revision handling.
 
 ## Open questions for review
 
-- Does Oklahoma provide enough records in all proposed event families and all
-  four assigned sources?
+- Does Oklahoma provide sufficient multi-year coverage in all proposed event families? One year and a single pilot station do not establish this.
 - Should the final state scope use counties, NWS forecast zones, or both through
   a documented crosswalk?
 - Is 2010-2025 manageable for Storm Events and GHCN-Daily while still providing

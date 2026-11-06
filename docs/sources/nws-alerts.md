@@ -3,7 +3,7 @@
 **Owner:** Kevin Rincon  
 **Reviewer:** Pablo Garzon  
 **Task IDs:** W1-K02 (documentation), W1-K04 (two polls and profile)  
-**Status:** documentation and two active-state polls captured; field sample and profile pending
+**Status:** documentation, two active-state polls, 238-feature recent-window sample and executed field profile recorded; alert-level change behavior remains unobserved because active polls were empty
 
 ## Role in Team 9
 
@@ -66,8 +66,7 @@ Inspect at least:
 - `areaDesc`, `geocode`, `affectedZones`, and GeoJSON `geometry`;
 - `references`, `parameters`, `headline`, `description`, and `instruction`.
 
-Observed nulls, identifier behavior, update chains, and geometry behavior must be
-reported from the two real captures, not inferred from the schema alone.
+Observed nulls, identifiers, and geometry behavior are profiled from the preserved recent-window sample. The two active-state polls were empty, so alert-level update-chain behavior remains unobserved and must not be inferred from schema alone.
 
 ## Incremental comparison
 
