@@ -6,6 +6,24 @@ Use `deliveries/_templates/CHANGE_LOG.md` and include source-query timestamps an
 
 ## Entries
 
+### [2026-11-11 America/Bogota] - W1-D05 - Execute the current notebook
+
+- **Objective:** refresh current notebook execution evidence.
+- **Status:** execution completed; final report/PDF and submission review remain pending.
+- **Branch or commit:** `workflow-1`; uncommitted changes.
+- **Requirements addressed:** executed source-profile notebook.
+- **Files created:** `FINAL_REVIEW.md`.
+- **Files modified:** notebook and this change log.
+- **Implementation or documentation completed:** executed all notebook cells using the existing project virtual environment.
+- **Decisions and rationale:** use the available environment directly when the wrapper cannot find `uv`.
+- **Verification and exact result:** nbconvert exited 0; 29/29 code cells executed; zero stored error outputs.
+- **Evidence location:** notebook outputs and `FINAL_REVIEW.md`.
+- **Errors found and correction:** wrapper failed because `uv` is unavailable; direct project Python execution succeeded. Runtime emitted non-fatal Windows kernel warnings.
+- **Risks or limitations:** lock synchronization and fresh-clone reproduction were not verified; PDF remains pending.
+- **Input received from:** Kevin requested completion of Workshop 1.
+- **Handoff to:** final technical/report review and PDF preparation.
+- **Recovery or rollback:** regenerate outputs from preserved samples with the recorded command; source samples are unchanged.
+
 
 ### [2026-11-05 America/Bogota] - W1-D03/W1-D05 - reconcile stale Workshop 1 status claims
 
