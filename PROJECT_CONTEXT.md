@@ -72,6 +72,21 @@ The exact Team 9 domain tables, regional entity model, station-to-region mapping
 
 ## Workshop sequence
 
+### Specification conflict recorded 2026-11-10
+
+The professor repository published `Workshop_2.pdf`, `Workshop_3.pdf`, and
+`Workshop_4.pdf` in commit `5a6ec8d`. These files are labeled Semester 2026-I and
+describe a Public Opinion and Sentiment Analysis project based on API + scraping,
+NLP, Bronze/Silver/Gold Parquet, PySpark, and two dashboards. This conflicts with
+the Semester 2026-II natural-hazard `CourseProject.pdf`, Team 9 assignment, and
+Workshop 1 specification.
+
+Until the professor clarifies the conflict, the 2026-II common technical contract
+below remains authoritative for Team 9. Compatible engineering guidance from the
+new PDFs may be adopted, but NLP, sentiment, scraping, PySpark Gold outputs, and
+two separate dashboards are conditional rather than assumed requirements. See
+`docs/reports/workshops-2-4-specification-review.md`.
+
 ### Workshop 1 - source validation and data contract
 
 Define the hazard and scope; validate four sources with real evidence; profile at least 200 records per source (or the full source if smaller); identify at least five concrete data-quality problems; examine at least five candidate cross-source event pairs; draft canonical mappings, domain tables, ingestion contracts, user stories, risks, indicator proposal, and architecture. Required artifacts include a PDF report, `notebooks/01_source_profiling.ipynb`, small raw samples, a mapping table, a first ER diagram, and repository setup.
@@ -135,6 +150,9 @@ The following accepted decisions and remaining implementation decisions are trac
 - [CourseProject.pdf](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/CourseProject.pdf)
 - [TeamsDistribution.pdf](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/TeamsDistribution.pdf)
 - [Workshop_1.pdf](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_1.pdf)
+- [Workshop_2.pdf](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_2.pdf)
+- [Workshop_3.pdf](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_3.pdf)
+- [Workshop_4.pdf](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_4.pdf)
 
 ### Most relevant course material
 

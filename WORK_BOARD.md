@@ -14,6 +14,8 @@ This is the single operational entry point for Team 9. Read this file to know th
 | Temporal scope | Accepted: 2010-2025 complete-year baseline; rolling 24-hour current window; separate seven-day context (ADR 0003) |
 | Compound Hazard Index formula | Accepted as the Workshop 1 preliminary five-component proposal; empirical validation remains for Workshop 4 |
 | Pablo review | Recorded in `deliveries/01-workshop-1/PABLO_REVIEW.md`; implementation limitations remain explicit |
+| Workshops 2-4 planning | Proposed implementation plans and change logs exist; no later-workshop implementation has started |
+| Specification conflict | Official Workshop 2-4 PDFs are labeled 2026-I and describe public-opinion/NLP work; professor clarification is required before conditional scope is activated |
 | Immediate goal | Kevin cross-review of updated contracts/quality examples; rerun the edited notebook in the locked environment; complete remaining evidence/review gates; produce the English PDF only when Pablo requests it |
 
 ## Permanent ownership
@@ -95,6 +97,25 @@ Every observation must be indexed in `deliveries/01-workshop-1/EVIDENCE_REGISTER
 | W1-D03 | Assemble the architecture diagram and requirement-to-evidence matrix | Kevin | Pablo | Reviewed diagram and traceability table |
 | W1-D04 | Assemble the English report and verify citations | Pablo | Kevin | Report source ready for PDF generation |
 | W1-D05 | Run the notebook from top to bottom and review all artifacts from a clean clone | Both | Both | Submission checklist and recorded commit hash |
+
+## Planning queue - not active implementation
+
+Workshop 1 remains the only active delivery. The following queue makes later work
+reviewable without authorizing implementation before prerequisite gates.
+
+| Gate/ID | Planned next action | Owner | Reviewer | Start condition |
+| --- | --- | --- | --- | --- |
+| XW-01 | Send the Workshop 2-4 specification-conflict questions to the professor and record the response | Both | Both | Can happen now |
+| W2-00 | Activate `deliveries/02-workshop-2/IMPLEMENTATION_PLAN.md` and accept the architecture ADR | Kevin drafts | Pablo | Workshop 1 accepted; clarification recorded or precedence explicitly accepted |
+| W2-K | Implement NOAA historical adapter, canonical DB/migrations and CLI | Kevin | Pablo | W2-00 accepted |
+| W2-P | Implement GHCN historical adapter, raw landing and orchestration | Pablo | Kevin | W2-00 accepted |
+| W3-K | Implement NWS Alerts polling, change detection and event grouping | Kevin | Pablo | Workshop 2 accepted |
+| W3-P | Implement station polling, state/overlap and scheduling | Pablo | Kevin | Workshop 2 accepted |
+| W4-K | Implement historical/current analytical views and CHI | Kevin | Pablo | Workshop 3 accepted |
+| W4-P | Implement county/data-health presentation and Dash application | Pablo | Kevin | Workshop 3 accepted |
+
+Detailed P0/P1/out-of-scope tasks, evidence gates and acceptance criteria are in
+the corresponding proposed delivery plans. This table is the operational order.
 
 ## Semester ownership after Workshop 1
 

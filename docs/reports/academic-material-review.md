@@ -6,9 +6,11 @@ Reviewed on 2026-11-03 from professor repository commit `387ec69a66294158f012253
 
 Update observed on 2026-11-05: professor repository commit
 `5a6ec8d` added `Workshop_2.pdf`, `Workshop_3.pdf`, and `Workshop_4.pdf`.
-Their publication is indexed, but their detailed requirement review belongs to
-the start of each corresponding milestone and is not silently incorporated into
-Workshop 1 claims.
+The three PDFs were reviewed in full on 2026-11-10. They are labeled 2026-I and
+describe a Public Opinion and Sentiment Analysis project that conflicts with the
+2026-II natural-hazard contract. The conflict, hashes, reusable guidance and
+professor-clarification questions are recorded in
+`docs/reports/workshops-2-4-specification-review.md`.
 
 The team repository was also inspected and had no commits or tracked files before this foundation branch.
 
@@ -83,7 +85,7 @@ The following remain choices or examples: exact US region, exact hazard componen
 
 ## Gaps and open work
 
-- The initial 2026-11-03 review contained only the detailed Workshop 1 specification. Workshop 2-4 PDFs were published on 2026-11-05 and require separate, milestone-specific review before implementation begins.
+- The initial 2026-11-03 review contained only the detailed Workshop 1 specification. Workshop 2-4 PDFs published on 2026-11-05 were reviewed on 2026-11-10 and conflict with the 2026-II Team 9 contract; implementation plans therefore separate safe compatibility work from conditional 2026-I requirements.
 - The exact US region and index definition are not specified and must be selected from validated source coverage and manageable volume.
 - No Team 9 source behavior, samples, profiles, data-quality issues, record overlap, or index validation has been established yet.
 - The project needs a source-status log because operational sources can revise records and interfaces.

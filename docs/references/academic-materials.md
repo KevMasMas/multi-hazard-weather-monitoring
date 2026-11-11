@@ -15,6 +15,6 @@ Use the professor repository as the live source. Do not copy its PDFs or noteboo
 - [Airflow/PostgreSQL guide](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/guides/Airflow-PostgreSQL-ETL.pdf)
 - [Airflow ETL practice](https://github.com/EngAndres/ud-public/tree/main/courses/data-analysis-programming/practices/airflow_etl)
 
-The initial review commit and the 2026-11-05 publication update are recorded in
-`docs/reports/academic-material-review.md`. Later-workshop PDFs must be reviewed
-before their corresponding delivery folders become active.
+The initial review, 2026-11-05 publication update and full 2026-11-10 Workshop 2-4
+review are recorded under `docs/reports/`. The later-workshop plans remain proposed
+until Workshop 1 closes and the documented semester/domain conflict is resolved.

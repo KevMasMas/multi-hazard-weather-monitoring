@@ -6,7 +6,12 @@ Team 9 will build an Oklahoma county-level monitoring system that integrates his
 
 ## Current status
 
-This repository is in **Workshop 1, with source validation and report drafting in progress**. Evidence and executed profiles exist for all four assigned sources. Oklahoma/counties, the 2010-2025 complete-year baseline, and the rolling 24-hour current window are accepted team decisions. Denver evidence is retained as a tested alternative and update-behavior sample. See the active delivery log and evidence register for exact scope and limitations.
+This repository is closing **Workshop 1**. Evidence and executed profiles exist
+for all four assigned sources; Oklahoma/counties, the 2010-2025 complete-year
+baseline and the rolling 24-hour current window are accepted team decisions.
+Proposed implementation plans for Workshops 2-4 are available under `deliveries/`,
+but no later-workshop implementation is claimed. The published Workshop 2-4 PDFs
+contain a documented 2026-I public-opinion conflict that requires clarification.
 
 ## Start here
 
@@ -69,5 +74,11 @@ The repository follows the useful delivery pattern established in the team's HiL
 - [Course project specification](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/CourseProject.pdf)
 - [Team assignment](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/TeamsDistribution.pdf)
 - [Workshop 1 specification](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_1.pdf)
+- [Workshop 2 specification](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_2.pdf)
+- [Workshop 3 specification](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_3.pdf)
+- [Workshop 4 specification](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_4.pdf)
 
-When repository notes and a newer professor-issued document disagree, the newer professor-issued document wins and the discrepancy must be recorded.
+Professor-issued requirements outrank repository notes. When professor-issued
+documents conflict across semester/domain, record the discrepancy, prioritize the
+current semester/project contract, and request clarification instead of silently
+choosing the newest file.

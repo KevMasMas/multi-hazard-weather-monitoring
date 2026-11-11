@@ -1,6 +1,14 @@
 # Semester Roadmap
 
-Status: Workshop 1 is in progress. Initial source samples and profiles for GHCN-Daily/NCEI and NWS station observations, including two station polls, are recorded in `deliveries/01-workshop-1/`; all-source notebook execution and shared scope decisions remain pending.
+Status: Workshop 1 evidence, profiles, accepted Oklahoma/time decisions and draft
+contracts are committed through `3304d4b`. Final cross-review, a fresh locked
+notebook rerun, the English PDF and submission commit remain open. Proposed plans
+for Workshops 2-4 exist, but implementation has not started.
+
+Specification note: the Workshop 2-4 PDFs published on 2026-11-05 are labeled
+2026-I and describe a public-opinion/NLP project. The Team 9 plans prioritize the
+2026-II natural-hazard course contract and isolate incompatible PDF items pending
+professor clarification. See `docs/reports/workshops-2-4-specification-review.md`.
 
 Each phase below is executed through a numbered folder in `deliveries/`. The roadmap provides semester direction; delivery plans contain the actionable checklist and evidence gate.
 
@@ -44,6 +52,8 @@ Delivery record: `deliveries/01-workshop-1/`.
 
 Gate: two historical sources load reproducibly with traceable counts and no duplicates on rerun.
 
+Proposed plan: `deliveries/02-workshop-2/IMPLEMENTATION_PLAN.md`.
+
 ## Workshop 3 - incremental ingestion and integration
 
 1. Implement NWS alerts and station-observation incremental adapters.
@@ -54,6 +64,8 @@ Gate: two historical sources load reproducibly with traceable counts and no dupl
 
 Gate: repeated incremental runs are idempotent and recovery does not skip or duplicate records.
 
+Proposed plan: `deliveries/03-workshop-3/IMPLEMENTATION_PLAN.md`.
+
 ## Workshop 4 - analytics and dashboard
 
 1. Create regional and seasonal historical baselines.
@@ -63,6 +75,8 @@ Gate: repeated incremental runs are idempotent and recovery does not skip or dup
 5. Test calculations and review dashboard usability with the functional-user goals.
 
 Gate: every displayed value is traceable to database records and documented transformations.
+
+Proposed plan: `deliveries/04-workshop-4/IMPLEMENTATION_PLAN.md`.
 
 ## Final integration
 
