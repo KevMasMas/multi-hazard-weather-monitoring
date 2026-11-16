@@ -2,12 +2,14 @@
 
 - **Team:** Team 9 - Pablo Garzon and Kevin Rincon
 - **Target date:** TBD - no submission date appears in the reviewed specification
-- **Proposed working branch:** `feat/workshop-2-historical-ingestion`
-- **Proposed base:** `workflow-1` / `3304d4b` after Workshop 1 closure
-- **Status:** proposed; implementation not started
+- **Working branch:** `workflow-2` (created by Kevin from the Workshop 1 branch)
+- **Base:** inherited Workshop 1 work; exact submission reference remains a separate review item
+- **Status:** planning reverified on 2026-11-16; implementation not started; compatible core can proceed while conflicting requirements remain explicit
 - **Primary specification:** [CourseProject.pdf](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/CourseProject.pdf), Semester 2026-II
 - **Secondary/conflicting specification:** [Workshop_2.pdf](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_2.pdf), labeled Semester 2026-I
 - **Conflict review:** `docs/reports/workshops-2-4-specification-review.md`
+- **Current execution sequence:** `docs/reports/workshop-2-start-review-2026-11-16.md`
+- **Inherited architecture:** ADR 0005 and Workshop 1 correction commit `009e628` select Apache Airflow, native Bronze captures, Silver PostgreSQL/PostGIS plus Parquet exports and later Gold analytics. Deployment details remain W2-01 work.
 
 ## 1. Requirement interpretation
 
@@ -46,7 +48,8 @@ raw evidence and an ingestion run.
 7. Automated tests and a notebook inspect the stored/curated output without a
    live network dependency.
 
-The full 2010-2025 baseline remains the target historical scope. A smaller
+The course project requires at least five historical years where available;
+the full 2010-2025 baseline remains the team's target historical scope. A smaller
 partition may be used for the first demonstrable run only if the report labels it
 as a test and separately proves the multi-partition path.
 

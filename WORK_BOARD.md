@@ -15,9 +15,9 @@ This is the single operational entry point for Team 9. Read this file to know th
 | Temporal scope | Accepted: 2010-2025 complete-year baseline; rolling 24-hour current window; separate seven-day context (ADR 0003) |
 | Compound Hazard Index formula | Accepted as the Workshop 1 preliminary five-component proposal; empirical validation remains for Workshop 4 |
 | Pablo review | Historical workstream record in `deliveries/01-workshop-1/PABLO_REVIEW.md`; it does not approve the later daily comparisons, revised PDF or architecture |
-| Workshops 2-4 planning | Proposed implementation plans and change logs exist; no later-workshop implementation has started |
-| Specification conflict | Official Workshop 2-4 PDFs are labeled 2026-I and describe public-opinion/NLP work; professor clarification is required before conditional scope is activated |
-| Immediate goal | Review eight daily GHCN/KOKC temperature candidate records, coverage/QC and daily-boundary assumptions; read the report with compact pagination and approve the submission commit |
+| Workshops 2-4 planning | Kevin created `workflow-2`; Workshop 2 requirements and current professor practice reverified on 2026-11-16; implementation has not started; Workshops 3-4 remain planning only |
+| Specification conflict | Airflow and Bronze/Silver/Gold selected as the classroom workflow (ADR 0005); public-opinion/NLP/scraping wording and incompatible later-workshop details still require clarification |
+| Immediate goal | Start the compatible Workshop 2 core on `workflow-2`: verify Docker access, accept the architecture, implement schema and offline historical ingestion; clarify the mismatched Workshop 2 PDF before claiming its conditional rubric satisfied |
 
 ## Permanent ownership
 
