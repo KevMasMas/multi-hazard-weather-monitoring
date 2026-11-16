@@ -71,7 +71,7 @@ def build_pairs():
     for key in set(conflicts):
         features.pop(key, None)
     observations = []
-    exclusions = dict(null_temperature=0, invalid_qc=0, unsupported_unit=0,
+    exclusions = dict(null_temperature=0, qc_not_selected=0, unsupported_unit=0,
                       conflicting_ids=len(set(conflicts)))
     for key, feature in features.items():
         p = feature['properties']
@@ -81,7 +81,7 @@ def build_pairs():
             exclusions['null_temperature'] += 1
             continue
         if item.get('qualityControl') != 'V':
-            exclusions['invalid_qc'] += 1
+            exclusions['qc_not_selected'] += 1
             continue
         if item.get('unitCode') != 'wmoUnit:degC':
             exclusions['unsupported_unit'] += 1
@@ -161,7 +161,7 @@ def main():
         boundary='fixed CST UTC-6, 06:00Z to next 06:00Z; review assumption',exclusions=exclusions,
         precipitation='not aggregated: null/overlapping accumulation windows and gaps',pairs=len(pairs)),indent=2)+'\n')
     print(coverage.to_string(index=False)); print('Exclusions:',exclusions); print('Pairs:',len(pairs))
-    tex = [r'\subsection{Cross-source candidate pairs}',
+    tex = [r'\subsection{Supplementary daily temperature comparisons}',
         'One authorized NCEI capture supplies daily summaries for 2026-10-31 through 2026-11-05. Saved KOKC pages are deduplicated by observation ID; conflicting versions would be excluded. We assume fixed CST days (UTC minus six hours), from 06:00Z to the next 06:00Z, as specified for this review. Provider daily boundaries and station equivalence have not been independently established.',
         'The proposed sampling-coverage rule requires at least 48 valid temperatures and no gap, including day edges, greater than 70 minutes. Only unitCode wmoUnit:degC and QC V are accepted. This is a screening criterion, not proof that every continuous daily extreme was observed. One non-V temperature was excluded; no null temperatures or conflicting IDs were found in the combined saved pages.',
         'October 31, November 1, 3 and 4 qualify; November 2 is excluded for a 75-minute gap and November 5 is partial. Precipitation is not aggregated because overlapping windows and missing observations prevent a reliable total. Official 24-hour max/min fields from NWS are not used.',

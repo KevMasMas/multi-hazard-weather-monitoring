@@ -6,6 +6,16 @@ Use `deliveries/_templates/CHANGE_LOG.md` and include source-query timestamps an
 
 ## Entries
 
+### [2026-11-16 America/Bogota] - W1-S04 - Stronger source-record overlap evidence
+
+- **Objective/status:** replace daily-temperature-only overlap examples with five explicit KOKC wind-record candidates; source artifacts built, clean-environment and final report review in progress.
+- **Branch/requirements:** `workflow-1`; five candidate record pairs with time/position/magnitude/ID differences, not five independent events.
+- **Files:** new historical pair builder, captured GHCN CSV/metadata, checksum-linked five-row Storm Events subset/metadata, wind-pair CSV, updated audit script/JSON and offline notebook reproduction cell.
+- **Implementation/decision:** select five measured ASOS wind records explicitly naming KOKC from the existing checksum-verified 2024 archive. One announced GHCN query for USW00013967, 2024-04-15 through 2024-05-19, includes station location and WSF5. Keep original response bytes. Five Storm IDs share three daily records/dates; three May 6 entries may describe one episode. Preserve this reuse and potential common ASOS lineage.
+- **Verification/evidence:** GHCN HTTP 200 at 2026-11-16T23:27:14.985010+00:00, 6,318 bytes, zero retries, SHA-256 `CD9E68A7FB43343E3E64D3633DF45AF08D21F97E5B6ED9D43B75E4CF82D0CCC2`; archive SHA-256 matches `2070B83ECCAB041B36360AB73645B9A249C3EEFC5B92B5B3FC0CBBA4D9FCC09C`. Offline builders reproduce all five wind pairs and eight supplemental temperature rows. Q5 now cites a non-V QC record; the prior sampling gap remains Q7. No invalid reading is inferred solely from QC S.
+- **Errors/corrections:** CSV type inference changed numeric-looking record IDs to integers; reads now explicitly preserve IDs as strings. Initial pip request was network-sandboxed; dependency installation in the isolated environment succeeded after escalation. Full clean execution is not yet claimed by this entry.
+- **Limits/input/handoff/recovery:** Kevin requested comprehensive evidence/reproduction review and necessary fixes. The bounded query was announced before execution; no NWS call or NOAA redownload. PGTM is null and exact peak-time/day-boundary equivalence is unproved; no student/professor approval asserted. Final results follow in a separate closure entry. Rebuild offline from saved subset/CSV; `--extract` alone requires the existing ignored archive.
+
 ### [2026-11-16 America/Bogota] - W1-S04/W1-D05 - Current acceptance and source-claim audit
 
 - **Objective:** correct stale missing-PDF statements, distinguish artifact verification from approval, and check quality/candidate evidence against Workshop 1 page 3.

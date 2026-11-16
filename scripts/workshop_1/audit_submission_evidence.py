@@ -9,6 +9,7 @@ from pathlib import Path
 import pandas as pd
 
 from compare_daily_sources import build_pairs, sha
+from build_historical_event_pairs import build_pairs as build_wind_pairs
 
 ROOT = Path(__file__).resolve().parents[2]
 SAMPLES = ROOT / 'workshop_1/samples'
@@ -74,8 +75,14 @@ def main():
     assert '2026-11-03T22:55:00' in second['id']
     gap = (pd.Timestamp(second['properties']['timestamp']) - pd.Timestamp(first['properties']['timestamp'])).total_seconds() / 60
     assert gap == 63
-    record('Q5', [kokc_path], [first['id'], second['id']], {'adjacent_gap_minutes': gap},
+    record('Q7', [kokc_path], [first['id'], second['id']], {'adjacent_gap_minutes': gap},
            'Observed sampling irregularity; no five-minute provider guarantee or missing-record cause established.')
+    qc_path = 'candidate_pairs/nws_kokc_observations_page_2.geojson'
+    qc_id = 'https://api.weather.gov/stations/KOKC/observations/2026-10-31T20:52:00+00:00'
+    qc = next(f for f in features(qc_path) if f['id'] == qc_id)['properties']['temperature']
+    assert qc['value'] == 16.7 and qc['qualityControl'] == 'S' and qc['unitCode'] == 'wmoUnit:degC'
+    record('Q5', [qc_path], [qc_id], qc,
+           'QC differs from selected V-only acceptance policy; retain value/code and review, not proof of an invalid measurement.')
     extrema = {k: first['properties'][k] for k in ['maxTemperatureLast24Hours', 'minTemperatureLast24Hours']}
     assert all(v['value'] is None for v in extrema.values())
     record('Q6', [kokc_path], [first['id']], extrema,
@@ -103,7 +110,18 @@ def main():
     inputs = {str((SAMPLES/p).relative_to(ROOT)).replace('\\', '/'): sha(SAMPLES/p) for p in EXPECTED}
     for p in ['candidate_pairs/cross_source_candidate_pairs.csv', 'region_comparison/source_metadata.yaml']:
         inputs[str((SAMPLES/p).relative_to(ROOT)).replace('\\', '/')] = sha(SAMPLES/p)
-    result = dict(input_sha256=inputs, quality_examples=observations,
+    wind = build_wind_pairs()
+    registered_wind = pd.read_csv(SAMPLES/'candidate_pairs/historical_wind_candidate_pairs.csv', dtype={'record_a_id':str})
+    pd.testing.assert_frame_equal(wind, registered_wind, check_dtype=False)
+    for p in ['candidate_pairs/noaa_kokc_wind_events_2024.csv','candidate_pairs/ghcn_kokc_wind_2024.csv','candidate_pairs/historical_wind_candidate_pairs.csv']:
+        inputs[str((SAMPLES/p).relative_to(ROOT)).replace('\\', '/')] = sha(SAMPLES/p)
+    result = dict(input_sha256=inputs, quality_examples=sorted(observations,key=lambda x:x['example_id']),
+                  historical_wind_pairs=dict(rows=len(wind), distinct_storm_records=wind.record_a_id.nunique(),
+                                             distinct_ghcn_records=wind.record_b_id.nunique(), distinct_dates=wind.local_date.nunique(),
+                                             technical_review='Five proposed candidate record pairs satisfy the examples/differences interpretation; not confirmed exact gusts or professor acceptance.',
+                                             limitations=['Three May 6 events reuse one daily record; not five independent episodes.',
+                                                          'Shared ASOS lineage possible; distinct products are not independent sensors.',
+                                                          'GHCN PGTM null; exact time delta and daily wind boundary not established.']),
                   daily_pairs=dict(reproduced_rows=len(saved), distinct_days=saved.date.nunique(),
                                    elements=sorted(saved.element.unique()), exclusions=exclusions,
                                    coverage=coverage.to_dict('records'),
@@ -116,7 +134,7 @@ def main():
                   approval_status='No new student or professor approval recorded by this audit.')
     destination = SAMPLES / 'candidate_pairs/submission_evidence_audit.json'
     destination.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
-    print('Verified: 9 captured-input hashes; Q1-Q6 source claims; 8 reproduced rows over 4 days; no approval inferred.')
+    print('Verified: 9 prior captured-input hashes; Q1-Q7 claims; 5 historical wind pairs and 8 supplementary daily rows; no personal approval inferred.')
     print('Audit SHA-256:', sha(destination))
 
 
