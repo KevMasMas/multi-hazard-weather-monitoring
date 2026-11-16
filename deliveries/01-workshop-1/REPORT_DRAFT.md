@@ -11,7 +11,7 @@
 
 **Team 9 - Multi-Hazard Weather Impact Monitoring**  
 **Course:** Data Analysis Programming, 2026-II  
-**Status:** English report draft substantially complete for rubric review; final PDF export and visual review intentionally deferred
+**Status:** Superseded working notes; the current thirteen-page PDF exists and has been visually inspected. See `FINAL_REVIEW.md` for unresolved review/acceptance gates.
 **Scope:** Workshop 1 source validation and project definition only
 
 > This draft distinguishes observed evidence, official documentation, accepted scope decisions, and still-preliminary designs. Oklahoma/counties and the temporal windows are accepted. The Compound Hazard Index is accepted only as a Workshop 1 proposal, and no cross-source candidate is presented as a confirmed physical-event match.
@@ -256,10 +256,10 @@ Implementation belongs to Workshop 4; Workshop 1 only proposes the design.
 - Retain the five alert/KOKC rows as `candidate_not_confirmed` unless stronger spatial/event evidence is added.
 - Preserve the joint workstream review in `PABLO_REVIEW.md`; repeat mutual review for final schema, architecture and submission commit.
 - Agree canonical source/domain tables, alert/zone and station crosswalks, index input proposal, architecture, and report claims.
-- Notebook execution was inspected: 29/29 code cells have execution counts 1-29 and no error outputs; eleven evidence checksum assertions are stored. Align this count wherever the current notebook is described.
-- Export this English report to PDF and visually review it before submission (intentionally deferred in the current work request).
+- Current notebook execution has 31/31 code cells and zero stored errors; the earlier 29-cell run is historical evidence.
+- The current report PDF has been generated and visually inspected. Review that PDF rather than exporting these superseded notes; student review and submission are not recorded.
 
-## 11. Requirement-to-evidence traceability (PDF export remains pending)
+## 11. Legacy traceability (use the current compliance review for acceptance)
 
 | Workshop requirement | Report section / artifact | Evidence and status |
 | --- | --- | --- |
@@ -269,12 +269,12 @@ Implementation belongs to Workshop 4; Workshop 1 only proposes the design.
 | Two polls >=1 hour apart for periodic sources | Section 4; Evidence Register | Alerts and station comparisons documented; empty alert polls limit field-change evidence. |
 | Nulls, ranges, duplicates, timestamp/timezone, coordinates, units | Notebook and source notes | Executed notebook contains profiles; report summarizes material limitations. |
 | At least five concrete quality examples | Section 5, Q-01 to Q-05 | Exact source IDs/paths now included; interpretation distinguishes provider behavior from defects. |
-| At least five candidate same-event pairs and differences | Section 5.1; candidate-pair CSV | Five temporal/textual-geographic candidates; positions not geometrically tested and no match confirmed. |
+| At least five candidate same-event pairs and differences | Current report section 4.2; daily comparison CSV | Eight element/day comparisons over four days; older five rows remain intra-NWS. Same-event rubric interpretation is still open; no confirmed or independent-event count claimed. |
 | Canonical fields, units, UTC/WGS84, domain entities, ER | Section 6; `workshop_1/mapping.md`; ER diagram | Draft model with explicit open decisions. |
 | Historical/incremental contracts, keys, partitions, failure recovery | Section 7; `config/sources.yaml` | Four source proposals described; schedules/volumes remain subject to review and later implementation. |
 | Functional user, >=6 MoSCoW stories, indicator proposal, >=5 risks | Sections 2-3, 8-9; ADR 0002 | Included; stakeholder validation and CHI empirical validation deferred. |
 | Architecture, repository structure, raw samples, notebook | architecture overview; repo scaffold; notebook; evidence register | Present; outputs are stored and raw samples checksum-indexed. |
-| Final English PDF and visual inspection | Not yet produced | Explicitly deferred at Pablo’s request; this is the remaining submission artifact. |
+| Final English PDF and visual inspection | `workshop_1/report/Workshop_1_Report.pdf` | Generated and visually inspected, thirteen pages. Student review and upload remain pending; no personal deferral or approval is inferred. |
 
 ## 12. References
 

@@ -2,6 +2,25 @@
 
 Status: empirical samples are captured for all four sources. The authorized GHCN overlap follow-up supports eight daily temperature candidate records with saved KOKC observations across four eligible days; five older alert/observation examples remain intra-NWS. The current notebook executed 31 code cells without errors. The entry below records current hashes and qualifications; older dated evidence remains as history. Pablo's earlier workstream review is in `PABLO_REVIEW.md`; student review of the current artifacts, fresh-clone reproduction and submission commit remain pending.
 
+## Submission evidence audit (2026-11-16)
+
+Offline command: `python scripts/workshop_1/audit_submission_evidence.py`.
+Nine registered captured-file SHA-256 values match; Q1-Q6 record claims pass;
+eight daily comparison rows reproduce exactly and cover four dates with two
+elements each. The audit records eleven input file hashes, including the derived
+pair CSV and saved station metadata. No source response was modified or fetched.
+
+- Artifact: `workshop_1/samples/candidate_pairs/submission_evidence_audit.json`
+- SHA-256: `93BFC7307F516F194B216E3576598B2BE7DD155CE8044F1672B3BB6744D1247A`
+- Contents: exact example paths/IDs/values, interpretations, sampling exclusions,
+  difference-field/provenance checks and explicit unresolved same-event status.
+
+Q1-Q5 are proposed integration-quality concerns; Q6 is extra optional-field
+availability. These are not six proven provider defects. The NWS daily side is a
+derived aggregate, not an original daily event record. Numerical reproducibility
+and an eight-row count do not certify the guide's same-real-world-event condition.
+No independent-event count or new student/professor approval is recorded.
+
 ## Current follow-up: authorized GHCN overlap capture (2026-11-16)
 
 This entry supersedes the zero-row overlap status below, which is retained as

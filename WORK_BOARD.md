@@ -8,13 +8,13 @@ This is the single operational entry point for Team 9. Read this file to know th
 | --- | --- |
 | Repository foundation | Committed and pushed as `602143d` on `workflow-1` |
 | Git author | Corrected to `KevMasMas <kevindavidrincon01@gmail.com>` |
-| Workshop 1 implementation | All four source samples are present; the notebook executed 31/31 code cells without errors; eight daily GHCN/KOKC temperature candidate records span four days; a thirteen-page English PDF and portable Overleaf package are prepared; student review and submission commit remain pending |
+| Workshop 1 implementation | PDF and Overleaf package exist; notebook has 31 executed code cells without errors. Offline audit verifies six quality claims and eight daily comparisons over four days. Same-event interpretation, current student review and submission reference remain open; see acceptance criteria A01-A09 |
 | Weather-source queries | NOAA 2024 archive retrieved; two empty NWS active polls plus a complete observed 238-alert recent pagination chain captured |
 | Selected US region | Accepted: Oklahoma study area with counties as analytical regions (ADR 0001) |
 | Architecture selection | Apache Airflow; Bronze native captures, Silver PostgreSQL/PostGIS with Parquet exports, planned Gold analytics (ADR 0005); design only |
 | Temporal scope | Accepted: 2010-2025 complete-year baseline; rolling 24-hour current window; separate seven-day context (ADR 0003) |
 | Compound Hazard Index formula | Accepted as the Workshop 1 preliminary five-component proposal; empirical validation remains for Workshop 4 |
-| Pablo review | Recorded in `deliveries/01-workshop-1/PABLO_REVIEW.md`; implementation limitations remain explicit |
+| Pablo review | Historical workstream record in `deliveries/01-workshop-1/PABLO_REVIEW.md`; it does not approve the later daily comparisons, revised PDF or architecture |
 | Workshops 2-4 planning | Proposed implementation plans and change logs exist; no later-workshop implementation has started |
 | Specification conflict | Official Workshop 2-4 PDFs are labeled 2026-I and describe public-opinion/NLP work; professor clarification is required before conditional scope is activated |
 | Immediate goal | Review eight daily GHCN/KOKC temperature candidate records, coverage/QC and daily-boundary assumptions; read the report with compact pagination and approve the submission commit |

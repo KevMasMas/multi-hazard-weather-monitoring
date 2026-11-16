@@ -1,10 +1,10 @@
 # Implementation Plan - Workshop 1
 
 - **Team:** Team 9 - Pablo Garzon and Kevin Rincon
-- **Target date:** not yet recorded in the reviewed specification
+- **Target date:** Moodle notice supplied by Kevin: 2026-11-16, 12:00-15:15 America/Bogota; no upload is recorded
 - **Working branch:** `workflow-1`
 - **Base branch/commit:** project foundation commit `602143d`
-- **Status:** Four-source evidence, accepted region/time scope, concrete quality-record examples, traceability, draft contracts, shared model/architecture and executed notebook are recorded; PDF export/visual review and final independent submission review remain incomplete
+- **Status:** thirteen-page PDF generated and visually inspected; four-source profiles and six quality examples present; eight reproducible daily comparisons over four days. Same-event interpretation, current student review, clean-environment reproduction and submission recording remain open. See acceptance matrix below.
 - **Official specification:** `Workshop_1.pdf`
 
 ## 1. Requirement interpretation
@@ -65,7 +65,7 @@ Prove that a justified US regional scope can be supported by NOAA Storm Events, 
 
 - [x] Current notebook executed 31/31 code cells without errors using the existing virtual environment after the overlap changes; [x] Pablo's earlier workstream review is recorded; [ ] Kevin cross-review of current edits and fresh-clone lock reproduction.
 - [x] Report source-profile dimensions in executed notebook outputs for the four qualifying samples; note sample limitations and distinguish station-page behavior from source-wide policy.
-- [x] Record six evidence-backed quality/availability/revision examples with exact source IDs and raw paths (REPORT_DRAFT.md, Section 5, Q-01 through Q-06).
+- [x] Verify six quality/integration/availability observations against saved records (report section 4.1, Q1-Q6; `submission_evidence_audit.json`). Q1-Q5 are the five proposed problems; Q6 is additional. They are not six proven provider defects; final interpretation remains subject to review.
 - [x] Eight GHCN/KOKC daily temperature candidate records are reproduced from cached evidence on four eligible days after the authorized GHCN follow-up; five intra-NWS examples remain excluded. [ ] Both students to review daily-boundary/station-equivalence assumptions and the interpretation of multiple elements per day. See the latest change-log entry.
 
 #### Contracts and project definition
@@ -73,16 +73,16 @@ Prove that a justified US regional scope can be supported by NOAA Storm Events, 
 - [x] Draft the four-source canonical field mapping and Team 9 domain tables in `workshop_1/mapping.md`; [ ] complete final field-level team review.
 - [x] Draft UTC, WGS84, unit/severity, duplicate-key, and raw-reference/content-hash rules in the mapping and ADRs; [ ] close the explicitly listed open field-level decisions.
 - [x] Draft four source-specific partition/pagination, key, poll/overlap, watermark/checkpoint and interrupted-run recovery contracts in REPORT_DRAFT.md Section 7 and mirror them in config; proposed schedules remain pending mutual review and implementation.
-- [x] Draft a proposed functional user and seven MoSCoW stories (W1-D01; see 2026-11-04 report-draft change-log entry); [ ] confirm user and wording with Kevin/professor.
+- [x] Current report section 2 contains the proposed functional user and six MoSCoW stories; [ ] review current wording. No stakeholder interview or professor approval is recorded.
 - [x] Draft and jointly review index inputs/rule/scale/validation approach without claiming empirical validation (ADR 0002 and `PABLO_REVIEW.md`).
-- [x] Draft and jointly review six risks and mitigations (W1-D01; see report draft and `PABLO_REVIEW.md`).
-- [x] Produce the conceptual ER diagram, labeled architecture overview, and independent field-level mapping table; [ ] complete the final English PDF report and submission review.
+- [x] Current report section 9 contains seven risks with mitigations; earlier workstream integration review is recorded in `PABLO_REVIEW.md`, not approval of all later edits.
+- [x] Produce the conceptual ER diagram, labeled architecture overview, independent mapping table and visually inspected English PDF; [ ] complete current student content/submission review.
 - [x] Revise the unsubmitted architecture to select Apache Airflow and explicitly map Bronze native captures, Silver canonical storage/Parquet and planned Gold outputs (ADR 0005; 2026-11-16 architecture correction log). This does not implement Workshop 2.
 
 ### P1 - quality improvements after P0
 
 - [ ] Automate a source-profile summary table from the notebook outputs.
-- [x] Add Workshop 1 requirement-to-evidence traceability matrix to REPORT_DRAFT.md Section 11; PDF and final artifact review remain pending.
+- [x] Current requirement-to-evidence matrix is in `docs/reports/workshop-1-compliance-review.md`; report section 10 indexes submission artifacts. The legacy draft is not the current submission source.
 - [ ] Add schema-drift snapshots or checks only if supported by actual source evidence.
 
 ### Out of scope
@@ -114,16 +114,28 @@ Use the Workshop 1 task IDs listed under Steps 1-4 of `WORK_BOARD.md` in branche
 
 ## 8. Acceptance criteria
 
-- [x] Four sources are validated with preserved real evidence and official documentation citations; source-specific limitations and license caveats are explicit.
-- [ ] Each profile meets the record threshold and required dimensions.
-- [ ] Five real quality issues and five defensible candidate pairs are documented, or a requirement conflict is explicitly escalated rather than fabricated.
-- [ ] Mapping, ER model, and ingestion contracts cover all four sources.
-- [x] English report source, notebook, samples, configuration draft, mapping and repository structure exist; [x] thirteen-page PDF generated and visually inspected; [ ] student review before submission.
-- [x] Rubric items point to report sections/artifacts in Section 11; exact evidence IDs are listed in the Evidence Register and quality-example table.
+`Present` means an artifact exists; `verified` means the named check ran.
+Neither means student/professor approval or a guaranteed rubric score. A checked
+drafting task above is not blanket acceptance of this milestone.
+
+| ID | Criterion and current evidence | Verification / remaining gate |
+| --- | --- | --- |
+| A01 | Four qualifying profiles: NOAA 250 rows, GHCN 365, recent NWS Alerts 238, KOKC 200 per poll; notebook includes nulls, ranges, IDs, time, geography and units. | Counts and stored execution checked; small/empty captures are additional evidence, not substitutes. Statewide completeness is not proved. |
+| A02 | Five proposed concrete problems Q1-Q5 and extra Q6 have exact saved-record evidence and handling rules. | Offline audit verifies all six claims. These are integration/semantic/availability/revision concerns, not six established source errors. Review the five-problem interpretation; do not infer provider faults or a missing-observation cause. |
+| A03 | Eight daily GHCN/KOKC comparisons reproduce with time, position, magnitude/unit and identifier differences. | Numerical/count/provenance checks pass: four days, TMAX/TMIN each. **Same-real-world-event interpretation remains open**: KOKC side is a derived aggregate, daily boundary assumed, station equivalence unverified. Eight rows are not eight independent events. Escalation alone does not satisfy this criterion. |
+| A04 | Mapping, core/domain ERs and source configuration cover all four sources. | Artifacts present; current field-level team review pending. Production SQL/crosswalk implementation is later work. |
+| A05 | Four historical/incremental contract proposals include keys, partitions/polling, checkpoints and failure recovery. | Present in report section 6/config/source notes; retain documented unknown provider policies. Current team review pending, production validation later. |
+| A06 | English PDF, LaTeX/Overleaf package, literal snippets, six stories, seven risks, preliminary CHI and architecture. | PDF generated and visually inspected, thirteen pages; source/ZIP consistency checked. Student content review pending. |
+| A07 | Source-profile notebook executed with outputs. | 31/31 code cells, zero stored errors in existing environment; fresh-clone lock reproduction remains an internal gate, not an invented extra professor artifact. |
+| A08 | Required repository scaffolding, configuration, samples, citations and GitHub entry points. | Present; repeat final secret/artifact review before submission. Scaffolds are not implemented services. |
+| A09 | Submission reference and review provenance. | Earlier decisions/review records apply only to their recorded scope. No approval of the new pairs/report is inferred; no upload or final submitted commit is recorded. |
+
+The remaining academic uncertainty is A03, plus final interpretation/review of
+A02. Do not mark Workshop 1 fully compliant merely because all files exist.
 
 ## 9. Merge and submission gate
 
-- [x] Earlier joint review of source scope, candidate pairs, notebook and preliminary CHI is recorded in `PABLO_REVIEW.md`; [ ] Kevin to cross-review current report/config updates and both to repeat final artifact review.
+- [x] Earlier integration decisions are recorded in `PABLO_REVIEW.md`, limited to its historical source scope, intra-NWS investigation rows, earlier notebook and preliminary CHI; [ ] current report/config/daily-comparison review by both students. The record does not approve later edits.
 - [x] Current notebook rerun completed: 31/31 code cells, zero errors, saved-input checksum assertions and reproduced cross-source table. [ ] Fresh-clone reproduction against the lock; the existing environment run does not establish this.
 - [x] Registered raw evidence is checksum-protected, attributable, and sanitized of captured cookies; [ ] repeat the secret/artifact audit immediately before submission.
 - [x] Large-source acquisition and partition instructions are documented in source notes/scripts; no bulk archive is tracked.

@@ -6,6 +6,23 @@ Use `deliveries/_templates/CHANGE_LOG.md` and include source-query timestamps an
 
 ## Entries
 
+### [2026-11-16 America/Bogota] - W1-S04/W1-D05 - Current acceptance and source-claim audit
+
+- **Objective:** correct stale missing-PDF statements, distinguish artifact verification from approval, and check quality/candidate evidence against Workshop 1 page 3.
+- **Status:** stale current status corrected; six quality record claims and eight daily comparisons verified offline; same-event interpretation, current student review, fresh-clone reproduction and submission recording remain open.
+- **Branch or commit:** correction prepared on `workflow-1`, preserving the four pre-existing Workshop 2 planning edits in a task-specific stash; no push or submission performed.
+- **Requirements addressed:** five concrete quality problems with record examples; at least five candidate same-event record pairs and their differences; PDF/notebook/mapping/repository delivery; honest acceptance and review provenance.
+- **Files changed:** new offline audit script and JSON; current compliance review, acceptance plan, final review, evidence register, historical-review/draft annotations, board and report README/index; daily-table generator, LaTeX source/generated table, PDF and Overleaf package. Earlier dated change-log observations retained as history.
+- **Implementation or documentation completed:** acceptance criteria A01-A09 separate present artifacts, performed checks and unresolved gates. Current documents acknowledge the generated PDF. Q1-Q5 are proposed integration concerns and Q6 extra availability; no provider error is inferred. Daily comparisons are four dates times two variables, with a derived NWS aggregate and raw extreme IDs. Historical workstream acceptance is not extended to later edits.
+- **Decisions and rationale:** a row count and numerical agreement do not certify the guide's same-real-world-event condition. Keep A03 open rather than fabricate event labels or approval. Cadence gaps and missing optional values are observed limitations, not proved provider faults. No new weather data is required for this audit.
+- **Verification and exact result:** offline audit matches nine captured-file checksums; asserts all six Q1-Q6 record claims; rebuilds the eight-row CSV exactly and checks required difference/provenance fields, four dates and two elements per date. Audit JSON SHA-256 `93BFC7307F516F194B216E3576598B2BE7DD155CE8044F1672B3BB6744D1247A`. Existing notebook has 31 executed code cells and zero stored errors, and was not modified. PDF compiles with thirteen pages, no overfull boxes and one non-fatal underfull warning; modified pages rendered and visually inspected. ZIP sources/assets checked byte-for-byte. Required paths present; Git whitespace check passed.
+- **Evidence location:** `submission_evidence_audit.json`, its builder, evidence register, report sections 4.1/4.2, current compliance matrix and acceptance A01-A09.
+- **Errors found and correction:** current plan/review/draft still described PDF export as missing; historical 29-cell and old intra-NWS records were mixed with current state. Updated current status and annotated historical scope. Removed unrecorded personal-deferral attribution and avoided extending previous approval to new comparisons.
+- **Risks or limitations:** same-event semantics, station/sensor equivalence and provider daily boundaries remain unresolved; quality interpretation needs student review. This is not professor acceptance, five confirmed hazard episodes, fresh-clone execution or a secret audit. Raw data, mapping and notebook outputs unchanged.
+- **Input received from:** Kevin requested repository corrections, evidence verification and no unsupported independent-event or approval claims.
+- **Handoff to:** review A02/A03 explicitly and resolve the daily-pair interpretation before declaring full Workshop 1 compliance; select and record the actual submission reference. Resume Workshop 2 with its planning edits preserved.
+- **Recovery or rollback:** run the audit and daily-table generator without `--fetch`, rebuild `main.tex`, package report sources/assets. Preserve all native captures and earlier review records; revert only the focused correction if needed.
+
 ### [2026-11-16 America/Bogota] - W1-D03/W1-D04 - Airflow and data-layer architecture correction
 
 - **Objective:** update the unsubmitted Workshop 1 architecture to the classroom Airflow and Bronze/Silver/Gold approach before resuming Workshop 2.

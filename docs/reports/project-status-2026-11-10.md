@@ -1,5 +1,11 @@
 # Project Status Review - 2026-11-10
 
+> Historical snapshot, not the current completion checklist. The PDF was later
+> generated and visually inspected; the current notebook has 31 executed code
+> cells. Current status and unresolved same-event interpretation are maintained
+> in `workshop-1-compliance-review.md` and the Workshop 1 acceptance plan. Open
+> PDF tasks below describe 2026-11-10 only, not the current repository.
+
 - **Branch reviewed:** `workflow-1`
 - **Starting commit:** `3304d4b` (`complete Workshop 1 evidence and source contracts`)
 - **Working tree before planning:** clean

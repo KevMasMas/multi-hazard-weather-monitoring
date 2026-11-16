@@ -1,5 +1,11 @@
 # Pablo Workstream Review - Workshop 1
 
+> Historical integration record. Its decisions concern the work reviewed on
+> 2026-11-05, including the old intra-NWS examples and earlier notebook. It does
+> not approve the later eight daily comparisons, 31-cell execution or revised
+> PDF/architecture. Current status is in `FINAL_REVIEW.md`; no new personal
+> approval is asserted by this annotation.
+
 - **Review date:** 2026-11-05
 - **Workstream owner:** Pablo Garzon
 - **Cross-reviewer:** Kevin Rincon
@@ -43,11 +49,11 @@ that one person manually authored every changed line.
 - Historical ingestion, incremental scheduler, database, or dashboard.
 - Confirmed physical-event matches.
 - Validated CHI weights, thresholds, accuracy, or interpretation bands.
-- Final PDF visual review and professor acceptance.
+- Student final PDF review and professor acceptance (not claimed by this record).
 
 ## Follow-up review after report completion
 
-The report now includes exact quality-example IDs, source-specific draft contracts, and a requirement-to-evidence matrix. Kevin cross-review of these additions and the source contract caveats remains a team handoff; no new joint approval is implied by this update. The final PDF export and visual review are deferred.
+The report includes exact quality-example IDs, source-specific draft contracts and a requirement-to-evidence matrix. Subsequent automated PDF generation/visual inspection are recorded in the 2026-11-16 change log. Current student cross-review remains pending; this historical record grants no new approval of those additions.
 
 ## Handoff
 

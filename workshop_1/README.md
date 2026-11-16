@@ -18,5 +18,10 @@ the submission window. No upload is recorded here.
 One authorized GHCN overlap capture now supports eight TMAX/TMIN candidate
 records over four days. Coverage, QC and daily-boundary assumptions are recorded
 in `samples/candidate_pairs/`; the retained intra-NWS examples do not count.
+The offline submission audit reproduces these rows and verifies Q1-Q6, but the
+guide's same-real-world-event interpretation remains open: four days times two
+elements are not eight independent events, and KOKC daily aggregates are derived.
+See `../docs/reports/workshop-1-compliance-review.md` and acceptance criteria
+A01-A09 in the Workshop 1 implementation plan. No new team approval is implied.
 Deliver the reviewed commit on `workflow-1` and record its hash after committing.
 No final tag is claimed; `v1.0-final` belongs to the semester's final project.

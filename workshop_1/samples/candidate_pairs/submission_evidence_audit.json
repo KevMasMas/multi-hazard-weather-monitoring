@@ -1,0 +1,191 @@
+{
+  "input_sha256": {
+    "workshop_1/samples/noaa_storm_events/details_sample.csv": "987F5C641B6B85BF89477A823B52757D50D2C5376895FD53056A9AFE9F79403A",
+    "workshop_1/samples/region_comparison/ghcn_okc_usw00013967_2025.csv": "D8EE9E0AFBFE25897C17BABE4A88DC0E12D4FECE8B74C26E8D817D5309FFB5AE",
+    "workshop_1/samples/nws_alerts/recent_7d_page_1.geojson": "70AD394CF9E7399ACCB5CEA7B0A3B8E55526F01C314E68136439EA8442E966C3",
+    "workshop_1/samples/nws_kden_observations_poll1.geojson": "ED3B125ABEB90803B649F0E81D0146667517F8F16D6C35AD0448882B09C080B7",
+    "workshop_1/samples/nws_kden_observations_poll2.geojson": "83099D933716E406DDE6541FA0AA1A16FA9EAE28DA11797ED4D5D595DE1AA870",
+    "workshop_1/samples/region_comparison/nws_kokc_observations_snapshot.geojson": "391C49B75E7E05C225FE0EB63BB7BB822004169FFBB0F8FF6DDA006F236B0E68",
+    "workshop_1/samples/region_comparison/nws_kokc_observations_poll_2.geojson": "7857DD85FB4F35E33FA4A0EEFB0F07E6634E457D96F6A0D4C30560B5CDD07D79",
+    "workshop_1/samples/candidate_pairs/nws_kokc_observations_page_2.geojson": "A13720F4E561AC3B20E56DD15F9D43224A1EF1ABE84D37E58DF5BF5FE38BA5CD",
+    "workshop_1/samples/region_comparison/ghcn_okc_usw00013967_2026_overlap.csv": "7456D668D4253550881435F5E9BFC95371965B7EBE72F1F8E060872F4A2D8D55",
+    "workshop_1/samples/candidate_pairs/cross_source_candidate_pairs.csv": "743F284C5D6971B85794BF8B3A309383F7439999A8096CD1CF14F176895DBEB0",
+    "workshop_1/samples/region_comparison/source_metadata.yaml": "372BEE33DAF14427821B9E1003B73433539860DDB4EED5FCBE4FFD3524AE9437"
+  },
+  "quality_examples": [
+    {
+      "example_id": "Q1",
+      "source_paths": [
+        "region_comparison/ghcn_okc_usw00013967_2025.csv"
+      ],
+      "record_ids": [
+        "USW00013967/2025-01-05/PRCP"
+      ],
+      "observation": {
+        "PRCP": 0.0,
+        "attributes": "T,,W,2400"
+      },
+      "interpretation": "Trace precipitation semantics; flag loss would conflate trace with ordinary zero, not prove invalid provider data.",
+      "verification": "passed"
+    },
+    {
+      "example_id": "Q2",
+      "source_paths": [
+        "noaa_storm_events/details_sample.csv"
+      ],
+      "record_ids": [
+        "1155350"
+      ],
+      "observation": {
+        "event_type": "Heavy Snow",
+        "cz_type": "Z",
+        "begin_lat": null,
+        "begin_lon": null
+      },
+      "interpretation": "Missing point coordinates for a zone event; preserve zone rather than invent a point.",
+      "verification": "passed"
+    },
+    {
+      "example_id": "Q3",
+      "source_paths": [
+        "nws_alerts/recent_7d_page_1.geojson"
+      ],
+      "record_ids": [
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.86cd7f91116ab184a79b0a23e06189d945720161.001.1"
+      ],
+      "observation": {
+        "geometry": null,
+        "affected_zone_count": 7
+      },
+      "interpretation": "Missing polygon with alternative zone geography; not proof of absent location or provider corruption.",
+      "verification": "passed"
+    },
+    {
+      "example_id": "Q4",
+      "source_paths": [
+        "nws_kden_observations_poll1.geojson",
+        "nws_kden_observations_poll2.geojson"
+      ],
+      "record_ids": [
+        "https://api.weather.gov/stations/KDEN/observations/2026-11-04T01:53:00+00:00"
+      ],
+      "observation": {
+        "before": {
+          "unitCode": "wmoUnit:degC",
+          "value": null,
+          "qualityControl": "Z"
+        },
+        "after": {
+          "unitCode": "wmoUnit:degC",
+          "value": 4.4,
+          "qualityControl": "V"
+        }
+      },
+      "interpretation": "Same-ID revision/value availability; cause unknown, retain payload versions.",
+      "verification": "passed"
+    },
+    {
+      "example_id": "Q5",
+      "source_paths": [
+        "region_comparison/nws_kokc_observations_snapshot.geojson"
+      ],
+      "record_ids": [
+        "https://api.weather.gov/stations/KOKC/observations/2026-11-03T21:52:00+00:00",
+        "https://api.weather.gov/stations/KOKC/observations/2026-11-03T22:55:00+00:00"
+      ],
+      "observation": {
+        "adjacent_gap_minutes": 63.0
+      },
+      "interpretation": "Observed sampling irregularity; no five-minute provider guarantee or missing-record cause established.",
+      "verification": "passed"
+    },
+    {
+      "example_id": "Q6",
+      "source_paths": [
+        "region_comparison/nws_kokc_observations_snapshot.geojson"
+      ],
+      "record_ids": [
+        "https://api.weather.gov/stations/KOKC/observations/2026-11-03T21:52:00+00:00"
+      ],
+      "observation": {
+        "maxTemperatureLast24Hours": {
+          "unitCode": "wmoUnit:degC",
+          "value": null
+        },
+        "minTemperatureLast24Hours": {
+          "unitCode": "wmoUnit:degC",
+          "value": null
+        }
+      },
+      "interpretation": "Optional 24-hour fields unavailable; preserve null, not zero. Additional availability example.",
+      "verification": "passed"
+    }
+  ],
+  "daily_pairs": {
+    "reproduced_rows": 8,
+    "distinct_days": 4,
+    "elements": [
+      "TMAX",
+      "TMIN"
+    ],
+    "exclusions": {
+      "null_temperature": 0,
+      "invalid_qc": 1,
+      "unsupported_unit": 0,
+      "conflicting_ids": 0
+    },
+    "coverage": [
+      {
+        "date": "2026-10-31",
+        "valid_temperature_observations": 116,
+        "max_gap_including_edges_minutes": 60.0,
+        "eligible": true,
+        "reason": "passes proposed sampling coverage threshold"
+      },
+      {
+        "date": "2026-11-01",
+        "valid_temperature_observations": 130,
+        "max_gap_including_edges_minutes": 60.0,
+        "eligible": true,
+        "reason": "passes proposed sampling coverage threshold"
+      },
+      {
+        "date": "2026-11-02",
+        "valid_temperature_observations": 155,
+        "max_gap_including_edges_minutes": 75.0,
+        "eligible": false,
+        "reason": "fewer than 48 valid readings or gap greater than 70 minutes"
+      },
+      {
+        "date": "2026-11-03",
+        "valid_temperature_observations": 131,
+        "max_gap_including_edges_minutes": 63.0,
+        "eligible": true,
+        "reason": "passes proposed sampling coverage threshold"
+      },
+      {
+        "date": "2026-11-04",
+        "valid_temperature_observations": 133,
+        "max_gap_including_edges_minutes": 55.0,
+        "eligible": true,
+        "reason": "passes proposed sampling coverage threshold"
+      },
+      {
+        "date": "2026-11-05",
+        "valid_temperature_observations": 33,
+        "max_gap_including_edges_minutes": 1088.0,
+        "eligible": false,
+        "reason": "fewer than 48 valid readings or gap greater than 70 minutes"
+      }
+    ],
+    "record_b": "Derived daily aggregate, not an original NWS event record; raw extreme ID retained.",
+    "rubric_status": "Traceability/count verified; same-real-world-event interpretation remains open.",
+    "limitations": [
+      "Fixed CST boundary assumed, not independently verified.",
+      "Station/sensor equivalence not established.",
+      "Eight element/day comparisons are not eight independent events.",
+      "No PRCP total or confirmed event match claimed."
+    ]
+  },
+  "approval_status": "No new student or professor approval recorded by this audit."
+}
