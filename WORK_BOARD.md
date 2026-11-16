@@ -15,9 +15,9 @@ This is the single operational entry point for Team 9. Read this file to know th
 | Temporal scope | Accepted: 2010-2025 complete-year baseline; rolling 24-hour current window; separate seven-day context (ADR 0003) |
 | Compound Hazard Index formula | Accepted as the Workshop 1 preliminary five-component proposal; empirical validation remains for Workshop 4 |
 | Pablo review | Historical workstream record in `deliveries/01-workshop-1/PABLO_REVIEW.md`; it does not approve the later daily comparisons, revised PDF or architecture |
-| Workshops 2-4 planning | Kevin created `workflow-2`; Workshop 2 requirements and current professor practice reverified on 2026-11-16; implementation has not started; Workshops 3-4 remain planning only |
+| Workshops 2-4 planning | `workflow-2` active; professor practice reviewed, offline NOAA/GHCN parsers and raw landing exercised with three saved captures, and initial SQL schema drafted. Only an offline audit summary exists; database/DAG and Silver output samples remain pending. Workshops 3-4 remain planning only |
 | Specification conflict | Airflow and Bronze/Silver/Gold selected as the classroom workflow (ADR 0005); public-opinion/NLP/scraping wording and incompatible later-workshop details still require clarification |
-| Immediate goal | Start the compatible Workshop 2 core on `workflow-2`: verify Docker access, accept the architecture, implement schema and offline historical ingestion; clarify the mismatched Workshop 2 PDF before claiming its conditional rubric satisfied |
+| Immediate goal | Complete the Workshop 2 historical path on `workflow-2`: raw capture, schema, transactional load, Docker/Airflow integration, Parquet outputs and report evidence; clarify the mismatched Workshop 2 PDF before claiming its conditional rubric satisfied |
 
 ## Permanent ownership
 
@@ -99,15 +99,16 @@ Every observation must be indexed in `deliveries/01-workshop-1/EVIDENCE_REGISTER
 | W1-D04 | Assemble the English report and verify citations | Pablo | Kevin | Report source ready for PDF generation |
 | W1-D05 | Run the notebook from top to bottom and review all artifacts from a clean clone | Both | Both | Submission checklist and recorded commit hash |
 
-## Planning queue - not active implementation
+## Milestone queue
 
-Workshop 1 remains the only active delivery. The following queue makes later work
-reviewable without authorizing implementation before prerequisite gates.
+Workshop 2 is active at the compatible offline core by user instruction. The
+specification conflict and Workshop 1 acceptance caveat remain recorded; neither
+is silently treated as resolved. Workshops 3-4 remain planning only.
 
 | Gate/ID | Planned next action | Owner | Reviewer | Start condition |
 | --- | --- | --- | --- | --- |
 | XW-01 | Send the Workshop 2-4 specification-conflict questions to the professor and record the response | Both | Both | Can happen now |
-| W2-00 | Activate `deliveries/02-workshop-2/IMPLEMENTATION_PLAN.md` and accept the architecture ADR | Kevin drafts | Pablo | Workshop 1 accepted; clarification recorded or precedence explicitly accepted |
+| W2-00 | Continue `deliveries/02-workshop-2/IMPLEMENTATION_PLAN.md` and review the architecture ADR | Kevin drafts | Pablo | User authorized compatible Workshop 2 work; professor conflict remains open |
 | W2-K | Implement NOAA historical adapter, canonical DB/migrations and CLI | Kevin | Pablo | W2-00 accepted |
 | W2-P | Implement GHCN historical adapter, raw landing and orchestration | Pablo | Kevin | W2-00 accepted |
 | W3-K | Implement NWS Alerts polling, change detection and event grouping | Kevin | Pablo | Workshop 2 accepted |

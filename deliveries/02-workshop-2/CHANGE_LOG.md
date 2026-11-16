@@ -4,6 +4,50 @@ Append entries; do not silently rewrite historical observations.
 
 ## Entries
 
+### [2026-11-16 America/Bogota] - W2-03 partial - Initial historical schema
+
+- **Objective/status:** draft relational tables for capture provenance, runs, canonical historical records, rejects and successful partition state; SQL written, migration execution pending.
+- **Branch/commit:** `workflow-2` at `273f279` before uncommitted work.
+- **Files changed:** `sql/001_historical_schema.sql`, this log.
+- **Decisions:** keep GHCN daily date distinct from NOAA UTC event timestamp; enforce paired WGS84 coordinates and stable `(source_id, source_key)` uniqueness; link each record/reject to raw capture and run; use PostGIS Point(4326) for available coordinates. Partition state references only a successful run when application code writes it.
+- **Verification/evidence:** reviewed DDL structure and ran `git diff --check`. PostgreSQL/PostGIS and Docker were unavailable in this session; no migration or integration result is claimed.
+- **Errors/corrections:** none observed at the SQL review stage.
+- **Limitations/input/handoff:** domain-specific NOAA/GHCN tables, schema migration runner, transactional upsert/rejection/state update, and live database validation remain open. User requested continued Workshop 2 implementation.
+- **Recovery:** revise the draft before first application; once deployed, use a versioned follow-up migration rather than editing applied SQL.
+
+### [2026-11-16 America/Bogota] - W2-04 partial - Content-addressed offline raw landing
+
+- **Objective/status:** connect saved historical captures to a byte-preserving Bronze landing and reproduce a bounded parser audit; completed for the three saved samples, live acquisition and pipeline persistence pending.
+- **Branch/commit:** `workflow-2` at `273f279` before uncommitted work.
+- **Files changed:** `src/multi_hazard_weather_monitoring/storage/raw_landing.py`, `scripts/workshop_2/review_offline_captures.py`, `workshop_2/README.md`, `workshop_2/samples/offline_capture_review.json`, root README, board, plan and this log.
+- **Decisions:** store original CSV bytes by source, partition and SHA-256 under ignored `data/raw/`; write deterministic JSON manifests separately. The summary is explicitly labeled an offline parser review, not a DAG-generated Bronze JSON or Silver Parquet sample. The original Workshop 1 evidence is unchanged.
+- **Verification/evidence:** ran `python scripts/workshop_2/review_offline_captures.py` twice. Each run reported three captures and 1363 parsed records: NOAA 250, GHCN 2025 1095 measurements and GHCN 2026 overlap 18. All three had zero rejected rows and distinct keys equal to row counts. Landing hashes match registered source hashes `987F5C64...`, `D8EE9E0A...` and `7456D668...`. Summary SHA-256 `47491AE61A721B82B10B6AAAAA470B6DB58EF10D14298C2D9126035AE265FC9E`; raw captures/manifests are Git-ignored. Re-ran after making manifest paths relative to the raw root; summary hash remained unchanged. Python compilation and `git diff --check` passed.
+- **Errors/corrections:** none in the two saved-sample runs. These checks do not establish database-level idempotency or failure recovery.
+- **Limitations/input/handoff:** user asked to continue Workshop 2. The raw landing receives already saved evidence rather than new HTTP responses; original retrieval metadata remains in Workshop 1 sidecars. Database transaction, state, DAG execution, Parquet, three DAG-produced files per layer and final PDF remain open.
+- **Recovery:** rerun the script from the repository root to reconstruct ignored raw landing and the small summary; no source download is required.
+
+### [2026-11-16 America/Bogota] - W2-05/W2-06 partial - Offline historical parsers
+
+- **Objective/status:** begin the source-specific historical path from saved Workshop 1 evidence; parsers complete for current samples, full adapters and storage pending.
+- **Branch/commit:** `workflow-2` at `273f279` before uncommitted changes.
+- **Files changed:** `src/multi_hazard_weather_monitoring/sources/historical_samples.py`, Workshop 2 plan, board and this log.
+- **Decisions:** retain NOAA event time with the source's explicit `CST-6` offset; retain GHCN as a daily measurement without inventing a UTC instant. Preserve flags, nullable coordinates, source keys, source row hashes and original parsed fields. Unsupported NOAA timezone and invalid identifiers/coordinates yield rejected records with reasons.
+- **Verification/evidence:** ran the parsers offline against the saved 250-row NOAA sample, 365-day GHCN 2025 capture and 6-day GHCN 2026 overlap capture. Results respectively: 250/0 rejected/250 distinct source keys; 1095/0/1095; 18/0/18. Minimal malformed inputs returned `missing_event_id` and `nonfinite_number`. `git diff --check` passed. No live weather request, database write or Parquet export was performed.
+- **Errors/corrections:** none in this sample parser run. The sample does not cover every NOAA timezone or malformed fixture.
+- **Limitations/input/handoff:** user authorized moving Workshop 2 forward and requested alignment with the current course practice. Annual discovery, station inventory, raw byte landing, canonical validation, quarantine persistence, database transaction, DAGs and pipeline output samples remain next. This code is not an end-to-end pipeline.
+- **Recovery:** revert this source module and its documentation entry if a different source contract is accepted; Workshop 1 evidence files were not modified.
+
+### [2026-11-16 America/Bogota] - W2-00/W2-01 - Review current professor pipeline and classes
+
+- **Objective/status:** inspect recent course changes and translate the current practice into the weather architecture; research complete, implementation still pending.
+- **Branch/commit:** `workflow-2` at `273f279` before these uncommitted documentation edits.
+- **Files changed:** `docs/reports/workshop-2-course-material-review-2026-11-16.md`, Workshop 2 plan and change log.
+- **Decisions:** retain native CSV/gzip Bronze evidence and canonical PostgreSQL/PostGIS Silver; use deterministic partitions, transactional curation, explicit rejects and traceable Parquet exports. Treat the example DAG as a pattern, not a copied weather implementation.
+- **Verification/evidence:** read public `main` head `7a54da476f500bdd80a48feccbbab048925bc155`; latest course commit `3f7010d` (2026-11-16) revised all three earthquake DAGs and added two Gold Parquet examples. Read current Compose and DAGs, commit diff, Airflow/PostgreSQL guide and ETL/curation slides. No weather request, container run or pipeline output was performed.
+- **Errors/corrections:** ordinary web browsing could not open the GitHub tree; a read-only sparse Git clone verified the files. The current practice has no TaskFlow or FileSensor, so the separate handout cannot be presented as implemented by the practice.
+- **Limitations/input/handoff:** the handout still describes the 2026-I public-opinion project. User requested review of recent professor materials. Next: implement the saved-sample offline historical path, then Docker/Airflow execution and real output evidence. No professor clarification or team approval is inferred.
+- **Recovery:** this entry is documentary; revise architecture choices if corrected course instructions arrive.
+
 ### [2026-11-16 America/Bogota] - Handoff - Workshop 1 acceptance audit
 
 - **Objective/status:** inherit the evidence/status corrections without losing Workshop 2 planning; completed, no Workshop 2 implementation.

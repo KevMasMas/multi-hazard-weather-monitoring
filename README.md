@@ -6,12 +6,13 @@ Team 9 will build an Oklahoma county-level monitoring system that integrates his
 
 ## Current status
 
-This repository is closing **Workshop 1**. Evidence and executed profiles exist
+This repository is starting **Workshop 2**. Evidence and executed profiles exist
 for all four assigned sources; Oklahoma/counties, the 2010-2025 complete-year
 baseline and the rolling 24-hour current window are accepted team decisions.
-Proposed implementation plans for Workshops 2-4 are available under `deliveries/`,
-but no later-workshop implementation is claimed. The published Workshop 2-4 PDFs
-contain a documented 2026-I public-opinion conflict that requires clarification.
+An offline NOAA/GHCN parser and content-addressed raw landing are implemented
+from saved Workshop 1 samples. Docker, Airflow, database loads, Silver Parquet
+and the Workshop 2 PDF remain pending. The published Workshop 2-4 PDFs contain
+a documented 2026-I public-opinion conflict that requires clarification.
 
 ## Start here
 
@@ -27,6 +28,8 @@ For team planning:
 3. [`deliveries/01-workshop-1/IMPLEMENTATION_PLAN.md`](deliveries/01-workshop-1/IMPLEMENTATION_PLAN.md) - detailed Workshop 1 requirements and acceptance criteria.
 
 Supporting material is indexed under [`docs/`](docs/) and the delivery history under [`deliveries/`](deliveries/). Contributors and coding agents must also follow [`AGENTS.md`](AGENTS.md).
+
+For the current Workshop 2 offline slice, see [`workshop_2/README.md`](workshop_2/README.md).
 
 ## Repository areas
 

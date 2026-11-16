@@ -4,11 +4,12 @@
 - **Target date:** TBD - no submission date appears in the reviewed specification
 - **Working branch:** `workflow-2` (created by Kevin from the Workshop 1 branch)
 - **Base:** inherited Workshop 1 work; exact submission reference remains a separate review item
-- **Status:** planning reverified on 2026-11-16; implementation not started; compatible core can proceed while conflicting requirements remain explicit
+- **Status:** current professor practice reviewed on 2026-11-16; source-specific offline CSV parsers and content-addressed raw landing checked against three saved captures. An offline summary exists, but no stack, database, DAG, Silver output or report PDF exists yet; conflicting requirements remain explicit.
 - **Primary specification:** [CourseProject.pdf](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/CourseProject.pdf), Semester 2026-II
 - **Secondary/conflicting specification:** [Workshop_2.pdf](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_2.pdf), labeled Semester 2026-I
 - **Conflict review:** `docs/reports/workshops-2-4-specification-review.md`
 - **Current execution sequence:** `docs/reports/workshop-2-start-review-2026-11-16.md`
+- **Current course-material review:** `docs/reports/workshop-2-course-material-review-2026-11-16.md` (public `main` at `7a54da4`, latest course change `3f7010d`)
 - **Inherited architecture:** ADR 0005 and Workshop 1 correction commit `009e628` select Apache Airflow, native Bronze captures, Silver PostgreSQL/PostGIS plus Parquet exports and later Gold analytics. Deployment details remain W2-01 work.
 
 ## 1. Requirement interpretation
@@ -23,6 +24,9 @@ FileSensor-triggered Silver Parquet and public-opinion preprocessing. Airflow,
 Docker, persisted raw files, Parquet exploration and evidence of successful runs
 are compatible techniques. Scraping, NLP/text cleaning and forcing every raw
 weather source into JSON are not adopted without professor clarification.
+The professor's revised 2026-11-16 earthquake practice uses PythonOperator and
+TriggerDagRunOperator, not TaskFlow/FileSensor; it is a teaching example, not a
+revision of the Workshop 2 handout. Retain this distinction during implementation.
 
 ## 2. Non-negotiable objective
 

@@ -1,0 +1,53 @@
+[
+  {
+    "source": "noaa_storm_events",
+    "partition": "sample_2024",
+    "capture_sha256": "987f5c641b6b85bf89477a823b52757d50d2c5376895fd53056a9afe9f79403a",
+    "capture_bytes": 276358,
+    "origin": "workshop_1/samples/noaa_storm_events/details_sample.csv",
+    "parsed_records": 250,
+    "accepted_records": 250,
+    "rejected_records": 0,
+    "distinct_source_keys": 250,
+    "sample_keys": [
+      "1155350",
+      "1155307",
+      "1155308"
+    ],
+    "output_scope": "offline_parser_review_not_airflow_or_silver"
+  },
+  {
+    "source": "ghcn_daily",
+    "partition": "USW00013967_2025",
+    "capture_sha256": "d8ee9e0afbfe25897c17babe4a88dc0e12d4fece8b74c26e8d817d5309ffb5ae",
+    "capture_bytes": 54843,
+    "origin": "workshop_1/samples/region_comparison/ghcn_okc_usw00013967_2025.csv",
+    "parsed_records": 1095,
+    "accepted_records": 1095,
+    "rejected_records": 0,
+    "distinct_source_keys": 1095,
+    "sample_keys": [
+      "USW00013967/2025-01-01/PRCP",
+      "USW00013967/2025-01-01/TMAX",
+      "USW00013967/2025-01-01/TMIN"
+    ],
+    "output_scope": "offline_parser_review_not_airflow_or_silver"
+  },
+  {
+    "source": "ghcn_daily",
+    "partition": "USW00013967_2026_overlap",
+    "capture_sha256": "7456d668d4253550881435f5e9bfc95371965b7ebe72f1f8e060872f4a2d8d55",
+    "capture_bytes": 6791,
+    "origin": "workshop_1/samples/region_comparison/ghcn_okc_usw00013967_2026_overlap.csv",
+    "parsed_records": 18,
+    "accepted_records": 18,
+    "rejected_records": 0,
+    "distinct_source_keys": 18,
+    "sample_keys": [
+      "USW00013967/2026-10-31/PRCP",
+      "USW00013967/2026-10-31/TMAX",
+      "USW00013967/2026-10-31/TMIN"
+    ],
+    "output_scope": "offline_parser_review_not_airflow_or_silver"
+  }
+]
