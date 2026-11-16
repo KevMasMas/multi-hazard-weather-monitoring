@@ -43,7 +43,7 @@ def capture():
     META.write_text(json.dumps(dict(request_url=URL, request_method='GET',
         requested_at_utc=started, captured_at_utc=datetime.now(timezone.utc).isoformat(),
         http_status=status, response_headers=headers, sha256=sha(CSV), bytes=len(body),
-        retries=0), indent=2)+'\n', encoding='utf-8')
+        retries=0), indent=2)+'\n', encoding='utf-8', newline='\n')
     print('Captured once:', status, len(body), sha(CSV))
 
 
@@ -159,7 +159,7 @@ def main():
         SAMPLES/'candidate_pairs/nws_kokc_observations_page_2.geojson',SAMPLES/'region_comparison/nws_kokc_observations_snapshot.geojson',SAMPLES/'region_comparison/nws_kokc_observations_poll_2.geojson']},
         coverage_rule='at least 48 QC V temperature readings; maximum gap including day edges 70 minutes',
         boundary='fixed CST UTC-6, 06:00Z to next 06:00Z; review assumption',exclusions=exclusions,
-        precipitation='not aggregated: null/overlapping accumulation windows and gaps',pairs=len(pairs)),indent=2)+'\n')
+        precipitation='not aggregated: null/overlapping accumulation windows and gaps',pairs=len(pairs)),indent=2)+'\n',encoding='utf-8',newline='\n')
     print(coverage.to_string(index=False)); print('Exclusions:',exclusions); print('Pairs:',len(pairs))
     tex = [r'\subsection{Supplementary daily temperature comparisons}',
         'One authorized NCEI capture supplies daily summaries for 2026-10-31 through 2026-11-05. Saved KOKC pages are deduplicated by observation ID; conflicting versions would be excluded. We assume fixed CST days (UTC minus six hours), from 06:00Z to the next 06:00Z, as specified for this review. Provider daily boundaries and station equivalence have not been independently established.',
@@ -176,7 +176,7 @@ def main():
         'A sampled KOKC maximum may be lower than a daily GHCN maximum, and a sampled minimum may be higher. Boundary conventions, sampling and station differences can also reverse those differences. These eight rows are candidates, not ground truth. No polygon containment or station equivalence is claimed. Appendix A retains the earlier intra-NWS examples separately.',
         'The NWS side is a derived daily aggregate with a traceable raw extreme observation, not an original daily event record. These eight supplementary comparisons are not counted toward the five primary wind-event candidate examples above and are not eight independent events.',
         r'Full comparison and coverage: \path{workshop_1/samples/candidate_pairs/cross_source_candidate_pairs.csv} and \path{daily_coverage.csv}.']
-    (ROOT/'workshop_1/report/daily_pairs.tex').write_text('\n\n'.join(tex)+'\n',encoding='utf-8')
+    (ROOT/'workshop_1/report/daily_pairs.tex').write_text('\n\n'.join(tex)+'\n',encoding='utf-8',newline='\n')
 
 if __name__=='__main__':
     main()

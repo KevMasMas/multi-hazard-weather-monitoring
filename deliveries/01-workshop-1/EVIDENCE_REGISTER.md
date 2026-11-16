@@ -14,12 +14,12 @@ explicitly naming KOKC were extracted from the previously saved checksum-verifie
 | Artifact under `workshop_1/samples/candidate_pairs/` | SHA-256 |
 | --- | --- |
 | `ghcn_kokc_wind_2024.csv` | `CD9E68A7FB43343E3E64D3633DF45AF08D21F97E5B6ED9D43B75E4CF82D0CCC2` |
-| `ghcn_kokc_wind_2024.metadata.json` | `6B7BAEA6849429C3835AFF950E1A841853C8E17BFF77A2A0D9B04899DC5B2A7E` |
+| `ghcn_kokc_wind_2024.metadata.json` | `FC2D439199CAB3D0A40A4025B7519B6A1556FD0352905A4146CD397E55EB6DDF` |
 | `noaa_kokc_wind_events_2024.csv` | `0441358E52A43CA55D64EA62EF55EF155E4377137270543A8B1FFB47B83964BA` |
-| `noaa_kokc_wind_events_2024.metadata.json` | `76AC5680F08EA1C5451C2D624C3FA559B1CAC509840BB03268596EB54F32ED60` |
+| `noaa_kokc_wind_events_2024.metadata.json` | `40D673059023FE7376722D33301959D2E6CE73746FB2378BFF5BC6CC5BBED049` |
 | `historical_wind_candidate_pairs.csv` | `809E5FF7E35FA4C7065907F50D03F568195ED97C367A0DA457FDCCA90014426E` |
-| `submission_evidence_audit.json` (current seven-quality/wind/daily audit) | `5AFE50CDDEC8060D8F44F1EB9A4D4FC07E2DB71E5370F63A7E5C116043EE31C3` |
-| `daily_comparison_metadata.json` (QC label clarified to `qc_not_selected`) | `030077CC01FF247F49B89CAC96DC00C45F407D7289A854521DA778758B6DBEE7` |
+| `submission_evidence_audit.json` (current seven-quality/wind/daily audit) | `8B1B8881956A65084E7161E3D3140E13AA705F0DEDD0A9E4361449323DCE2EA9` |
+| `daily_comparison_metadata.json` (QC label clarified to `qc_not_selected`) | `F8EA3FE56102C1ABFDC70A05DF76676B1BE210EC2326B26D7F7ADB580827E9C3` |
 
 The guide's five-candidate-record interpretation is technically addressed by
 five distinct Storm IDs and three GHCN daily wind records. Three May 6 gusts
@@ -29,8 +29,12 @@ claimed. Four Storm points are near the returned station; the zone-based High
 Wind row keeps null coordinates and uses only its explicit airport narrative.
 
 Clean reproduction receipt: `deliveries/01-workshop-1/clean_environment_verification.json`.
-Receipt SHA-256: `BF5A9EB8D60FE51DF06E4B197E07505D8323D7AA9225817040D5F9C137F09BA7`.
-Clean-executed notebook SHA-256: `04FB9E0E24DAE05DC0FB756CC9843BEF45181258FB485BE32E930717946703A0`.
+Receipt SHA-256: `474D1EAA20B38807D83DE496C7D11AC334F3FEC7A18FA7E4EBA21F2185173F56`.
+Published LF notebook SHA-256: `4341F9AC45BAA41E0677A3FFFF542BB2F61F59367D2D848AF3BDCB7AA6C5BA94`.
+Original clean-executed output SHA-256: `04FB9E0E24DAE05DC0FB756CC9843BEF45181258FB485BE32E930717946703A0`;
+the parsed notebook is exactly equal after LF normalization. Generated JSON/TeX
+sidecars now use explicit LF so their published hashes survive checkout. Native
+CSV/GeoJSON capture bytes and values are not normalized or rewritten.
 The first clone exposed that the old NOAA subset Git blob used LF while the
 registered original had CRLF. Commit `cce9ade` preserves the original bytes with
 the same registered `987F...` SHA-256. The new isolated environment then passed

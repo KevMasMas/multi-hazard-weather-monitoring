@@ -74,5 +74,7 @@
   "source_notebook_sha256": "5793C9A42DFCDD94D3F0A037EBBDEDEC187A5C8918EFA87C45C64D4559C7D04C",
   "executed_notebook_sha256": "04FB9E0E24DAE05DC0FB756CC9843BEF45181258FB485BE32E930717946703A0",
   "weather_network_during_execution": false,
-  "correction": "First clone failed NOAA sample checksum because previous Git blob had LF versus registered CRLF; cce9ade stores original bytes without altering source values or registered SHA-256."
+  "correction": "First clone failed NOAA sample checksum because previous Git blob had LF versus registered CRLF; cce9ade stores original bytes without altering source values or registered SHA-256.",
+  "published_notebook_sha256": "4341F9AC45BAA41E0677A3FFFF542BB2F61F59367D2D848AF3BDCB7AA6C5BA94",
+  "published_notebook_normalization": "LF representation required by Git attributes; parsed notebook equals the clean-executed JSON exactly. Original execution hash retained separately."
 }

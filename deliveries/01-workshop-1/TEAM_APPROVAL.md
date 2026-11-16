@@ -19,11 +19,14 @@ disclosed limits, not running infrastructure or empirically validated CHI weight
 | --- | --- |
 | `workshop_1/report/Workshop_1_Report.pdf` | `6E9F416B1593C0B66237C044FD2DCD729E943E34744BBC865D961D69FDC3D6F0` |
 | `workshop_1/mapping.md` | `7FBC83C09F8DDF05A662A69C7C12EF5C3279328912F57D0C7CDF32C903D9D9D7` |
-| `notebooks/01_source_profiling.ipynb` (clean-executed supporting evidence) | `04FB9E0E24DAE05DC0FB756CC9843BEF45181258FB485BE32E930717946703A0` |
+| Original clean-executed notebook output (supporting evidence, before LF publication) | `04FB9E0E24DAE05DC0FB756CC9843BEF45181258FB485BE32E930717946703A0` |
+| Published LF `notebooks/01_source_profiling.ipynb` (same parsed JSON) | `4341F9AC45BAA41E0677A3FFFF542BB2F61F59367D2D848AF3BDCB7AA6C5BA94` |
 
 Five candidate record pairs are not five independent episodes; eight temperature
 rows remain supplemental. Daily peak time is unavailable and shared ASOS lineage
 is possible. No new weather facts, exact-event ground truth, individual manual
 authorship, platform upload or professor acceptance are inferred from approval.
 
-Material later changes to the approved content need their own review record.
+Material later changes to approved content need their own review record. LF-only
+publication leaves the parsed notebook, reviewed PDF and mapping unchanged;
+both notebook byte representations are recorded to avoid a misleading hash.

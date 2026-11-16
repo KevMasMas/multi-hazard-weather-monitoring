@@ -6,6 +6,14 @@ Use `deliveries/_templates/CHANGE_LOG.md` and include source-query timestamps an
 
 ## Entries
 
+### [2026-11-16 America/Bogota] - Verification follow-up - Stable published receipt bytes
+
+- **Objective/status:** make derived JSON/TeX hashes and the published notebook consistent after Git checkout; completed without material content change.
+- **Branch/files:** inherited local closure on `workflow-2`; generators now write explicit LF; updated receipt/register/team record, ZIP and manifest.
+- **Decision/verification:** Git's declared LF text policy normalized generated receipts and notebook JSON after checkout. Native CSV/GeoJSON bytes remain protected by `-text`. Published notebook parses exactly equal to the original successful clean execution; both byte hashes are recorded. Reviewed PDF/mapping SHA-256 values remain unchanged. Derived builders still reproduce five wind pairs/eight temperature rows; current receipt/manifest hashes match versioned bytes and ZIP members match source files.
+- **Evidence/limits:** current hashes are in EVIDENCE_REGISTER/SUBMISSION_MANIFEST; this is byte-representation correction, not new measurements or inferred approval. Earlier capture-time/receipt hashes remain dated history. No new service call, upload or push.
+- **Input/handoff/recovery:** user's final reproduction/integrity request; use explicit LF for generated text, preserve native evidence and verify manifest after checkout. Revert only this focused normalization if necessary; do not change source values or weaken assertions.
+
 ### [2026-11-16 America/Bogota] - W1-D05 - Final technical, clean-environment and team review closure
 
 - **Objective:** resolve the remaining review tasks with actual evidence, reproduce from a clean clone, check deliverables/secrets, and record only approvals explicitly communicated.

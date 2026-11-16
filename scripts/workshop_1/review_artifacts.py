@@ -65,7 +65,7 @@ def run(git='git'):
                   forbidden_delivery_paths=forbidden,documented_placeholders=placeholders,
                   ignored_probes=ignored,expected_ignore_probes=ignore_probes,
                   source_revision=subprocess.check_output([git,'rev-parse','HEAD'],cwd=ROOT,text=True).strip())
-    OUTPUT.write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
+    OUTPUT.write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8',newline='\n')
     print('Artifact review:',len(scanned),'text items;',len(findings),'findings;',len(forbidden),'forbidden paths;',len(ignored),'of 4 ignore probes.')
     assert not findings and not forbidden and len(ignored)==4, 'Review finding locations in the audit JSON; no credential text is printed.'
     return result

@@ -37,7 +37,7 @@ def extract():
                 selection='Five 2024 Oklahoma measured-wind records explicitly naming KOKC; fixed EVENT_ID list.',
                 event_ids=IDS, sha256=sha(SUBSET), rows=5,
                 qualification='Parsed subset, not an untouched original HTTP response; archive hash is preserved.')
-    SUBSET.with_suffix('.metadata.json').write_text(json.dumps(meta, indent=2)+'\n', encoding='utf-8')
+    SUBSET.with_suffix('.metadata.json').write_text(json.dumps(meta, indent=2)+'\n', encoding='utf-8', newline='\n')
 
 
 def build_pairs():
@@ -107,7 +107,7 @@ def main():
         r'\textbf{Magnitude/identifier:} NOAA measured gusts (MG) in knots convert using 0.5144444444 m/s per knot. GHCN metric WSF5 is fastest 5-second wind, not an identical gust definition. $\Delta$ is GHCN minus converted NOAA. EVENT\_ID differs from station/date/WSF5; all IDs, flags, coordinates, UTC times and file references are in the CSV.',
         'Five pairs use five distinct Storm Events IDs but only three GHCN daily records and three labelled dates. Three May 6 gust reports share one daily summary and may describe one episode. The products can share ASOS reporting lineage. The guide asks for candidate record pairs, not five independent episodes; under that interpretation these are the five proposed overlap examples. Professor acceptance and exact-event equivalence are not asserted.',
         r'Full evidence: \path{workshop_1/samples/candidate_pairs/historical_wind_candidate_pairs.csv}; the NOAA file is a checksum-linked parsed subset of the saved archive, and GHCN CSV is the unchanged newly captured response.']
-    (ROOT/'workshop_1/report/historical_pairs.tex').write_text('\n\n'.join(tex)+'\n',encoding='utf-8')
+    (ROOT/'workshop_1/report/historical_pairs.tex').write_text('\n\n'.join(tex)+'\n',encoding='utf-8',newline='\n')
     print(pairs[['pair_id','record_a_id','record_b_id','noaa_magnitude_mps','ghcn_wsf5_mps','ghcn_minus_noaa_mps']].to_string(index=False))
 
 

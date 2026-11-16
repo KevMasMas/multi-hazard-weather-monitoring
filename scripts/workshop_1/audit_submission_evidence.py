@@ -133,7 +133,7 @@ def main():
                                                 'No PRCP total or confirmed event match claimed.']),
                   approval_status='No new student or professor approval recorded by this audit.')
     destination = SAMPLES / 'candidate_pairs/submission_evidence_audit.json'
-    destination.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
+    destination.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8', newline='\n')
     print('Verified: 9 prior captured-input hashes; Q1-Q7 claims; 5 historical wind pairs and 8 supplementary daily rows; no personal approval inferred.')
     print('Audit SHA-256:', sha(destination))
 
