@@ -1,0 +1,117 @@
+{
+  "status": "daily_temperature_candidates",
+  "cross_source_pairs": 8,
+  "old_pairs": "intra_NWS_not_counted",
+  "coverage": [
+    {
+      "source": "GHCN-Daily",
+      "path": "workshop_1/samples/ghcn_daily_denver_2025-06_to_09.csv",
+      "start": "2025-06-01 00:00:00",
+      "end": "2025-09-01 00:00:00",
+      "years": [
+        2025
+      ],
+      "records": 93
+    },
+    {
+      "source": "GHCN-Daily",
+      "path": "workshop_1/samples/ghcn_daily_usw00003017_2025.csv",
+      "start": "2025-01-01 00:00:00",
+      "end": "2025-12-31 00:00:00",
+      "years": [
+        2025
+      ],
+      "records": 365
+    },
+    {
+      "source": "Storm Events",
+      "path": "workshop_1/samples/noaa_storm_events/details_sample.csv",
+      "start": "2024-01-08 06:00:00",
+      "end": "2024-11-08 20:00:00",
+      "years": [
+        2024
+      ],
+      "records": 250
+    },
+    {
+      "source": "GHCN-Daily",
+      "path": "workshop_1/samples/region_comparison/ghcn_okc_usw00013967_2025.csv",
+      "start": "2025-01-01 00:00:00",
+      "end": "2025-12-31 00:00:00",
+      "years": [
+        2025
+      ],
+      "records": 365
+    },
+    {
+      "source": "GHCN-Daily",
+      "path": "workshop_1/samples/region_comparison/ghcn_okc_usw00013967_2026_overlap.csv",
+      "start": "2026-10-31 00:00:00",
+      "end": "2026-11-05 00:00:00",
+      "years": [
+        2026
+      ],
+      "records": 6
+    },
+    {
+      "source": "NWS observations",
+      "path": "workshop_1/samples/candidate_pairs/nws_kokc_observations_page_2.geojson",
+      "start": "2026-10-31 04:55:00+00:00",
+      "end": "2026-11-03 21:50:00+00:00",
+      "years": [
+        2026
+      ],
+      "records": 500
+    },
+    {
+      "source": "NWS Alerts",
+      "path": "workshop_1/samples/nws_alerts/recent_7d_page_1.geojson",
+      "start": "2026-10-31 02:11:00+00:00",
+      "end": "2026-11-03 09:56:00+00:00",
+      "years": [
+        2026
+      ],
+      "records": 238
+    },
+    {
+      "source": "NWS observations",
+      "path": "workshop_1/samples/nws_kden_observations_poll1.geojson",
+      "start": "2026-11-02 11:30:00+00:00",
+      "end": "2026-11-04 02:35:00+00:00",
+      "years": [
+        2026
+      ],
+      "records": 200
+    },
+    {
+      "source": "NWS observations",
+      "path": "workshop_1/samples/nws_kden_observations_poll2.geojson",
+      "start": "2026-11-03 05:00:00+00:00",
+      "end": "2026-11-05 00:30:00+00:00",
+      "years": [
+        2026
+      ],
+      "records": 200
+    },
+    {
+      "source": "NWS observations",
+      "path": "workshop_1/samples/region_comparison/nws_kokc_observations_poll_2.geojson",
+      "start": "2026-11-03 23:10:00+00:00",
+      "end": "2026-11-05 11:52:00+00:00",
+      "years": [
+        2026
+      ],
+      "records": 200
+    },
+    {
+      "source": "NWS observations",
+      "path": "workshop_1/samples/region_comparison/nws_kokc_observations_snapshot.geojson",
+      "start": "2026-11-03 21:52:00+00:00",
+      "end": "2026-11-05 10:55:00+00:00",
+      "years": [
+        2026
+      ],
+      "records": 200
+    }
+  ]
+}

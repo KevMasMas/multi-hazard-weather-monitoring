@@ -15,7 +15,12 @@ contain a documented 2026-I public-opinion conflict that requires clarification.
 
 ## Start here
 
-Read only these three files to begin:
+For the professor: start with the [Workshop 1 submission index](workshop_1/README.md),
+the [executed notebook](notebooks/01_source_profiling.ipynb), and the
+[canonical mapping table](workshop_1/mapping.md). The LaTeX report project is in
+[`workshop_1/report/`](workshop_1/report/), including the first compiled PDF for review.
+
+For team planning:
 
 1. [`WORK_BOARD.md`](WORK_BOARD.md) - current status, exact Kevin/Pablo ownership, next tasks, and working sequence.
 2. [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md) - authoritative academic requirements, constraints, and unresolved decisions.
@@ -55,7 +60,8 @@ completed.
 
 ## Working model
 
-The repository follows the useful delivery pattern established in the team's HiLeS project:
+Kevin works on Storm Events and Alerts; Pablo works on GHCN and station
+observations. We keep assignments, plans and completed work in these files:
 
 1. `WORK_BOARD.md` answers what happens now and who owns it.
 2. Each milestone gets one numbered folder under `deliveries/`.
@@ -65,8 +71,8 @@ The repository follows the useful delivery pattern established in the team's HiL
 
 ## Team
 
-- Pablo Garzon - 20232020341
-- Kevin Rincon - 20232020356
+- Pablo Garzon Gomez - 20232020341
+- Kevin David Rincon Valencia - 20232020356
 
 ## Academic source of truth
 

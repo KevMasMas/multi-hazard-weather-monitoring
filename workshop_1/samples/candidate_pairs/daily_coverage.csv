@@ -1,0 +1,7 @@
+date,valid_temperature_observations,max_gap_including_edges_minutes,eligible,reason
+2026-10-31,116,60.0,True,passes proposed sampling coverage threshold
+2026-11-01,130,60.0,True,passes proposed sampling coverage threshold
+2026-11-02,155,75.0,False,fewer than 48 valid readings or gap greater than 70 minutes
+2026-11-03,131,63.0,True,passes proposed sampling coverage threshold
+2026-11-04,133,55.0,True,passes proposed sampling coverage threshold
+2026-11-05,33,1088.0,False,fewer than 48 valid readings or gap greater than 70 minutes

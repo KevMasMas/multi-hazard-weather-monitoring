@@ -1,5 +1,10 @@
 # Workshop 1 Conceptual ER Model
 
+Current report diagrams with PK/FK are maintained in `workshop-1-core.mmd` and
+`workshop-1-domain.mmd`. They add the canonical `event` and ingestion audit/state
+entities missing from the earlier source-domain-only sketch below. The sketch
+is retained as design history; use the `.mmd` files for the revised report.
+
 - **Status:** Accepted conceptual model for Workshop 1
 - **Date:** 2026-11-05
 - **Station/geography owner:** Pablo Garzon

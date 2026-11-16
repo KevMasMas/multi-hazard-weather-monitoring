@@ -6,6 +6,76 @@ Use `deliveries/_templates/CHANGE_LOG.md` and include source-query timestamps an
 
 ## Entries
 
+### [2026-11-16 America/Bogota] - W1-S04/W1-D04 - Authorized overlap capture and report flow
+
+- **Objective:** follow the attached review, complete defensible GHCN/KOKC comparisons where possible, and avoid unnecessary report page gaps and disconnected sections.
+- **Status:** one authorized capture preserved; eight daily element candidates reproduced; notebook executed; thirteen-page PDF and portable report package prepared for student review. No commit, tag, push or submission performed.
+- **Branch or commit:** `workflow-1`, uncommitted; all pre-existing work retained.
+- **Files changed:** new `scripts/workshop_1/compare_daily_sources.py`, cached GHCN overlap CSV/metadata, candidate/coverage/metadata tables; saved-evidence builder, notebook, report main/content/generated daily table, PDF/ZIP, core Mermaid source/asset, source attribution configuration, report README, evidence register, current board, plan and review notices.
+- **Implementation or documentation completed:** one GET for USW00013967, 2026-10-31 through 2026-11-05; immutable cache with UTC time, selected HTTP headers and SHA-256. Deduplicated saved KOKC pages, excluded conflicting versions and non-V/non-degree-C temperatures, screened daily sampling coverage, preserved exact observation IDs and temporal/magnitude/geographic/identifier differences. Retained five intra-NWS examples separately. Added course-model field correspondence and source attribution. Removed forced excerpt page breaks, allowed figure placement and constrained model figures to their section before ingestion contracts.
+- **Decisions and rationale:** compare TMAX/TMIN only on four eligible days; do not sum overlapping/null PRCP intervals or use NWS rolling 24-hour extrema. Use fixed UTC-6 days as an explicit review assumption. Sampling threshold is at least 48 valid readings and maximum gap, including edges, of 70 minutes; it is not an official completeness guarantee. Distances use historical saved station coordinates because the new response has no coordinate columns.
+- **Verification and exact result:** single HTTP 200 response at 2026-11-16T21:42:06.174020+00:00, 6,791 bytes, six rows/301 columns, no retries. Offline builders reproduce eight rows (TMAX/TMIN on October 31 and November 1, 3, 4); November 2 has a 75-minute gap, November 5 is partial; one non-V temperature excluded, zero conflicting IDs. All four excerpt input checksums asserted; existing sample hashes retained. Notebook executed 31/31 code cells, zero errors; saved-table equality assertion passes. Core and compact pipeline Mermaid rendered; Tectonic PDF has thirteen pages, no overfull boxes and one non-fatal underfull warning. Rendered pages inspected for content flow; no empty page or forced one-snippet-per-page layout. Final Overleaf ZIP has 15 entries, all six LaTeX inputs and required assets; packaged content and pipeline image match their current files byte-for-byte. Nine required repository paths exist and YAML parses. `git diff --check` passed with line-ending notices.
+- **Evidence location:** W1-GHCN-OVERLAP-001 and current hashes in `EVIDENCE_REGISTER.md`; `daily_coverage.csv`, `daily_comparison_metadata.json`, full candidate CSV, executed notebook and report.
+- **Errors found and correction:** initial parser expected coordinates absent in the new response; corrected to cite existing station metadata, without refetching or altering the response. Local LaTeX cache lacked `placeins`; downloaded the TeX package and compiled successfully. This package request was not a weather query.
+- **Risks or limitations:** candidates are not ground truth or eight independent episodes; daily-boundary and station/sensor equivalence need review. Coverage screening cannot recover unsampled extrema. PRCP matching is unclaimed. Exact numeric NCEI quota and source-wide policies remain qualified. Student approval and fresh-clone lock reproduction remain pending.
+- **Input received from:** Kevin's attached instructions, explicit consent to one GHCN download and request for continuous pagination.
+- **Handoff to:** Kevin/Pablo to review four-day/two-element interpretation, report wording and submission artifacts, then commit on `workflow-1` and record the actual commit as the delivery reference.
+- **Recovery or rollback:** keep all raw files unchanged. Run the daily comparison script without `--fetch`, run the saved-evidence builder, execute the notebook and rebuild `main.tex`; the report directory can be uploaded to Overleaf. Do not issue another live request to reproduce these outputs.
+
+### [2026-11-16 America/Bogota] - W1-S04/W1-D04 - Correct source overlap and report evidence
+
+- **Objective:** address the prioritized specification review using saved samples and Mermaid diagrams.
+- **Status:** cross-source gap confirmed and documented; response excerpts, minor contract/mapping corrections, diagrams and PDF revised; additional data acquisition remains pending.
+- **Branch or commit:** `workflow-1`; no commit or tag created. Pre-existing uncommitted organization/report work was preserved.
+- **Requirements addressed:** independent-source candidate pairs, literal response snippets/provenance, access guidance, operational watermark, conversion rules, constraints, ER/architecture and repository setup.
+- **Files created:** `scripts/workshop_1/review_saved_evidence.py`; empty-schema `cross_source_candidate_pairs.csv`; `cross_source_overlap_audit.json`; `ADDITIONAL_DATA_NEEDED.md`; four literal excerpt files and manifest under `workshop_1/samples/response_snippets/`; three Mermaid `.mmd` files and diagram index; report appendix sources and rendered Mermaid assets.
+- **Files modified:** notebook, mapping, source configuration, report source/PDF/Overleaf ZIP, evidence register, final review, work board, submission index, plan and legacy report/model notices.
+- **Implementation or documentation completed:** audited all saved source years; excluded five intra-NWS rows from independent-source count; generated zero-row CSV with required comparison columns and notebook reproduction; added exact unexecuted NCEI queries and archive alternative; extracted literal first CSV rows and selected JSON lexical fields; recorded capture/request/file/hash provenance; added rate-limit uncertainty, UTC/damage/unit rules, successful-query operational watermark, explicit quarantine/orchestration/CLI/database Mermaid architecture and PK/FK ERs.
+- **Decisions and rationale:** do not pair 2024 Storm Events, 2025 GHCN and 2026 NWS records. Keep existing intra-NWS evidence as Appendix A; explicitly leave the independent-source requirement open. Distinct products must not be confused with independently observed events.
+- **Verification and exact result:** all fourteen existing CSV/GeoJSON evidence hashes matched the register; four excerpt input hashes additionally asserted by the builder; notebook executed 31/31 code cells with zero errors and eleven stored checksum assertions. Three Mermaid files rendered successfully. Revised PDF compiled with Tectonic, sixteen pages rendered for visual review, no overfull boxes and one non-fatal underfull warning. All nine required repository paths exist. `git diff --check` passed with line-ending notices.
+- **Evidence location:** current notebook, new audit/CSV/excerpts/manifest, updated evidence register, LaTeX report and Mermaid files.
+- **Errors found and correction:** old pairs were incorrectly counted as independent-source evidence. Initial excerpt extraction matched nested JSON keys; it was corrected to parse only first-feature top-level properties and assert exact parsed values. Mermaid CLI flags were updated for the installed version. The architecture layout was revised after visual review to improve readability.
+- **Risks or limitations:** zero qualifying independent-source pairs; five are still required under the requested interpretation. Daily observation boundaries, station proximity, precipitation windows and incomplete days must be checked after acquisition. NCEI numeric quota and exact Storm Events publication delay remain unverified. Raw timestamps/HTTP metadata missing from original captures are not invented; GHCN URL is explicitly reconstructed from saved parameters.
+- **Input received from:** Kevin's prioritized review and explicit Mermaid request.
+- **Handoff to:** Kevin/Pablo to run the documented additional query, preserve response/provenance and reassess pairs before declaring Workshop 1 complete; review and commit on `workflow-1`, then record the exact commit for submission.
+- **Recovery or rollback:** regenerate derived audit/excerpts with the builder and notebook outputs from unchanged samples; rebuild Mermaid assets and `main.tex`; preserve prior intra-NWS CSV and Git history.
+
+### [2026-11-16 America/Bogota] - W1-D04 - First complete LaTeX report
+
+- **Objective:** prepare the complete Workshop 1 report for student review and submission preparation.
+- **Status:** first nine-page PDF compiled and visually inspected; student approval and upload pending.
+- **Branch or commit:** `workflow-1`; uncommitted work preserved from the preceding organization task.
+- **Requirements addressed:** project definition, four-source validation, profiling summary, quality examples, five candidate pairs, canonical mapping/ER, ingestion contracts, CHI proposal, risks, architecture and references.
+- **Files created:** `workshop_1/report/Workshop_1_Report.pdf` and extracted notebook figure `assets/ghcn_distributions.png`.
+- **Files modified:** report main/content source, report README, submission index, root README and this log.
+- **Implementation or documentation completed:** replaced the content placeholder with a full English report, six functional MoSCoW stories, source results and limitations, two TikZ diagrams and a real notebook figure.
+- **Decisions and rationale:** follow the supplied cover and professor's article-style guide; preserve source-qualified findings and keep future architecture/index proposals explicit.
+- **Verification and exact result:** Tectonic 0.17.0 compiled successfully; PDF has nine pages and all were rendered with Poppler and visually inspected. Overfull table warnings were corrected; two underfull spacing warnings remain. No new weather data was queried and no additional notebook computation was required.
+- **Evidence location:** report PDF/source and saved notebook outputs; render previews remain in the system temporary directory.
+- **Errors found and correction:** LaTeX Workshop was present but no TeX compiler was found. A portable Tectonic binary/cache was used outside the repository. First compilation needed online packages; compilation was completed with the required network permission. Table placement and long field wrapping were corrected after build warnings.
+- **Risks or limitations:** PDF is a first review version; five pairs remain unconfirmed, exact statewide volumes/coverage remain unmeasured, and fresh-clone dependency installation/student acceptance have not been claimed.
+- **Input received from:** Kevin requested a complete first LaTeX version following the workshop style.
+- **Handoff to:** Kevin and Pablo for reading, corrections and submission decision.
+- **Recovery or rollback:** edit `content.tex` and rebuild `main.tex`; regenerate the notebook figure from saved output if needed. Original samples are unchanged.
+
+### [2026-11-16 America/Bogota] - Submission organization and notebook editing
+
+- **Objective:** organize the four Moodle submission items and prepare the supplied cover style for LaTeX.
+- **Status:** submission index, LaTeX scaffold and notebook revision completed; report body/PDF pending.
+- **Branch or commit:** `workflow-1`; uncommitted.
+- **Requirements addressed:** report, notebook, mapping and repository navigation.
+- **Files created:** `workshop_1/README.md`, `workshop_1/report/` with `main.tex`, `cover.tex`, `content.tex`, instructions and supplied logo; `docs/reports/class-review-2026-11-16.md`.
+- **Files modified:** root README, project context, work board, gitignore and source-profile notebook.
+- **Implementation or documentation completed:** added full student names, reviewer entry points and Overleaf layout; shortened notebook introduction and removed obsolete statements about missing Pablo sections; added GHCN histogram and separate temperature/precipitation boxplots.
+- **Decisions and rationale:** use English for submission, the supplied cover style, and plots relevant to source profiling. Preserve mandatory scaffolds, captured evidence and planning history. A temporary editorial script was removed after applying its changes.
+- **Verification and exact result:** notebook execution exited 0; 55 total cells, 30/30 code cells executed, zero error outputs. `git diff --check` passed with line-ending notices. Source files were not edited. No LaTeX compiler was available, so compilation and visual QA are not claimed.
+- **Evidence location:** notebook outputs, workshop index and dated class review.
+- **Errors found and correction:** obsolete notebook text said Pablo's sections were missing; corrected. The professor's example boxplot labels do not match its plotted variable; our plots use the actual variable units.
+- **Risks or limitations:** `content.tex` is explicitly a placeholder; the report PDF remains unfinished. Moodle timing is transcribed from the user notice, not independently authenticated.
+- **Input received from:** Kevin supplied the Moodle checklist, full names, title-page template and university logo.
+- **Handoff to:** report writing in `workshop_1/report/content.tex`, followed by compilation and page-by-page review.
+- **Recovery or rollback:** revert editorial/scaffold changes together if needed; source samples and prior Git history remain available.
+
 ### [2026-11-11 America/Bogota] - W1-D05 - Execute the current notebook
 
 - **Objective:** refresh current notebook execution evidence.

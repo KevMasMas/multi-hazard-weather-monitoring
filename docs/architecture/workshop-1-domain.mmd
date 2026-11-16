@@ -1,0 +1,63 @@
+erDiagram
+    direction TB
+    event ||..o| stormEvent : specializes
+    event ||..o| alertVersion : specializes
+    event ||..o| dailyMeasurement : specializes
+    event ||..o| observationVersion : specializes
+    station ||..o{ dailyMeasurement : reports
+    station ||..o{ observationVersion : reports
+    station ||..o{ stationRegion : assigned
+    region ||..o{ stationRegion : contains
+    event {
+        uuid event_id PK
+        string event_type
+        datetime timestamp_utc
+        decimal latitude
+        decimal longitude
+        string severity_value_unit
+    }
+    stormEvent {
+        uuid event_id PK,FK
+        string episode_id
+        string cz_type_code
+        string magnitude_type
+        decimal damage_usd
+    }
+    alertVersion {
+        uuid event_id PK,FK
+        datetime effective_utc
+        datetime expires_utc
+        string severity
+        json original_geometry_zones
+    }
+    dailyMeasurement {
+        uuid event_id PK,FK
+        uuid station_id FK
+        date observation_date
+        string element_unit_flags
+        decimal value
+    }
+    observationVersion {
+        uuid event_id PK,FK
+        uuid station_id FK
+        datetime observed_at_utc
+        json values_units_qc
+    }
+    station {
+        uuid station_id PK
+        uuid source_id FK
+        string source_station_code
+        decimal latitude
+        decimal longitude
+    }
+    region {
+        string county_fips PK
+        string name
+        string boundary_version
+    }
+    stationRegion {
+        uuid station_id PK,FK
+        string county_fips PK,FK
+        date valid_from PK
+        string assignment_method
+    }

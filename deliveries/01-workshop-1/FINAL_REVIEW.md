@@ -1,5 +1,18 @@
 # Workshop 1 Final Review
 
+## Current correction review
+
+The revised notebook executes 31/31 code cells with zero errors. Fourteen existing
+CSV/GeoJSON hashes match the register. One subsequently authorized GHCN capture
+for 2026-10-31 through 2026-11-05 supplies eight daily temperature candidates
+with saved KOKC observations on four eligible days. The five old alert/KOKC rows
+remain intra-NWS and are excluded from that count. These are candidate records,
+not confirmed events or eight independent weather episodes. Daily-boundary and
+station equivalence remain review assumptions; no PRCP comparison is claimed.
+Report sources include literal excerpts/provenance, unit/time rules and PK/FK
+Mermaid diagrams. The thirteen-page PDF has continuous excerpt pagination and
+keeps model figures before ingestion contracts. See the latest log/register.
+
 ## Verification on 2026-11-11
 
 The current source-profile notebook was executed with the existing project virtual
@@ -18,7 +31,7 @@ reproduction remains a separate check.
 ## Remaining submission gates
 
 - Final technical review of mapping, quality examples and source contracts.
-- English PDF generation and visual inspection, including rendered diagrams.
+- Student content review of the generated and visually inspected English PDF.
 - Fresh-clone reproduction and final artifact/secret review.
 - Student review and submission commit/reference recording.
 

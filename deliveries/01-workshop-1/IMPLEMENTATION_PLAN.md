@@ -63,10 +63,10 @@ Prove that a justified US regional scope can be supported by NOAA Storm Events, 
 
 #### Profiling and data quality
 
-- [x] Prior executed notebook evidence: 29/29 code cells, execution counts 1-29, zero error outputs (see 2026-11-05 entries); [ ] rerun after current report/config/notebook edits in the locked environment; [x] Pablo's earlier workstream review is recorded; [ ] Kevin cross-review of current edits.
+- [x] Current notebook executed 31/31 code cells without errors using the existing virtual environment after the overlap changes; [x] Pablo's earlier workstream review is recorded; [ ] Kevin cross-review of current edits and fresh-clone lock reproduction.
 - [x] Report source-profile dimensions in executed notebook outputs for the four qualifying samples; note sample limitations and distinguish station-page behavior from source-wide policy.
 - [x] Record six evidence-backed quality/availability/revision examples with exact source IDs and raw paths (REPORT_DRAFT.md, Section 5, Q-01 through Q-06).
-- [x] Investigate five NWS Alert/KOKC candidate pairs with explicit temporal/textual-geographic basis and limitations; Pablo review accepts them for investigation only, not as confirmed matches.
+- [x] Eight GHCN/KOKC daily temperature candidate records are reproduced from cached evidence on four eligible days after the authorized GHCN follow-up; five intra-NWS examples remain excluded. [ ] Both students to review daily-boundary/station-equivalence assumptions and the interpretation of multiple elements per day. See the latest change-log entry.
 
 #### Contracts and project definition
 
@@ -117,13 +117,13 @@ Use the Workshop 1 task IDs listed under Steps 1-4 of `WORK_BOARD.md` in branche
 - [ ] Each profile meets the record threshold and required dimensions.
 - [ ] Five real quality issues and five defensible candidate pairs are documented, or a requirement conflict is explicitly escalated rather than fabricated.
 - [ ] Mapping, ER model, and ingestion contracts cover all four sources.
-- [x] English report source, notebook, samples, configuration draft, mapping and repository structure exist; [ ] final PDF export and visual review (explicitly deferred).
+- [x] English report source, notebook, samples, configuration draft, mapping and repository structure exist; [x] thirteen-page PDF generated and visually inspected; [ ] student review before submission.
 - [x] Rubric items point to report sections/artifacts in Section 11; exact evidence IDs are listed in the Evidence Register and quality-example table.
 
 ## 9. Merge and submission gate
 
 - [x] Earlier joint review of source scope, candidate pairs, notebook and preliminary CHI is recorded in `PABLO_REVIEW.md`; [ ] Kevin to cross-review current report/config updates and both to repeat final artifact review.
-- [x] Previous notebook run used documented inputs (29/29 code cells, zero errors, eleven checksum matches); [ ] rerun after current edits. The current environment lacks `uv`, so the documented runner could not execute here.
+- [x] Current notebook rerun completed: 31/31 code cells, zero errors, saved-input checksum assertions and reproduced cross-source table. [ ] Fresh-clone reproduction against the lock; the existing environment run does not establish this.
 - [x] Registered raw evidence is checksum-protected, attributable, and sanitized of captured cookies; [ ] repeat the secret/artifact audit immediately before submission.
 - [x] Large-source acquisition and partition instructions are documented in source notes/scripts; no bulk archive is tracked.
 - [x] Report and technical documentation are in English.

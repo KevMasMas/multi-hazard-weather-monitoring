@@ -1,0 +1,14 @@
+{
+  "request_url": "https://www.ncei.noaa.gov/access/services/data/v1?dataset=daily-summaries&stations=USW00013967&startDate=2026-10-31&endDate=2026-11-05&format=csv&units=metric&includeAttributes=true&includeStationName=true",
+  "request_method": "GET",
+  "requested_at_utc": "2026-11-16T21:42:04.732183+00:00",
+  "captured_at_utc": "2026-11-16T21:42:06.174020+00:00",
+  "http_status": 200,
+  "response_headers": {
+    "Date": "Mon, 16 Nov 2026 21:42:06 GMT",
+    "Content-Type": "text/csv;charset=utf-8"
+  },
+  "sha256": "7456D668D4253550881435F5E9BFC95371965B7EBE72F1F8E060872F4A2D8D55",
+  "bytes": 6791,
+  "retries": 0
+}

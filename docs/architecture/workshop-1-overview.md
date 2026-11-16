@@ -1,5 +1,9 @@
 # Workshop 1 Architecture Overview
 
+The revised report renders `workshop-1-pipeline.mmd`: it explicitly includes
+orchestrator, CLI, raw landing, quarantine, canonical database, run/state audit,
+analytical views and dashboard. That Mermaid file is the current editable figure.
+
 - **Status:** accepted high-level Workshop 1 proposal
 - **Implementation:** Workshops 2-4
 

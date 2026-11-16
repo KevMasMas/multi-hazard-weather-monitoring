@@ -1,0 +1,39 @@
+\subsection{Cross-source candidate pairs}
+
+One authorized NCEI capture supplies daily summaries for 2026-10-31 through 2026-11-05. Saved KOKC pages are deduplicated by observation ID; conflicting versions would be excluded. We assume fixed CST days (UTC minus six hours), from 06:00Z to the next 06:00Z, as specified for this review. Provider daily boundaries and station equivalence have not been independently established.
+
+The proposed sampling-coverage rule requires at least 48 valid temperatures and no gap, including day edges, greater than 70 minutes. Only unitCode wmoUnit:degC and QC V are accepted. This is a screening criterion, not proof that every continuous daily extreme was observed. One non-V temperature was excluded; no null temperatures or conflicting IDs were found in the combined saved pages.
+
+October 31, November 1, 3 and 4 qualify; November 2 is excluded for a 75-minute gap and November 5 is partial. Precipitation is not aggregated because overlapping windows and missing observations prevent a reliable total. Official 24-hour max/min fields from NWS are not used.
+
+\begin{longtable}{llL{2cm}rrrr}
+
+\toprule Date & Element & UTC window & N & GHCN ($^{\circ}$C) & KOKC ($^{\circ}$C) & $\Delta$ ($^{\circ}$C) \\
+
+\midrule\endhead
+
+2026-10-31 & TMAX & 06:00--06:00 & 116 & 17.8 & 17.2 & -0.6 \\
+
+2026-10-31 & TMIN & 06:00--06:00 & 116 & 15.6 & 15.6 & +0.0 \\
+
+2026-11-01 & TMAX & 06:00--06:00 & 130 & 22.8 & 22.0 & -0.8 \\
+
+2026-11-01 & TMIN & 06:00--06:00 & 130 & 16.1 & 16.0 & -0.1 \\
+
+2026-11-03 & TMAX & 06:00--06:00 & 131 & 17.8 & 17.2 & -0.6 \\
+
+2026-11-03 & TMIN & 06:00--06:00 & 131 & 9.4 & 10.0 & +0.6 \\
+
+2026-11-04 & TMAX & 06:00--06:00 & 133 & 21.1 & 21.0 & -0.1 \\
+
+2026-11-04 & TMIN & 06:00--06:00 & 133 & 6.7 & 7.0 & +0.3 \\
+
+\bottomrule\end{longtable}
+
+Each row compares one date/element, not a distinct weather episode. GHCN identifiers use \path{USW00013967/date/element}; NWS identifiers use \path{KOKC/date/element} plus first, last and extreme observation IDs in the submitted CSV. GHCN flags and NWS QC are preserved there. The GHCN coordinates are taken from the saved 2025 station metadata because this new response does not include coordinate columns; that historical position is not a newly verified station location.
+
+The station-point distance computed from those saved coordinates and the extreme observation point is about 1.29 km. Coordinate proximity does not establish equivalent sensors, exposure or reporting practice. Time differences are daily-summary versus point-sampling granularity; the CSV retains the exact extreme timestamps and seconds from the assumed day boundary.
+
+A sampled KOKC maximum may be lower than a daily GHCN maximum, and a sampled minimum may be higher. Boundary conventions, sampling and station differences can also reverse those differences. These eight rows are candidates, not ground truth. No polygon containment or station equivalence is claimed. Appendix A retains the earlier intra-NWS examples separately.
+
+Full comparison and coverage: \path{workshop_1/samples/candidate_pairs/cross_source_candidate_pairs.csv} and \path{daily_coverage.csv}.

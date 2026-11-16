@@ -10,7 +10,7 @@ This file is the durable context for Team 9's semester project. Update it when t
 - Semester: 2026-II
 - Institution: Universidad Distrital Francisco Jose de Caldas
 - Team: 9 (the only two-person team)
-- Students: Pablo Garzon (20232020341) and Kevin Rincon (20232020356)
+- Students: Pablo Garzon Gomez (20232020341) and Kevin David Rincon Valencia (20232020356)
 - Assigned system: Multi-Hazard Weather Impact Monitoring
 - Required analytical output: Compound Hazard Index per region
 - Required geographic family: a region of the United States because the assigned NOAA/NWS sources are US services

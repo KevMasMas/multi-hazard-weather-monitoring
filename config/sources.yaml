@@ -13,6 +13,7 @@ sources:
   noaa_storm_events:
     role: historical
     owner: NOAA National Centers for Environmental Information
+    attribution: NOAA_NCEI_Storm_Events_archive_version_and_access_date
     url: https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/
     format: gzip_csv
     schedule: manual_year_partition
@@ -26,6 +27,7 @@ sources:
   ghcn_daily:
     role: historical
     owner: NOAA National Centers for Environmental Information
+    attribution: NCEI_GHCN_Daily_V3_Menne_et_al_2012_subset_and_access_date
     url: https://www.ncei.noaa.gov/access/services/data/v1
     format: csv
     schedule: manual_station_year_partition
@@ -44,11 +46,15 @@ sources:
   nws_alerts:
     role: incremental
     owner: US National Weather Service
+    attribution: NWS_source_and_capture_time_no_endorsement
     url: https://api.weather.gov/alerts/active?area=OK
     format: geojson
     schedule: proposed_hourly_full_snapshot
     watermark_field: null
     duplicate_key: properties.id
+    operational_watermark_field: ingestion_state.last_successful_query_at_utc
+    operational_watermark_rule: advance_only_after_successful_response_and_database_commit
+    record_time_fields: [properties.sent, properties.effective]
     change_detection: stable_identifier_and_content_hash
     poll_interval: PT1H
     overlap: reprocess_complete_active_collection_each_poll
@@ -58,6 +64,7 @@ sources:
   nws_station_observations:
     role: incremental
     owner: US National Weather Service
+    attribution: NWS_and_original_provider_if_identified_no_endorsement
     url_template: https://api.weather.gov/stations/{station_id}/observations
     format: geojson
     schedule: proposed_hourly_per_station

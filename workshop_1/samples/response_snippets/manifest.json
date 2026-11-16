@@ -1,0 +1,38 @@
+[
+  {
+    "source": "NOAA Storm Events (derived subset)",
+    "source_path": "workshop_1/samples/noaa_storm_events/details_sample.csv",
+    "source_sha256": "987F5C641B6B85BF89477A823B52757D50D2C5376895FD53056A9AFE9F79403A",
+    "request": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/StormEvents_details-ftp_v1.0_d2024_c20260728.csv.gz",
+    "captured_at": "2026-11-04T13:56:42-05:00",
+    "excerpt_path": "workshop_1/samples/response_snippets/storm_events.txt",
+    "excerpt_sha256": "B962E2B23718EF8AB95A880290D228148EE010E638BE5B6E438696E9A0C8A064"
+  },
+  {
+    "source": "NCEI GHCN-Daily",
+    "source_path": "workshop_1/samples/region_comparison/ghcn_okc_usw00013967_2025.csv",
+    "source_sha256": "D8EE9E0AFBFE25897C17BABE4A88DC0E12D4FECE8B74C26E8D817D5309FFB5AE",
+    "request": "https://www.ncei.noaa.gov/access/services/data/v1?dataset=daily-summaries&stations=USW00013967&startDate=2025-01-01&endDate=2025-12-31&format=csv&units=metric&includeAttributes=true&includeStationName=true",
+    "captured_at": "2026-11-05T11:38:49Z (registered local file capture time)",
+    "excerpt_path": "workshop_1/samples/response_snippets/ghcn_daily.txt",
+    "excerpt_sha256": "EEF40C41952A4EE6C79073B1B62387099AB0845B3727CD1BBBA85E12D7A8C7C5"
+  },
+  {
+    "source": "NWS Alerts",
+    "source_path": "workshop_1/samples/nws_alerts/recent_7d_page_1.geojson",
+    "source_sha256": "70AD394CF9E7399ACCB5CEA7B0A3B8E55526F01C314E68136439EA8442E966C3",
+    "request": "https://api.weather.gov/alerts?area=OK",
+    "captured_at": "2026-11-04T21:43:09Z",
+    "excerpt_path": "workshop_1/samples/response_snippets/nws_alert.txt",
+    "excerpt_sha256": "76FEBC633E4A00984A8A0C74DA28315029009C3513D42A271118D45C9BC5FB04"
+  },
+  {
+    "source": "NWS station observations",
+    "source_path": "workshop_1/samples/region_comparison/nws_kokc_observations_snapshot.geojson",
+    "source_sha256": "391C49B75E7E05C225FE0EB63BB7BB822004169FFBB0F8FF6DDA006F236B0E68",
+    "request": "https://api.weather.gov/stations/KOKC/observations?limit=200",
+    "captured_at": "2026-11-05T11:39:09.5478154Z",
+    "excerpt_path": "workshop_1/samples/response_snippets/nws_observation.txt",
+    "excerpt_sha256": "9E26C7116C87E5935974A59BF46EC2C5C4A21329E55240ABDD65620A42AF8ADF"
+  }
+]

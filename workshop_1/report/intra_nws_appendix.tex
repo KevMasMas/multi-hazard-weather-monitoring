@@ -1,0 +1,17 @@
+\section{Retained intra-NWS investigation examples}
+These five alert/station rows use different NWS products, but are not counted
+toward the independent-source requirement. Their IDs, times and values remain
+in \path{workshop_1/samples/candidate_pairs/nws_alerts_kokc_candidate_pairs.csv}.
+They use Oklahoma County text and time overlap, not verified polygon containment.
+Three rows are messages from one broader warning episode.
+
+\begin{tabularx}{\textwidth}{lYrrY}
+\toprule Pair & Alert/message & Delay (s) & Wind (km/h) & Observation \\
+\midrule
+01 & Dense Fog Advisory / Alert & 60 & 0 & Fog; visibility 804.67 m \\
+02 & Special Weather Statement / Alert & 240 & 25.92 & Light Drizzle; gust 44.64 km/h \\
+03 & Severe Thunderstorm Warning / Alert & 660 & 29.52 & Thunderstorms/Rain/Fog; visibility 2,010 m \\
+04 & Severe Thunderstorm Warning / Update & 660 & 16.668 & Rain/Fog; visibility 804.67 m \\
+05 & Severe Thunderstorm Warning / Update & 480 & 18.36 & Thunderstorms/Rain/Fog; visibility 1,210 m \\
+\bottomrule
+\end{tabularx}

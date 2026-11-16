@@ -1,0 +1,16 @@
+{
+"@id": "https://api.weather.gov/stations/KOKC/observations/2026-11-05T10:55:00+00:00",
+"timestamp": "2026-11-05T10:55:00+00:00",
+"stationId": "KOKC",
+"temperature": {
+                    "unitCode": "wmoUnit:degC",
+                    "value": 11,
+                    "qualityControl": "V"
+                },
+"windSpeed": {
+                    "unitCode": "wmoUnit:km_h-1",
+                    "value": 11.124,
+                    "qualityControl": "V"
+                }
+...
+}

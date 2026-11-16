@@ -1,0 +1,9 @@
+{
+"id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.86cd7f91116ab184a79b0a23e06189d945720161.001.1",
+"sent": "2026-11-03T03:56:00-06:00",
+"effective": "2026-11-03T03:56:00-06:00",
+"event": "Wind Advisory",
+"severity": "Moderate",
+"areaDesc": "Cimarron; Texas; Dallam; Sherman; Hartley; Moore; Oldham"
+...
+}

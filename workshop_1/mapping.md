@@ -76,6 +76,40 @@ Workshop 2 database schema exists.
 - `event_group` and `event_group_member` store versioned, reviewable cross-source match decisions.
 - CHI component tables or analytical views belong to Workshop 4 and are not implemented here.
 
+## Conversion rules for implementation
+
+These rules are proposals grounded in the NOAA bulk specification and NWS
+unitCode fields. Preserve the raw value, unit and conversion version alongside
+each derived value. Unknown codes must be flagged for review, never guessed.
+
+| Input | Canonical rule | Missing/invalid handling |
+| --- | --- | --- |
+| Storm Events DAMAGE_PROPERTY / DAMAGE_CROPS | Trim whitespace; accept nonnegative decimal plus K, M or B suffix (case-insensitive): multiply by 10^3, 10^6 or 10^9 USD. `10.00K` means 10,000 USD as a rule example, not a claimed sample record. Bare numbers are USD only after field-level verification. | Blank stays null; unknown suffix, negative or malformed value is flagged. Zero is retained as reported, not proof of a measured zero loss. No inflation adjustment. |
+| NOAA CZ_TIMEZONE | Read explicit fixed offset from the source code: CST-6 means UTC = local + 6 hours; EST-5 adds 5; MST-7 adds 7. Preserve date rollover. NOAA describes local standard time. | Do not apply America/Chicago daylight-saving rules automatically. Unknown/missing code remains unresolved with a reason. Keep the original local string/code. |
+| NWS wmoUnit:degC / degF / K | Common temperature is degC: identity; (F - 32) * 5/9; K - 273.15. | Null stays null; retain QC. |
+| NWS wmoUnit:km_h-1 / m_s-1 / kn | Common speed is m/s: divide by 3.6; identity; multiply by 0.5144444444. | Unknown dimension/unit is flagged. |
+| NWS wmoUnit:m / km | Visibility in metres: identity / multiply by 1000. | Do not mix visibility with precipitation despite shared length dimension. |
+| NWS precipitation wmoUnit:mm / m / in | Accumulation in mm: identity / multiply by 1000 / multiply by 25.4. | Retain accumulation duration; do not sum overlapping windows or infer zero from null. |
+| NWS wmoUnit:Pa / hPa | Pressure in hPa: divide by 100 / identity. | Retain pressure type (station versus sea-level). |
+| NWS wmoUnit:percent / degree_(angle) | Preserve percent humidity and degrees for direction. | Never combine these as an ordinary severity scale. |
+| GHCN metric response | PRCP in mm and TMAX/TMIN in degC; preserve attributes and daily boundary. | Do not reapply native .dly scaling to the service's metric response. |
+
+NWS unit rows above define supported conversion branches; only codes actually
+present in a response may select a branch. The exact code dictionary must be
+checked against the official NWS specification during implementation.
+
+References: [NOAA bulk specification](https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/Storm-Data-Bulk-csv-Format.pdf),
+[NWS API](https://www.weather.gov/documentation/services-web-api),
+[NCEI Access service](https://www.ncei.noaa.gov/support/access-data-service-api-user-documentation).
+
+### NWS Alerts operational watermark
+
+`ingestion_state.last_successful_query_at_utc` is the UTC timestamp of the last
+successful query, committed only with its ingested snapshot. It is an operational
+checkpoint, not a source-side `updated_since` cursor. Each record preserves
+`sent` and `effective`; the active endpoint provides no validated record watermark.
+On failure keep the prior checkpoint and retry a full active snapshot.
+
 ## Open field-level decisions
 
 - Final NOAA timezone lookup and multi-year uniqueness constraints.

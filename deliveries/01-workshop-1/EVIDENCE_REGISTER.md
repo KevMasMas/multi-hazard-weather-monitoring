@@ -1,8 +1,70 @@
 # Evidence Register - Workshop 1
 
-Status: empirical samples are captured for all four sources. Kevin's NOAA and NWS Alerts evidence includes two active-alert polls and a 238-feature recent-window sample. Pablo's GHCN-Daily and two-poll NWS station evidence includes Denver revision behavior. Oklahoma City GHCN, two KOKC polls, and a 500-feature KOKC pagination page support the accepted Oklahoma scope and five unconfirmed alert/observation candidate pairs. The executed notebook has 29 code cells; see current plan and change-log entry for the exact run. Pablo's workstream review is recorded in `PABLO_REVIEW.md`; production model/architecture and final submission review remain pending.
+Status: empirical samples are captured for all four sources. The authorized GHCN overlap follow-up supports eight daily temperature candidate records with saved KOKC observations across four eligible days; five older alert/observation examples remain intra-NWS. The current notebook executed 31 code cells without errors. The entry below records current hashes and qualifications; older dated evidence remains as history. Pablo's earlier workstream review is in `PABLO_REVIEW.md`; student review of the current artifacts, fresh-clone reproduction and submission commit remain pending.
+
+## Current follow-up: authorized GHCN overlap capture (2026-11-16)
+
+This entry supersedes the zero-row overlap status below, which is retained as
+review history. Kevin explicitly authorized one GHCN download. A single GET
+returned HTTP 200 at `2026-11-16T21:42:06.174020+00:00` (16:42:06 America/Bogota),
+6,791 bytes, six rows and 301 columns; no retry or further weather request was
+made. The exact URL, request time, response Date/Content-Type and body checksum
+are in the adjacent metadata sidecar. This small overlap capture supplements,
+rather than replaces, the existing full-year GHCN profiling sample.
+
+Request: `https://www.ncei.noaa.gov/access/services/data/v1?dataset=daily-summaries&stations=USW00013967&startDate=2026-10-31&endDate=2026-11-05&format=csv&units=metric&includeAttributes=true&includeStationName=true`
+
+| Artifact under `workshop_1/samples/` | Evidence / SHA-256 |
+| --- | --- |
+| `region_comparison/ghcn_okc_usw00013967_2026_overlap.csv` | W1-GHCN-OVERLAP-001; unchanged response; `7456D668D4253550881435F5E9BFC95371965B7EBE72F1F8E060872F4A2D8D55` |
+| `region_comparison/ghcn_okc_usw00013967_2026_overlap.metadata.json` | Capture provenance; `95FCAB6ABE20B1CEBDF66537BF551DA6EFFBDD84B864A557B34547927A63852F` |
+| `candidate_pairs/cross_source_candidate_pairs.csv` | Eight daily temperature candidate records, four days; `743F284C5D6971B85794BF8B3A309383F7439999A8096CD1CF14F176895DBEB0` |
+| `candidate_pairs/daily_coverage.csv` | Six-day sampling screen; `18AD89BE7FCB545F331203E87F3937AA5755981FDB30357792E29AE4575E43AF` |
+| `candidate_pairs/daily_comparison_metadata.json` | Input hashes, QC exclusions and assumptions; `C7D4EA295BAE98BBBBED92898E9CAC662FAF9ABB711981A7AA133A94693FCA5A` |
+| `candidate_pairs/cross_source_overlap_audit.json` | Updated saved-source coverage; `9EEFEEE748FDF0D4D42C4B1D6ACB36A03B7DAAF4FC2EFE7DB4DE1A9346C113D4` |
+
+Offline reproduction: run `scripts/workshop_1/compare_daily_sources.py` without
+`--fetch`, then `scripts/workshop_1/review_saved_evidence.py`. The notebook also
+rebuilds and compares the pair table with the saved CSV. All 31 code cells executed
+without errors. Prior samples and four response excerpts remain unchanged.
+
+TMAX/TMIN candidates use October 31 and November 1, 3 and 4. November 2 fails the
+proposed 70-minute maximum-gap screen; November 5 is partial. One observation
+with temperature QC other than `V` is excluded. The 48-reading/70-minute rule is
+a review sampling criterion, not proof of a complete daily record. Fixed CST
+daily boundaries and station equivalence remain assumptions. The new response
+omits coordinates; distances use the saved 2025 station metadata, explicitly
+qualified in the report. PRCP is not aggregated. Eight element/day comparisons
+are not eight independent weather episodes or confirmed matches.
 
 ## Evidence rules
+
+## Earlier review correction: before the authorized follow-up capture
+
+Current notebook: **31 executed code cells, zero errors**. All fourteen existing
+CSV/GeoJSON sample hashes (including the old derived pair CSV) were found to
+match the registered values during this review. Raw sample bodies are unchanged.
+The old five NWS alert/KOKC pairs are now classified as **intra-NWS** and excluded
+from the independent-source requirement. The full saved-file date audit finds
+Storm Events in 2024, GHCN in 2025 and NWS in 2026, so the independent-source
+requirement remains pending. See `ADDITIONAL_DATA_NEEDED.md` for unexecuted queries.
+
+| New derived artifact | Rows / meaning | SHA-256 |
+| --- | --- | --- |
+| `workshop_1/samples/candidate_pairs/cross_source_candidate_pairs.csv` | Zero rows; required comparison schema; no invented matches | `883FC1E955AFC888296210C19AFEA87D64969AF8E60CB8ED035175F9FC06EF21` |
+| `workshop_1/samples/candidate_pairs/cross_source_overlap_audit.json` | Coverage of all nonempty saved CSV/GeoJSON sources | `50172F9EE174A3DAB8AB56056FC42EE636C2418899667F469B79CBD3D7B95F63` |
+| `workshop_1/samples/response_snippets/storm_events.txt` | Literal header/row from derived NOAA sample | `B962E2B23718EF8AB95A880290D228148EE010E638BE5B6E438696E9A0C8A064` |
+| `workshop_1/samples/response_snippets/ghcn_daily.txt` | Literal response CSV header/row | `EEF40C41952A4EE6C79073B1B62387099AB0845B3727CD1BBBA85E12D7A8C7C5` |
+| `workshop_1/samples/response_snippets/nws_alert.txt` | First alert selected key/value substrings, unchanged | `76FEBC633E4A00984A8A0C74DA28315029009C3513D42A271118D45C9BC5FB04` |
+| `workshop_1/samples/response_snippets/nws_observation.txt` | First observation selected key/value substrings, unchanged | `9E26C7116C87E5935974A59BF46EC2C5C4A21329E55240ABDD65620A42AF8ADF` |
+| `workshop_1/samples/response_snippets/manifest.json` | Original paths/hashes, requests, capture timestamps and excerpt hashes | `73F9054343F9B8856396F7650814704B09547ADD1E4F8E1FC1195F5CD774D30D` |
+
+Derived artifacts are reproducible with `scripts/workshop_1/review_saved_evidence.py`.
+JSON excerpts mark omitted fields with a standalone `...`; their selected lexical
+values are unchanged, but the abbreviated excerpt is not a valid full JSON document.
+No new API response is represented by these files.
+
+## Preservation rules
 
 - Preserve source responses exactly as received.
 - Record retrieval time in America/Bogota and source-native/UTC timestamps where applicable.

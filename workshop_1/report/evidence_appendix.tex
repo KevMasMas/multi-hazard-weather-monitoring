@@ -1,0 +1,27 @@
+\section{Literal saved-response excerpts}
+CSV excerpts retain the header and first complete logical row. JSON excerpts retain selected key/value substrings verbatim; the standalone ``... line indicates omitted fields and is not JSON syntax. Values are not edited. The NOAA file is a derived subset, not the untouched bulk response. Hashes below identify full input files, not the excerpts.
+\subsection{NOAA Storm Events (derived subset)}
+\textbf{Input:} \path{workshop_1/samples/noaa_storm_events/details_sample.csv}\par
+\textbf{Request:} \url{https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/StormEvents_details-ftp_v1.0_d2024_c20260728.csv.gz}\par
+\textbf{Capture:} 2026-11-04T13:56:42-05:00\par
+\textbf{SHA-256:} \nolinkurl{987F5C641B6B85BF89477A823B52757D50D2C5376895FD53056A9AFE9F79403A}\par
+\lstinputlisting{assets/storm_events.txt}
+\subsection{NCEI GHCN-Daily}
+\textbf{Input:} \path{workshop_1/samples/region_comparison/ghcn_okc_usw00013967_2025.csv}\par
+\textbf{Request:} \url{https://www.ncei.noaa.gov/access/services/data/v1?dataset=daily-summaries&stations=USW00013967&startDate=2025-01-01&endDate=2025-12-31&format=csv&units=metric&includeAttributes=true&includeStationName=true}\par
+\textbf{Capture:} 2026-11-05T11:38:49Z (registered local file capture time)\par
+\textbf{SHA-256:} \nolinkurl{D8EE9E0AFBFE25897C17BABE4A88DC0E12D4FECE8B74C26E8D817D5309FFB5AE}\par
+\lstinputlisting{assets/ghcn_daily.txt}
+Request URL reconstructed from saved parameters; the recorded capture time is a local file timestamp, not a persisted HTTP Date header.
+\subsection{NWS Alerts}
+\textbf{Input:} \path{workshop_1/samples/nws_alerts/recent_7d_page_1.geojson}\par
+\textbf{Request:} \url{https://api.weather.gov/alerts?area=OK}\par
+\textbf{Capture:} 2026-11-04T21:43:09Z\par
+\textbf{SHA-256:} \nolinkurl{70AD394CF9E7399ACCB5CEA7B0A3B8E55526F01C314E68136439EA8442E966C3}\par
+\lstinputlisting{assets/nws_alert.txt}
+\subsection{NWS station observations}
+\textbf{Input:} \path{workshop_1/samples/region_comparison/nws_kokc_observations_snapshot.geojson}\par
+\textbf{Request:} \url{https://api.weather.gov/stations/KOKC/observations?limit=200}\par
+\textbf{Capture:} 2026-11-05T11:39:09.5478154Z\par
+\textbf{SHA-256:} \nolinkurl{391C49B75E7E05C225FE0EB63BB7BB822004169FFBB0F8FF6DDA006F236B0E68}\par
+\lstinputlisting{assets/nws_observation.txt}

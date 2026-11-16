@@ -1,0 +1,22 @@
+%%{init: {'theme':'neutral','flowchart':{'nodeSpacing':25,'rankSpacing':25,'wrappingWidth':180}}}%%
+flowchart TB
+    sources["NOAA / GHCN / NWS sources"]
+    scheduler["Orchestrator: schedule and retries"]
+    cli["ingest.py CLI: historical / incremental / status"]
+    raw[("Raw landing + SHA-256")]
+    validate["Normalize, validate, deduplicate"]
+    quarantine[("rejected_record + reason")]
+    db[("Canonical database + analytical views")]
+    state[("Run audit + ingestion state")]
+    dashboard["Dash monitoring + data health"]
+    scheduler -->|invoke| cli
+    sources -->|source responses| raw
+    cli -->|adapters persist first| raw
+    raw -->|replay| validate
+    validate -->|invalid| quarantine
+    validate -->|valid| db
+    db -->|commit success only| state
+    cli -.->|read checkpoint| state
+    db -->|matching, baseline, CHI| dashboard
+    state -->|health| dashboard
+    quarantine -->|reject counts| dashboard

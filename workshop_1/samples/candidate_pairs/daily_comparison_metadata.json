@@ -1,0 +1,18 @@
+{
+  "ghcn_sha256": "7456D668D4253550881435F5E9BFC95371965B7EBE72F1F8E060872F4A2D8D55",
+  "input_nws_hashes": {
+    "workshop_1/samples/candidate_pairs/nws_kokc_observations_page_2.geojson": "A13720F4E561AC3B20E56DD15F9D43224A1EF1ABE84D37E58DF5BF5FE38BA5CD",
+    "workshop_1/samples/region_comparison/nws_kokc_observations_snapshot.geojson": "391C49B75E7E05C225FE0EB63BB7BB822004169FFBB0F8FF6DDA006F236B0E68",
+    "workshop_1/samples/region_comparison/nws_kokc_observations_poll_2.geojson": "7857DD85FB4F35E33FA4A0EEFB0F07E6634E457D96F6A0D4C30560B5CDD07D79"
+  },
+  "coverage_rule": "at least 48 QC V temperature readings; maximum gap including day edges 70 minutes",
+  "boundary": "fixed CST UTC-6, 06:00Z to next 06:00Z; review assumption",
+  "exclusions": {
+    "null_temperature": 0,
+    "invalid_qc": 1,
+    "unsupported_unit": 0,
+    "conflicting_ids": 0
+  },
+  "precipitation": "not aggregated: null/overlapping accumulation windows and gaps",
+  "pairs": 8
+}

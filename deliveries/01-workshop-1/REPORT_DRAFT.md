@@ -1,5 +1,14 @@
 # Workshop 1 - Source Validation and Project Definition
 
+> **Superseded working draft.** The current report is maintained in
+> `workshop_1/report/content.tex` and its PDF. The later review reclassified the
+> old five alert/KOKC rows as intra-NWS. A subsequent authorized GHCN capture now
+> supports eight daily temperature candidate records across four days. Claims
+> below that the old five pairs satisfy independent-source matching are obsolete.
+> The current report adds
+> literal excerpts, conversion rules, operational watermark and Mermaid diagrams.
+> This file is working history, not the current submission source.
+
 **Team 9 - Multi-Hazard Weather Impact Monitoring**  
 **Course:** Data Analysis Programming, 2026-II  
 **Status:** English report draft substantially complete for rubric review; final PDF export and visual review intentionally deferred

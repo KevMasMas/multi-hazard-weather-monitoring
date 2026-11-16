@@ -1,0 +1,67 @@
+erDiagram
+    direction TB
+    source ||..o{ ingestionRun : audits
+    source ||..o| ingestionState : tracks
+    source ||..o{ rawCapture : supplies
+    ingestionRun ||..o{ rawCapture : captures
+    rawCapture ||..o{ event : contains
+    ingestionRun ||..o{ rejectedRecord : quarantines
+    rawCapture ||..o{ rejectedRecord : preserves
+    event ||..o{ eventGroupMember : joins
+    eventGroup ||..o{ eventGroupMember : contains
+    source {
+        uuid source_id PK
+        string name
+        string url
+        string format
+        string license_note
+    }
+    ingestionRun {
+        uuid run_id PK
+        uuid source_id FK
+        datetime started_at_utc
+        datetime finished_at_utc
+        string status
+        int rows_in
+        int rows_new
+        int rows_rejected
+    }
+    ingestionState {
+        uuid source_id PK,FK
+        datetime last_successful_query_at_utc
+        string cursor
+        datetime observation_watermark
+    }
+    rawCapture {
+        uuid capture_id PK
+        uuid source_id FK
+        uuid run_id FK
+        datetime retrieved_at_utc
+        string sha256
+        string raw_reference
+    }
+    event {
+        uuid event_id PK
+        uuid source_id FK
+        uuid capture_id FK
+        string source_record_id
+        datetime timestamp_utc
+        string content_hash
+    }
+    rejectedRecord {
+        uuid rejected_id PK
+        uuid run_id FK
+        uuid capture_id FK
+        string reason
+        string payload_reference
+    }
+    eventGroup {
+        uuid group_id PK
+        string matching_rule_version
+        string review_status
+    }
+    eventGroupMember {
+        uuid group_id PK,FK
+        uuid event_id PK,FK
+        string candidate_basis
+    }
