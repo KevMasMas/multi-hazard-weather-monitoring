@@ -56,6 +56,12 @@ python ingest.py --mode status
 
 The final infrastructure runs locally with Docker Compose and includes a relational database, ingestion application, scheduler/orchestrator, and Plotly Dash dashboard. PostgreSQL with PostGIS is recommended. SQLite/GeoPackage requires justification. Apache Airflow is an example orchestrator, not the only allowed scheduler.
 
+Team design selection (2026-11-16, ADR 0005): Apache Airflow with
+PostgreSQL/PostGIS; Bronze preserves native raw captures, Silver contains
+validated canonical records and traceable Parquet exports, and Gold will hold
+later analytical outputs. This is a selected architecture, not a claim that
+these services or outputs were implemented in Workshop 1.
+
 ## Canonical conceptual model
 
 The common conceptual model includes:

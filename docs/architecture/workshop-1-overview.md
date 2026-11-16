@@ -1,8 +1,9 @@
 # Workshop 1 Architecture Overview
 
 The revised report renders `workshop-1-pipeline.mmd`: it explicitly includes
-orchestrator, CLI, raw landing, quarantine, canonical database, run/state audit,
-analytical views and dashboard. That Mermaid file is the current editable figure.
+Apache Airflow, CLI, Bronze raw landing, validation/quarantine, Silver canonical
+storage and Parquet exports, run/state audit, planned Gold analytics and dashboard.
+That Mermaid file is the single editable architecture figure.
 
 - **Status:** accepted high-level Workshop 1 proposal
 - **Implementation:** Workshops 2-4
@@ -11,42 +12,32 @@ The professor's reference architecture is adapted to four weather sources while
 keeping historical and incremental extraction separate. Boxes describe planned
 responsibilities; they do not claim implemented services.
 
-```mermaid
-flowchart LR
-    subgraph Historical[Historical sources]
-        NOAA[NOAA Storm Events\nyearly CSV archives]
-        GHCN[GHCN-Daily / NCEI\nstation-date CSV]
-    end
+## Selected layers
 
-    subgraph Incremental[Periodically updated sources]
-        Alerts[NWS Alerts\nGeoJSON polling]
-        Stations[NWS Station Observations\nGeoJSON polling]
-    end
+| Layer/component | Planned responsibility |
+| --- | --- |
+| Bronze | Preserve native NOAA/GHCN CSV or gzip and NWS JSON/GeoJSON, metadata and SHA-256; `data/raw/` remains the raw landing area. |
+| Silver | Normalize and validate source records, retain units/QC, load PostgreSQL/PostGIS canonical/domain tables and publish traceable Parquet exports after successful commit. |
+| Quarantine | Retain rejected payload references and reason codes outside accepted Silver records. |
+| Gold | Later temporal/geographic aggregates, historical/current comparison and CHI outputs; provide database analytical views for the dashboard. |
+| Apache Airflow and CLI | Orchestrate shared ingestion functions with auditable intervals, retries and checkpoints; pass paths/manifests rather than bulk data. |
 
-    NOAA --> Raw[Immutable raw landing\nbody + metadata + SHA-256]
-    GHCN --> Raw
-    Alerts --> Raw
-    Stations --> Raw
+The [course guide](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/guides/Airflow-PostgreSQL-ETL.pdf)
+demonstrates PostgreSQL Silver and Parquet Gold. The standalone Workshop 2 PDF
+requests Parquet Silver. The team's proposed Silver exports support that file
+artifact alongside the canonical database. A native CSV response is not changed
+into JSON and described as unmodified evidence. Parquet is a storage format;
+its role as Silver or Gold depends on the content, not the extension.
 
-    Raw --> Adapters[Source adapters\nparse and preserve source fields]
-    Adapters --> Validate[Normalize, validate, deduplicate]
-    Validate -->|valid| DB[(PostgreSQL/PostGIS\ncanonical + domain tables)]
-    Validate -->|invalid| Rejects[(Rejected records\nreason + raw reference)]
-
-    DB --> Match[Temporal/geographic\nevent matching]
-    DB --> Analytics[Historical/current views\nand CHI components]
-    Match --> Analytics
-    Analytics --> Dash[Plotly Dash\nmap, trends, CHI, data health]
-
-    Scheduler[Airflow or justified scheduler] -. triggers .-> Adapters
-    State[(Ingestion state\nwatermarks + last success)] <--> Scheduler
-    State <--> DB
-```
+Architecture selection is recorded in ADR 0005. Docker services, DAG details and
+actual layer outputs will be implemented and verified in Workshop 2; Gold
+analytics and dashboard remain later work. The older public-opinion/NLP wording
+is still not a weather-domain requirement.
 
 ## Workshop boundaries
 
 - **Workshop 1:** validate sources, preserve samples, define contracts, mapping and this architecture.
-- **Workshop 2:** implement Docker, raw landing, database, historical adapters, validation and quarantine.
+- **Workshop 2:** implement Docker/Airflow, Bronze landing, historical adapters, Silver database/Parquet, validation and quarantine.
 - **Workshop 3:** implement incremental polling, watermarks, retries, scheduling and event matching.
 - **Workshop 4:** implement analytical views, historical/current comparison, CHI and dashboard.
 

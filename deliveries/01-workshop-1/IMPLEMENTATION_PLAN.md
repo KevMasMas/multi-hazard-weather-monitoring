@@ -77,6 +77,7 @@ Prove that a justified US regional scope can be supported by NOAA Storm Events, 
 - [x] Draft and jointly review index inputs/rule/scale/validation approach without claiming empirical validation (ADR 0002 and `PABLO_REVIEW.md`).
 - [x] Draft and jointly review six risks and mitigations (W1-D01; see report draft and `PABLO_REVIEW.md`).
 - [x] Produce the conceptual ER diagram, labeled architecture overview, and independent field-level mapping table; [ ] complete the final English PDF report and submission review.
+- [x] Revise the unsubmitted architecture to select Apache Airflow and explicitly map Bronze native captures, Silver canonical storage/Parquet and planned Gold outputs (ADR 0005; 2026-11-16 architecture correction log). This does not implement Workshop 2.
 
 ### P1 - quality improvements after P0
 

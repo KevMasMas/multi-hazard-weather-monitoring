@@ -13,6 +13,11 @@ Report sources include literal excerpts/provenance, unit/time rules and PK/FK
 Mermaid diagrams. The thirteen-page PDF has continuous excerpt pagination and
 keeps model figures before ingestion contracts. See the latest log/register.
 
+The unsubmitted report's architecture now selects Apache Airflow and explicitly
+labels Bronze native raw evidence, Silver canonical PostgreSQL/PostGIS with
+traceable Parquet exports, and planned Gold analytics (ADR 0005). This is a design
+revision only; no source evidence or notebook output changed.
+
 ## Verification on 2026-11-11
 
 The current source-profile notebook was executed with the existing project virtual

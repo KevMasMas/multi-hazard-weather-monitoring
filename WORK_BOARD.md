@@ -11,6 +11,7 @@ This is the single operational entry point for Team 9. Read this file to know th
 | Workshop 1 implementation | All four source samples are present; the notebook executed 31/31 code cells without errors; eight daily GHCN/KOKC temperature candidate records span four days; a thirteen-page English PDF and portable Overleaf package are prepared; student review and submission commit remain pending |
 | Weather-source queries | NOAA 2024 archive retrieved; two empty NWS active polls plus a complete observed 238-alert recent pagination chain captured |
 | Selected US region | Accepted: Oklahoma study area with counties as analytical regions (ADR 0001) |
+| Architecture selection | Apache Airflow; Bronze native captures, Silver PostgreSQL/PostGIS with Parquet exports, planned Gold analytics (ADR 0005); design only |
 | Temporal scope | Accepted: 2010-2025 complete-year baseline; rolling 24-hour current window; separate seven-day context (ADR 0003) |
 | Compound Hazard Index formula | Accepted as the Workshop 1 preliminary five-component proposal; empirical validation remains for Workshop 4 |
 | Pablo review | Recorded in `deliveries/01-workshop-1/PABLO_REVIEW.md`; implementation limitations remain explicit |

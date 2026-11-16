@@ -6,6 +6,23 @@ Use `deliveries/_templates/CHANGE_LOG.md` and include source-query timestamps an
 
 ## Entries
 
+### [2026-11-16 America/Bogota] - W1-D03/W1-D04 - Airflow and data-layer architecture correction
+
+- **Objective:** update the unsubmitted Workshop 1 architecture to the classroom Airflow and Bronze/Silver/Gold approach before resuming Workshop 2.
+- **Status:** design, diagram and thirteen-page report revised and verified; user content review/submission remain pending; no infrastructure implemented.
+- **Branch or commit:** prepared on `workflow-1`; focused local commit to be carried into `workflow-2`; no push requested.
+- **Requirements addressed:** selected architecture, labeled data layers, course-guide alignment, truthful implementation boundaries and reviewable PDF layout.
+- **Files changed:** report content/PDF/Overleaf package and README; pipeline Mermaid/PNG and overview; ADR 0005; project context, board, Workshop 1 plan/final review and this log.
+- **Implementation or documentation completed:** selected Apache Airflow and PostgreSQL/PostGIS; labeled Bronze native captures, Silver canonical records plus traceable Parquet exports, quarantine, committed state and future Gold/database-backed dashboard. Added guide citation and explained the guide/handout's different Parquet placements.
+- **Decisions and rationale:** preserve source-native CSV/gzip/GeoJSON bytes and existing canonical model. Publish future Silver exports after successful DB commit with provenance. Do not describe a JSON conversion as an original response, or planned layers as implemented services. Kevin requested the revision; joint implementation review remains open.
+- **Verification and exact result:** Mermaid CLI rendered the updated PNG; Tectonic compiled thirteen pages with no overfull boxes and one non-fatal underfull warning. Poppler-rendered architecture and following page inspected: figure, caption and explanation fit together, with no clipping or forced blank page. Report package includes all LaTeX sources and current assets. Git diff whitespace check passed. Samples, mapping and executed notebook were not changed; no rerun was necessary for this documentation-only correction.
+- **Evidence location:** report section 8/Figure 4, `workshop-1-pipeline.mmd`, ADR 0005 and updated submission artifacts.
+- **Errors found and correction:** previous architecture was compatible with raw/canonical processing but did not name course layers or select Airflow. Layer labels and Parquet export responsibility now make the intended classroom workflow explicit. An initial PDF text assertion did not normalize font ligatures/line wrapping; the corrected NFKC/whitespace check confirmed all five architecture terms and thirteen pages. ZIP byte comparisons also passed for every source and asset.
+- **Risks or limitations:** source-specific transformation, Docker, DAGs and Parquet production remain Workshop 2 implementation. Public-opinion/NLP wording is not accepted as a weather requirement. No student review by Pablo or Moodle submission is claimed.
+- **Input received from:** Kevin confirmed the Airflow/layer guide was taught and instructed returning to Workshop 1 before continuing on Workshop 2.
+- **Handoff to:** review revised PDF; continue implementation on `workflow-2` with this design revision inherited. Preserve the existing Workshop 2 planning edits.
+- **Recovery or rollback:** rebuild the diagram from Mermaid, compile `main.tex` and package all report `.tex` files/assets. The focused local Git commit provides a reversible revision; original weather evidence is unchanged.
+
 ### [2026-11-16 America/Bogota] - W1-S04/W1-D04 - Authorized overlap capture and report flow
 
 - **Objective:** follow the attached review, complete defensible GHCN/KOKC comparisons where possible, and avoid unnecessary report page gaps and disconnected sections.

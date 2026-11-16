@@ -1,12 +1,13 @@
 %%{init: {'theme':'neutral','flowchart':{'nodeSpacing':25,'rankSpacing':25,'wrappingWidth':180}}}%%
 flowchart TB
     sources["NOAA / GHCN / NWS sources"]
-    scheduler["Orchestrator: schedule and retries"]
+    scheduler["Apache Airflow: schedule and retries"]
     cli["ingest.py CLI: historical / incremental / status"]
-    raw[("Raw landing + SHA-256")]
+    raw[("Bronze: native raw files + SHA-256")]
     validate["Normalize, validate, deduplicate"]
     quarantine[("rejected_record + reason")]
-    db[("Canonical database + analytical views")]
+    db[("Silver: PostgreSQL/PostGIS + Parquet exports")]
+    gold["Gold: aggregates and CHI (planned)"]
     state[("Run audit + ingestion state")]
     dashboard["Dash monitoring + data health"]
     scheduler -->|invoke| cli
@@ -17,6 +18,7 @@ flowchart TB
     validate -->|valid| db
     db -->|commit success only| state
     cli -.->|read checkpoint| state
-    db -->|matching, baseline, CHI| dashboard
+    db -.->|later analytics| gold
+    gold -.->|database analytical views| dashboard
     state -->|health| dashboard
     quarantine -->|reject counts| dashboard

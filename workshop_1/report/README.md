@@ -24,6 +24,11 @@ The builds use Tectonic 0.17.0. Pages were rendered and inspected with Poppler.
 No overfull-box warnings remain; one underfull spacing warning is non-fatal.
 Student content review and submission approval remain pending.
 
+The architecture revision selects Apache Airflow and explicitly labels Bronze
+native raw captures, Silver PostgreSQL/PostGIS with Parquet exports, and planned
+Gold analytical outputs. See ADR 0005. These layers describe future services;
+Workshop 1 does not claim functional DAGs or produced Silver/Gold files.
+
 The current report includes eight GHCN/KOKC daily temperature candidate records
 across four days after one explicitly authorized GHCN download. They are not
 confirmed matches: daily boundaries, station identity and sampling remain qualified.

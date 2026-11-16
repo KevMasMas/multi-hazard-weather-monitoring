@@ -298,16 +298,28 @@ coverage and geographic uncertainty before interpreting results.
 
 \section{Architecture proposal}
 \begin{figure}[htbp]\centering
-\includegraphics[width=\textwidth,height=0.52\textheight,keepaspectratio]{assets/er-pipeline.png}
-\caption{Mermaid architecture proposal: raw landing, validation/quarantine, canonical database, committed state, orchestration/CLI and database-backed dashboard.}
+\includegraphics[width=\textwidth,height=0.46\textheight,keepaspectratio]{assets/er-pipeline.png}
+\caption{Planned Bronze/Silver/Gold architecture with Apache Airflow, quarantine, canonical storage and committed state. Dashed analytics links belong to later workshops.}
 \end{figure}
-Editable source: \path{docs/architecture/workshop-1-pipeline.mmd}. The dashboard
-consumes analytical views and health metrics, never live API responses.
-PostgreSQL/PostGIS is the proposed database. Airflow or an equivalent documented
-scheduler will orchestrate incremental runs. The common CLI exposes historical,
-incremental and status modes. Configuration is external to code; secrets stay in
-environment variables. The dashboard reads database/analytical views. None of
-these production services is claimed as implemented in Workshop 1.
+Editable source: \path{docs/architecture/workshop-1-pipeline.mmd}. The team selects
+Apache Airflow for orchestration and PostgreSQL/PostGIS for canonical storage.
+Following the course's Airflow/PostgreSQL guide, the design distinguishes three
+layers. \textbf{Bronze} retains source-native CSV/gzip or JSON/GeoJSON bytes,
+request metadata and SHA-256; a JSON conversion is a derivative, not the original
+response. \textbf{Silver} contains normalized, validated records in the canonical
+database and traceable Parquet exports. Invalid records enter quarantine rather
+than disappearing. \textbf{Gold} will contain temporal/geographic aggregates and
+CHI outputs in later workshops; the dashboard will read database analytical views
+and health metrics.
+
+The guide demonstrates PostgreSQL Silver and Parquet Gold; the standalone
+Workshop 2 handout requests Parquet Silver. The proposed Silver export supports
+that artifact without replacing the canonical database. Export publication follows
+a successful database commit and retains source/run references. The common CLI
+exposes historical, incremental and status modes; configuration stays outside
+code and secrets in environment variables. These are design choices, not services
+or layer outputs already implemented in Workshop 1. Course reference:
+\href{https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/guides/Airflow-PostgreSQL-ETL.pdf}{Airflow and PostgreSQL ETL Pipeline guide}.
 
 \FloatBarrier
 \section{Risks, limitations and next steps}
