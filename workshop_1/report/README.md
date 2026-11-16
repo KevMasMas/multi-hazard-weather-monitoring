@@ -16,26 +16,30 @@ or upload the folder to Overleaf. A portable Tectonic build can also use:
 tectonic main.tex
 ```
 
-The current corrected build is `Workshop_1_Report.pdf` (thirteen pages). Compiling
+The current corrected build is `Workshop_1_Report.pdf` (fourteen pages). Compiling
 `main.tex` creates `main.pdf`; rename that build when preparing the submission.
 All figures are local assets or TikZ diagrams, so this folder is portable.
 
 The builds use Tectonic 0.17.0. Pages were rendered and inspected with Poppler.
 No overfull-box warnings remain; one underfull spacing warning is non-fatal.
-Student content review and submission approval remain pending.
+Kevin explicitly communicated both students' content approval; see
+`deliveries/01-workshop-1/TEAM_APPROVAL.md`. Platform submission is not recorded.
 
-The current acceptance audit verifies Q1-Q6 and eight daily rows numerically;
-it does not approve their same-real-world-event interpretation. See the current
-compliance review and acceptance matrix A01-A09. The NWS daily comparison side
-is derived from saved observations, not an original daily event response.
+The current technical review uses five primary Storm Events/GHCN wind-record
+candidates, Q1-Q5 quality concerns and Q6-Q7 additional observations. The eight
+daily temperature rows are supplemental, not independent events. See the current
+technical review and acceptance A01-A09; team approval is separately recorded,
+not inferred from code execution.
+`historical_pairs.tex` is rebuilt offline by `build_historical_event_pairs.py`.
 
 The architecture revision selects Apache Airflow and explicitly labels Bronze
 native raw captures, Silver PostgreSQL/PostGIS with Parquet exports, and planned
 Gold analytical outputs. See ADR 0005. These layers describe future services;
 Workshop 1 does not claim functional DAGs or produced Silver/Gold files.
 
-The current report includes eight GHCN/KOKC daily temperature candidate records
-across four days after one explicitly authorized GHCN download. They are not
+The report's primary overlap examples are five Storm Events/GHCN wind-record
+candidates at KOKC, reproduced by the historical pair builder. The eight
+GHCN/KOKC daily temperature comparisons remain supplementary. They are not
 confirmed matches: daily boundaries, station identity and sampling remain qualified.
 The sampling rule excludes November 2 and the partial November 5. Appendix A preserves the old
 intra-NWS examples; Appendix B contains literal saved-response excerpts and their

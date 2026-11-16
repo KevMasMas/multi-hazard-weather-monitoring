@@ -43,7 +43,7 @@ def capture():
     META.write_text(json.dumps(dict(request_url=URL, request_method='GET',
         requested_at_utc=started, captured_at_utc=datetime.now(timezone.utc).isoformat(),
         http_status=status, response_headers=headers, sha256=sha(CSV), bytes=len(body),
-        retries=0), indent=2)+'\n', encoding='utf-8')
+        retries=0), indent=2)+'\n', encoding='utf-8', newline='\n')
     print('Captured once:', status, len(body), sha(CSV))
 
 
@@ -71,7 +71,7 @@ def build_pairs():
     for key in set(conflicts):
         features.pop(key, None)
     observations = []
-    exclusions = dict(null_temperature=0, invalid_qc=0, unsupported_unit=0,
+    exclusions = dict(null_temperature=0, qc_not_selected=0, unsupported_unit=0,
                       conflicting_ids=len(set(conflicts)))
     for key, feature in features.items():
         p = feature['properties']
@@ -81,7 +81,7 @@ def build_pairs():
             exclusions['null_temperature'] += 1
             continue
         if item.get('qualityControl') != 'V':
-            exclusions['invalid_qc'] += 1
+            exclusions['qc_not_selected'] += 1
             continue
         if item.get('unitCode') != 'wmoUnit:degC':
             exclusions['unsupported_unit'] += 1
@@ -159,9 +159,9 @@ def main():
         SAMPLES/'candidate_pairs/nws_kokc_observations_page_2.geojson',SAMPLES/'region_comparison/nws_kokc_observations_snapshot.geojson',SAMPLES/'region_comparison/nws_kokc_observations_poll_2.geojson']},
         coverage_rule='at least 48 QC V temperature readings; maximum gap including day edges 70 minutes',
         boundary='fixed CST UTC-6, 06:00Z to next 06:00Z; review assumption',exclusions=exclusions,
-        precipitation='not aggregated: null/overlapping accumulation windows and gaps',pairs=len(pairs)),indent=2)+'\n')
+        precipitation='not aggregated: null/overlapping accumulation windows and gaps',pairs=len(pairs)),indent=2)+'\n',encoding='utf-8',newline='\n')
     print(coverage.to_string(index=False)); print('Exclusions:',exclusions); print('Pairs:',len(pairs))
-    tex = [r'\subsection{Cross-source candidate pairs}',
+    tex = [r'\subsection{Supplementary daily temperature comparisons}',
         'One authorized NCEI capture supplies daily summaries for 2026-10-31 through 2026-11-05. Saved KOKC pages are deduplicated by observation ID; conflicting versions would be excluded. We assume fixed CST days (UTC minus six hours), from 06:00Z to the next 06:00Z, as specified for this review. Provider daily boundaries and station equivalence have not been independently established.',
         'The proposed sampling-coverage rule requires at least 48 valid temperatures and no gap, including day edges, greater than 70 minutes. Only unitCode wmoUnit:degC and QC V are accepted. This is a screening criterion, not proof that every continuous daily extreme was observed. One non-V temperature was excluded; no null temperatures or conflicting IDs were found in the combined saved pages.',
         'October 31, November 1, 3 and 4 qualify; November 2 is excluded for a 75-minute gap and November 5 is partial. Precipitation is not aggregated because overlapping windows and missing observations prevent a reliable total. Official 24-hour max/min fields from NWS are not used.',
@@ -174,9 +174,9 @@ def main():
         r'Each row compares one date/element, not a distinct weather episode. GHCN identifiers use \path{USW00013967/date/element}; NWS identifiers use \path{KOKC/date/element} plus first, last and extreme observation IDs in the submitted CSV. GHCN flags and NWS QC are preserved there. The GHCN coordinates are taken from the saved 2025 station metadata because this new response does not include coordinate columns; that historical position is not a newly verified station location.',
         f"The station-point distance computed from those saved coordinates and the extreme observation point is about {pairs.station_distance_km.iloc[0]:.2f} km. Coordinate proximity does not establish equivalent sensors, exposure or reporting practice. Time differences are daily-summary versus point-sampling granularity; the CSV retains the exact extreme timestamps and seconds from the assumed day boundary.",
         'A sampled KOKC maximum may be lower than a daily GHCN maximum, and a sampled minimum may be higher. Boundary conventions, sampling and station differences can also reverse those differences. These eight rows are candidates, not ground truth. No polygon containment or station equivalence is claimed. Appendix A retains the earlier intra-NWS examples separately.',
-        'The NWS side is a derived daily aggregate with a traceable raw extreme observation, not an original daily event record. Numerical reproducibility does not close the guide\'s same-real-world-event requirement; that interpretation remains open for review. Eight comparisons over four days are not eight independent events.',
+        'The NWS side is a derived daily aggregate with a traceable raw extreme observation, not an original daily event record. These eight supplementary comparisons are not counted toward the five primary wind-event candidate examples above and are not eight independent events.',
         r'Full comparison and coverage: \path{workshop_1/samples/candidate_pairs/cross_source_candidate_pairs.csv} and \path{daily_coverage.csv}.']
-    (ROOT/'workshop_1/report/daily_pairs.tex').write_text('\n\n'.join(tex)+'\n',encoding='utf-8')
+    (ROOT/'workshop_1/report/daily_pairs.tex').write_text('\n\n'.join(tex)+'\n',encoding='utf-8',newline='\n')
 
 if __name__=='__main__':
     main()

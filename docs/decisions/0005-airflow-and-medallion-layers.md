@@ -1,8 +1,9 @@
 # ADR 0005 - Apache Airflow and weather data layers
 
 - **Date:** 2026-11-16
-- **Status:** selected for the Workshop 1 design revision at Kevin's request;
-  joint implementation review remains pending
+- **Status:** approved as a Workshop 1 design in Kevin's explicit communicated
+  team confirmation (`deliveries/01-workshop-1/TEAM_APPROVAL.md`); implementation
+  verification remains later work, not implied by this approval
 - **Scope:** architecture proposal, not implemented infrastructure
 
 ## Context

@@ -1,0 +1,27 @@
+{
+  "scope": "Current tracked/unignored working-tree files and text in ZIP deliverables; not full Git history or a guarantee of no secrets.",
+  "indexed_paths": 169,
+  "text_items_scanned": 172,
+  "high_confidence_findings": [],
+  "forbidden_delivery_paths": [],
+  "documented_placeholders": [
+    {
+      "path": ".env.example",
+      "line": 6,
+      "reason": "Documented weather/weather local example, not a live credential."
+    }
+  ],
+  "ignored_probes": [
+    ".env",
+    ".venv/probe",
+    "data/raw/probe.csv",
+    "__pycache__/probe.pyc"
+  ],
+  "expected_ignore_probes": [
+    ".env",
+    ".venv/probe",
+    "data/raw/probe.csv",
+    "__pycache__/probe.pyc"
+  ],
+  "source_revision": "f7ed8c3a8f4effe884538567935d6b3e44c1f10e"
+}

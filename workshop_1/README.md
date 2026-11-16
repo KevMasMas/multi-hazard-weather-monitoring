@@ -18,9 +18,14 @@ the submission window. No upload is recorded here.
 One authorized GHCN overlap capture now supports eight TMAX/TMIN candidate
 records over four days. Coverage, QC and daily-boundary assumptions are recorded
 in `samples/candidate_pairs/`; the retained intra-NWS examples do not count.
-The offline submission audit reproduces these rows and verifies Q1-Q6, but the
-guide's same-real-world-event interpretation remains open: four days times two
-elements are not eight independent events, and KOKC daily aggregates are derived.
+The primary overlap evidence is now five Storm Events/GHCN wind-record candidate
+pairs (`samples/candidate_pairs/historical_wind_candidate_pairs.csv`): five Storm
+IDs, three original GHCN daily records, explicit airport narratives. These are
+technically defensible candidates with all differences/limitations disclosed,
+not five independent episodes or confirmed exact gusts. The eight temperature
+rows are supplemental. Q1-Q5 are primary quality concerns and Q6-Q7 additional.
+The notebook passed a fresh isolated 59-package locked environment: 32 cells,
+zero errors. Current artifact audit passed within its recorded scope.
 See `../docs/reports/workshop-1-compliance-review.md` and acceptance criteria
 A01-A09 in the Workshop 1 implementation plan. No new team approval is implied.
 Deliver the reviewed commit on `workflow-1` and record its hash after committing.

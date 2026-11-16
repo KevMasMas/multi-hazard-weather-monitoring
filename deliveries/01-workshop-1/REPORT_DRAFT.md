@@ -5,13 +5,16 @@
 > old five alert/KOKC rows as intra-NWS. A subsequent authorized GHCN capture now
 > supports eight daily temperature candidate records across four days. Claims
 > below that the old five pairs satisfy independent-source matching are obsolete.
+> A later wind follow-up now supplies five primary Storm Events/GHCN candidates
+> (five Storm IDs, three daily summaries); the eight temperature rows are supplemental.
+> Original Q5 cadence is now additional Q7; current Q5 concerns non-V temperature QC.
 > The current report adds
 > literal excerpts, conversion rules, operational watermark and Mermaid diagrams.
 > This file is working history, not the current submission source.
 
 **Team 9 - Multi-Hazard Weather Impact Monitoring**  
 **Course:** Data Analysis Programming, 2026-II  
-**Status:** Superseded working notes; the current thirteen-page PDF exists and has been visually inspected. See `FINAL_REVIEW.md` for unresolved review/acceptance gates.
+**Status:** Superseded notes; the current fourteen-page PDF is technically reviewed and team approval explicitly recorded. See `FINAL_REVIEW.md`; platform submission remains unrecorded.
 **Scope:** Workshop 1 source validation and project definition only
 
 > This draft distinguishes observed evidence, official documentation, accepted scope decisions, and still-preliminary designs. Oklahoma/counties and the temporal windows are accepted. The Compound Hazard Index is accepted only as a Workshop 1 proposal, and no cross-source candidate is presented as a confirmed physical-event match.

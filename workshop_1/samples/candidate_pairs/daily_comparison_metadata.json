@@ -9,7 +9,7 @@
   "boundary": "fixed CST UTC-6, 06:00Z to next 06:00Z; review assumption",
   "exclusions": {
     "null_temperature": 0,
-    "invalid_qc": 1,
+    "qc_not_selected": 1,
     "unsupported_unit": 0,
     "conflicting_ids": 0
   },
