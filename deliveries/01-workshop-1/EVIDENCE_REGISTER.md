@@ -1,8 +1,49 @@
 # Evidence Register - Workshop 1
 
-Status: empirical samples are captured for all four sources. The authorized GHCN overlap follow-up supports eight daily temperature candidate records with saved KOKC observations across four eligible days; five older alert/observation examples remain intra-NWS. The current notebook executed 31 code cells without errors. The entry below records current hashes and qualifications; older dated evidence remains as history. Pablo's earlier workstream review is in `PABLO_REVIEW.md`; student review of the current artifacts, fresh-clone reproduction and submission commit remain pending.
+Status: four-source evidence is captured. Primary overlap examples are five qualified wind-record candidates over three dates, with repeated daily summaries disclosed. Eight temperature rows are supplemental and intra-NWS rows excluded. Clean lock execution passed: 59 packages, 32 cells, zero errors. Technical/artifact reviews complete; Kevin explicitly communicated both students' approval in TEAM_APPROVAL.md. Actual submission unrecorded.
 
-## Submission evidence audit (2026-11-16)
+## Latest wind overlap and clean verification (2026-11-16)
+
+One bounded GHCN capture, announced before execution, returned HTTP 200 at
+`2026-11-16T23:27:14.985010+00:00` (18:27:14 America/Bogota), 6,318 bytes,
+35 rows/18 columns, no retries. The exact URL and selected response headers are
+in the sidecar. No NWS query or NOAA redownload. Five measured-wind records
+explicitly naming KOKC were extracted from the previously saved checksum-verified
+2024 NOAA archive, preserving all source columns in a labelled parsed subset.
+
+| Artifact under `workshop_1/samples/candidate_pairs/` | SHA-256 |
+| --- | --- |
+| `ghcn_kokc_wind_2024.csv` | `CD9E68A7FB43343E3E64D3633DF45AF08D21F97E5B6ED9D43B75E4CF82D0CCC2` |
+| `ghcn_kokc_wind_2024.metadata.json` | `6B7BAEA6849429C3835AFF950E1A841853C8E17BFF77A2A0D9B04899DC5B2A7E` |
+| `noaa_kokc_wind_events_2024.csv` | `0441358E52A43CA55D64EA62EF55EF155E4377137270543A8B1FFB47B83964BA` |
+| `noaa_kokc_wind_events_2024.metadata.json` | `76AC5680F08EA1C5451C2D624C3FA559B1CAC509840BB03268596EB54F32ED60` |
+| `historical_wind_candidate_pairs.csv` | `809E5FF7E35FA4C7065907F50D03F568195ED97C367A0DA457FDCCA90014426E` |
+| `submission_evidence_audit.json` (current seven-quality/wind/daily audit) | `5AFE50CDDEC8060D8F44F1EB9A4D4FC07E2DB71E5370F63A7E5C116043EE31C3` |
+| `daily_comparison_metadata.json` (QC label clarified to `qc_not_selected`) | `030077CC01FF247F49B89CAC96DC00C45F407D7289A854521DA778758B6DBEE7` |
+
+The guide's five-candidate-record interpretation is technically addressed by
+five distinct Storm IDs and three GHCN daily wind records. Three May 6 gusts
+share a summary; products may share ASOS lineage. No exact gust/time equivalence,
+five independent episodes, independent sensor validation or professor acceptance
+claimed. Four Storm points are near the returned station; the zone-based High
+Wind row keeps null coordinates and uses only its explicit airport narrative.
+
+Clean reproduction receipt: `deliveries/01-workshop-1/clean_environment_verification.json`.
+Receipt SHA-256: `BF5A9EB8D60FE51DF06E4B197E07505D8323D7AA9225817040D5F9C137F09BA7`.
+Clean-executed notebook SHA-256: `04FB9E0E24DAE05DC0FB756CC9843BEF45181258FB485BE32E930717946703A0`.
+The first clone exposed that the old NOAA subset Git blob used LF while the
+registered original had CRLF. Commit `cce9ade` preserves the original bytes with
+the same registered `987F...` SHA-256. The new isolated environment then passed
+all 32 code cells and 59 exact lock pins. No sample value or registered source
+hash was changed to hide the failure. Current notebook outputs are from that run.
+`TEAM_APPROVAL.md` binds the current PDF/mapping hashes to Kevin's explicitly
+communicated team approval; `SUBMISSION_MANIFEST.json` indexes final local
+delivery hashes. Neither record represents platform submission or a grade.
+
+Offline reproduction: `build_historical_event_pairs.py`,
+`compare_daily_sources.py` (no `--fetch`), `audit_submission_evidence.py`, notebook.
+
+## Earlier submission evidence audit (before wind follow-up; hashes superseded above)
 
 Offline command: `python scripts/workshop_1/audit_submission_evidence.py`.
 Nine registered captured-file SHA-256 values match; Q1-Q6 record claims pass;

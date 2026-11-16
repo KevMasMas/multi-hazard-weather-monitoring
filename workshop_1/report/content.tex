@@ -135,7 +135,10 @@ records capture times, requests, hashes and qualifications. The NOAA CSV is a
 deterministic parsed subset; the untouched bulk archive remains in ignored local
 raw storage and can be downloaded using the documented script. The notebook
 reads saved files and performs eleven checksum comparisons before profiling.
-The latest execution contains 31 executed code cells and zero error outputs.
+The latest clean-clone execution contains 32 executed code cells and zero error
+outputs, using 59 exactly pinned packages and an isolated kernel. A Git
+line-ending mismatch in the NOAA subset was corrected without altering its
+original registered bytes; the clean run was then repeated successfully.
 No new weather request is required to reproduce its computations.
 
 \subsection{Volume estimates}
@@ -160,7 +163,7 @@ Retain provider/source attribution and review annotations during ingestion.
 \subsection{Concrete record examples}
 The following are integration problems and availability/revision observations;
 they are not all provider defects. Q1--Q5 are the five proposed integration
-problems; Q6 is an additional availability example. The offline submission audit
+problems; Q6--Q7 are additional availability/sampling examples. The offline submission audit
 verifies each cited record claim, not its final rubric acceptance. Exact files,
 IDs and interpretation limits appear in the evidence register and audit JSON.
 \begin{longtable}{L{1cm}L{4.6cm}L{4.5cm}L{4.8cm}}
@@ -170,14 +173,16 @@ Q1 & GHCN USW00013967, 2025-01-05 & PRCP=0.0; attributes T,,W,2400 & Preserve tr
 Q2 & NOAA EVENT\_ID 1155350 & Heavy Snow; CZ\_TYPE=Z; CIMARRON; blank begin latitude/longitude & Retain zone geography and missing point; use a reviewed crosswalk. \\
 Q3 & Wind Advisory alert ending in 06189d945720161.001.1 & Null polygon, seven affected-zone URLs & Preserve zones; do not discard for missing polygon. \\
 Q4 & KDEN observation 2026-11-04T01:53:00+00:00 & Same ID; temperature changes from null/QC Z to 4.4 $^{\circ}$C/QC V & Compare content hash and retain versions; cause is unproven. \\
-Q5 & Adjacent KOKC readings 2026-11-03 21:52 and 22:55 UTC & 63-minute interval & Do not synthesize a guaranteed five-minute cadence. \\
+Q5 & KOKC 2026-10-31T20:52:00Z & Temperature 16.7 $^{\circ}$C, QC S rather than selected V & Preserve value/QC; exclude from V-only aggregate without declaring the measurement invalid. \\
 Q6 & KOKC 2026-11-03T21:52:00Z & Null 24-hour maximum/minimum temperature & Retain missingness and QC; never replace with zero. \\
+Q7 & Adjacent KOKC readings 2026-11-03 21:52 and 22:55 UTC & 63-minute interval & Observed sampling limitation, not a proved provider cadence failure. \\
 \bottomrule
 \end{longtable}
 Q3 full ID is \nolinkurl{urn:oid:2.49.0.1.840.0.86cd7f91116ab184a79b0a23e06189d945720161.001.1}.
 KDEN/KOKC observation IDs use
 \url{https://api.weather.gov/stations/}\emph{station}/observations/\emph{timestamp}.
 
+\input{historical_pairs}
 \input{daily_pairs}
 
 \section{Canonical data contract}

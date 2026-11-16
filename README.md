@@ -13,6 +13,13 @@ Proposed implementation plans for Workshops 2-4 are available under `deliveries/
 but no later-workshop implementation is claimed. The published Workshop 2-4 PDFs
 contain a documented 2026-I public-opinion conflict that requires clarification.
 
+Workshop 1's final technical review includes five qualified historical wind
+candidate pairs, five primary quality concerns and two extra observations, and
+a fresh isolated execution of 32 notebook code cells with 59 exact locked
+packages. See `deliveries/01-workshop-1/TECHNICAL_REVIEW.md`; Kevin's explicit
+confirmation of both students' approval is separately recorded in
+`TEAM_APPROVAL.md`. Platform submission is not inferred from technical checks.
+
 ## Start here
 
 For the professor: start with the [Workshop 1 submission index](workshop_1/README.md),

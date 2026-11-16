@@ -4,7 +4,7 @@
 - **Target date:** Moodle notice supplied by Kevin: 2026-11-16, 12:00-15:15 America/Bogota; no upload is recorded
 - **Working branch:** `workflow-1`
 - **Base branch/commit:** project foundation commit `602143d`
-- **Status:** thirteen-page PDF generated and visually inspected; four-source profiles and six quality examples present; eight reproducible daily comparisons over four days. Same-event interpretation, current student review, clean-environment reproduction and submission recording remain open. See acceptance matrix below.
+- **Status:** technical review and clean reproduction complete: five qualified wind-record candidates, five primary quality concerns plus two observations, 59 lock pins and 32 error-free code cells. Kevin explicitly communicated approval by both students (`TEAM_APPROVAL.md`). Actual platform submission remains unrecorded.
 - **Official specification:** `Workshop_1.pdf`
 
 ## 1. Requirement interpretation
@@ -47,12 +47,12 @@ Prove that a justified US regional scope can be supported by NOAA Storm Events, 
 - [x] Explain compound weather hazards, source-specific severity measures/units, and monitoring value (2026-11-05 report update; source severity remains non-comparable by design).
 - [x] Compare Oklahoma and Denver/Colorado using all-four-source coverage and manageable volume; Pablo review and accepted Oklahoma scope are recorded in ADR 0001 and PABLO_REVIEW.md.
 - [x] Select and justify Oklahoma/counties, the 2010-2025 complete-year baseline, rolling 24-hour current window, and separate seven-day operational context (ADRs 0001 and 0003; 2026-11-05 review entry).
-- [x] Draft the preliminary Compound Hazard Index components, formula, missingness policy, and validation plan (see 2026-11-05 W1-D02 change-log entry); [ ] obtain Pablo review and accept final parameters later.
+- [x] Draft/review the preliminary CHI proposal; team approval of the Workshop 1 design recorded. Empirical acceptance of final parameters remains Workshop 4 work.
 
 #### Historical sources
 
 - [x] Profile NOAA Storm Events sample and document access, fields, observed coverage, identifier, archive revisions, citation/attribution caveat, and yearly partition proposal (2026-11-05; one-year screen only, exact license not identified).
-- [x] Capture/profile qualifying GHCN-Daily sample; document station-year volume screen, key/partition proposal, NCEI update/citation/liability statements (2026-11-05); statewide station coverage and Kevin cross-review remain open.
+- [x] Capture/profile qualifying GHCN-Daily sample and document volume/key/partition/revision/citation proposals; current report/mapping review complete. Statewide inventory remains later implementation work.
 - [x] Preserve unmodified samples and record explicitly labeled volume screens (2026-11-05); complete regional station inventory and measured multi-year totals remain open and are not inferred from the pilot.
 
 #### Incremental sources
@@ -63,20 +63,20 @@ Prove that a justified US regional scope can be supported by NOAA Storm Events, 
 
 #### Profiling and data quality
 
-- [x] Current notebook executed 31/31 code cells without errors using the existing virtual environment after the overlap changes; [x] Pablo's earlier workstream review is recorded; [ ] Kevin cross-review of current edits and fresh-clone lock reproduction.
+- [x] Fresh clone/isolated locked environment executed 32/32 code cells with zero errors; [x] technical review and scoped artifact scan completed; [x] Kevin communicated both students' content approval (`TEAM_APPROVAL.md`).
 - [x] Report source-profile dimensions in executed notebook outputs for the four qualifying samples; note sample limitations and distinguish station-page behavior from source-wide policy.
-- [x] Verify six quality/integration/availability observations against saved records (report section 4.1, Q1-Q6; `submission_evidence_audit.json`). Q1-Q5 are the five proposed problems; Q6 is additional. They are not six proven provider defects; final interpretation remains subject to review.
-- [x] Eight GHCN/KOKC daily temperature candidate records are reproduced from cached evidence on four eligible days after the authorized GHCN follow-up; five intra-NWS examples remain excluded. [ ] Both students to review daily-boundary/station-equivalence assumptions and the interpretation of multiple elements per day. See the latest change-log entry.
+- [x] Verify Q1-Q7 against saved records; technical review accepts Q1-Q5 as five engineering quality concerns, with Q6-Q7 additional. They are not seven proven provider defects.
+- [x] Eight daily temperature rows reproduced as supplemental comparisons, with limits explicitly reviewed. Five qualified Storm Events/GHCN wind-record pairs are the primary overlap examples; old intra-NWS rows excluded. Team report/method approval recorded without confirming ground truth.
 
 #### Contracts and project definition
 
-- [x] Draft the four-source canonical field mapping and Team 9 domain tables in `workshop_1/mapping.md`; [ ] complete final field-level team review.
+- [x] Draft the four-source field mapping/domain tables; [x] technical consistency review and communicated team approval complete for the Workshop 1 proposal.
 - [x] Draft UTC, WGS84, unit/severity, duplicate-key, and raw-reference/content-hash rules in the mapping and ADRs; [ ] close the explicitly listed open field-level decisions.
-- [x] Draft four source-specific partition/pagination, key, poll/overlap, watermark/checkpoint and interrupted-run recovery contracts in REPORT_DRAFT.md Section 7 and mirror them in config; proposed schedules remain pending mutual review and implementation.
-- [x] Current report section 2 contains the proposed functional user and six MoSCoW stories; [ ] review current wording. No stakeholder interview or professor approval is recorded.
+- [x] Draft four contracts in current report section 6/config/source notes; technical and team proposal review complete, production schedule/recovery validation remains later work.
+- [x] Current report section 2 contains the proposed functional user and six MoSCoW stories; team report approval recorded. No stakeholder interview or professor approval is claimed.
 - [x] Draft and jointly review index inputs/rule/scale/validation approach without claiming empirical validation (ADR 0002 and `PABLO_REVIEW.md`).
 - [x] Current report section 9 contains seven risks with mitigations; earlier workstream integration review is recorded in `PABLO_REVIEW.md`, not approval of all later edits.
-- [x] Produce the conceptual ER diagram, labeled architecture overview, independent mapping table and visually inspected English PDF; [ ] complete current student content/submission review.
+- [x] Produce ER, architecture, mapping and visually inspected PDF; team content review explicitly recorded. Actual platform submission remains open.
 - [x] Revise the unsubmitted architecture to select Apache Airflow and explicitly map Bronze native captures, Silver canonical storage/Parquet and planned Gold outputs (ADR 0005; 2026-11-16 architecture correction log). This does not implement Workshop 2.
 
 ### P1 - quality improvements after P0
@@ -121,23 +121,24 @@ drafting task above is not blanket acceptance of this milestone.
 | ID | Criterion and current evidence | Verification / remaining gate |
 | --- | --- | --- |
 | A01 | Four qualifying profiles: NOAA 250 rows, GHCN 365, recent NWS Alerts 238, KOKC 200 per poll; notebook includes nulls, ranges, IDs, time, geography and units. | Counts and stored execution checked; small/empty captures are additional evidence, not substitutes. Statewide completeness is not proved. |
-| A02 | Five proposed concrete problems Q1-Q5 and extra Q6 have exact saved-record evidence and handling rules. | Offline audit verifies all six claims. These are integration/semantic/availability/revision concerns, not six established source errors. Review the five-problem interpretation; do not infer provider faults or a missing-observation cause. |
-| A03 | Eight daily GHCN/KOKC comparisons reproduce with time, position, magnitude/unit and identifier differences. | Numerical/count/provenance checks pass: four days, TMAX/TMIN each. **Same-real-world-event interpretation remains open**: KOKC side is a derived aggregate, daily boundary assumed, station equivalence unverified. Eight rows are not eight independent events. Escalation alone does not satisfy this criterion. |
-| A04 | Mapping, core/domain ERs and source configuration cover all four sources. | Artifacts present; current field-level team review pending. Production SQL/crosswalk implementation is later work. |
-| A05 | Four historical/incremental contract proposals include keys, partitions/polling, checkpoints and failure recovery. | Present in report section 6/config/source notes; retain documented unknown provider policies. Current team review pending, production validation later. |
-| A06 | English PDF, LaTeX/Overleaf package, literal snippets, six stories, seven risks, preliminary CHI and architecture. | PDF generated and visually inspected, thirteen pages; source/ZIP consistency checked. Student content review pending. |
-| A07 | Source-profile notebook executed with outputs. | 31/31 code cells, zero stored errors in existing environment; fresh-clone lock reproduction remains an internal gate, not an invented extra professor artifact. |
-| A08 | Required repository scaffolding, configuration, samples, citations and GitHub entry points. | Present; repeat final secret/artifact review before submission. Scaffolds are not implemented services. |
-| A09 | Submission reference and review provenance. | Earlier decisions/review records apply only to their recorded scope. No approval of the new pairs/report is inferred; no upload or final submitted commit is recorded. |
+| A02 | Q1-Q5 are five verified quality/integration problems; Q6-Q7 are additional availability observations. | Technical review considers them valid engineering quality problems under the guide; audit asserts all seven facts. Q5 now uses actual non-V QC; the old cadence gap is Q7. No provider fault or invalid measurement is inferred. Student review remains personal. |
+| A03 | Five primary Storm Events/GHCN wind-record pairs have explicit airport, date, magnitude and identifier evidence. | Technical candidate-example review passes with disclosed limits: five Storm IDs, three GHCN daily records/dates, no five-independent-episode claim, null PGTM, possible common ASOS lineage. Eight temperature comparisons are supplementary; intra-NWS examples excluded. No exact-gust or professor acceptance claimed. |
+| A04 | Mapping, core/domain ERs and configuration cover all four sources. | Technical review and explicit communicated team approval complete for the proposal; SQL/crosswalk implementation later. |
+| A05 | Four contract proposals include keys, partition/polling, checkpoints and recovery. | Technical review and team report/design approval recorded with provider-policy unknowns preserved; production validation later. |
+| A06 | English PDF, LaTeX/Overleaf package, literal snippets, six stories, seven risks, preliminary CHI and architecture. | Fourteen-page PDF visually inspected and ZIP checked; team approval bound to current report/mapping hashes. Actual upload not recorded. |
+| A07 | Source-profile notebook executed with outputs. | Fresh clone at `cce9ade`, new non-system CPython environment, 59 exact lock pins, explicit clean kernel: 32/32 cells, zero errors; receipt stored. The NOAA Git newline defect was fixed and rerun. |
+| A08 | Required scaffolding, configuration, samples, citations and GitHub entry points. | Current-tree/ZIP pattern and forbidden-path audit passes with its documented scope. Scaffolds are not implemented services. |
+| A09 | Submission reference and review provenance. | `TEAM_APPROVAL.md` records Kevin's explicit statement that both reviewed and approved the current PDF/mapping/decisions, with artifact hashes; not an individual signature or professor grade. Actual upload/final submitted reference not recorded. |
 
-The remaining academic uncertainty is A03, plus final interpretation/review of
-A02. Do not mark Workshop 1 fully compliant merely because all files exist.
+Technical evidence/consistency/reproduction review is complete with the stated
+qualifications; team content approval is explicitly recorded. Actual submission
+recording remains open, and professor acceptance is not guaranteed by this review.
 
 ## 9. Merge and submission gate
 
-- [x] Earlier integration decisions are recorded in `PABLO_REVIEW.md`, limited to its historical source scope, intra-NWS investigation rows, earlier notebook and preliminary CHI; [ ] current report/config/daily-comparison review by both students. The record does not approve later edits.
-- [x] Current notebook rerun completed: 31/31 code cells, zero errors, saved-input checksum assertions and reproduced cross-source table. [ ] Fresh-clone reproduction against the lock; the existing environment run does not establish this.
-- [x] Registered raw evidence is checksum-protected, attributable, and sanitized of captured cookies; [ ] repeat the secret/artifact audit immediately before submission.
+- [x] Earlier integration decisions stay scoped to `PABLO_REVIEW.md`; current report/mapping/shared-design team approval is independently recorded in `TEAM_APPROVAL.md`, as explicitly communicated by Kevin.
+- [x] Clean reproduction: 59 exact pinned versions, isolated kernel and 32/32 code cells with zero errors; receipt stored. The NOAA Git newline mismatch was corrected and rerun successfully.
+- [x] Current source/ZIP secret-pattern and forbidden-artifact audit passed with its scope recorded; no universal absence-of-secrets or remote-history audit claimed.
 - [x] Large-source acquisition and partition instructions are documented in source notes/scripts; no bulk archive is tracked.
 - [x] Report and technical documentation are in English.
 - [x] Limitations and unresolved questions are explicit.

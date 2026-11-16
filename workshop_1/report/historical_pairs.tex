@@ -1,0 +1,29 @@
+\subsection{Source-record wind-event candidates}
+
+Five Storm Events records explicitly name the KOKC airport and report measured ASOS wind gusts. They are paired with original GHCN daily WSF5 records for USW00013967, whose returned name and coordinates identify Will Rogers Airport. These are stronger same-weather-episode candidates than generic daily temperature comparisons, not confirmed exact-gust matches or independent sensor validation.
+
+\begin{longtable}{llL{2.4cm}rrr}
+
+\toprule Pair & EVENT\_ID & Local date/time & NOAA (kn) & GHCN (m/s) & $\Delta$ (m/s) \\ \midrule\endhead
+
+WIND-01 & 1170737 & 2024-04-15 15:33 & 50 & 25.5 & -0.22 \\
+
+WIND-02 & 1178563 & 2024-05-06 22:38 & 60 & 30.9 & +0.03 \\
+
+WIND-03 & 1178565 & 2024-05-06 22:45 & 55 & 30.9 & +2.61 \\
+
+WIND-04 & 1178567 & 2024-05-06 22:52 & 56 & 30.9 & +2.09 \\
+
+WIND-05 & 1180427 & 2024-05-19 21:10 & 65 & 33.5 & +0.06 \\
+
+\bottomrule\end{longtable}
+
+\textbf{Time:} NOAA times are CST-6; UTC adds six hours. GHCN has a daily date and null PGTM, so no exact peak timestamp or exact time delta is invented. The same-labelled-local-date rule is provisional; the daily wind boundary is not independently verified.
+
+\textbf{Position:} four event points are about 0.02 km from the returned station point. The High Wind record has zone geography and no point; its narrative names KOKC, and no event coordinate or zero distance is fabricated.
+
+\textbf{Magnitude/identifier:} NOAA measured gusts (MG) in knots convert using 0.5144444444 m/s per knot. GHCN metric WSF5 is fastest 5-second wind, not an identical gust definition. $\Delta$ is GHCN minus converted NOAA. EVENT\_ID differs from station/date/WSF5; all IDs, flags, coordinates, UTC times and file references are in the CSV.
+
+Five pairs use five distinct Storm Events IDs but only three GHCN daily records and three labelled dates. Three May 6 gust reports share one daily summary and may describe one episode. The products can share ASOS reporting lineage. The guide asks for candidate record pairs, not five independent episodes; under that interpretation these are the five proposed overlap examples. Professor acceptance and exact-event equivalence are not asserted.
+
+Full evidence: \path{workshop_1/samples/candidate_pairs/historical_wind_candidate_pairs.csv}; the NOAA file is a checksum-linked parsed subset of the saved archive, and GHCN CSV is the unchanged newly captured response.

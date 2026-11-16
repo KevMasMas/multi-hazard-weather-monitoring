@@ -32,7 +32,7 @@ Workshop 2 database schema exists.
 | `event_type` | `EVENT_TYPE` | Preserve NOAA category. |
 | `begin_at` / `end_at` | begin/end date-time fields and `CZ_TIMEZONE` | Convert with an explicit timezone mapping and retain original strings. |
 | `magnitude` / `magnitude_type` | `MAGNITUDE`, `MAGNITUDE_TYPE` | Keep nullable and unit/type-qualified. |
-| `damage_property` / `damage_crops` | `DAMAGE_PROPERTY`, `DAMAGE_CROPS` | Preserve raw text; parsing rules require later validation. |
+| `damage_property` / `damage_crops` | `DAMAGE_PROPERTY`, `DAMAGE_CROPS` | Preserve raw text; use the conversion rule below, with implementation verification in Workshop 2. |
 | `deaths` / `injuries` | direct + indirect fields | Preserve separate source measures. |
 | `source_geography` | `CZ_TYPE`, state/county/zone identifiers and coordinates | Apply ADR 0004; do not invent a point for zone records. |
 
@@ -42,7 +42,7 @@ Workshop 2 database schema exists.
 | --- | --- | --- |
 | `station_id` | `STATION` | Preserve GHCN station identifier. |
 | `observation_date` | `DATE` | Calendar date, not a fabricated UTC instant. |
-| `element_code` | `PRCP`, `TMAX`, `TMIN` | Normalize wide source columns to measurement rows during Workshop 2. |
+| `element_code` | `PRCP`, `TMAX`, `TMIN`; supplementary wind `WSF5` | Normalize wide source columns to measurement rows during Workshop 2; preserve element-specific units and aggregation duration. |
 | `value` | corresponding element value | Preserve requested metric output. |
 | `attributes` | `<ELEMENT>_ATTRIBUTES` | Keep measurement, quality and source flags; trace precipitation is not ordinary zero. |
 | `station_geometry` | `LATITUDE`, `LONGITUDE`, `ELEVATION` | Validate ranges and retain elevation unit metadata. |

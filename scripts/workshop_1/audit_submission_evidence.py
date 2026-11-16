@@ -126,7 +126,7 @@ def main():
                                    elements=sorted(saved.element.unique()), exclusions=exclusions,
                                    coverage=coverage.to_dict('records'),
                                    record_b='Derived daily aggregate, not an original NWS event record; raw extreme ID retained.',
-                                   rubric_status='Traceability/count verified; same-real-world-event interpretation remains open.',
+                                   rubric_status='Supplementary comparisons only; not counted as the five primary historical wind candidates.',
                                    limitations=['Fixed CST boundary assumed, not independently verified.',
                                                 'Station/sensor equivalence not established.',
                                                 'Eight element/day comparisons are not eight independent events.',
