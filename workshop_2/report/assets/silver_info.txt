@@ -1,0 +1,25 @@
+<class 'pandas.DataFrame'>
+RangeIndex: 1324 entries, 0 to 1323
+Data columns (total 18 columns):
+ #   Column                 Non-Null Count  Dtype              
+---  ------                 --------------  -----              
+ 0   record_id              1324 non-null   int64              
+ 1   source                 1324 non-null   str                
+ 2   source_key             1324 non-null   str                
+ 3   event_type             1324 non-null   str                
+ 4   observed_at_utc        1324 non-null   datetime64[us, UTC]
+ 5   observed_date          0 non-null      object             
+ 6   latitude               767 non-null    float64            
+ 7   longitude              767 non-null    float64            
+ 8   severity_value         613 non-null    float64            
+ 9   severity_unit          613 non-null    str                
+ 10  magnitude_type         354 non-null    str                
+ 11  quality_attributes     0 non-null      str                
+ 12  source_content_sha256  1324 non-null   str                
+ 13  capture_sha256         1324 non-null   str                
+ 14  run_id                 1324 non-null   int64              
+ 15  capture_id             1324 non-null   int64              
+ 16  source_line            1324 non-null   int64              
+ 17  revision_id            1324 non-null   int64              
+dtypes: datetime64[us, UTC](1), float64(3), int64(5), object(1), str(8)
+memory usage: 396.9+ KB

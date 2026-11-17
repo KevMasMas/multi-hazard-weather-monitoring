@@ -19,6 +19,13 @@ The real Airflow overview was supplied by Kevin; its unchanged hash and evidence
 limits are in `workshop_2/evidence/user_screenshot.json`.
 The task-state figure is explicitly labelled as an API rendering, not a screenshot.
 
+Appendix A contains the first two actual OK_2021 Bronze records with documented
+narrative truncation and literal `head()`/`info()` text reused from the executed
+notebook. Regenerate these excerpts offline with
+`python scripts/workshop_2/build_layer_appendix.py`. Full-file hashes and excerpt
+derivation are in `evidence/layer_excerpt_provenance.json`. The current PDF has
+12 pages; prior nine-page audits describe the previous build and remain unchanged.
+
 Mermaid sources are in `docs/architecture/workshop-2-pipeline.mmd` and
 `workshop-2-er.mmd`. The report's architecture is a local TikZ diagram, so Overleaf
 does not need an external Mermaid renderer or network data access.

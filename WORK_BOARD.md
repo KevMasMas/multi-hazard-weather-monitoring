@@ -4,6 +4,13 @@ This is the single operational entry point for Team 9. Read this file to know th
 
 ## Current state
 
+**Report review update, 2026-11-16:** the revised PDF has 12 pages, including
+literal Bronze/Silver excerpts, verified naming/contract tables and neutral
+delivery wording. Data, migrations, executed notebook, sample ZIP and prior run
+receipts are unchanged. Base commit `5810ba5` is confirmed on remote `workflow-2`;
+this documentation revision requires a new commit/push. Current audit:
+`workshop_2/evidence/report_revision_audit.json`.
+
 **Delivery preparation, 2026-11-16:** the Workshop 2 PDF, three genuine sample
 pairs and executed notebook are prepared for final team review. Ten actual
 Airflow source/year batches cover 2021-2025: 13,561 Oklahoma Storm Events and

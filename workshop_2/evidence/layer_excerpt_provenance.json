@@ -1,0 +1,27 @@
+{
+  "purpose": "Offline report excerpts, not new source responses or pipeline runs.",
+  "inputs": {
+    "workshop_2/samples/bronze/noaa_storm_events_20261117_020238_c0b5c9ad0bca.json": "C4777536A26CE91881A40FE3CD8E6EF9FE1039020E666CF1A036740C8EF55BBF",
+    "workshop_2/samples/silver/noaa_storm_events_20261117_020238_c0b5c9ad0bca.parquet": "BFF661C98F64237DF5493F6DABFAD6F931FCE64B62FEBCD1073FC75DA8D28429",
+    "notebooks/02_historical_ingestion_review.ipynb": "4FFD7E5B6D5E9856B58FF1299CB4640354C56301B52E828111F6300C1B98FE41"
+  },
+  "fragments": {
+    "bronze_excerpt.json": "CC3501B2835E602372605A2980AE992E254FB5A90359C0E100A21A214BAE4702",
+    "silver_head.txt": "64D9CF8AC3156AFE45B0C9879E4B57104F16239E11CF9F174004DF906B3CBFC4",
+    "silver_info.txt": "42D3E4343493443B6D09C855C7576A54EF346821C0170072F686B23A3AA3D8C1"
+  },
+  "narrative_omissions": [
+    {
+      "record": 1,
+      "field": "EPISODE_NARRATIVE",
+      "retained_prefix_characters": 72
+    },
+    {
+      "record": 2,
+      "field": "EPISODE_NARRATIVE",
+      "retained_prefix_characters": 72
+    }
+  ],
+  "silver_output": "Literal text/plain head() and info() outputs copied from the executed notebook; not regenerated.",
+  "fragment_hash_scope": "Fragment hashes identify excerpts; input hashes identify complete unchanged files."
+}

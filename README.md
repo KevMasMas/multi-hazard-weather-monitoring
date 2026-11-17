@@ -59,6 +59,10 @@ python ingest.py --mode status
 
 Missing inputs or mismatching hashes fail explicitly. Incremental mode remains
 Workshop 3. Python 3.12 dependencies are in `requirements-workshop2.in`.
+`--start` and `--end` select fully contained registered capture intervals; they
+do not trim rows to a subrange. This preserves input hashes, CSV line references
+and atomic partition checkpoints. A request containing no complete registered
+capture fails rather than silently constructing an unregistered partial file.
 
 ## Repository structure
 

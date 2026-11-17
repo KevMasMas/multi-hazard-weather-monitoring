@@ -3,6 +3,10 @@
 Current executed slice: 2021-2025; Oklahoma Storm Events and one GHCN station.
 Personal approval, selected commit, push and platform upload are not inferred.
 
+## Documentation revision
+
+Current PDF: 12 pages, including Appendix A with literal layer excerpts. The current documentation audit is `evidence/report_revision_audit.json`. Earlier nine-page PDF/package audits remain preserved historical records; pipeline samples, notebook and run results are unchanged. Git remote `workflow-2` was checked: 5810ba5 is pushed; this new documentation revision is local and requires another commit/push.
+
 ## Evidence boundaries
 
 - `historical_acquisition.json`: original NOAA gzip/NCEI CSV responses, request URLs, UTC captures, native/input SHA-256 and subset derivation.
@@ -21,11 +25,11 @@ Full original archives/bulk outputs stay in ignored storage. Three reviewable re
 
 | Repository path | SHA-256 |
 | --- | --- |
-| `workshop_2/report/Workshop_2_Report.pdf` | `47DE5583CA8B7224DC533EBD5FF6CFD680953FA4643ABC663A9BD4FEE44D53E6` |
+| `workshop_2/report/Workshop_2_Report.pdf` | `4C15B1D5769DEB06CFAC704E4CFFE4E3D15CB4D72955F70BBDA6D81897A7CC2B` |
 | `workshop_2/Workshop_2_Pipeline_Output_Samples.zip` | `1A7CB0BCC62D484E4DC019D276539A897ED286BE5434AE7597768DC291C33171` |
 | `notebooks/02_historical_ingestion_review.ipynb` | `4FFD7E5B6D5E9856B58FF1299CB4640354C56301B52E828111F6300C1B98FE41` |
 | `workshop_2/samples/manifest.json` | `D2AEE0B5420BA9C12E6B21EB842D945ABB6BEA6D1064CFA7AE373F28CF3BDBDF` |
-| `workshop_2/report/main.tex` | `F2962F4439E7567B438308CD3FAF04CA3053D3AC1B003C3B43E132E02B875F52` |
+| `workshop_2/report/main.tex` | `E7031B9255210AC666A7A31BAC5A1C327E2AB36E59DB5861E16AA31F90A8D90C` |
 | `workshop_2/evidence/after_restart_database.json` | `C012C6C40789A114516951A23A2723A94D974981CD14197F1E91EDA0C9986B16` |
 | `workshop_2/evidence/airflow_verification.json` | `9A09B99AE62092DEFB6150B7898773334028FF6D69254EBAEF32CDA8C7560E78` |
 | `workshop_2/evidence/compose_ps.json` | `384F7246A0E05795798F3F8CDE0D05338B09C0FA77AFA4ACCF5DF64F9E6D8FA4` |
@@ -42,6 +46,12 @@ Full original archives/bulk outputs stay in ignored storage. Three reviewable re
 | `workshop_2/evidence/report_analysis.json` | `1BCE50B39D93A3CE07A62407ED972CCC60E09420A5E39D5051BF9A5D12F6E769` |
 | `workshop_2/evidence/user_screenshot.json` | `7E3C2B2F6F47A7ABF5D109CDDC29C305EEF31213AB2B95C7DEAFB8B9F7631F77` |
 | `workshop_2/evidence/wsl_test_results.json` | `767B63530FF65514623CD980D3EB01EF81751CABC1F7DAA7FCAC64142AAF9FDA` |
+| `workshop_2/report/layer_appendix.tex` | `85CE21031CCAAD0244BD486870642B36AF0EEE956A11086FFC9322AB6449BF93` |
+| `workshop_2/report/assets/bronze_excerpt.json` | `CC3501B2835E602372605A2980AE992E254FB5A90359C0E100A21A214BAE4702` |
+| `workshop_2/report/assets/silver_head.txt` | `64D9CF8AC3156AFE45B0C9879E4B57104F16239E11CF9F174004DF906B3CBFC4` |
+| `workshop_2/report/assets/silver_info.txt` | `42D3E4343493443B6D09C855C7576A54EF346821C0170072F686B23A3AA3D8C1` |
+| `workshop_2/evidence/layer_excerpt_provenance.json` | `A46B98C64B365E18B6B9AF89B41A5278C17B9953F6B333E063826F0AA4262D28` |
+| `workshop_2/evidence/report_revision_audit.json` | `650CB04B92390FE8C94EB70BFC7DFE086913306190C460F7E7C8954B9EE45376` |
 
 ## Sample hashes
 

@@ -1,0 +1,30 @@
+{
+  "verified_at_utc": "2026-11-17T02:47:58.192561+00:00",
+  "scope": "Offline documentation and existing evidence verification; no pipeline runs or weather requests.",
+  "pdf_pages": 12,
+  "notebook_code_cells": 9,
+  "notebook_error_outputs": 0,
+  "recorded_tests_passed": 29,
+  "tested_file_hashes_unchanged": true,
+  "sample_json_files": 3,
+  "sample_parquet_files": 3,
+  "distinct_real_runs_verified": true,
+  "sample_zip_unchanged": true,
+  "source_samples_and_notebook_unchanged": true,
+  "workshop1_artifacts_unchanged": true,
+  "literal_silver_outputs_reused": true,
+  "bronze_only_documented_narrative_suffixes_omitted": true,
+  "canonical_counts": {
+    "ghcn_daily": 5478,
+    "noaa_storm_events": 13561
+  },
+  "git_head": "5810ba5b6f4587b57697d57a345a668b1a8fc47b",
+  "remote_workflow_2": "5810ba5b6f4587b57697d57a345a668b1a8fc47b",
+  "prior_commit_is_pushed": true,
+  "current_documentation_changes_pushed": false,
+  "limitations": [
+    "No fresh pipeline execution performed for this documentation-only change.",
+    "No new teacher clarification found; existing interpretation retained.",
+    "Full semester years, statewide station inventory and county assignments remain open."
+  ]
+}

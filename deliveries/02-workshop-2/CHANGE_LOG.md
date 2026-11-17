@@ -4,6 +4,19 @@ Append entries; do not silently rewrite historical observations.
 
 ## Entries
 
+### [2026-11-16 America/Bogota] - Documentation review - Literal layer evidence and precise contracts
+
+- **Objective/status:** address Kevin's pasted review priorities without source calls, data/migration changes or new pipeline runs; revised PDF compiled and inspected.
+- **Branch/commit:** `workflow-2`, base `5810ba5b6f4587b57697d57a345a668b1a8fc47b`; `git ls-remote --heads origin workflow-2` confirms that base is pushed. New documentation changes remain local; no commit/push performed.
+- **Files changed:** report main/PDF/README; generated `layer_appendix.tex`, `assets/bronze_excerpt.json`, `silver_head.txt`, `silver_info.txt`; offline excerpt/audit scripts; new `layer_excerpt_provenance.json` and `report_revision_audit.json`; root README, evidence register, submission manifest and active board/plan/log.
+- **Content:** first two actual Bronze records, with only documented narrative prefixes omitted; complete input hashes; literal recorded Pandas head/info; exact task/schedule/trigger/logging behavior; explicit separate acquisition CLI with no DAG acquisition parameter; source/year native versus batch timestamp naming; course-to-schema/layer mapping; complete-interval CLI semantics and justification; neutral delivery/screenshot wording. No written professor clarification was found in the repository search, so the existing interpretation remains qualified.
+- **Verification/results:** all sample hashes, notebook hash and nine executed code cells/zero errors remain unchanged. Existing 29-test receipt fingerprints match tested files. Saved database counts remain 13,561 NOAA and 5,478 GHCN with no duplicate groups. ZIP unchanged, CRC/member hashes valid, three JSON and three Parquet from distinct actual runs. W1 submission hashes match. Recompiled PDF: 12 pages, zero overfull-box errors; Poppler contact sheet and appendix page inspected. Existing run/test/package receipts were preserved; new documentation audit records the current build.
+- **Errors/corrections:** first new build had two small text/table overflows; widened schedule column and split notebook-source prose, then recompiled with no overfull warnings. Underfull spacing notices remain nonfatal.
+- **Evidence:** `workshop_2/EVIDENCE_REGISTER.md`, `evidence/layer_excerpt_provenance.json`, `evidence/report_revision_audit.json`, updated delivery `SUBMISSION_MANIFEST.json`.
+- **Limits:** existing results were revalidated, not rerun. No new source/API query, runtime validation or teacher approval is claimed. Wider semester coverage/station/county scope remains as documented. Git verification used its remote ref protocol, not a weather API.
+- **Input/handoff:** Kevin supplied the review instructions in the attached text. Review the new PDF, commit the documentation revision and push `workflow-2` manually before using the updated branch link.
+- **Recovery:** regenerate excerpts from unchanged files and rebuild LaTeX. Keep earlier receipts and native data; do not replace historical run results with documentation-audit results.
+
 ### [2026-11-16 America/Bogota] - W2-01..W2-14 - Five-year slice and delivery artifacts
 
 - **Objective:** prepare the requested PDF, genuine pipeline output samples and repository handoff before Kevin's 21:45 review deadline.

@@ -1,5 +1,11 @@
 # Implementation Plan - Workshop 2
 
+**Documentation review, 2026-11-16:** the 12-page revised report adds literal
+layer content, course-to-schema/layer naming tables, exact task/schedule/error
+behavior and neutral delivery wording. Current checks are in
+`workshop_2/evidence/report_revision_audit.json`; earlier pipeline results are
+preserved. Base `5810ba5` is pushed; these new edits are local.
+
 **Latest verification, 2026-11-16:** ten actual Airflow Bronze/Silver batches
 processed 2021-2025: 13,561 Oklahoma events and 5,478 GHCN measurements from one
 station. Canonical rerun/restart checks show zero duplicates. All 29 tests pass;

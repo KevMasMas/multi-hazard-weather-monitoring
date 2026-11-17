@@ -143,11 +143,42 @@ avoids collisions. Actual start/end times are retained separately by Airflow.
 The layout uses \path{data/bronze/} and \path{data/curated/silver/} as the course
 Bronze/Silver equivalents. Gold is planned.
 
+Native acquisition uses source/year filenames rather than batch timestamps:
+Storm Events retains its official \path{StormEvents_details-ftp_v1.0_dYYYY_cYYYYMMDD.csv.gz}
+archive name; its derived subset is \path{noaa_oklahoma_YYYY.csv}. GHCN responses
+use \path{ghcn_USW00013967_YYYY.csv}. The directory index is
+\path{storm_directory.html}. Each cached response has a companion
+\texttt{.capture.json} containing its actual capture time and hash. The native
+filename identifies the source partition/version; the UTC capture timestamp is
+metadata, not an invented filename timestamp.
+
+\begin{tabularx}{\textwidth}{@{}YY@{}}
+\toprule Handout convention & Implemented convention and reason\\\midrule
+\path{datalake_bronze/} & \path{data/bronze/}; one common persistent project data root.\\
+\path{datalake_silver/} & \path{data/curated/silver/}; curated exports separated from native responses.\\
+\path{source_YYYYMMDD_HHMMSS.json} & Same source/time stem plus \texttt{batchhash}; avoids collisions between runs.\\
+\path{topic_YYYYMMDD_HHMMSS.parquet} & Source/time/batchhash stem shared with Bronze; explicit source and batch lineage.\\
+\bottomrule\end{tabularx}
+
 \subsection{Database model and lineage}
 The natural key is \texttt{(source\_id, source\_key)}. Storm Events uses
 \texttt{EVENT\_ID}; GHCN uses station/date/element. One daily CSV row may therefore
 produce three measurements. The model keeps date-grained measurements separate
 from instant-grained events.
+
+\begin{tabularx}{\textwidth}{@{}L{4.6cm}Y@{}}
+\toprule Course-contract name & Implemented schema name\\\midrule
+\texttt{source} & \texttt{source\_catalog}\\
+\texttt{ingestion\_run} & \texttt{ingestion\_run}\\
+\texttt{ingestion\_state} & \texttt{ingestion\_state}\\
+\texttt{event} & \texttt{historical\_record}, with compatibility view \texttt{canonical\_event}\\
+\texttt{rejected\_record} & \texttt{rejected\_record}\\
+\texttt{event\_group} & Not included in this slice; planned for Workshop 3.\\
+\bottomrule\end{tabularx}
+
+The current domain tables are \texttt{storm\_event},
+\texttt{daily\_station\_measurement}, \texttt{station} and
+\texttt{source\_geography}. SQL migrations define their actual relationships.
 
 \begin{tabularx}{\textwidth}{@{}L{5.2cm}Y@{}}
 \toprule
@@ -293,9 +324,22 @@ python ingest.py --mode status
 \end{verbatim}
 The historical command selects complete registered capture intervals; it does
 not truncate CSV rows by a requested subrange. Missing local captures must be
-acquired or restored first. Incremental mode explicitly remains Workshop 3.
+acquired or restored first. Complete intervals retain the registered body hash,
+source line numbering and partition checkpoint semantics rather than silently
+creating a different partial capture. Incremental mode explicitly remains Workshop 3.
 
 \section{DAG implementation and recovery}
+The two DAG files have the handout's exact filenames:
+\path{airflow/dags/bronze_ingestion_dag.py} and
+\path{airflow/dags/silver_processing_dag.py}. File names differ from the descriptive
+runtime DAG IDs below; neither requires renaming.
+
+\begin{longtable}{@{}L{3.0cm}L{3.3cm}L{1.5cm}L{3.5cm}L{3.8cm}@{}}
+\toprule DAG & Tasks & Schedule & Trigger & Expected output\\\midrule\endhead
+\path{weather_bronze_ingestion} & \path{publish_bronze}; \path{trigger_silver} & Manual & UI/API request with registered partition & Atomic parsed JSON, native input reference, exact Silver manifest path.\\
+\path{weather_silver_processing} & \path{validate_manifest_path}; \path{wait_for_exact_bronze}; \path{load_and_export} & Manual & Bronze operator passes path; FileSensor gates loading & Canonical/domain rows or quarantine; Parquet and lineage manifest after commit.\\
+\bottomrule\end{longtable}
+
 \subsection{Bronze ingestion}
 \texttt{weather\_bronze\_ingestion} uses TaskFlow \texttt{@dag}/\texttt{@task}.
 Its \texttt{publish\_bronze} task selects the explicit partition, checks the
@@ -304,6 +348,18 @@ registered body hash, preserves the CSV input and publishes a JSON view.
 \texttt{TriggerDagRunOperator}; no large payload travels through XCom.
 Source acquisition is a separate explicit cached CLI operation; this historical
 DAG replays registered source captures rather than downloading every trigger.
+The DAG has no parameter or task that invokes acquisition. The configuration
+parameter \texttt{partition} selects a registered local capture; omitted values
+default to \texttt{sample\_2024}. The publication task also verifies the timezone
+of its logical timestamp, lands the unchanged registered CSV, and writes the
+derived JSON atomically. The trigger task waits for publication, returns without
+waiting for Silver completion, and uses a child run ID derived from the Bronze
+run ID. Consequently Bronze success must be checked separately from Silver success.
+
+Network extraction is performed by \path{scripts/workshop_2/acquire_historical.py}
+as a separate cached operation. This keeps the historical backfill bounded,
+avoids repeated downloads from public servers and makes replay reproducible from
+registered bytes. Scheduled polling of current NWS sources belongs to Workshop 3.
 
 \subsection{Silver processing}
 \texttt{weather\_silver\_processing} validates that the supplied JSON path remains
@@ -317,6 +373,13 @@ Both DAGs use manual schedules for bounded historical backfills,
 \texttt{catchup=False}, one active run per DAG and one retry after ten seconds.
 These are deliberate historical settings rather than a copied daily live-feed
 schedule. Current-period NWS scheduling remains Workshop 3.
+Airflow supplies task lifecycle, exception and retry logs; the DAG files do not
+add a custom logging subsystem. Validation raises explicit errors such as
+\texttt{bronze\_path\_outside\_landing},
+\texttt{bronze\_parsed\_view\_mismatch} and
+\texttt{existing\_batch\_output\_conflict}; task failures remain visible in
+Airflow logs. The acquisition CLI separately prints saved-year progress and
+retries failed HTTP requests up to three attempts with bounded request timeouts.
 
 \subsection{Transaction, idempotency and failure boundaries}
 A per-source advisory transaction lock serializes loads that may share business
@@ -351,17 +414,15 @@ has its own unit; boxplot flags are retained for review, not deleted.}
 Successful task states and UTC timestamps were obtained from Airflow's local
 stable REST API and saved verbatim as structured evidence.
 Figure~\ref{fig:states} is a rendering of those recorded states, \textbf{not a
-screenshot of the Airflow UI}. Kevin supplied the actual UI overview in
-Figure~\ref{fig:ui}; its unchanged image hash is recorded in
-\path{workshop_2/evidence/user_screenshot.json}. Browser automation was unavailable,
-so the screenshot is attributed to the contributor rather than an automated
-capture. The two earlier Silver failures remain visible; successful subsequent
-runs are verified individually in the API receipt.
+screenshot of the Airflow UI}. Figure~\ref{fig:ui} shows the actual interface
+overview; its complete image hash is recorded in
+\path{workshop_2/evidence/user_screenshot.json}. The two earlier Silver failures
+remain visible; successful subsequent runs are verified individually in the API receipt.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{assets/airflow_ui_overview.png}
-\caption{Actual Airflow UI overview supplied by Kevin. Both DAGs are active;
+\caption{Airflow interface overview. Both DAGs are active;
 Bronze shows 15 successful runs, while Silver shows 13 successes and two earlier
 failures retained from the dependency issue. The overview complements detailed
 per-partition API evidence.}\label{fig:ui}
@@ -397,7 +458,7 @@ an unrelated NLP pipeline. The original handout's source-domain discrepancy,
 manual historical schedule and folder-name adaptation are explicit.
 \end{enumerate}
 
-\section{Delivery and team review}
+\section{Deliverables and responsibilities}
 The three Moodle items map to:
 \begin{enumerate}
 \item \path{workshop_2/report/Workshop_2_Report.pdf}, with portable LaTeX source.
@@ -405,15 +466,12 @@ The three Moodle items map to:
 genuine Bronze JSON files, three Parquet outputs, CSV inputs, lineage/manifest,
 the executed notebook and saved verification receipts.
 \item \url{https://github.com/KevMasMas/multi-hazard-weather-monitoring/tree/workflow-2},
-after Kevin reviews and pushes the selected local commit.
+with the implementation, configuration and supporting evidence on branch
+\texttt{workflow-2}.
 \end{enumerate}
 
 Kevin leads NOAA/database/CLI work; Pablo leads GHCN/orchestration and evidence
-assembly, with reciprocal review. The single current assignment board remains
-\path{WORK_BOARD.md}. Technical execution evidence does not imply either
-student's personal approval. Workshop 1 approval is not reused for Workshop 2.
-Final review, commit/push and platform upload must be recorded
-only when actually performed.
+assembly, with reciprocal review.
 
 \section*{References}
 \begin{enumerate}[label={[\arabic*]}]
@@ -441,4 +499,5 @@ only when actually performed.
 \item GHCN-Daily dataset documentation:
 \url{https://www.ncei.noaa.gov/pub/data/ghcn/daily/readme.txt}.
 \end{enumerate}
+\input{layer_appendix.tex}
 \end{document}
