@@ -1,0 +1,34 @@
+{
+  "captures": [
+    {
+      "source": "noaa_storm_events",
+      "partition": "sample_2024",
+      "path": "workshop_1/samples/noaa_storm_events/details_sample.csv",
+      "start": "2024-01-01",
+      "end": "2024-12-31",
+      "source_url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/",
+      "source_format": "csv_subset_of_gzip_archive",
+      "attribution": "NOAA NCEI Storm Events; archive version and access date in Workshop 1 evidence register"
+    },
+    {
+      "source": "ghcn_daily",
+      "partition": "USW00013967_2025",
+      "path": "workshop_1/samples/region_comparison/ghcn_okc_usw00013967_2025.csv",
+      "start": "2025-01-01",
+      "end": "2025-12-31",
+      "source_url": "https://www.ncei.noaa.gov/access/services/data/v1",
+      "source_format": "csv",
+      "attribution": "NCEI GHCN-Daily v3 subset and access date in Workshop 1 evidence register"
+    },
+    {
+      "source": "ghcn_daily",
+      "partition": "USW00013967_2026_overlap",
+      "path": "workshop_1/samples/region_comparison/ghcn_okc_usw00013967_2026_overlap.csv",
+      "start": "2026-10-31",
+      "end": "2026-11-05",
+      "source_url": "https://www.ncei.noaa.gov/access/services/data/v1",
+      "source_format": "csv",
+      "attribution": "NCEI GHCN-Daily v3 subset and access date in Workshop 1 evidence register"
+    }
+  ]
+}

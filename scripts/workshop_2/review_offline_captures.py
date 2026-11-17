@@ -13,7 +13,11 @@ from multi_hazard_weather_monitoring.sources.historical_samples import (  # noqa
     parse_ghcn_daily,
     parse_noaa_storm_events,
 )
-from multi_hazard_weather_monitoring.storage.raw_landing import land_capture  # noqa: E402
+from multi_hazard_weather_monitoring.storage.raw_landing import (  # noqa: E402
+    land_capture,
+    require_registered_capture,
+)
+from multi_hazard_weather_monitoring.normalization.validation import rejection_reason  # noqa: E402
 
 
 CAPTURES = (
@@ -27,15 +31,18 @@ CAPTURES = (
 
 
 def main() -> None:
+    register = json.loads((ROOT / "workshop_1/samples/candidate_pairs/submission_evidence_audit.json")
+                          .read_text(encoding="utf-8"))["input_sha256"]
     summaries = []
     for source, partition, relative, parser in CAPTURES:
         body = (ROOT / relative).read_bytes()
+        require_registered_capture(body, relative, register)
         capture = land_capture(body, source=source, partition=partition,
                                root=ROOT / "data/raw", content_type="text/csv",
                                origin=relative)
         records = list(parser(body))
-        accepted = [r for r in records if "rejection_reason" not in r]
-        rejected = [r for r in records if "rejection_reason" in r]
+        accepted = [r for r in records if rejection_reason(r) is None]
+        rejected = [r for r in records if rejection_reason(r) is not None]
         keys = [r["source_key"] for r in accepted]
         if len(keys) != len(set(keys)):
             raise ValueError(f"duplicate_source_key:{source}:{partition}")

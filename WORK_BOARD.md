@@ -16,10 +16,10 @@ This is the single operational entry point for Team 9. Read this file to know th
 | Compound Hazard Index formula | Accepted as the Workshop 1 preliminary five-component proposal; empirical validation remains for Workshop 4 |
 | Pablo review | `PABLO_REVIEW.md` is historical and limited in scope; Kevin separately communicated both students' approval of the final Workshop 1 report/mapping/design in `TEAM_APPROVAL.md` |
 | Workshops 2-4 planning | `workflow-2` active; professor practice reviewed, offline NOAA/GHCN parsers and raw landing exercised with three saved captures, and initial SQL schema drafted. Only an offline audit summary exists; database/DAG and Silver output samples remain pending. Workshops 3-4 remain planning only |
-| Workshop 2 pulled-code review | `c2380c9` review reproduces 1,363 parsed records; units, input hash enforcement and Windows failure cleanup need fixes, with canonical validation/native-format/schema gaps explicit. See `workshop-2-pull-review-2026-11-16.md`; review does not mark implementation accepted |
+| Workshop 2 foundation review | `c2380c9` review identified R1-R6; R1-R3 are corrected, initial R4/R5 support and a transactional historical/status CLI draft are present, and ten focused tests pass. R6 schema remains unexecuted. See the dated reviews; no end-to-end pipeline is accepted |
 | Workshop 2 delivery target | Kevin's Moodle checklist: Technical Architecture/Pipeline PDF, Pipeline Output Samples, GitHub link. G0-G6 targets two TaskFlow DAGs, exact-batch FileSensor, canonical DB and genuine JSON/Parquet evidence; planning does not establish execution |
 | Specification conflict | Airflow and Bronze/Silver/Gold selected as the classroom workflow (ADR 0005); public-opinion/NLP/scraping wording and incompatible later-workshop details still require clarification |
-| Immediate goal | Execute G0-G6: resolve Docker access (Kevin reports installed), fix/test R1-R3 and validation, then transaction/CLI, real Airflow DAGs, historical/Parquet outputs and PDF/sample packaging. Domain mismatch remains documented without blocking selected compatible implementation |
+| Immediate goal | Continue G0-G6: Docker Desktop 4.99.0 and Compose v5.7.0 are installed, but WSL 2 is missing/outdated and the Linux engine cannot start. User is handling WSL setup/restart. Validate the new PostGIS Compose service, execute migration and historical/status CLI, verify rerun/rollback, then Airflow DAGs, Parquet outputs and PDF/sample packaging |
 
 ## Permanent ownership
 

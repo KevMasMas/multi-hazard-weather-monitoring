@@ -54,6 +54,9 @@ def parse_noaa_storm_events(body: bytes) -> Iterator[dict]:
                 raise ValueError("incomplete_coordinates")
             if lat is not None and (not -90 <= lat <= 90 or not -180 <= lon <= 180):
                 raise ValueError("coordinates_out_of_range")
+            magnitude = _number(row.get("MAGNITUDE"))
+            magnitude_type = (row.get("MAGNITUDE_TYPE") or "").strip() or None
+            wind_types = {"High Wind", "Thunderstorm Wind", "Strong Wind"}
             yield {
                 "source": "noaa_storm_events",
                 "source_key": event_id,
@@ -62,8 +65,9 @@ def parse_noaa_storm_events(body: bytes) -> Iterator[dict]:
                 "event_type": event_type,
                 "latitude": lat,
                 "longitude": lon,
-                "severity_value": _number(row.get("MAGNITUDE")),
-                "severity_unit": (row.get("MAGNITUDE_TYPE") or "").strip() or None,
+                "severity_value": magnitude,
+                "severity_unit": "kn" if magnitude is not None and event_type in wind_types else None,
+                "magnitude_type": magnitude_type,
                 "geography_reference": f"{row.get('CZ_TYPE', '')}/{row.get('CZ_FIPS', '')}/{row.get('CZ_NAME', '')}",
                 "source_content_sha256": _hash(row),
                 "source_line": line,

@@ -4,6 +4,40 @@ Append entries; do not silently rewrite historical observations.
 
 ## Entries
 
+### [2026-11-16 America/Bogota] - G0/G2 partial - Docker diagnosis and PostGIS Compose draft
+
+- **Objective/status:** respond to installed Docker and prepare a local PostGIS service for the first real Workshop 2 migration; configuration drafted, daemon/database execution pending.
+- **Branch/commit:** `workflow-2` with existing uncommitted G1/G2 changes; no commit or push.
+- **Files changed:** `docker-compose.yml`, `.env.example`, `workshop_2/README.md`, Workshop 2 plan, current board and this log.
+- **Decisions:** use the PostGIS project's documented `postgis/postgis:16-3.7` image, PostgreSQL 16 with a named volume, health check and host port 5432 by default. Keep schema application in the historical CLI and local credentials overrideable through untracked `.env`.
+- **Verification/evidence:** Docker CLI 29.9.3 and Compose v5.7.0 found at the per-user Docker Desktop path; `docker compose config --quiet` passed. `docker version` displayed Client only and failed to connect to `dockerDesktopLinuxEngine`; `wsl --version` and `wsl --status` reported a missing path. Docker Desktop process launched but backend did not start. `git diff --check` showed no whitespace errors. Image tag checked against the official PostGIS Docker repository documentation.
+- **Errors/corrections:** initial `docker` lookup failed because the per-user executable directory is not on this shell's PATH. Direct executable invocation resolved the CLI lookup. The user reported Docker Desktop asks to install/update WSL 2; engine startup remains dependent on that Windows setup/restart.
+- **Limitations/input/handoff:** no image pull, database service, migration, ingestion, Airflow or Parquet run is claimed. User should run `wsl --install` or `wsl --update` in administrator PowerShell as appropriate, restart if prompted, reopen Docker Desktop and confirm `docker version` displays Server. Afterward execute Compose and database checks. The Compose file currently defines PostGIS only; application/Airflow services remain for later gates.
+- **Recovery:** the named database volume is untouched because no daemon connection occurred. Review the Compose file and environment values before first service start; do not remove any pre-existing Docker volumes.
+
+
+### [2026-11-16 America/Bogota] - G2 partial - Draft transactional historical CLI
+
+- **Objective/status:** connect registered saved captures to the historical/status CLI and a per-partition PostgreSQL transaction; implementation and offline boundary tests added, real database execution pending.
+- **Branch/commit:** `workflow-2` at `7f28e28` before uncommitted changes; no push.
+- **Files changed:** `ingest.py`, `config/workshop2_saved_captures.json`, `requirements-workshop2.in`, `src/multi_hazard_weather_monitoring/storage/postgres_historical.py`, `tests/test_workshop2_transaction.py`, Workshop 2 README, plan, board and this log; concurrent G1 correction files remain uncommitted.
+- **Decisions:** select only complete saved-capture date intervals; verify all selected bodies against the Workshop 1 hash register before schema/data writes; link raw capture, run, accepted/unchanged rows, rejects and successful state. Commit once per partition and roll back on an exception. Keep 2026 overlap evidence separate from the 2010-2025 baseline.
+- **Verification/evidence:** `python -m compileall -q ingest.py src/multi_hazard_weather_monitoring` passed. Ten focused tests passed (`python -m unittest tests.test_workshop2_foundation tests.test_workshop2_transaction -q` with `PYTHONPATH=src` and authorized filesystem access), including complete-interval selection, source mismatch and injected state-write rollback. `python ingest.py --help` displayed the CLI; historical command with 2024-2025 dates returned `DATABASE_URL is required`, confirming the database path was not executed. `git diff --check` found no whitespace error. No live weather request was made.
+- **Errors/corrections:** the initial sandboxed test run failed in Python's temporary-directory creation with Windows access denied; running the same ten tests with ordinary authorized filesystem access passed. The first patch for the CLI was rejected as a duplicate file operation and reapplied as an update; no partial CLI rewrite remained.
+- **Limitations/input/handoff:** user confirmed Docker is not installed and asked what to download; official Docker Desktop for Windows with WSL 2 instructions were supplied. There is no Compose service, database migration result, actual historical load, rerun result, Silver Parquet or DAG evidence yet. Generic schema lacks final source-specific domain tables and full regional model. The offline fake cannot establish PostgreSQL semantics. Next: install/start Docker, add Compose/PostGIS, execute migration and load/rerun/rollback checks, then build DAG/output evidence.
+- **Recovery:** saved Workshop 1 evidence is unchanged. Raw landing under ignored `data/raw/` can be reconstructed from registered samples. Revert the uncommitted CLI/loader if the schema contract changes before first migration.
+
+### [2026-11-16 America/Bogota] - G1 partial - Correct reviewed foundation defects
+
+- **Objective/status:** review the latest Workshop 2 planning/review commit and fix confirmed R1-R3 defects; initial R4 validator and partial R5/R6 corrections completed, full G1/G2 acceptance pending.
+- **Branch/commit:** `workflow-2` at `7f28e28` before these uncommitted changes; no push.
+- **Files changed:** historical source parser, raw landing, offline review script, initial validation module, SQL draft, six focused tests, Workshop 2 plan/board/README, foundation correction review and this log.
+- **Decisions:** distinguish NOAA `MAGNITUDE_TYPE` from physical wind unit `kn`; require registered input hashes before landing; close temporary files before cleanup and publish manifests atomically; reject conflicting origin metadata; preserve native gzip; keep source-aware validation separate from parsing. `UNIQUE NULLS NOT DISTINCT` is selected for nullable rejection keys in PostgreSQL 16.
+- **Verification/evidence:** six focused `unittest` cases passed after using an authorized workspace temporary directory. Saved-input review reproduced three captures and 1,363 accepted parsed records, with unchanged summary SHA-256 `47491AE61A721B82B10B6AAAAA470B6DB58EF10D14298C2D9126035AE265FC9E`; synthetic altered input, negative PRCP, fsync failure, gzip and conflicting origin were tested. No weather API was called.
+- **Errors/corrections:** first test attempt failed with Windows access denied creating temporary directories, including under `data/raw/`; authorized execution passed all six tests. The failure arose before the target code paths and is not reported as a pipeline failure.
+- **Limitations/input/handoff:** user requested review and the next implementation step. Docker and `psql` were not found on PATH, the common Docker Desktop path or uninstall registry in this session; no database, DAG or Parquet run is claimed. Full validation, source metadata/provenance, transactional loader and container setup remain.
+- **Recovery:** revert this focused change if the source-unit contract is superseded; existing Workshop 1 captures and approved artifacts were not edited. Re-run the offline command and the six tests before proceeding to G2.
+
 ### [2026-11-16 America/Bogota] - W2-00/W2-12 planning - Bind work to Moodle deliverables
 
 - **Objective:** turn the supplied checklist into an ordered plan for all deliverables without confusing offline audit with a functional pipeline.

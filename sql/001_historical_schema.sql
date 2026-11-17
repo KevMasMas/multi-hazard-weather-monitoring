@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS historical_record (
     ) STORED,
     severity_value double precision,
     severity_unit text,
+    magnitude_type text,
     geography_reference text,
     quality_attributes text,
     source_content_sha256 char(64) NOT NULL,
@@ -85,7 +86,7 @@ CREATE TABLE IF NOT EXISTS rejected_record (
     element_code text,
     reason_code text NOT NULL,
     raw_fields jsonb NOT NULL,
-    UNIQUE (run_id, source_line, element_code, reason_code)
+    UNIQUE NULLS NOT DISTINCT (run_id, source_line, element_code, reason_code)
 );
 
 CREATE TABLE IF NOT EXISTS ingestion_state (

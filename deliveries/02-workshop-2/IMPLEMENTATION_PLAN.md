@@ -4,12 +4,13 @@
 - **Target date:** TBD - no submission date appears in the reviewed specification
 - **Working branch:** `workflow-2` (created by Kevin from the Workshop 1 branch)
 - **Base:** inherited Workshop 1 work; exact submission reference remains a separate review item
-- **Status:** delivery-first plan updated from Kevin's Moodle checklist (PDF, pipeline output samples, GitHub link). Offline foundation reviewed with R1-R6 findings; implementation correction, stack execution and delivery artifacts remain pending. Kevin reports Docker installed, but CLI/process/install path has not been resolved in this session.
+- **Status:** delivery-first plan updated from Kevin's Moodle checklist (PDF, pipeline output samples, GitHub link). R1-R3 corrected and tested, initial R4 validation and partial R5 native-format support added. Historical/status CLI and transactional loader drafted with offline boundary tests; R6 SQL remains unexecuted. PostGIS Compose service drafted and syntax-checked. Docker Desktop is installed but WSL 2/daemon setup remains pending; stack execution and delivery artifacts are not yet verified.
 - **Primary specification:** [CourseProject.pdf](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/CourseProject.pdf), Semester 2026-II
 - **Secondary/conflicting specification:** [Workshop_2.pdf](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_2.pdf), labeled Semester 2026-I
 - **Conflict review:** `docs/reports/workshops-2-4-specification-review.md`
 - **Current execution sequence:** `docs/reports/workshop-2-start-review-2026-11-16.md`
 - **Pulled-code review:** `docs/reports/workshop-2-pull-review-2026-11-16.md` at `c2380c9`: offline counts reproduced; R1 units, R2 registered input hashes and R3 Windows failure cleanup must be corrected before using the foundation as a validated pipeline. R4 canonical validation, native-format/provenance and SQL/domain execution remain open. No issue is marked fixed by the review alone.
+- **Foundation correction review:** `docs/reports/workshop-2-foundation-fix-review-2026-11-16.md` records R1-R3 fixes, initial R4 validation, partial R5 and static R6, with six passing focused tests. The earlier pulled-code review remains historical evidence, not the current defect status.
 - **Current course-material review:** `docs/reports/workshop-2-course-material-review-2026-11-16.md` (public `main` at `7a54da4`, latest course change `3f7010d`)
 - **Inherited architecture:** ADR 0005 and Workshop 1 correction commit `009e628` select Apache Airflow, native Bronze captures, Silver PostgreSQL/PostGIS plus Parquet exports and later Gold analytics. Deployment details remain W2-01 work.
 
