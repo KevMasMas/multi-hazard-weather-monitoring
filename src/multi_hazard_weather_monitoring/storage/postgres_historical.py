@@ -6,10 +6,11 @@ import json
 from collections.abc import Iterable
 
 from multi_hazard_weather_monitoring.normalization.validation import rejection_reason
+from multi_hazard_weather_monitoring.storage.historical_domains import persist_details
 
 
 def load_partition(connection, *, source: dict, capture: dict,
-                   records: Iterable[dict]) -> dict[str, int]:
+                   records: Iterable[dict], batch_key: str | None = None) -> dict:
     """Commit records, rejects, run metrics and partition state together.
 
     The caller owns the connection. An exception rolls back every database
@@ -23,6 +24,22 @@ def load_partition(connection, *, source: dict, capture: dict,
         raise ValueError("transactional_connection_required")
     try:
         with connection.cursor() as cursor:
+            # Different partitions can contain the same business key. Serialize
+            # one source's loads until commit/rollback to avoid stale comparisons
+            # and lost state when Airflow retries overlap.
+            cursor.execute('SELECT pg_advisory_xact_lock(hashtextextended(%s, 0))',
+                           ('weather_historical:' + source_id,))
+            if batch_key is not None:
+                cursor.execute('''SELECT r.source_id,r.partition_key,c.sha256,r.run_id,
+                    r.rows_read,r.rows_accepted,r.rows_rejected,r.rows_unchanged
+                    FROM ingestion_run r JOIN raw_capture c ON c.capture_id=r.capture_id
+                    WHERE r.batch_key=%s AND r.status='succeeded' ''',(batch_key,))
+                previous=cursor.fetchone()
+                if previous:
+                    if previous[:3]!=(source_id,partition,capture['sha256']):
+                        raise ValueError('batch_capture_identity_conflict')
+                    connection.commit()
+                    return dict(zip(('read','accepted','rejected','unchanged'),previous[4:]),run_id=previous[3])
             cursor.execute(
                 """INSERT INTO source_catalog(source_id, source_url, source_format, attribution)
                    VALUES (%s, %s, %s, %s)
@@ -46,9 +63,9 @@ def load_partition(connection, *, source: dict, capture: dict,
             if (stored_path, stored_origin) != (capture["raw_path"], capture["origin"]):
                 raise ValueError("database_capture_provenance_conflict")
             cursor.execute(
-                """INSERT INTO ingestion_run(source_id, partition_key, capture_id, status)
-                   VALUES (%s, %s, %s, 'running') RETURNING run_id""",
-                (source_id, partition, capture_id),
+                """INSERT INTO ingestion_run(source_id, partition_key, capture_id, status,batch_key)
+                   VALUES (%s, %s, %s, 'running',%s) RETURNING run_id""",
+                (source_id, partition, capture_id,batch_key),
             )
             run_id = cursor.fetchone()[0]
             for record in records:
@@ -73,12 +90,14 @@ def load_partition(connection, *, source: dict, capture: dict,
                     continue
                 seen.add(key)
                 cursor.execute(
-                    """SELECT source_content_sha256 FROM historical_record
+                    """SELECT source_content_sha256, record_id FROM historical_record
                        WHERE source_id=%s AND source_key=%s FOR UPDATE""",
                     (source_id, key),
                 )
                 existing = cursor.fetchone()
                 if existing and existing[0].strip() == record["source_content_sha256"]:
+                    persist_details(cursor,record_id=existing[1],run_id=run_id,
+                                    capture_id=capture_id,record=record,unchanged=True)
                     counts["unchanged"] += 1
                     continue
                 cursor.execute(
@@ -102,7 +121,7 @@ def load_partition(connection, *, source: dict, capture: dict,
                            source_content_sha256=EXCLUDED.source_content_sha256,
                            capture_id=EXCLUDED.capture_id,
                            source_line=EXCLUDED.source_line,
-                           last_run_id=EXCLUDED.last_run_id""",
+                           last_run_id=EXCLUDED.last_run_id RETURNING record_id""",
                     (source_id, key, record["event_type"], record["observed_at_utc"],
                      record["observed_date"], record["latitude"], record["longitude"],
                      record["severity_value"], record["severity_unit"],
@@ -110,9 +129,12 @@ def load_partition(connection, *, source: dict, capture: dict,
                      record.get("quality_attributes"), record["source_content_sha256"],
                      capture_id, record["source_line"], run_id),
                 )
+                record_id=cursor.fetchone()[0]
+                persist_details(cursor,record_id=record_id,run_id=run_id,
+                                capture_id=capture_id,record=record,unchanged=False)
                 counts["accepted"] += 1
             cursor.execute(
-                """UPDATE ingestion_run SET status='succeeded', finished_at_utc=now(),
+                """UPDATE ingestion_run SET status='succeeded', finished_at_utc=clock_timestamp(),
                        rows_read=%s, rows_accepted=%s, rows_rejected=%s,
                        rows_unchanged=%s WHERE run_id=%s""",
                 (counts["read"], counts["accepted"], counts["rejected"],
@@ -121,14 +143,14 @@ def load_partition(connection, *, source: dict, capture: dict,
             cursor.execute(
                 """INSERT INTO ingestion_state(source_id, partition_key,
                        last_successful_run_id, last_successful_at_utc)
-                   VALUES (%s, %s, %s, now())
+                   VALUES (%s, %s, %s, clock_timestamp())
                    ON CONFLICT (source_id, partition_key) DO UPDATE SET
                        last_successful_run_id=EXCLUDED.last_successful_run_id,
                        last_successful_at_utc=EXCLUDED.last_successful_at_utc""",
                 (source_id, partition, run_id),
             )
         connection.commit()
-        return counts
+        return dict(counts,run_id=run_id) if batch_key is not None else counts
     except BaseException:
         connection.rollback()
         raise

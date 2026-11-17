@@ -1,0 +1,154 @@
+{
+  "method": "Airflow local REST API; saved captures only",
+  "verified_at_utc": "2026-11-17T01:53:49.3415993Z",
+  "weather_network": false,
+  "limitations": [
+    "Two actual source partitions; not five-year historical coverage",
+    "Earlier failed Silver runs retained; not presented as successful",
+    "Output files remain in ignored data storage until delivery packaging"
+  ],
+  "runs": [
+    {
+      "state": "success",
+      "end_date": "2026-11-16T20:53:07.92616-05:00",
+      "start_date": "2026-11-16T20:53:05.728001-05:00",
+      "dag_id": "weather_bronze_ingestion",
+      "dag_run_id": "w2_fixed_20261117T015304",
+      "tasks": [
+        {
+          "task_id": "publish_bronze",
+          "state": "success",
+          "try_number": 1
+        },
+        {
+          "task_id": "trigger_silver",
+          "state": "success",
+          "try_number": 1
+        }
+      ]
+    },
+    {
+      "state": "success",
+      "end_date": "2026-11-16T20:53:12.875942-05:00",
+      "start_date": "2026-11-16T20:53:07.910899-05:00",
+      "dag_id": "weather_silver_processing",
+      "dag_run_id": "silver__w2_fixed_20261117T015304",
+      "tasks": [
+        {
+          "task_id": "validate_manifest_path",
+          "state": "success",
+          "try_number": 1
+        },
+        {
+          "task_id": "wait_for_exact_bronze",
+          "state": "success",
+          "try_number": 1
+        },
+        {
+          "task_id": "load_and_export",
+          "state": "success",
+          "try_number": 1
+        }
+      ]
+    },
+    {
+      "state": "success",
+      "end_date": "2026-11-16T20:53:25.075524-05:00",
+      "start_date": "2026-11-16T20:53:22.925371-05:00",
+      "dag_id": "weather_bronze_ingestion",
+      "dag_run_id": "w2_ghcn_20261117T015321",
+      "tasks": [
+        {
+          "task_id": "publish_bronze",
+          "state": "success",
+          "try_number": 1
+        },
+        {
+          "task_id": "trigger_silver",
+          "state": "success",
+          "try_number": 1
+        }
+      ]
+    },
+    {
+      "state": "success",
+      "end_date": "2026-11-16T20:53:30.22648-05:00",
+      "start_date": "2026-11-16T20:53:25.062873-05:00",
+      "dag_id": "weather_silver_processing",
+      "dag_run_id": "silver__w2_ghcn_20261117T015321",
+      "tasks": [
+        {
+          "task_id": "validate_manifest_path",
+          "state": "success",
+          "try_number": 1
+        },
+        {
+          "task_id": "wait_for_exact_bronze",
+          "state": "success",
+          "try_number": 1
+        },
+        {
+          "task_id": "load_and_export",
+          "state": "success",
+          "try_number": 1
+        }
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "manifest_sha256": "F0C14118AAA7A2A80E57F2E2B33DB5114E779323678FCE7C7F5F6087865A5CA7",
+      "receipt": {
+        "bronze_path": "data/bronze/ghcn_daily_20261117_015322_1c4fb3e13cf1.json",
+        "bronze_sha256": "35057D529BF7A70640461AC5DB04C6A792C1528B47784C2276E4AF3395BF7CC7",
+        "metrics": {
+          "accepted": 0,
+          "read": 1095,
+          "rejected": 0,
+          "run_id": 14,
+          "unchanged": 1095
+        },
+        "native_sha256": "d8ee9e0afbfe25897c17babe4a88dc0e12d4fece8b74c26e8d817d5309ffb5ae",
+        "silver": {
+          "bytes": 57981,
+          "partition": "USW00013967_2025",
+          "path": "data/curated/silver/ghcn_daily_20261117_015322_1c4fb3e13cf1.parquet",
+          "producer": "immutable_database_snapshot_export",
+          "rows": 1095,
+          "run_id": 14,
+          "schema": "silver-v1",
+          "sha256": "7ECEAB1D4FC7E3E42C599A726E9C6F99A67587DEE8154620B286A0737ED339A9",
+          "source": "ghcn_daily"
+        }
+      },
+      "manifest_path": "data/curated/silver/ghcn_daily_20261117_015322_1c4fb3e13cf1.manifest.json"
+    },
+    {
+      "manifest_sha256": "F19F1F9176D4F7331A9BA69403B23959D4FE9D180CC2F9B5308CA2307C98528E",
+      "receipt": {
+        "bronze_path": "data/bronze/noaa_storm_events_20261117_015304_65b5391680dc.json",
+        "bronze_sha256": "B645FE3F5DC54C7AAEA98DE5AE78B6D3135C85F107791BB1CD66723FF64E6954",
+        "metrics": {
+          "accepted": 0,
+          "read": 250,
+          "rejected": 0,
+          "run_id": 13,
+          "unchanged": 250
+        },
+        "native_sha256": "987f5c641b6b85bf89477a823b52757d50d2c5376895fd53056a9afe9f79403a",
+        "silver": {
+          "bytes": 31281,
+          "partition": "sample_2024",
+          "path": "data/curated/silver/noaa_storm_events_20261117_015304_65b5391680dc.parquet",
+          "producer": "immutable_database_snapshot_export",
+          "rows": 250,
+          "run_id": 13,
+          "schema": "silver-v1",
+          "sha256": "EC8C48D330FE341F203AC974211C9FD3FD5C6030125C50C49C13B5EBF1C2C853",
+          "source": "noaa_storm_events"
+        }
+      },
+      "manifest_path": "data/curated/silver/noaa_storm_events_20261117_015304_65b5391680dc.manifest.json"
+    }
+  ]
+}

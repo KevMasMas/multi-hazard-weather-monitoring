@@ -1,0 +1,20 @@
+flowchart TD
+  NOAA[NOAA Storm Events annual gzip CSV] --> ACQ[Explicit cached acquisition CLI]
+  GHCN[NCEI GHCN-Daily metric CSV] --> ACQ
+  ACQ --> RAW[Raw landing: unchanged responses, URL, UTC capture, SHA-256]
+  RAW --> SUB[Registered CSV input: Oklahoma subset or unchanged station response]
+  SUB --> B[TaskFlow Bronze: verify checksum and atomically publish JSON view]
+  SCHED[Airflow scheduler / LocalExecutor] --> B
+  B --> TRIG[TriggerDagRunOperator: exact manifest path]
+  B --> BJ[Bronze JSON batch on persistent bind mount]
+  TRIG --> FS[Silver FileSensor: exact batch, reschedule, timeout]
+  BJ --> FS
+  FS --> VAL[Source parsing and canonical validation]
+  VAL --> DB[(PostgreSQL/PostGIS: accepted rows, domains, revisions, provenance)]
+  VAL --> Q[(rejected_record: raw fields and reason)]
+  DB --> STATE[Run metrics and partition checkpoint in same transaction]
+  STATE --> P[Silver Parquet: immutable run snapshot]
+  P --> NOTE[Offline Pandas review notebook]
+  DB -. planned .-> GOLD[Gold: regional analytical views / CHI]
+  GOLD -. planned .-> DASH[Dashboard]
+  CLI[Historical / status ingestion CLI] --> VAL

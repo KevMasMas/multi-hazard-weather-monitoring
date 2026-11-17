@@ -66,7 +66,11 @@ CAPTURE = {"raw_path": "ghcn_daily/partition/hash.csv", "content_type": "text/cs
 
 class HistoricalTransactionTests(unittest.TestCase):
     def test_saved_capture_selection_requires_complete_interval(self):
-        config = json.loads((ROOT / "config/workshop2_saved_captures.json").read_text())
+        # Selection is a date-contract test, independent of the growing real registry.
+        config = {'captures': [
+            dict(source='noaa_storm_events', partition='sample_2024', start='2024-01-01', end='2024-12-31'),
+            dict(source='ghcn_daily', partition='USW00013967_2025', start='2025-01-01', end='2025-12-31'),
+            dict(source='ghcn_daily', partition='outside', start='2026-01-01', end='2026-12-31')]}
         selected = select_captures(config, "2024-01-01", "2025-12-31")
         self.assertEqual([(x["source"], x["partition"]) for x in selected],
                          [("noaa_storm_events", "sample_2024"),
@@ -80,6 +84,7 @@ class HistoricalTransactionTests(unittest.TestCase):
         self.assertEqual(result, {"read": 0, "accepted": 0, "rejected": 0, "unchanged": 0})
         self.assertEqual((connection.commits, connection.rollbacks), (1, 0))
         statements = connection.fake_cursor.statements
+        self.assertIn('pg_advisory_xact_lock', statements[0])
         self.assertLess(next(i for i, s in enumerate(statements) if "UPDATE ingestion_run" in s),
                         next(i for i, s in enumerate(statements) if "INSERT INTO ingestion_state" in s))
 

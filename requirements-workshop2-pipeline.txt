@@ -1,0 +1,6 @@
+-r requirements-workshop2-runtime.txt
+# Keep Airflow Python 3.12 compatible with its existing pandas/NumPy stack.
+pyarrow==18.1.0; python_version < "3.14"
+# Python 3.14 needs a newer Arrow wheel and NumPy 2.
+numpy>=2.0,<3; python_version >= "3.14"
+pyarrow==26.0.1; python_version >= "3.14"

@@ -1,0 +1,38 @@
+{
+  "source_counts_before": [
+    {
+      "source_id": "ghcn_daily",
+      "records": 5478,
+      "first_date": "2021-01-01",
+      "last_date": "2025-12-31",
+      "missing_point": 0
+    },
+    {
+      "source_id": "noaa_storm_events",
+      "records": 13561,
+      "first_date": "2021-01-01",
+      "last_date": "2025-12-23",
+      "missing_point": 7084
+    }
+  ],
+  "source_counts_after": [
+    {
+      "source_id": "ghcn_daily",
+      "records": 5478,
+      "first_date": "2021-01-01",
+      "last_date": "2025-12-31",
+      "missing_point": 0
+    },
+    {
+      "source_id": "noaa_storm_events",
+      "records": 13561,
+      "first_date": "2021-01-01",
+      "last_date": "2025-12-23",
+      "missing_point": 7084
+    }
+  ],
+  "counts_equal": true,
+  "all_ten_original_parquet_hashes_match": true,
+  "post_restart_successful_unchanged_replays": 3,
+  "receipt": "replay_airflow_runs.json"
+}

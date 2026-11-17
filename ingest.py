@@ -18,6 +18,8 @@ from multi_hazard_weather_monitoring.sources.historical_samples import (  # noqa
     parse_ghcn_daily, parse_noaa_storm_events,
 )
 from multi_hazard_weather_monitoring.storage.postgres_historical import load_partition  # noqa: E402
+from multi_hazard_weather_monitoring.storage.migrations import migrate  # noqa: E402
+from multi_hazard_weather_monitoring.sources.capture_registry import registered_hashes  # noqa: E402
 from multi_hazard_weather_monitoring.storage.raw_landing import (  # noqa: E402
     land_capture, require_registered_capture,
 )
@@ -68,16 +70,13 @@ def _connect():
 
 
 def _migrate(connection) -> None:
-    with connection.cursor() as cursor:
-        cursor.execute((ROOT / "sql/001_historical_schema.sql").read_text(encoding="utf-8"))
-    connection.commit()
+    migrate(connection)
 
 
 def _historical(connection, start: str, end: str) -> list[dict]:
     config = json.loads((ROOT / "config/workshop2_saved_captures.json").read_text(encoding="utf-8"))
     selected = select_captures(config, start, end)
-    register = json.loads((ROOT / "workshop_1/samples/candidate_pairs/submission_evidence_audit.json")
-                          .read_text(encoding="utf-8"))["input_sha256"]
+    register = registered_hashes(ROOT)
     # Check all selected inputs before creating schema or writing data.
     bodies = []
     for item in selected:

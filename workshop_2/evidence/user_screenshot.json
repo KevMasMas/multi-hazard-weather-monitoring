@@ -1,0 +1,9 @@
+{
+  "source": "User-provided Airflow UI screenshot",
+  "sha256": "650B153EA008D063D941E33D3B4EBD4A35B709A148EDE8FFE7FA59BDC7E79D58",
+  "path": "workshop_2/report/assets/airflow_ui_overview.png",
+  "received_at_utc": "2026-11-17T02:14:36.5056310Z",
+  "capture_timestamp": "Not independently recorded; UI displays 02:13 UTC",
+  "limitation": "Overview does not identify each source partition; pair with detailed Airflow API receipts.",
+  "visible_evidence": "Two active DAGs; Bronze 15 successes; Silver 13 successes and 2 earlier failures; latest task indicators successful"
+}

@@ -66,7 +66,7 @@ def parse_noaa_storm_events(body: bytes) -> Iterator[dict]:
                 "latitude": lat,
                 "longitude": lon,
                 "severity_value": magnitude,
-                "severity_unit": "kn" if magnitude is not None and event_type in wind_types else None,
+                "severity_unit": ("kn" if event_type in wind_types else "in" if event_type == "Hail" else None) if magnitude is not None else None,
                 "magnitude_type": magnitude_type,
                 "geography_reference": f"{row.get('CZ_TYPE', '')}/{row.get('CZ_FIPS', '')}/{row.get('CZ_NAME', '')}",
                 "source_content_sha256": _hash(row),

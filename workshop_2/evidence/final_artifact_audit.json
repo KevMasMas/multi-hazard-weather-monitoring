@@ -1,0 +1,25 @@
+{
+  "verified_at_utc": "2026-11-17T02:34:27.479047+00:00",
+  "pdf_pages": 9,
+  "notebook_code_cells": 9,
+  "notebook_error_outputs": 0,
+  "sample_pairs": 3,
+  "tests_passed": 29,
+  "test_receipt_fingerprints_verified": true,
+  "workshop1_artifacts_unchanged": 6,
+  "zip_crc_and_hashes_passed": true,
+  "screenshot_unchanged": true,
+  "secret_scan": {
+    "files": 203,
+    "patterns": [
+      "github_token",
+      "aws_access_key",
+      "private_key"
+    ],
+    "findings": [],
+    "limitation": "Scoped recognized-token/private-key pattern scan, not a guarantee that all possible secrets are absent."
+  },
+  "oversized_files": [],
+  "personal_approval": "Not recorded for Workshop 2",
+  "push_or_upload": false
+}

@@ -1,10 +1,22 @@
 # Implementation Plan - Workshop 2
 
+**Latest verification, 2026-11-16:** ten actual Airflow Bronze/Silver batches
+processed 2021-2025: 13,561 Oklahoma events and 5,478 GHCN measurements from one
+station. Canonical rerun/restart checks show zero duplicates. All 29 tests pass;
+the notebook executes nine code cells with no errors. PDF/ZIP and technical
+evidence are prepared for review. See the current change-log entry and
+`workshop_2/EVIDENCE_REGISTER.md`.
+
+G0/G1 and the bounded G2/G3 core are demonstrated. G4 meets the five-year slice
+and three real samples; the full 2010-2025 target, statewide station inventory and
+county assignments remain open. G5 artifacts are prepared; final content approval,
+selected commit/push and upload (G6) require actual human actions.
+
 - **Team:** Team 9 - Pablo Garzon and Kevin Rincon
-- **Target date:** TBD - no submission date appears in the reviewed specification
+- **Target date:** 2026-11-16, ready for team review before 21:45 America/Bogota; Kevin reports a 22:00 delivery deadline. This is user-supplied timing, not a newly verified platform response.
 - **Working branch:** `workflow-2` (created by Kevin from the Workshop 1 branch)
 - **Base:** inherited Workshop 1 work; exact submission reference remains a separate review item
-- **Status:** delivery-first plan updated from Kevin's Moodle checklist (PDF, pipeline output samples, GitHub link). R1-R3 corrected and tested, initial R4 validation and partial R5 native-format support added. Historical/status CLI and transactional loader drafted with offline boundary tests; R6 SQL remains unexecuted. PostGIS Compose service drafted and syntax-checked. Docker Desktop is installed but WSL 2/daemon setup remains pending; stack execution and delivery artifacts are not yet verified.
+- **Status:** technical delivery artifacts prepared for review; wider historical/station/geography scope and G6 remain open.
 - **Primary specification:** [CourseProject.pdf](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/CourseProject.pdf), Semester 2026-II
 - **Secondary/conflicting specification:** [Workshop_2.pdf](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_2.pdf), labeled Semester 2026-I
 - **Conflict review:** `docs/reports/workshops-2-4-specification-review.md`
@@ -12,7 +24,7 @@
 - **Pulled-code review:** `docs/reports/workshop-2-pull-review-2026-11-16.md` at `c2380c9`: offline counts reproduced; R1 units, R2 registered input hashes and R3 Windows failure cleanup must be corrected before using the foundation as a validated pipeline. R4 canonical validation, native-format/provenance and SQL/domain execution remain open. No issue is marked fixed by the review alone.
 - **Foundation correction review:** `docs/reports/workshop-2-foundation-fix-review-2026-11-16.md` records R1-R3 fixes, initial R4 validation, partial R5 and static R6, with six passing focused tests. The earlier pulled-code review remains historical evidence, not the current defect status.
 - **Current course-material review:** `docs/reports/workshop-2-course-material-review-2026-11-16.md` (public `main` at `7a54da4`, latest course change `3f7010d`)
-- **Inherited architecture:** ADR 0005 and Workshop 1 correction commit `009e628` select Apache Airflow, native Bronze captures, Silver PostgreSQL/PostGIS plus Parquet exports and later Gold analytics. Deployment details remain W2-01 work.
+- **Inherited architecture:** ADR 0005 and Workshop 1 correction commit `009e628` select Apache Airflow, native Bronze captures, Silver PostgreSQL/PostGIS plus Parquet exports and later Gold analytics. The executed deployment is now documented in ADR 0006 and the demo guide; wider scope and team review remain open.
 
 ## 1. Requirement interpretation
 
@@ -73,8 +85,7 @@ as a test and separately proves the multi-partition path.
 ### Actual submission items
 
 The following is the Moodle checklist supplied by Kevin, not an independently
-authenticated platform response. Report and sample ZIP names below are targets;
-they do not exist yet and must not be created as empty completion placeholders.
+authenticated platform response. Report and sample ZIP names below now identify generated, verified artifacts; they are not empty placeholders.
 
 | Moodle item | Planned artifact | Acceptance evidence |
 | --- | --- | --- |
@@ -166,28 +177,32 @@ policies come from Workshop 1; extremes are not deleted just because of IQR.
 
 ### P0 - required compatibility core
 
+Checked implementation items below are supported by the 2026-11-16 delivery
+change-log entry, actual receipts and final artifacts; they do not imply G6
+approval. W2-14 packaging is prepared, while its human review/reference remains open.
+
 - [x] **W2-00 - Requirement interpretation:** record Kevin's three-item Moodle checklist and the selected weather-compatible technical path above. [ ] Professor response only if/when received; none is claimed or sent automatically. Domain-incompatible NLP/scraping is not a prerequisite to compatible implementation.
-- [ ] **W2-01 - Architecture ADR:** select PostgreSQL/PostGIS, scheduler, raw/curated boundaries, optional Parquet role, service layout, ports, volumes and recovery model.
-- [ ] **W2-02 - Reproducible environment:** create version-pinned project dependencies, Dockerfiles, Compose health checks, persistent volumes and `.env.example` variables.
-- [ ] **W2-03 - Database migrations:** implement canonical/support/domain/geography tables, constraints, indexes, data dictionary and migration verification.
-- [ ] **W2-04 - Raw landing:** persist body, retrieval/request metadata, source/partition, content type, byte count and SHA-256 before transformation.
-- [ ] **W2-05 - NOAA historical adapter:** implement annual archive discovery/cache, deterministic partitioning, parsing, source key/content hash and resumable checkpoints.
-- [ ] **W2-06 - GHCN historical adapter:** generate the Oklahoma station inventory, apply ADR 0004 coverage rules, ingest station-year partitions and preserve measurement/QC/source flags.
-- [ ] **W2-07 - Canonical validation:** enforce types, UTC/date semantics, WGS84 ranges, units, required keys, missing-value policy and quarantine reasons.
-- [ ] **W2-08 - CLI integration:** replace the Workshop 1 stub for `historical` and `status` while preserving the common CLI contract.
-- [ ] **W2-09 - Idempotency and recovery:** prove same-partition reruns, mid-run failure rollback/resume and no state advancement before commit.
-- [ ] **W2-10 - Tests:** add fixture-based unit tests for both adapters and integration tests for migrations, validation, quarantine and idempotency.
-- [ ] **W2-11 - Evidence notebook:** create `notebooks/02_historical_ingestion_review.ipynb` to inspect persisted counts, nulls, rejects, partitions and provenance.
-- [ ] **W2-12 - Documentation:** produce the English Workshop 2 report, architecture diagram, runbook, evidence register, README commands and exact verification results.
-- [ ] **W2-13 - Actual DAG/output evidence:** implement Bronze/Silver TaskFlow DAGs and exact-batch FileSensor, execute them in Docker, preserve at least three real JSON/Parquet outputs and reconcile sample manifest/counts.
+- [x] **W2-01 - Architecture ADR (implemented, review pending):** select PostgreSQL/PostGIS, scheduler, raw/curated boundaries, optional Parquet role, service layout, ports, volumes and recovery model.
+- [x] **W2-02 - Reproducible environment:** create version-pinned project dependencies, Dockerfiles, Compose health checks, persistent volumes and `.env.example` variables.
+- [x] **W2-03 - Database migrations (core executed; reviewed county allocation open):** implement canonical/support/domain/geography tables, constraints, indexes, data dictionary and migration verification.
+- [x] **W2-04 - Raw landing:** persist body, retrieval/request metadata, source/partition, content type, byte count and SHA-256 before transformation.
+- [x] **W2-05 - NOAA historical adapter:** implement annual archive discovery/cache, deterministic partitioning, parsing, source key/content hash and resumable checkpoints.
+- [ ] **W2-06 - GHCN historical adapter (one-station path executed; inventory open):** generate the Oklahoma station inventory, apply ADR 0004 coverage rules, ingest station-year partitions and preserve measurement/QC/source flags.
+- [x] **W2-07 - Canonical validation:** enforce types, UTC/date semantics, WGS84 ranges, units, required keys, missing-value policy and quarantine reasons.
+- [x] **W2-08 - CLI integration:** replace the Workshop 1 stub for `historical` and `status` while preserving the common CLI contract.
+- [x] **W2-09 - Idempotency and recovery:** prove same-partition reruns, mid-run failure rollback/resume and no state advancement before commit.
+- [x] **W2-10 - Tests:** add fixture-based unit tests for both adapters and integration tests for migrations, validation, quarantine and idempotency.
+- [x] **W2-11 - Evidence notebook:** create `notebooks/02_historical_ingestion_review.ipynb` to inspect persisted counts, nulls, rejects, partitions and provenance.
+- [x] **W2-12 - Documentation:** produce the English Workshop 2 report, architecture diagram, runbook, evidence register, README commands and exact verification results.
+- [x] **W2-13 - Actual DAG/output evidence:** implement Bronze/Silver TaskFlow DAGs and exact-batch FileSensor, execute them in Docker, preserve at least three real JSON/Parquet outputs and reconcile sample manifest/counts.
 - [ ] **W2-14 - Packaging and content review:** execute the Silver/database review notebook, build the samples ZIP and visually inspected PDF, audit artifacts/secrets, then record real team approval and selected delivery reference.
 
-### Selected compatible handout scope (not yet implemented)
+### Selected compatible handout scope (implemented for the bounded slice)
 
-- [ ] Two TaskFlow DAGs with an exact-batch Silver FileSensor, retries and logs.
-- [ ] At least three genuine batch JSON outputs and three traceable Silver Parquet outputs; preserve/label native CSV versus derived JSON.
-- [ ] Canonical PostgreSQL/PostGIS remains alongside Silver Parquet, as selected in ADR 0005.
-- [ ] Local Airflow UI evidence at `localhost:8080`, real DAG success and output inspection.
+- [x] Two TaskFlow DAGs with an exact-batch Silver FileSensor, retries and logs.
+- [x] At least three genuine batch JSON outputs and three traceable Silver Parquet outputs; preserve/label native CSV versus derived JSON.
+- [x] Canonical PostgreSQL/PostGIS remains alongside Silver Parquet, as selected in ADR 0005.
+- [x] Local Airflow UI evidence at `localhost:8080`, real DAG success and output inspection.
 
 ### P1 - improvement after P0 is stable
 
@@ -206,25 +221,25 @@ policies come from Workshop 1; extremes are not deleted just because of IQR.
 
 ## 6. Work allocation
 
-### Kevin - NOAA and canonical database workstream
+### Kevin - NOAA and canonical database review handoff
 
 **Reviewer:** Pablo
 
-- [ ] Lead W2-02/W2-03 database, migrations, constraints and CLI integration.
-- [ ] Implement W2-04 raw-capture contract shared by all adapters.
-- [ ] Implement W2-05 NOAA annual historical adapter and cache/partition logic.
-- [ ] Define NOAA canonical/domain mapping, validation and duplicate keys.
-- [ ] Add NOAA and database tests plus exact run metrics.
+- [ ] Review the executed database/migrations/CLI and confirm the reported limitations.
+- [ ] Review native/derived capture hashes and the packaged source lineage.
+- [ ] Review the five NOAA annual partitions and cache/replay commands.
+- [ ] Confirm canonical/domain mapping, units, missingness and duplicate-key decisions.
+- [ ] Review the 29-test receipt and actual NOAA/database metrics.
 
-### Pablo - GHCN and orchestration workstream
+### Pablo - GHCN and orchestration review handoff
 
 **Reviewer:** Kevin
 
-- [ ] Lead scheduler/Compose integration and service runbook after W2-01.
-- [ ] Implement W2-06 Oklahoma station inventory and GHCN station-year adapter.
-- [ ] Implement station/region persistence and GHCN measurement/QC normalization.
-- [ ] Add GHCN tests and evidence notebook sections.
-- [ ] Assemble architecture/report evidence and demonstration screenshots.
+- [ ] Review the running scheduler/Compose setup and service runbook.
+- [ ] Review the five-year one-station GHCN adapter; retain wider inventory as open.
+- [ ] Review station/QC storage and confirm county assignments are not fabricated.
+- [ ] Review the GHCN tests and nine-cell executed notebook.
+- [ ] Review the assembled PDF, actual screenshot and sample ZIP.
 
 ### Shared decisions and integration
 
@@ -247,27 +262,28 @@ policies come from Workshop 1; extremes are not deleted just because of IQR.
 ## 8. Acceptance criteria
 
 - [ ] A fresh clone follows README instructions without undocumented manual steps.
-- [ ] Required services become healthy and persistent data survives restart.
-- [ ] Both historical sources load through the common CLI for a bounded test range.
-- [ ] Raw capture checksum and normalized/raw references are queryable for sampled rows.
-- [ ] Invalid fixture rows enter quarantine with stable reason codes.
-- [ ] A repeated historical run produces zero duplicate business keys and unchanged counts.
-- [ ] A simulated halfway failure leaves no partial committed partition or advanced state.
-- [ ] Tests run without live APIs and their exact pass/fail counts are logged.
-- [ ] Notebook/report counts reconcile with database and ingestion-run metrics.
+- [x] Required services become healthy and persistent data survives restart.
+- [x] Both historical sources load through the common CLI for a bounded test range.
+- [x] Raw capture checksum and normalized/raw references are queryable for sampled rows.
+- [x] Invalid fixture rows enter quarantine with stable reason codes.
+- [x] A repeated historical run produces zero duplicate business keys and unchanged counts.
+- [x] A simulated halfway failure leaves no partial committed partition or advanced state.
+- [x] Tests run without live APIs and their exact pass/fail counts are logged.
+- [x] Executed slice: 29 passing WSL tests, 19,039 canonical rows, ten successful source/year DAG pairs and unchanged rerun/restart evidence. Does not close the full semester scope or human approval.
+- [x] Notebook/report counts reconcile with database and ingestion-run metrics.
 - [ ] English report, citations, limitations and repository commit are recorded.
-- [ ] Two real DAGs and the exact-batch sensor are demonstrable in Docker, with persisted outputs and authentic UI/log evidence.
-- [ ] Sample ZIP contains at least three real JSON batches/three Parquet outputs, the review notebook and verifiable native/output provenance; no copied files used to manufacture counts.
+- [x] Two real DAGs and the exact-batch sensor are demonstrable in Docker, with persisted outputs and authentic UI/log evidence.
+- [x] Sample ZIP contains at least three real JSON batches/three Parquet outputs, the review notebook and verifiable native/output provenance; no copied files used to manufacture counts.
 - [ ] The three Moodle items map directly to reviewed local artifacts and an actual selected `workflow-2` commit; team approval/upload are not inferred.
 
 ## 9. Merge gate
 
 - [ ] The non-owner reviewed the complete diff and can explain both adapters.
-- [ ] Automated tests, migration checks and the clean historical rerun passed.
-- [ ] Evidence and limitations are recorded in this delivery's `CHANGE_LOG.md`.
-- [ ] Architecture/schema decisions were promoted to `docs/decisions/`.
+- [x] Automated tests, migration checks and the clean historical rerun passed.
+- [x] Evidence and limitations are recorded in this delivery's `CHANGE_LOG.md`.
+- [x] Architecture/schema decisions were promoted to `docs/decisions/`.
 - [ ] Generated database volumes, bulk data, secrets and unrelated files are absent.
-- [ ] The professor conflict response or adopted precedence is recorded.
+- [x] The professor conflict response or adopted precedence is recorded.
 
 ## 10. Required contributor handoff
 

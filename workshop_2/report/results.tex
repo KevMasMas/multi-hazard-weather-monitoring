@@ -1,0 +1,71 @@
+\subsection{Executed historical partitions}
+
+Table~\ref{tab:runs} records actual Airflow batch metrics; a later CLI replay is audited separately.
+
+\begin{table}[htbp]\centering\small
+
+\begin{tabular}{llrrrrr}\toprule Year & Source & Read & Accepted & Rejected & Unchanged & Parquet\\\midrule
+
+2021 & Storm Events & 1,324 & 1,324 & 0 & 0 & 1,324\\
+
+2021 & GHCN-Daily & 1,095 & 1,095 & 0 & 0 & 1,095\\
+
+2022 & Storm Events & 2,077 & 2,077 & 0 & 0 & 2,077\\
+
+2022 & GHCN-Daily & 1,095 & 1,095 & 0 & 0 & 1,095\\
+
+2023 & Storm Events & 3,764 & 3,764 & 0 & 0 & 3,764\\
+
+2023 & GHCN-Daily & 1,095 & 1,095 & 0 & 0 & 1,095\\
+
+2024 & Storm Events & 3,504 & 3,254 & 0 & 250 & 3,504\\
+
+2024 & GHCN-Daily & 1,098 & 1,098 & 0 & 0 & 1,098\\
+
+2025 & Storm Events & 2,892 & 2,892 & 0 & 0 & 2,892\\
+
+2025 & GHCN-Daily & 1,095 & 0 & 0 & 1,095 & 1,095\\
+
+\bottomrule\end{tabular}
+
+\caption{Ten genuine successful source/year batches. Accepted includes newly inserted or changed keys; unchanged rows remain represented in that run snapshot.}\label{tab:runs}\end{table}
+
+\subsection{Database and automated checks}
+
+The database audit reports 19,039 canonical rows, 0 duplicate business-key groups and 10 verified acquired input/native-response pairs. The real WSL test suite passed 29 tests, with 0 failures, 0 errors and 0 skips.
+
+Integration tests exercise actual quarantine, rollback, unchanged replay, revision history, immutable export and retry batch identity in isolated UUID schemas. Test fixtures are labelled synthetic and are never presented as weather observations.
+
+PostgreSQL, webserver, scheduler and triggerer were restarted without removing volumes. The source counts remained 19,039, and all ten original Parquet hashes matched. Three subsequent real DAG replays succeeded with all rows unchanged, zero accepted and zero rejected; the separate restart/replay receipts preserve these checks.
+
+\begin{tabularx}{\textwidth}{@{}lrrrr@{}}\toprule Year & GHCN days & Measurements & Stations & Storm Events\\\midrule
+
+2021 & 365 & 1,095 & 1 & 1,324\\
+
+2022 & 365 & 1,095 & 1 & 2,077\\
+
+2023 & 365 & 1,095 & 1 & 3,764\\
+
+2024 & 366 & 1,098 & 1 & 3,504\\
+
+2025 & 365 & 1,095 & 1 & 2,892\\
+
+\bottomrule\end{tabularx}
+
+The 2024 daily series contains 366 dates; each other year contains 365. Only one GHCN station is represented. A source calendar-year window is not evidence that every day has a Storm Events report.
+
+\subsection{Packaged outputs}
+
+\begin{tabularx}{\textwidth}{@{}Yrrr@{}}\toprule Partition & Rows & Bronze bytes & Parquet bytes\\\midrule
+
+OK\_2021 & 1,324 & 2,612,564 & 143,533\\
+
+USW00013967\_2021\_full & 1,095 & 144,449 & 58,150\\
+
+USW00013967\_2022\_full & 1,095 & 144,461 & 58,146\\
+
+\bottomrule\end{tabularx}
+
+All three samples originate from distinct actual DAG runs; none was manufactured by copying one result to several names. The sample manifest supplies full hashes, metrics, run IDs and CSV/Parquet lineage.
+
+The executed notebook has nine code cells and no error outputs. Paths and evidence are indexed in \path{workshop_2/EVIDENCE_REGISTER.md}.

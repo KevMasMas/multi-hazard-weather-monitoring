@@ -1,0 +1,58 @@
+erDiagram
+  source_catalog ||--o{ raw_capture : supplies
+  source_catalog ||--o{ historical_record : identifies
+  raw_capture ||--o{ ingestion_run : processed_by
+  ingestion_run ||--o{ rejected_record : quarantines
+  ingestion_run ||--o{ record_capture_link : observes
+  historical_record ||--o{ record_capture_link : seen_in
+  historical_record ||--o{ historical_record_revision : versions
+  historical_record_revision ||--o{ record_capture_link : pins
+  historical_record ||--o| storm_event : specializes
+  historical_record ||--o| daily_station_measurement : specializes
+  source_geography ||--o{ storm_event : locates
+  station ||--o{ daily_station_measurement : measures
+  station ||--o{ station_location_observation : located_by_capture
+  raw_capture ||--o{ station_location_observation : documents
+  station ||--o{ station_region_assignment : planned_assignment
+  region ||--o{ station_region_assignment : planned_region
+  ingestion_run ||--o{ ingestion_state : checkpoints
+  historical_record {
+    bigint record_id PK
+    text source_id FK
+    text source_key UK
+    bigint capture_id FK
+    bigint last_run_id FK
+    timestamp observed_at_utc
+    date observed_date
+  }
+  historical_record_revision {
+    bigint revision_id PK
+    bigint record_id FK
+    bigint run_id FK
+    bigint capture_id FK
+    jsonb normalized_fields
+    jsonb raw_fields
+  }
+  record_capture_link {
+    bigint record_id PK,FK
+    bigint run_id PK,FK
+    bigint revision_id FK
+    bigint capture_id FK
+    int source_line
+  }
+  ingestion_run {
+    bigint run_id PK
+    bigint capture_id FK
+    text batch_key UK
+    text status
+  }
+  station {
+    bigint station_id PK
+    text source_id FK
+    text source_station_id UK
+  }
+  region {
+    char county_fips PK
+    text region_name
+    text boundary_version
+  }

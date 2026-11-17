@@ -1,0 +1,23 @@
+{
+  "bronze_path": "data/bronze/noaa_storm_events_20261117_020238_c0b5c9ad0bca.json",
+  "bronze_sha256": "C4777536A26CE91881A40FE3CD8E6EF9FE1039020E666CF1A036740C8EF55BBF",
+  "metrics": {
+    "accepted": 1324,
+    "read": 1324,
+    "rejected": 0,
+    "run_id": 16,
+    "unchanged": 0
+  },
+  "native_sha256": "78fb408f7be505b6ad51df631659f7dd70edada826b240398dd6443c3c27e086",
+  "silver": {
+    "bytes": 143533,
+    "partition": "OK_2021",
+    "path": "data/curated/silver/noaa_storm_events_20261117_020238_c0b5c9ad0bca.parquet",
+    "producer": "immutable_database_snapshot_export",
+    "rows": 1324,
+    "run_id": 16,
+    "schema": "silver-v1",
+    "sha256": "BFF661C98F64237DF5493F6DABFAD6F931FCE64B62FEBCD1073FC75DA8D28429",
+    "source": "noaa_storm_events"
+  }
+}

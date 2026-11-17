@@ -1,3 +1,29 @@
+x-airflow-common: &airflow-common
+  image: team9-weather-airflow:2.10.4
+  build: .
+  user: "${AIRFLOW_UID:-50000}:0"
+  environment: &airflow-environment
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://weather:${POSTGRES_PASSWORD:-weather}@postgres:5432/airflow
+    AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
+    AIRFLOW__WEBSERVER__SECRET_KEY: ${AIRFLOW_WEBSERVER_SECRET_KEY:-local-workshop-only}
+    AIRFLOW__API__AUTH_BACKENDS: airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session
+    AIRFLOW_CONN_FS_DEFAULT: '{"conn_type":"fs","extra":{"path":"/"}}'
+    DATABASE_URL: postgresql://weather:${POSTGRES_PASSWORD:-weather}@postgres:5432/weather_monitoring
+    PYTHONPATH: /opt/weather:/opt/weather/src
+  volumes:
+    - ./airflow/dags:/opt/airflow/dags:ro
+    - airflow_logs:/opt/airflow/logs
+    - ./src:/opt/weather/src:ro
+    - ./config:/opt/weather/config:ro
+    - ./sql:/opt/weather/sql:ro
+    - ./scripts:/opt/weather/scripts:ro
+    - ./ingest.py:/opt/weather/ingest.py:ro
+    - ./workshop_1/samples:/opt/weather/workshop_1/samples:ro
+    - ./data:/opt/weather/data
+    - ./workshop_2/evidence:/opt/weather/workshop_2/evidence
+
 services:
   postgres:
     image: postgis/postgis:16-3.7
@@ -6,7 +32,7 @@ services:
       POSTGRES_USER: weather
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-weather}
     ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+      - "127.0.0.1:${POSTGRES_PORT:-55432}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -16,5 +42,76 @@ services:
       retries: 12
     restart: unless-stopped
 
+  airflow-db-init:
+    image: postgis/postgis:16-3.7
+    environment:
+      PGPASSWORD: ${POSTGRES_PASSWORD:-weather}
+    volumes:
+      - ./sql/bootstrap:/bootstrap:ro
+    command: ["psql", "-h", "postgres", "-U", "weather", "-d", "weather_monitoring", "-v", "ON_ERROR_STOP=1", "-f", "/bootstrap/create_airflow_database.sql"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+
+  airflow-init:
+    <<: *airflow-common
+    environment:
+      <<: *airflow-environment
+      _AIRFLOW_DB_MIGRATE: "true"
+      _AIRFLOW_WWW_USER_CREATE: "true"
+      _AIRFLOW_WWW_USER_USERNAME: ${AIRFLOW_ADMIN_USERNAME:-airflow}
+      _AIRFLOW_WWW_USER_PASSWORD: ${AIRFLOW_ADMIN_PASSWORD:-airflow}
+    command: version
+    depends_on:
+      airflow-db-init:
+        condition: service_completed_successfully
+    restart: "no"
+
+  airflow-webserver:
+    <<: *airflow-common
+    command: webserver
+    ports:
+      - "127.0.0.1:${AIRFLOW_PORT:-8080}:8080"
+    depends_on:
+      airflow-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 10s
+      start_period: 30s
+      retries: 12
+    restart: unless-stopped
+
+  airflow-scheduler:
+    <<: *airflow-common
+    command: scheduler
+    depends_on:
+      airflow-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "airflow jobs check --job-type SchedulerJob --hostname \"$${HOSTNAME}\""]
+      interval: 15s
+      timeout: 15s
+      start_period: 30s
+      retries: 12
+    restart: unless-stopped
+
+  airflow-triggerer:
+    <<: *airflow-common
+    command: triggerer
+    depends_on:
+      airflow-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "airflow jobs check --job-type TriggererJob --hostname \"$${HOSTNAME}\""]
+      interval: 15s
+      timeout: 15s
+      start_period: 30s
+      retries: 12
+    restart: unless-stopped
+
 volumes:
   postgres_data:
+  airflow_logs:

@@ -1,0 +1,688 @@
+{
+  "started_at_utc": "2026-11-17T02:02:38.492292+00:00",
+  "weather_network": false,
+  "method": "Local Airflow stable REST API; ingestion replays registered captures",
+  "runs": [
+    {
+      "partition": "OK_2021",
+      "bronze_run_id": "w2_delivery_20261117T020238_00_OK_2021",
+      "silver_run_id": "silver__w2_delivery_20261117T020238_00_OK_2021",
+      "bronze": {
+        "state": "success",
+        "start_date": "2026-11-17T02:02:39.544932+00:00",
+        "end_date": "2026-11-17T02:02:41.803866+00:00",
+        "tasks": [
+          {
+            "task_id": "publish_bronze",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "trigger_silver",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "silver": {
+        "state": "success",
+        "start_date": "2026-11-17T02:02:41.783411+00:00",
+        "end_date": "2026-11-17T02:02:48.601322+00:00",
+        "tasks": [
+          {
+            "task_id": "validate_manifest_path",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "wait_for_exact_bronze",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "load_and_export",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "output": {
+        "bronze_path": "data/bronze/noaa_storm_events_20261117_020238_c0b5c9ad0bca.json",
+        "bronze_sha256": "C4777536A26CE91881A40FE3CD8E6EF9FE1039020E666CF1A036740C8EF55BBF",
+        "metrics": {
+          "accepted": 1324,
+          "read": 1324,
+          "rejected": 0,
+          "run_id": 16,
+          "unchanged": 0
+        },
+        "native_sha256": "78fb408f7be505b6ad51df631659f7dd70edada826b240398dd6443c3c27e086",
+        "silver": {
+          "bytes": 143533,
+          "partition": "OK_2021",
+          "path": "data/curated/silver/noaa_storm_events_20261117_020238_c0b5c9ad0bca.parquet",
+          "producer": "immutable_database_snapshot_export",
+          "rows": 1324,
+          "run_id": 16,
+          "schema": "silver-v1",
+          "sha256": "BFF661C98F64237DF5493F6DABFAD6F931FCE64B62FEBCD1073FC75DA8D28429",
+          "source": "noaa_storm_events"
+        }
+      },
+      "output_manifest": "data/curated/silver/noaa_storm_events_20261117_020238_c0b5c9ad0bca.manifest.json"
+    },
+    {
+      "partition": "USW00013967_2021_full",
+      "bronze_run_id": "w2_delivery_20261117T020238_01_USW00013967_2021_full",
+      "silver_run_id": "silver__w2_delivery_20261117T020238_01_USW00013967_2021_full",
+      "bronze": {
+        "state": "success",
+        "start_date": "2026-11-17T02:02:41.854472+00:00",
+        "end_date": "2026-11-17T02:02:44.106346+00:00",
+        "tasks": [
+          {
+            "task_id": "publish_bronze",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "trigger_silver",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "silver": {
+        "state": "success",
+        "start_date": "2026-11-17T02:02:48.652130+00:00",
+        "end_date": "2026-11-17T02:02:54.752311+00:00",
+        "tasks": [
+          {
+            "task_id": "validate_manifest_path",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "wait_for_exact_bronze",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "load_and_export",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "output": {
+        "bronze_path": "data/bronze/ghcn_daily_20261117_020238_88d38c9a6dc3.json",
+        "bronze_sha256": "C9E48FFD5C3D4C79AA6F6E5C8BCD80DE115A88DD2EBED1FE3362D7BE6BC4D1C8",
+        "metrics": {
+          "accepted": 1095,
+          "read": 1095,
+          "rejected": 0,
+          "run_id": 17,
+          "unchanged": 0
+        },
+        "native_sha256": "3af94b20dfcb8276a79c6941a217569c9761470e790d39fab806349866c84d2d",
+        "silver": {
+          "bytes": 58150,
+          "partition": "USW00013967_2021_full",
+          "path": "data/curated/silver/ghcn_daily_20261117_020238_88d38c9a6dc3.parquet",
+          "producer": "immutable_database_snapshot_export",
+          "rows": 1095,
+          "run_id": 17,
+          "schema": "silver-v1",
+          "sha256": "F3AED4BC4DFDEAE8C01D209CBFE5BC1F310F32B419EA9C2F279F59EF2DB5CE5D",
+          "source": "ghcn_daily"
+        }
+      },
+      "output_manifest": "data/curated/silver/ghcn_daily_20261117_020238_88d38c9a6dc3.manifest.json"
+    },
+    {
+      "partition": "OK_2022",
+      "bronze_run_id": "w2_delivery_20261117T020238_02_OK_2022",
+      "silver_run_id": "silver__w2_delivery_20261117T020238_02_OK_2022",
+      "bronze": {
+        "state": "success",
+        "start_date": "2026-11-17T02:02:44.152191+00:00",
+        "end_date": "2026-11-17T02:02:46.842127+00:00",
+        "tasks": [
+          {
+            "task_id": "publish_bronze",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "trigger_silver",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "silver": {
+        "state": "success",
+        "start_date": "2026-11-17T02:02:55.821629+00:00",
+        "end_date": "2026-11-17T02:03:05.974122+00:00",
+        "tasks": [
+          {
+            "task_id": "load_and_export",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "validate_manifest_path",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "wait_for_exact_bronze",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "output": {
+        "bronze_path": "data/bronze/noaa_storm_events_20261117_020238_7f88a3503007.json",
+        "bronze_sha256": "4D79C982FCE1E078BDAD340FDD29F2D77645605D617A437171A48AF8A7A89B73",
+        "metrics": {
+          "accepted": 2077,
+          "read": 2077,
+          "rejected": 0,
+          "run_id": 18,
+          "unchanged": 0
+        },
+        "native_sha256": "f0d8704d815ae86141fa9de572c1bc4870e6cd50410d6707ce04a6a19085748f",
+        "silver": {
+          "bytes": 212494,
+          "partition": "OK_2022",
+          "path": "data/curated/silver/noaa_storm_events_20261117_020238_7f88a3503007.parquet",
+          "producer": "immutable_database_snapshot_export",
+          "rows": 2077,
+          "run_id": 18,
+          "schema": "silver-v1",
+          "sha256": "DECFDA1BF67C2A425021CEDDC9CCAC3181CEB27C66AD6F8377B95D62FBA32496",
+          "source": "noaa_storm_events"
+        }
+      },
+      "output_manifest": "data/curated/silver/noaa_storm_events_20261117_020238_7f88a3503007.manifest.json"
+    },
+    {
+      "partition": "USW00013967_2022_full",
+      "bronze_run_id": "w2_delivery_20261117T020238_03_USW00013967_2022_full",
+      "silver_run_id": "silver__w2_delivery_20261117T020238_03_USW00013967_2022_full",
+      "bronze": {
+        "state": "success",
+        "start_date": "2026-11-17T02:02:47.496127+00:00",
+        "end_date": "2026-11-17T02:02:49.664454+00:00",
+        "tasks": [
+          {
+            "task_id": "trigger_silver",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "publish_bronze",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "silver": {
+        "state": "success",
+        "start_date": "2026-11-17T02:03:06.020639+00:00",
+        "end_date": "2026-11-17T02:03:12.022247+00:00",
+        "tasks": [
+          {
+            "task_id": "wait_for_exact_bronze",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "validate_manifest_path",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "load_and_export",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "output": {
+        "bronze_path": "data/bronze/ghcn_daily_20261117_020238_e13254eec873.json",
+        "bronze_sha256": "C991E6894A83409EF4C35FC377EBCA8A39F23A0D34AEE5F8664FF1AD1D3E33B8",
+        "metrics": {
+          "accepted": 1095,
+          "read": 1095,
+          "rejected": 0,
+          "run_id": 19,
+          "unchanged": 0
+        },
+        "native_sha256": "16ec15440e86611e45f5af1658c7559734886f5ae8206fe3a12bc03b7807218b",
+        "silver": {
+          "bytes": 58146,
+          "partition": "USW00013967_2022_full",
+          "path": "data/curated/silver/ghcn_daily_20261117_020238_e13254eec873.parquet",
+          "producer": "immutable_database_snapshot_export",
+          "rows": 1095,
+          "run_id": 19,
+          "schema": "silver-v1",
+          "sha256": "2A3D8EE747C240D87C33F0B4D5B8D0DB7FA0AEC6B62C95C863489AB7F5F74093",
+          "source": "ghcn_daily"
+        }
+      },
+      "output_manifest": "data/curated/silver/ghcn_daily_20261117_020238_e13254eec873.manifest.json"
+    },
+    {
+      "partition": "OK_2023",
+      "bronze_run_id": "w2_delivery_20261117T020238_04_OK_2023",
+      "silver_run_id": "silver__w2_delivery_20261117T020238_04_OK_2023",
+      "bronze": {
+        "state": "success",
+        "start_date": "2026-11-17T02:02:49.721624+00:00",
+        "end_date": "2026-11-17T02:02:51.939875+00:00",
+        "tasks": [
+          {
+            "task_id": "publish_bronze",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "trigger_silver",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "silver": {
+        "state": "success",
+        "start_date": "2026-11-17T02:03:13.061083+00:00",
+        "end_date": "2026-11-17T02:03:24.220859+00:00",
+        "tasks": [
+          {
+            "task_id": "validate_manifest_path",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "wait_for_exact_bronze",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "load_and_export",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "output": {
+        "bronze_path": "data/bronze/noaa_storm_events_20261117_020239_a47ff5bbbb16.json",
+        "bronze_sha256": "1E4F96AE544CCA2FE1C1659A7976D97A020AF1528C555631A1DAEB2195B9E099",
+        "metrics": {
+          "accepted": 3764,
+          "read": 3764,
+          "rejected": 0,
+          "run_id": 20,
+          "unchanged": 0
+        },
+        "native_sha256": "28f3c76a58519d2ab5776d43076e88a381846646e1ec04ca00d05d878a27f02e",
+        "silver": {
+          "bytes": 388905,
+          "partition": "OK_2023",
+          "path": "data/curated/silver/noaa_storm_events_20261117_020239_a47ff5bbbb16.parquet",
+          "producer": "immutable_database_snapshot_export",
+          "rows": 3764,
+          "run_id": 20,
+          "schema": "silver-v1",
+          "sha256": "DF8349409ADA95980E1065D14ED2A58CE9B9E5E56C0392B392E445D8B0A33DD4",
+          "source": "noaa_storm_events"
+        }
+      },
+      "output_manifest": "data/curated/silver/noaa_storm_events_20261117_020239_a47ff5bbbb16.manifest.json"
+    },
+    {
+      "partition": "USW00013967_2023_full",
+      "bronze_run_id": "w2_delivery_20261117T020238_05_USW00013967_2023_full",
+      "silver_run_id": "silver__w2_delivery_20261117T020238_05_USW00013967_2023_full",
+      "bronze": {
+        "state": "success",
+        "start_date": "2026-11-17T02:02:52.991440+00:00",
+        "end_date": "2026-11-17T02:02:55.850645+00:00",
+        "tasks": [
+          {
+            "task_id": "trigger_silver",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "publish_bronze",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "silver": {
+        "state": "success",
+        "start_date": "2026-11-17T02:03:25.092257+00:00",
+        "end_date": "2026-11-17T02:03:31.210846+00:00",
+        "tasks": [
+          {
+            "task_id": "validate_manifest_path",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "wait_for_exact_bronze",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "load_and_export",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "output": {
+        "bronze_path": "data/bronze/ghcn_daily_20261117_020239_2280dbdf1be4.json",
+        "bronze_sha256": "76CA8D32CD121858DC390D4942B10FE7C541556A718DC985803B3B5EF619C0BD",
+        "metrics": {
+          "accepted": 1095,
+          "read": 1095,
+          "rejected": 0,
+          "run_id": 21,
+          "unchanged": 0
+        },
+        "native_sha256": "60571ee59e2ed5cf9feca46db320cfad48f6ab12781e95109515fa4e378f24f6",
+        "silver": {
+          "bytes": 58131,
+          "partition": "USW00013967_2023_full",
+          "path": "data/curated/silver/ghcn_daily_20261117_020239_2280dbdf1be4.parquet",
+          "producer": "immutable_database_snapshot_export",
+          "rows": 1095,
+          "run_id": 21,
+          "schema": "silver-v1",
+          "sha256": "C7825F772611148C50BA65794D8948F558081F911F5849529B23799900112CA6",
+          "source": "ghcn_daily"
+        }
+      },
+      "output_manifest": "data/curated/silver/ghcn_daily_20261117_020239_2280dbdf1be4.manifest.json"
+    },
+    {
+      "partition": "OK_2024",
+      "bronze_run_id": "w2_delivery_20261117T020238_06_OK_2024",
+      "silver_run_id": "silver__w2_delivery_20261117T020238_06_OK_2024",
+      "bronze": {
+        "state": "success",
+        "start_date": "2026-11-17T02:02:55.905425+00:00",
+        "end_date": "2026-11-17T02:02:58.633641+00:00",
+        "tasks": [
+          {
+            "task_id": "publish_bronze",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "trigger_silver",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "silver": {
+        "state": "success",
+        "start_date": "2026-11-17T02:03:31.989237+00:00",
+        "end_date": "2026-11-17T02:03:44.409313+00:00",
+        "tasks": [
+          {
+            "task_id": "validate_manifest_path",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "load_and_export",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "wait_for_exact_bronze",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "output": {
+        "bronze_path": "data/bronze/noaa_storm_events_20261117_020239_99a0190a1848.json",
+        "bronze_sha256": "F94ABFA3C49419D8FE9571A9A4F82626B8F1CC9D602F36611B6638126840FED2",
+        "metrics": {
+          "accepted": 3254,
+          "read": 3504,
+          "rejected": 0,
+          "run_id": 22,
+          "unchanged": 250
+        },
+        "native_sha256": "01b5ac9548fdb66efb90487d3147719c4ff05c8019f97401d7b3ab0d03b59d66",
+        "silver": {
+          "bytes": 365461,
+          "partition": "OK_2024",
+          "path": "data/curated/silver/noaa_storm_events_20261117_020239_99a0190a1848.parquet",
+          "producer": "immutable_database_snapshot_export",
+          "rows": 3504,
+          "run_id": 22,
+          "schema": "silver-v1",
+          "sha256": "304614848D28729AA6BD4FEA95C70A0358125926EFFF0BC09C6701F7181321BA",
+          "source": "noaa_storm_events"
+        }
+      },
+      "output_manifest": "data/curated/silver/noaa_storm_events_20261117_020239_99a0190a1848.manifest.json"
+    },
+    {
+      "partition": "USW00013967_2024_full",
+      "bronze_run_id": "w2_delivery_20261117T020238_07_USW00013967_2024_full",
+      "silver_run_id": "silver__w2_delivery_20261117T020238_07_USW00013967_2024_full",
+      "bronze": {
+        "state": "success",
+        "start_date": "2026-11-17T02:02:58.686668+00:00",
+        "end_date": "2026-11-17T02:03:00.962354+00:00",
+        "tasks": [
+          {
+            "task_id": "publish_bronze",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "trigger_silver",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "silver": {
+        "state": "success",
+        "start_date": "2026-11-17T02:03:45.273861+00:00",
+        "end_date": "2026-11-17T02:03:50.321936+00:00",
+        "tasks": [
+          {
+            "task_id": "validate_manifest_path",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "wait_for_exact_bronze",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "load_and_export",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "output": {
+        "bronze_path": "data/bronze/ghcn_daily_20261117_020239_d0aafd11f6d4.json",
+        "bronze_sha256": "92836A0D55DA444DE6DD547FA4A1213A6B28287A7612D5BE82B467BBB32F9D93",
+        "metrics": {
+          "accepted": 1098,
+          "read": 1098,
+          "rejected": 0,
+          "run_id": 23,
+          "unchanged": 0
+        },
+        "native_sha256": "ce96aa23f9dd50fd711f90f3d40d0b88ccbf3e61dd05059f564f8a0764393111",
+        "silver": {
+          "bytes": 57903,
+          "partition": "USW00013967_2024_full",
+          "path": "data/curated/silver/ghcn_daily_20261117_020239_d0aafd11f6d4.parquet",
+          "producer": "immutable_database_snapshot_export",
+          "rows": 1098,
+          "run_id": 23,
+          "schema": "silver-v1",
+          "sha256": "140F479CDA3DD5D37C97B0F9FC72966000D38A6F3DE220FC3D1B0BA1BCB48049",
+          "source": "ghcn_daily"
+        }
+      },
+      "output_manifest": "data/curated/silver/ghcn_daily_20261117_020239_d0aafd11f6d4.manifest.json"
+    },
+    {
+      "partition": "OK_2025",
+      "bronze_run_id": "w2_delivery_20261117T020238_08_OK_2025",
+      "silver_run_id": "silver__w2_delivery_20261117T020238_08_OK_2025",
+      "bronze": {
+        "state": "success",
+        "start_date": "2026-11-17T02:03:01.891869+00:00",
+        "end_date": "2026-11-17T02:03:04.095930+00:00",
+        "tasks": [
+          {
+            "task_id": "publish_bronze",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "trigger_silver",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "silver": {
+        "state": "success",
+        "start_date": "2026-11-17T02:03:51.361756+00:00",
+        "end_date": "2026-11-17T02:03:59.947643+00:00",
+        "tasks": [
+          {
+            "task_id": "load_and_export",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "validate_manifest_path",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "wait_for_exact_bronze",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "output": {
+        "bronze_path": "data/bronze/noaa_storm_events_20261117_020239_5e125c6d2da4.json",
+        "bronze_sha256": "E1359E27A1F7564C1ECAB98D398B4CDBB585D887664DA98F90A02E2540DE97F1",
+        "metrics": {
+          "accepted": 2892,
+          "read": 2892,
+          "rejected": 0,
+          "run_id": 24,
+          "unchanged": 0
+        },
+        "native_sha256": "6f1adfc68881f3b8832e6d0e18595635ca5a4edf2c927480814dc0dcf45f652b",
+        "silver": {
+          "bytes": 305431,
+          "partition": "OK_2025",
+          "path": "data/curated/silver/noaa_storm_events_20261117_020239_5e125c6d2da4.parquet",
+          "producer": "immutable_database_snapshot_export",
+          "rows": 2892,
+          "run_id": 24,
+          "schema": "silver-v1",
+          "sha256": "61C038F08A7D59D992CF6AA219E77CD1B8913856901B7E5439486EA4D977EEEB",
+          "source": "noaa_storm_events"
+        }
+      },
+      "output_manifest": "data/curated/silver/noaa_storm_events_20261117_020239_5e125c6d2da4.manifest.json"
+    },
+    {
+      "partition": "USW00013967_2025_full",
+      "bronze_run_id": "w2_delivery_20261117T020238_09_USW00013967_2025_full",
+      "silver_run_id": "silver__w2_delivery_20261117T020238_09_USW00013967_2025_full",
+      "bronze": {
+        "state": "success",
+        "start_date": "2026-11-17T02:03:04.868946+00:00",
+        "end_date": "2026-11-17T02:03:07.129805+00:00",
+        "tasks": [
+          {
+            "task_id": "publish_bronze",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "trigger_silver",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "silver": {
+        "state": "success",
+        "start_date": "2026-11-17T02:04:00.402043+00:00",
+        "end_date": "2026-11-17T02:04:04.195986+00:00",
+        "tasks": [
+          {
+            "task_id": "validate_manifest_path",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "wait_for_exact_bronze",
+            "state": "success",
+            "try_number": 1
+          },
+          {
+            "task_id": "load_and_export",
+            "state": "success",
+            "try_number": 1
+          }
+        ]
+      },
+      "output": {
+        "bronze_path": "data/bronze/ghcn_daily_20261117_020239_2ef2b0ec14e0.json",
+        "bronze_sha256": "EE1378B689B54890207F4564A3A6CC2E672E272068338FF9DD812E2C4B26017A",
+        "metrics": {
+          "accepted": 0,
+          "read": 1095,
+          "rejected": 0,
+          "run_id": 25,
+          "unchanged": 1095
+        },
+        "native_sha256": "d8ee9e0afbfe25897c17babe4a88dc0e12d4fece8b74c26e8d817d5309ffb5ae",
+        "silver": {
+          "bytes": 57994,
+          "partition": "USW00013967_2025_full",
+          "path": "data/curated/silver/ghcn_daily_20261117_020239_2ef2b0ec14e0.parquet",
+          "producer": "immutable_database_snapshot_export",
+          "rows": 1095,
+          "run_id": 25,
+          "schema": "silver-v1",
+          "sha256": "0BF4B0F90849451979EF079B921196996B16959D39CE2B36C8B06F3053143116",
+          "source": "ghcn_daily"
+        }
+      },
+      "output_manifest": "data/curated/silver/ghcn_daily_20261117_020239_2ef2b0ec14e0.manifest.json"
+    }
+  ],
+  "verified_at_utc": "2026-11-17T02:04:06.797268+00:00"
+}

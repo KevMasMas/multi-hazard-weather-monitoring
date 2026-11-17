@@ -1,0 +1,165 @@
+{
+  "verified_at_utc": "2026-11-17T01:25:44.716565+00:00",
+  "scope": "Real saved-sample PostgreSQL load and rerun; not full historical coverage or DAG/Silver evidence.",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "python": "3.14.4",
+  "database_version": "PostgreSQL 16.16 (Debian 16.16-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+  "postgis_version": "POSTGIS=\"3.7.0 1fdbb1c\" [EXTENSION] PGSQL=\"160\" GEOS=\"3.15.0-CAPI-1.21.0\" PROJ=\"9.9.0 NETWORK_ENABLED=OFF URL_ENDPOINT=https://cdn.proj.org USER_WRITABLE_DIRECTORY=/var/lib/postgresql/.local/share/proj DATABASE_PATH=/usr/share/proj/proj.db\" (compiled against PROJ 9.9.0) LIBXML=\"2.9.14\" LIBJSON=\"0.18\" LIBPROTOBUF=\"1.5.1\" WAGYU=\"0.5.0 (Internal)\" TOPOLOGY",
+  "first_invocation": [
+    {
+      "source": "noaa_storm_events",
+      "partition": "sample_2024",
+      "read": 250,
+      "accepted": 0,
+      "rejected": 0,
+      "unchanged": 250
+    },
+    {
+      "source": "ghcn_daily",
+      "partition": "USW00013967_2025",
+      "read": 1095,
+      "accepted": 0,
+      "rejected": 0,
+      "unchanged": 1095
+    }
+  ],
+  "second_invocation": [
+    {
+      "source": "noaa_storm_events",
+      "partition": "sample_2024",
+      "read": 250,
+      "accepted": 0,
+      "rejected": 0,
+      "unchanged": 250
+    },
+    {
+      "source": "ghcn_daily",
+      "partition": "USW00013967_2025",
+      "read": 1095,
+      "accepted": 0,
+      "rejected": 0,
+      "unchanged": 1095
+    }
+  ],
+  "canonical_counts_before_rerun": {
+    "ghcn_daily": 1095,
+    "noaa_storm_events": 250
+  },
+  "canonical_counts_after_rerun": {
+    "ghcn_daily": 1095,
+    "noaa_storm_events": 250
+  },
+  "duplicate_business_keys": 0,
+  "status": [
+    {
+      "source": "ghcn_daily",
+      "partition": "USW00013967_2025",
+      "status": "succeeded",
+      "read": 1095,
+      "accepted": 0,
+      "rejected": 0,
+      "unchanged": 1095,
+      "started_at_utc": "2026-11-17 01:25:43.350702+00:00",
+      "finished_at_utc": "2026-11-17 01:25:44.699193+00:00"
+    },
+    {
+      "source": "noaa_storm_events",
+      "partition": "sample_2024",
+      "status": "succeeded",
+      "read": 250,
+      "accepted": 0,
+      "rejected": 0,
+      "unchanged": 250,
+      "started_at_utc": "2026-11-17 01:25:43.035280+00:00",
+      "finished_at_utc": "2026-11-17 01:25:43.342056+00:00"
+    },
+    {
+      "source": "ghcn_daily",
+      "partition": "USW00013967_2025",
+      "status": "succeeded",
+      "read": 1095,
+      "accepted": 0,
+      "rejected": 0,
+      "unchanged": 1095,
+      "started_at_utc": "2026-11-17 01:25:41.621921+00:00",
+      "finished_at_utc": "2026-11-17 01:25:43.014082+00:00"
+    },
+    {
+      "source": "noaa_storm_events",
+      "partition": "sample_2024",
+      "status": "succeeded",
+      "read": 250,
+      "accepted": 0,
+      "rejected": 0,
+      "unchanged": 250,
+      "started_at_utc": "2026-11-17 01:25:41.291788+00:00",
+      "finished_at_utc": "2026-11-17 01:25:41.611726+00:00"
+    },
+    {
+      "source": "ghcn_daily",
+      "partition": "USW00013967_2025",
+      "status": "succeeded",
+      "read": 1095,
+      "accepted": 0,
+      "rejected": 0,
+      "unchanged": 1095,
+      "started_at_utc": "2026-11-17 01:14:02.083734+00:00",
+      "finished_at_utc": "2026-11-17 01:14:02.280760+00:00"
+    },
+    {
+      "source": "noaa_storm_events",
+      "partition": "sample_2024",
+      "status": "succeeded",
+      "read": 250,
+      "accepted": 0,
+      "rejected": 0,
+      "unchanged": 250,
+      "started_at_utc": "2026-11-17 01:14:02.004176+00:00",
+      "finished_at_utc": "2026-11-17 01:14:02.075337+00:00"
+    },
+    {
+      "source": "ghcn_daily",
+      "partition": "USW00013967_2025",
+      "status": "succeeded",
+      "read": 1095,
+      "accepted": 0,
+      "rejected": 0,
+      "unchanged": 1095,
+      "started_at_utc": "2026-11-17 01:13:10.375550+00:00",
+      "finished_at_utc": "2026-11-17 01:13:10.375550+00:00"
+    },
+    {
+      "source": "noaa_storm_events",
+      "partition": "sample_2024",
+      "status": "succeeded",
+      "read": 250,
+      "accepted": 0,
+      "rejected": 0,
+      "unchanged": 250,
+      "started_at_utc": "2026-11-17 01:13:10.282206+00:00",
+      "finished_at_utc": "2026-11-17 01:13:10.282206+00:00"
+    },
+    {
+      "source": "ghcn_daily",
+      "partition": "USW00013967_2025",
+      "status": "succeeded",
+      "read": 1095,
+      "accepted": 1095,
+      "rejected": 0,
+      "unchanged": 0,
+      "started_at_utc": "2026-11-17 01:13:09.677972+00:00",
+      "finished_at_utc": "2026-11-17 01:13:09.677972+00:00"
+    },
+    {
+      "source": "noaa_storm_events",
+      "partition": "sample_2024",
+      "status": "succeeded",
+      "read": 250,
+      "accepted": 250,
+      "rejected": 0,
+      "unchanged": 0,
+      "started_at_utc": "2026-11-17 01:13:09.527186+00:00",
+      "finished_at_utc": "2026-11-17 01:13:09.527186+00:00"
+    }
+  ]
+}

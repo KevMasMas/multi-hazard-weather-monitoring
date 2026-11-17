@@ -14,3 +14,11 @@ workshop_1/samples/*.geojson -text
 *.py text eol=lf
 *.sql text eol=lf
 *.ps1 text eol=crlf
+
+# W2 sample hashes refer to exact native/DAG-produced bytes, not Git-normalized text.
+workshop_2/samples/native/*.csv -text
+workshop_2/samples/bronze/*.json -text
+workshop_2/samples/lineage/*.json -text
+workshop_2/samples/silver/*.parquet binary
+requirements*.txt text eol=lf
+Dockerfile text eol=lf

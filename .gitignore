@@ -1,6 +1,7 @@
 # Local environments and secrets
 .env
 .venv/
+.venv-wsl/
 venv/
 __pycache__/
 *.py[cod]
@@ -12,6 +13,7 @@ __pycache__/
 .ipynb_checkpoints/
 
 # LaTeX build files
+workshop_2/report/main.pdf
 *.aux
 *.fls
 *.fdb_latexmk
@@ -30,7 +32,9 @@ data/raw/**
 !data/raw/.gitkeep
 data/processed/
 data/curated/
+data/bronze/
 *.parquet
+!workshop_2/samples/silver/*.parquet
 *.duckdb
 *.sqlite
 *.db

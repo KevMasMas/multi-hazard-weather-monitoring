@@ -1,0 +1,14 @@
+{
+  "purpose": "Prepared local review artifacts, not approval or upload evidence.",
+  "branch": "workflow-2",
+  "base_head": "f7d7c5515565b154e7e98652e0b1d664d5ad9b4d",
+  "selected_submission_commit": null,
+  "working_tree_changes": true,
+  "artifacts": {
+    "workshop_2/report/Workshop_2_Report.pdf": "47DE5583CA8B7224DC533EBD5FF6CFD680953FA4643ABC663A9BD4FEE44D53E6",
+    "workshop_2/Workshop_2_Pipeline_Output_Samples.zip": "1A7CB0BCC62D484E4DC019D276539A897ED286BE5434AE7597768DC291C33171",
+    "notebooks/02_historical_ingestion_review.ipynb": "4FFD7E5B6D5E9856B58FF1299CB4640354C56301B52E828111F6300C1B98FE41",
+    "workshop_2/samples/manifest.json": "D2AEE0B5420BA9C12E6B21EB842D945ABB6BEA6D1064CFA7AE373F28CF3BDBDF",
+    "workshop_2/report/main.tex": "F2962F4439E7567B438308CD3FAF04CA3053D3AC1B003C3B43E132E02B875F52"
+  }
+}

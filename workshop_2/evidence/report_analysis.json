@@ -1,0 +1,26 @@
+{
+  "sample_rows": 3514,
+  "daily_iqr_review": [
+    {
+      "element": "PRCP",
+      "rows": 730,
+      "iqr_review_flags": 146
+    },
+    {
+      "element": "TMAX",
+      "rows": 730,
+      "iqr_review_flags": 6
+    },
+    {
+      "element": "TMIN",
+      "rows": 730,
+      "iqr_review_flags": 1
+    }
+  ],
+  "figures": {
+    "airflow_task_states.png": "9999562BC6AA4772F5D056792C4821B25DF638691FC1CFA94EC46830F01C5360",
+    "airflow_ui_overview.png": "650B153EA008D063D941E33D3B4EBD4A35B709A148EDE8FFE7FA59BDC7E79D58",
+    "daily_distributions.png": "082998D16C589531553D9294B7D3D03C2E984CB6F1EE918367240F33D6E00887",
+    "Escudo.png": "E0F1F6EDA8029C428E69579B72DBAD04FF8A7CE56912429363B50A059AD7AB1E"
+  }
+}

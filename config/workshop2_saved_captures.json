@@ -29,6 +29,116 @@
       "source_url": "https://www.ncei.noaa.gov/access/services/data/v1",
       "source_format": "csv",
       "attribution": "NCEI GHCN-Daily v3 subset and access date in Workshop 1 evidence register"
+    },
+    {
+      "source": "noaa_storm_events",
+      "partition": "OK_2021",
+      "path": "data/raw/acquired/noaa_oklahoma_2021.csv",
+      "start": "2021-01-01",
+      "end": "2021-12-31",
+      "source_url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/StormEvents_details-ftp_v1.0_d2021_c20260323.csv.gz",
+      "source_format": "csv_subset_of_preserved_gzip_archive",
+      "attribution": "NOAA NCEI Storm Events",
+      "acquisition_manifest": "workshop_2/evidence/historical_acquisition.json"
+    },
+    {
+      "source": "ghcn_daily",
+      "partition": "USW00013967_2021_full",
+      "path": "data/raw/acquired/ghcn_USW00013967_2021.csv",
+      "start": "2021-01-01",
+      "end": "2021-12-31",
+      "source_url": "https://www.ncei.noaa.gov/access/services/data/v1?dataset=daily-summaries&stations=USW00013967&startDate=2021-01-01&endDate=2021-12-31&dataTypes=TMAX%2CTMIN%2CPRCP&units=metric&includeAttributes=true&includeStationName=true&includeStationLocation=true&format=csv",
+      "source_format": "csv",
+      "attribution": "NOAA NCEI GHCN-Daily; metric response",
+      "acquisition_manifest": "workshop_2/evidence/historical_acquisition.json"
+    },
+    {
+      "source": "noaa_storm_events",
+      "partition": "OK_2022",
+      "path": "data/raw/acquired/noaa_oklahoma_2022.csv",
+      "start": "2022-01-01",
+      "end": "2022-12-31",
+      "source_url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/StormEvents_details-ftp_v1.0_d2022_c20260625.csv.gz",
+      "source_format": "csv_subset_of_preserved_gzip_archive",
+      "attribution": "NOAA NCEI Storm Events",
+      "acquisition_manifest": "workshop_2/evidence/historical_acquisition.json"
+    },
+    {
+      "source": "ghcn_daily",
+      "partition": "USW00013967_2022_full",
+      "path": "data/raw/acquired/ghcn_USW00013967_2022.csv",
+      "start": "2022-01-01",
+      "end": "2022-12-31",
+      "source_url": "https://www.ncei.noaa.gov/access/services/data/v1?dataset=daily-summaries&stations=USW00013967&startDate=2022-01-01&endDate=2022-12-31&dataTypes=TMAX%2CTMIN%2CPRCP&units=metric&includeAttributes=true&includeStationName=true&includeStationLocation=true&format=csv",
+      "source_format": "csv",
+      "attribution": "NOAA NCEI GHCN-Daily; metric response",
+      "acquisition_manifest": "workshop_2/evidence/historical_acquisition.json"
+    },
+    {
+      "source": "noaa_storm_events",
+      "partition": "OK_2023",
+      "path": "data/raw/acquired/noaa_oklahoma_2023.csv",
+      "start": "2023-01-01",
+      "end": "2023-12-31",
+      "source_url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/StormEvents_details-ftp_v1.0_d2023_c20260323.csv.gz",
+      "source_format": "csv_subset_of_preserved_gzip_archive",
+      "attribution": "NOAA NCEI Storm Events",
+      "acquisition_manifest": "workshop_2/evidence/historical_acquisition.json"
+    },
+    {
+      "source": "ghcn_daily",
+      "partition": "USW00013967_2023_full",
+      "path": "data/raw/acquired/ghcn_USW00013967_2023.csv",
+      "start": "2023-01-01",
+      "end": "2023-12-31",
+      "source_url": "https://www.ncei.noaa.gov/access/services/data/v1?dataset=daily-summaries&stations=USW00013967&startDate=2023-01-01&endDate=2023-12-31&dataTypes=TMAX%2CTMIN%2CPRCP&units=metric&includeAttributes=true&includeStationName=true&includeStationLocation=true&format=csv",
+      "source_format": "csv",
+      "attribution": "NOAA NCEI GHCN-Daily; metric response",
+      "acquisition_manifest": "workshop_2/evidence/historical_acquisition.json"
+    },
+    {
+      "source": "noaa_storm_events",
+      "partition": "OK_2024",
+      "path": "data/raw/acquired/noaa_oklahoma_2024.csv",
+      "start": "2024-01-01",
+      "end": "2024-12-31",
+      "source_url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/StormEvents_details-ftp_v1.0_d2024_c20260728.csv.gz",
+      "source_format": "csv_subset_of_preserved_gzip_archive",
+      "attribution": "NOAA NCEI Storm Events",
+      "acquisition_manifest": "workshop_2/evidence/historical_acquisition.json"
+    },
+    {
+      "source": "ghcn_daily",
+      "partition": "USW00013967_2024_full",
+      "path": "data/raw/acquired/ghcn_USW00013967_2024.csv",
+      "start": "2024-01-01",
+      "end": "2024-12-31",
+      "source_url": "https://www.ncei.noaa.gov/access/services/data/v1?dataset=daily-summaries&stations=USW00013967&startDate=2024-01-01&endDate=2024-12-31&dataTypes=TMAX%2CTMIN%2CPRCP&units=metric&includeAttributes=true&includeStationName=true&includeStationLocation=true&format=csv",
+      "source_format": "csv",
+      "attribution": "NOAA NCEI GHCN-Daily; metric response",
+      "acquisition_manifest": "workshop_2/evidence/historical_acquisition.json"
+    },
+    {
+      "source": "noaa_storm_events",
+      "partition": "OK_2025",
+      "path": "data/raw/acquired/noaa_oklahoma_2025.csv",
+      "start": "2025-01-01",
+      "end": "2025-12-31",
+      "source_url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/StormEvents_details-ftp_v1.0_d2025_c20260819.csv.gz",
+      "source_format": "csv_subset_of_preserved_gzip_archive",
+      "attribution": "NOAA NCEI Storm Events",
+      "acquisition_manifest": "workshop_2/evidence/historical_acquisition.json"
+    },
+    {
+      "source": "ghcn_daily",
+      "partition": "USW00013967_2025_full",
+      "path": "data/raw/acquired/ghcn_USW00013967_2025.csv",
+      "start": "2025-01-01",
+      "end": "2025-12-31",
+      "source_url": "https://www.ncei.noaa.gov/access/services/data/v1?dataset=daily-summaries&stations=USW00013967&startDate=2025-01-01&endDate=2025-12-31&dataTypes=TMAX%2CTMIN%2CPRCP&units=metric&includeAttributes=true&includeStationName=true&includeStationLocation=true&format=csv",
+      "source_format": "csv",
+      "attribution": "NOAA NCEI GHCN-Daily; metric response",
+      "acquisition_manifest": "workshop_2/evidence/historical_acquisition.json"
     }
   ]
 }

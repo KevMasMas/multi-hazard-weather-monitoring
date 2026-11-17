@@ -1,2 +1,2 @@
 -r requirements-workshop1.lock
-psycopg2-binary==2.9.10
+-r requirements-workshop2-pipeline.txt

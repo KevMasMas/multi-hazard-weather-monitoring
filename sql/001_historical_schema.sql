@@ -1,5 +1,6 @@
 -- Workshop 2 initial historical model. Apply inside one migration transaction.
--- This file has not yet been run against PostgreSQL in this workspace.
+-- Executed for the saved-data WSL pilot on 2026-11-16; see Workshop 2 evidence.
+-- Domain/geography completion remains a separate G2 task.
 CREATE EXTENSION IF NOT EXISTS postgis;
 
 CREATE TABLE IF NOT EXISTS source_catalog (

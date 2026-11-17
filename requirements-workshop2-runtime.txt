@@ -1,0 +1,3 @@
+# Minimal historical CLI/runtime; notebook tooling remains in the separate lock.
+# 2.9.11 supplies CPython 3.14 Linux wheels for the observed Ubuntu WSL runtime.
+psycopg2-binary==2.9.11

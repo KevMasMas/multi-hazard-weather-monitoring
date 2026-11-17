@@ -1,0 +1,13 @@
+{
+  "executed_at_utc": "2026-11-17T02:19:27.621428+00:00",
+  "notebook": "02_historical_ingestion_review.ipynb",
+  "sha256": "4FFD7E5B6D5E9856B58FF1299CB4640354C56301B52E828111F6300C1B98FE41",
+  "code_cells": 9,
+  "error_outputs": 0,
+  "python": "3.12.16",
+  "pandas": "3.1.1",
+  "pyarrow": "18.1.0",
+  "weather_network": false,
+  "database_network": false,
+  "environment": "Existing dependency environment, fresh kernel; no cached notebook variables reused."
+}

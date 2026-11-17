@@ -1,0 +1,10 @@
+{
+  "verified_at_utc": "2026-11-17T02:34:26.684270+00:00",
+  "path": "workshop_2/Workshop_2_Pipeline_Output_Samples.zip",
+  "sha256": "1A7CB0BCC62D484E4DC019D276539A897ED286BE5434AE7597768DC291C33171",
+  "bytes": 532538,
+  "bronze_files": 3,
+  "silver_files": 3,
+  "checked_members": 28,
+  "crc_and_hashes_passed": true
+}

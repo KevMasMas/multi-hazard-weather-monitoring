@@ -1,0 +1,23 @@
+{
+  "bronze_path": "data/bronze/ghcn_daily_20261117_020238_e13254eec873.json",
+  "bronze_sha256": "C991E6894A83409EF4C35FC377EBCA8A39F23A0D34AEE5F8664FF1AD1D3E33B8",
+  "metrics": {
+    "accepted": 1095,
+    "read": 1095,
+    "rejected": 0,
+    "run_id": 19,
+    "unchanged": 0
+  },
+  "native_sha256": "16ec15440e86611e45f5af1658c7559734886f5ae8206fe3a12bc03b7807218b",
+  "silver": {
+    "bytes": 58146,
+    "partition": "USW00013967_2022_full",
+    "path": "data/curated/silver/ghcn_daily_20261117_020238_e13254eec873.parquet",
+    "producer": "immutable_database_snapshot_export",
+    "rows": 1095,
+    "run_id": 19,
+    "schema": "silver-v1",
+    "sha256": "2A3D8EE747C240D87C33F0B4D5B8D0DB7FA0AEC6B62C95C863489AB7F5F74093",
+    "source": "ghcn_daily"
+  }
+}

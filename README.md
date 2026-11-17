@@ -1,100 +1,109 @@
 # Multi-Hazard Weather Impact Monitoring
 
-Semester project for **Data Analysis Programming (2026-II)** at Universidad Distrital Francisco Jose de Caldas.
+Semester project for **Data Analysis Programming (2026-II)**, Universidad Distrital
+Francisco Jose de Caldas. Team 9: Kevin David Rincon Valencia (20232020356) and
+Pablo Garzon Gomez (20232020341).
 
-Team 9 will build an Oklahoma county-level monitoring system that integrates historical and periodically updated weather information and eventually produces a **Compound Hazard Index per region**. Oklahoma/counties, the 2010-2025 complete-year baseline, a rolling 24-hour current window, and a preliminary Workshop 1 indicator proposal are accepted team decisions. The indicator still requires empirical validation in Workshop 4.
+We are building an Oklahoma county-level monitoring system from NOAA Storm
+Events, GHCN-Daily, NWS Alerts and NWS station observations. The planned analytical
+output is a Compound Hazard Index. The accepted semester target is 2010-2025,
+with a rolling 24-hour current window and separate seven-day context.
 
-## Current status
+## Current delivery: Workshop 2
 
-This repository is starting **Workshop 2**. Evidence and executed profiles exist
-for all four assigned sources; Oklahoma/counties, the 2010-2025 complete-year
-baseline and the rolling 24-hour current window are accepted team decisions.
-An offline NOAA/GHCN parser and content-addressed raw landing are implemented
-from saved Workshop 1 samples. Docker, Airflow, database loads, Silver Parquet
-and the Workshop 2 PDF remain pending. The published Workshop 2-4 PDFs contain
-a documented 2026-I public-opinion conflict that requires clarification.
+Start with the [delivery index](workshop_2/README.md), [PDF](workshop_2/report/Workshop_2_Report.pdf),
+[sample ZIP](workshop_2/Workshop_2_Pipeline_Output_Samples.zip),
+[executed Pandas notebook](notebooks/02_historical_ingestion_review.ipynb) and
+[demonstration guide](deliveries/02-workshop-2/DEMO_GUIDE.md).
 
-Workshop 1's final technical review includes five qualified historical wind
-candidate pairs, five primary quality concerns and two extra observations, and
-a fresh isolated execution of 32 notebook code cells with 59 exact locked
-packages. See `deliveries/01-workshop-1/TECHNICAL_REVIEW.md`; Kevin's explicit
-confirmation of both students' approval is separately recorded in
-`TEAM_APPROVAL.md`. Platform submission is not inferred from technical checks.
+The executed 2021-2025 slice contains 13,561 Oklahoma Storm Events records and
+5,478 daily measurements from GHCN station USW00013967. Ten real Airflow
+Bronze/Silver batches, exact-file FileSensor, Parquet exports, unchanged replay
+and restart persistence are verified. All 29 tests pass, including real DB checks.
+The notebook executes nine code cells without errors.
 
-## Start here
+The PDF/ZIP are prepared for team review. Personal approval, commit/push and
+Moodle upload are not inferred. The full 2010-2025 target, broader station
+inventory/county assignments, NWS incremental ingestion and CHI remain open.
+The published Workshop 2 handout's 2026-I public-opinion wording is a documented
+discrepancy; no professor clarification is claimed.
 
-For the professor: start with the [Workshop 1 submission index](workshop_1/README.md),
-the [executed notebook](notebooks/01_source_profiling.ipynb), and the
-[canonical mapping table](workshop_1/mapping.md). The LaTeX report project is in
-[`workshop_1/report/`](workshop_1/report/), including the team-approved PDF.
+## Run from Ubuntu WSL
 
-For team planning:
+With Docker Desktop showing Engine running and Ubuntu integration enabled:
 
-1. [`WORK_BOARD.md`](WORK_BOARD.md) - current status, exact Kevin/Pablo ownership, next tasks, and working sequence.
-2. [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md) - authoritative academic requirements, constraints, and unresolved decisions.
-3. [`deliveries/01-workshop-1/IMPLEMENTATION_PLAN.md`](deliveries/01-workshop-1/IMPLEMENTATION_PLAN.md) - detailed Workshop 1 requirements and acceptance criteria.
-
-Supporting material is indexed under [`docs/`](docs/) and the delivery history under [`deliveries/`](deliveries/). Contributors and coding agents must also follow [`AGENTS.md`](AGENTS.md).
-
-For the current Workshop 2 offline slice, see [`workshop_2/README.md`](workshop_2/README.md).
-
-## Repository areas
-
-```text
-config/                 Source and application configuration
-dashboard/              Plotly Dash application
-data/raw/               Raw landing zone (bulk data ignored by Git)
-deliveries/              Per-milestone plans, change logs, evidence, and demo guides
-docs/                    Plans, reports, decisions, and references
-ingest.py                Required CLI contract stub for Workshop 1
-notebooks/               Reproducible analysis and profiling notebooks
-sql/                     Database schema and analytical views
-src/                     Production ingestion package boundaries
-tests/fixtures/          Tests and small recorded source fixtures
-workshop_1/mapping.md     Preliminary canonical field mapping
-workshop_1/samples/      Small immutable evidence samples for Workshop 1
+```bash
+python scripts/workshop_2/restore_sample_inputs.py
+docker compose up -d --build --wait airflow-webserver airflow-scheduler airflow-triggerer
 ```
 
-The Workshop 1 scaffolds explicitly say when implementation belongs to a later
-milestone. Their presence does not mean that Docker, ingestion, database,
-orchestration, tests, or the dashboard have already been implemented.
+Open <http://localhost:8080> (local classroom defaults: `airflow` / `airflow`).
+Enable both DAGs and trigger only `weather_bronze_ingestion` with
+`{"partition":"OK_2021"}`. It triggers Silver automatically. Other packaged
+offline partitions are `USW00013967_2021_full` and `USW00013967_2022_full`.
+Restoring samples makes no weather request. Full acquisition is an explicit,
+cached command described in the demo guide.
 
-The current CLI placeholder can be inspected without performing ingestion:
+Windows pgAdmin: host `127.0.0.1`, port **55432**, database
+`weather_monitoring`, user/password `weather` for local defaults.
+Internal Compose connections use `postgres:5432`. Overrides belong in ignored
+`.env`; see [WSL setup](docs/WSL_SETUP.md).
 
-```powershell
+The historical/status CLI uses a configured `DATABASE_URL` and complete
+registered capture intervals:
+
+```bash
+python ingest.py --mode historical --start 2021-01-01 --end 2025-12-31
 python ingest.py --mode status
 ```
 
-It returns `status: not_implemented` until the corresponding workshop work is
-completed.
+Missing inputs or mismatching hashes fail explicitly. Incremental mode remains
+Workshop 3. Python 3.12 dependencies are in `requirements-workshop2.in`.
 
-## Working model
+## Repository structure
 
-Kevin works on Storm Events and Alerts; Pablo works on GHCN and station
-observations. We keep assignments, plans and completed work in these files:
+| Area | Purpose |
+| --- | --- |
+| `airflow/dags/` | Thin Bronze/Silver TaskFlow DAGs |
+| `src/` | Shared source parsing, validation, storage and export |
+| `sql/` | Checksummed migrations and database bootstrap |
+| `config/` | Source contracts and registered capture selection |
+| `scripts/workshop_2/` | Explicit acquisition, verification and packaging commands |
+| `data/` | Ignored bulk raw, Bronze and curated outputs |
+| `notebooks/` | Executed profiling and output exploration |
+| `workshop_1/` | Preserved Workshop 1 report, mapping and evidence |
+| `workshop_2/` | PDF/LaTeX, small deliverable samples and execution receipts |
+| `deliveries/` | Per-workshop plans, change logs and demo guide |
+| `docs/` | Decisions, references, architecture and dated reviews |
+| `tests/` | Offline and isolated real-PostGIS checks |
+| `dashboard/` | Planned later-workshop dashboard |
 
-1. `WORK_BOARD.md` answers what happens now and who owns it.
-2. Each milestone gets one numbered folder under `deliveries/`.
-3. The implementation plan defines required outputs and acceptance criteria.
-4. The change log records what actually happened, including exact verification and limitations.
-5. Durable architecture and data-contract decisions are promoted to `docs/decisions/`.
+Only the three selected sample Parquet files are exempted from the bulk-data
+ignore rules. Database/log volumes, environments and real credentials are not
+committed.
 
-## Team
+## Team workflow and earlier delivery
 
-- Pablo Garzon Gomez - 20232020341
-- Kevin David Rincon Valencia - 20232020356
+[WORK_BOARD.md](WORK_BOARD.md) is the only current assignment board.
+Kevin leads NOAA/database/CLI; Pablo leads GHCN/orchestration, with reciprocal
+review. Read [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md) for requirements,
+[AGENTS.md](AGENTS.md) for working rules and the active delivery change log for
+verified work. Current branch: `workflow-2`; Kevin performs commit/push after review.
 
-## Academic source of truth
+[Workshop 1](workshop_1/README.md) remains preserved, including its approved report,
+[source notebook](notebooks/01_source_profiling.ipynb), [mapping](workshop_1/mapping.md)
+and separate approval record. That approval does not extend to Workshop 2.
+
+## Academic references
 
 - [Course materials](https://github.com/EngAndres/ud-public/tree/main/courses/data-analysis-programming)
-- [Course project specification](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/CourseProject.pdf)
-- [Team assignment](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/TeamsDistribution.pdf)
-- [Workshop 1 specification](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_1.pdf)
-- [Workshop 2 specification](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_2.pdf)
-- [Workshop 3 specification](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_3.pdf)
-- [Workshop 4 specification](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_4.pdf)
+- [CourseProject.pdf](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/CourseProject.pdf)
+- [TeamsDistribution.pdf](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/TeamsDistribution.pdf)
+- [Workshop 1](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_1.pdf)
+- [Workshop 2](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_2.pdf)
+- [Workshop 3](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_3.pdf)
+- [Workshop 4](https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_4.pdf)
+- [Airflow practice](https://github.com/EngAndres/ud-public/tree/main/courses/data-analysis-programming/practices/airflow_etl)
 
-Professor-issued requirements outrank repository notes. When professor-issued
-documents conflict across semester/domain, record the discrepancy, prioritize the
-current semester/project contract, and request clarification instead of silently
-choosing the newest file.
+Professor-issued requirements outrank repository notes. Record semester/domain
+conflicts explicitly and never treat a teaching example as a new requirement.

@@ -1,0 +1,444 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[a4paper,margin=1.65cm]{geometry}
+\usepackage{graphicx,booktabs,longtable,array,tabularx,ragged2e,enumitem,caption,float}
+\usepackage[table]{xcolor}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{amsmath,tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\definecolor{HeaderBlue}{HTML}{1F4E79}
+\definecolor{LightBlue}{HTML}{EAF2F8}
+\hypersetup{colorlinks=true,linkcolor=HeaderBlue,urlcolor=HeaderBlue}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{4pt}
+\setlist{leftmargin=*,nosep}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\captionsetup{font=small,labelfont=bf}
+\raggedbottom
+\setlength{\emergencystretch}{2em}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.85}
+\begin{document}
+\input{cover.tex}
+\pagenumbering{arabic}
+{\Large\bfseries Workshop No. 2: Technical Architecture and Pipeline}
+\section{Executive summary and scope}
+Team 9 implements a historical weather pipeline for Oklahoma using NOAA Storm
+Events and NCEI GHCN-Daily. Apache Airflow coordinates checksum-verified Bronze
+batches and Silver processing. PostgreSQL/PostGIS stores validated records,
+source-specific details, quarantine, run metrics and immutable revisions.
+Parquet exports contain the accepted snapshot observed by each successful run.
+
+The executed slice is \textbf{2021--2025}: 13,561 Storm Events records from
+Oklahoma and 5,478 daily measurements from station USW00013967 in Oklahoma City.
+Ten actual source/year batches completed both DAGs. A subsequent historical CLI
+replay reported all records unchanged and no new accepted or rejected rows.
+There are 19,039 canonical business records and no duplicate source/key groups
+in the captured database audit. These are historical records, not counts of
+independent compound hazards.
+
+The semester design retains the 2010--2025 target, county-level analysis, current
+NWS ingestion and the Compound Hazard Index. Extending the years, station
+inventory, reviewed station/county assignments and analytical outputs remains
+future work; this delivery does not claim statewide station coverage or a
+validated hazard index.
+
+\textbf{Requirement interpretation.} The supplied Workshop 2 PDF is labelled
+2026-I and describes public opinion, scraping and NLP, whereas the 2026-II course
+project assigns Team 9 a weather system. We implement its compatible technical
+requirements: Docker, TaskFlow DAGs, timestamped JSON/Parquet, FileSensor,
+preprocessing, notebook and evidence. Weather source semantics take precedence;
+no unrelated scraper or sentiment processing is presented as implemented.
+This is a documented team interpretation, not a claimed professor approval
+[1--3].
+
+\section{Technical architecture}
+\subsection{Components and interactions}
+The course Airflow practice motivates reusable transformations outside DAG files,
+persistent layer storage and separate ingestion/curation stages [3].
+Figure~\ref{fig:architecture} shows the implemented path and planned consumers.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=0.25cm and 0.65cm,
+ box/.style={draw=HeaderBlue,rounded corners,fill=LightBlue,align=center,
+ text width=4.5cm,minimum height=0.70cm,font=\small},
+ planned/.style={box,dashed,fill=white},
+ arr/.style={-{Latex[length=2mm]},thick,draw=HeaderBlue}]
+\node[box] (sources) {NOAA annual gzip CSV / NCEI metric CSV};
+\node[box,below=of sources] (acq) {Explicit cached acquisition CLI\\native bytes + URL + UTC + SHA-256};
+\node[box,below=of acq] (bronze) {Registered CSV input $\rightarrow$ TaskFlow Bronze\\atomic JSON view + native lineage};
+\node[box,right=of bronze] (sched) {Airflow scheduler / LocalExecutor\\TriggerDagRunOperator + manifest path};
+\node[box,below=of bronze] (sensor) {Silver exact-file FileSensor\\reschedule, 5 s interval, 180 s timeout};
+\node[box,below=of sensor] (parse) {Source parsers + canonical validation};
+\node[box,below=of parse] (db) {PostgreSQL/PostGIS transaction\\records, domains, revisions, metrics, state};
+\node[box,right=of db] (reject) {Quarantine: rejected\_record\\original fields + reason code};
+\node[box,below=of db] (parquet) {Silver Parquet\\immutable run snapshot + checksums};
+\node[box,right=of parquet] (notebook) {Offline Pandas notebook\\hashes, counts, types, distributions};
+\node[planned,below=of parquet] (gold) {Planned Gold / CHI analytical views};
+\node[planned,right=of gold] (dash) {Planned database-backed dashboard};
+\draw[arr] (sources)--(acq);
+\draw[arr] (acq)--(bronze);
+\draw[arr] (bronze)--(sensor);
+\draw[arr] (bronze)--(sched);
+\draw[arr] (sched)--(sensor);
+\draw[arr] (sensor)--(parse);
+\draw[arr] (parse)--(db);
+\draw[arr] (parse.east)-|(reject.north);
+\draw[arr] (db)--(parquet);
+\draw[arr] (parquet)--(notebook);
+\draw[arr,dashed] (db.west)--++(-0.45,0)|-(gold.west);
+\draw[arr,dashed] (gold)--(dash);
+\end{tikzpicture}
+\caption{Implemented historical pipeline. Dashed components are planned.
+The editable Mermaid counterpart is \texttt{docs/architecture/workshop-2-pipeline.mmd}.}
+\label{fig:architecture}
+\end{figure}
+
+\begin{tabularx}{\textwidth}{@{}L{3.2cm}YY@{}}
+\toprule
+Component & Input / responsibility & Output / interaction\\
+\midrule
+Acquisition CLI & Bounded, explicit NOAA/NCEI requests; cached response verification &
+Original response bodies, acquisition metadata and registered CSV inputs.\\
+Bronze DAG & Checks registered input hash; preserves CSV input; publishes parsed JSON atomically &
+One batch JSON and the exact path sent to Silver.\\
+Silver DAG & Checks path, provenance, CSV view and canonical fields &
+Transactionally persisted rows or rejects; Parquet after DB commit.\\
+PostgreSQL / PostGIS & Unique source keys, FKs, revision/capture links, transactional checkpoints &
+Canonical/domain data and stable run snapshots.\\
+PyArrow / Parquet & Explicit Arrow schema; typed date and UTC instant &
+Compressed portable analytical files with lineage metadata.\\
+Pandas notebook & Three packaged Parquet outputs and saved evidence &
+Readable DataFrames, missingness, duplicate checks and unit-specific distribution review.\\
+\bottomrule
+\end{tabularx}
+
+We use Python's CSV parser for faithful source parsing and PyArrow for a strict
+export schema. Pandas supports the classroom-style output exploration rather
+than duplicating ingestion logic in a notebook. Parquet retains typed columns
+and supports analytical reads; it complements the auditable relational model
+[4--7].
+
+\subsection{Storage and naming conventions}
+Native nationwide Storm Events gzip responses are unchanged in ignored
+\path{data/raw/acquired/}. A deterministic CSV subset selects
+\texttt{STATE = OKLAHOMA}; field values are retained and the serialization rule is
+recorded. GHCN CSV responses are retained unchanged. The acquisition register
+links both input types to native response hashes and URLs.
+
+Bronze JSON is a \emph{derived parsed view}, not a claim that the source returned
+JSON. JSON filenames use
+\path{source_YYYYMMDD_HHMMSS_batchhash.json}; Silver uses the same batch stem
+with a \texttt{.parquet} suffix and companion \texttt{.manifest.json}.
+The UTC timestamp identifies the batch logical time; the short run-ID hash
+avoids collisions. Actual start/end times are retained separately by Airflow.
+The layout uses \path{data/bronze/} and \path{data/curated/silver/} as the course
+Bronze/Silver equivalents. Gold is planned.
+
+\subsection{Database model and lineage}
+The natural key is \texttt{(source\_id, source\_key)}. Storm Events uses
+\texttt{EVENT\_ID}; GHCN uses station/date/element. One daily CSV row may therefore
+produce three measurements. The model keeps date-grained measurements separate
+from instant-grained events.
+
+\begin{tabularx}{\textwidth}{@{}L{5.2cm}Y@{}}
+\toprule
+Entity / primary key & Main relationships and purpose\\
+\midrule
+\texttt{source\_catalog / source\_id} & Source URL, format and attribution.\\
+\texttt{raw\_capture / capture\_id} & FK to source; immutable path, body hash, size and origin.\\
+\texttt{ingestion\_run / run\_id} & FK to capture; batch identity, metrics, UTC times and status.\\
+\texttt{historical\_record / record\_id} & Source/key unique; canonical time, coordinates, value/unit; capture/run FKs.\\
+\texttt{historical\_record\_revision / revision\_id} & Accepted normalized/raw snapshot tied to original record/run/capture.\\
+\texttt{record\_capture\_link / (record\_id,run\_id)} & Per-run sighting linked to a specific immutable revision and source CSV line.\\
+\texttt{storm\_event / record\_id} & Event/episode IDs, source geography, original impacts/damage fields.\\
+\texttt{daily\_station\_measurement / record\_id} & FK to station; date/element/value/unit and preserved attributes.\\
+\texttt{station / station\_id} & Unique source station identity; capture-specific location observations.\\
+\texttt{source\_geography / geography\_id} & Retains county/forecast-zone distinction; not an invented point.\\
+\texttt{rejected\_record / rejected\_id} & Run/capture FKs, line/element, original fields and reason.\\
+\texttt{ingestion\_state / (source\_id,partition\_key)} & Last successful run; advances only in the partition transaction.\\
+\bottomrule
+\end{tabularx}
+
+The editable ER diagram with PK/FK fields is
+\path{docs/architecture/workshop-2-er.mmd}. Migrations 001--004 build the executed
+model. A checksum ledger rejects changes to already-applied migration files.
+\texttt{canonical\_event} is a compatibility view of canonical records.
+The \texttt{region} and \texttt{station\_region\_assignment} structures remain
+empty until a boundary/crosswalk source is reviewed; a station point is not
+silently assigned to an unverified county. Damage strings and narrative text
+remain in source fields; monetary normalization and text analytics are not
+claimed by this version.
+
+\section{Preprocessing pipeline definition}
+\subsection{Source-specific rules}
+\begin{longtable}{@{}L{2.6cm}L{5.6cm}L{7.0cm}@{}}
+\toprule
+Concern & Implemented rule & Justification / retained evidence\\
+\midrule
+\endhead
+Required identity & Reject missing event/station ID, event type, invalid source line or content hash. &
+A canonical row must remain identifiable and traceable.\\
+Storm time & Parse source local time with \texttt{CST-6} and convert to UTC. Unsupported timezone codes enter quarantine. &
+Oklahoma source code is explicit; no daylight-saving offset is guessed.\\
+GHCN date & Keep \texttt{DATE} as a date; UTC instant remains null. &
+A daily summary is not a point measurement at midnight.\\
+Coordinates & Permit a missing pair; reject partial pairs or values outside WGS84 ranges. &
+Workshop 1 found zone-based events with missing points. Source geography remains available.\\
+Numeric values & Parse finite numbers. Reject negative precipitation, negative storm magnitude and temperatures below absolute zero. &
+Keep physically interpretable measurements without generic range clipping.\\
+Units & Request GHCN metric: TMAX/TMIN in degrees C, PRCP in mm. Wind magnitude in kn; hail in inches. Unknown populated storm magnitude unit is rejected. &
+Official Storm Events format distinguishes wind and hail magnitude [8]. Original magnitude categories remain separate.\\
+Missing elements & Missing optional GHCN elements generate no measurement; no mean/median/zero imputation. Missing storm magnitude remains null. &
+Missing observations are not zero hazards. Original CSV row remains retained.\\
+QC / trace flags & Preserve GHCN attribute strings and expose quality flags in the notebook. &
+This version does not claim to reject all provider-QC-flagged measurements.\\
+Duplicate input keys & Reject repeated valid business keys inside a partition; record reason. Across runs compare record content hash. &
+Repeated acquisition is not a new weather observation.\\
+Text fields & Preserve source narratives/IDs and categorical names; no lowercasing, stop-word removal or tokenization. &
+Weather provenance requires original text; NLP belongs to the conflicting public-opinion assignment.\\
+Outliers & Keep values unchanged. Notebook applies 1.5-IQR review per daily variable and plots distributions. &
+Weather extremes may be the target signal. No statistical flag is treated as invalid ground truth.\\
+\bottomrule
+\end{longtable}
+
+These policies follow Workshop 1 observations rather than generic cleaning
+defaults. Source parsing and validation are shared by the historical CLI and
+Silver DAG, so evidence notebooks cannot silently implement different rules.
+
+\subsection{Silver schema}
+Every Parquet contains 18 typed columns:
+\texttt{record\_id}, \texttt{source}, \texttt{source\_key},
+\texttt{event\_type}, \texttt{observed\_at\_utc},
+\texttt{observed\_date}, \texttt{latitude}, \texttt{longitude},
+\texttt{severity\_value}, \texttt{severity\_unit},
+\texttt{magnitude\_type}, \texttt{quality\_attributes},
+\texttt{source\_content\_sha256}, \texttt{capture\_sha256},
+\texttt{run\_id}, \texttt{capture\_id}, \texttt{source\_line}
+and \texttt{revision\_id}.
+Identifiers are int64 or strings; numeric values/coordinates are float64;
+the instant is microsecond UTC timestamp and the day is date32.
+Schema metadata records \texttt{silver-v1}, source, partition, run ID and lineage.
+
+Required identity/time/unit rules are enforced before export; domain-relevant
+nulls remain nullable. The export reads revision IDs observed by the specified
+successful run, so a later source revision cannot alter an earlier export.
+The written Parquet is read back and compared with its expected typed table
+before atomic publication.
+
+\section{Docker stack and reproducibility}
+\subsection{Services, persistence and networking}
+The custom image uses \path{apache/airflow:2.10.4-python3.12}.
+PostgreSQL/PostGIS uses \path{postgis/postgis:16-3.7}.
+One server hosts separate \texttt{airflow} metadata and
+\texttt{weather\_monitoring} application databases.
+
+\begin{tabularx}{\textwidth}{@{}p{3.4cm}Y@{}}
+\toprule
+Compose service & Purpose\\
+\midrule
+\texttt{postgres} & Persistent PostGIS server, health checked before dependent initialization.\\
+\texttt{airflow-db-init} & Idempotently creates the separate Airflow metadata database.\\
+\texttt{airflow-init} & Migrates Airflow metadata and creates the local development user.\\
+\texttt{airflow-webserver} & UI and local stable REST API on loopback port 8080.\\
+\texttt{airflow-scheduler} & Schedules tasks using LocalExecutor subprocesses.\\
+\texttt{airflow-triggerer} & Available for deferrable tasks; current FileSensor uses reschedule mode.\\
+\bottomrule
+\end{tabularx}
+
+LocalExecutor does not require a separate Celery worker or Redis service.
+The scheduler launches local task processes [4]. Source, configuration, SQL and
+DAG code are read-only bind mounts. Data/evidence are writable host mounts.
+Named volumes persist PostgreSQL and Airflow logs. Internal service connections
+use \texttt{postgres:5432}; Windows/WSL clients use
+\texttt{127.0.0.1:55432}. A native Windows PostgreSQL service occupies port 5432,
+so using that host port previously reached the wrong server.
+
+Development credentials in \path{.env.example} are local classroom defaults;
+real overrides belong in ignored \path{.env}. Neither database nor webserver is
+published to a non-loopback host interface. This stack is a local demonstration,
+not a production security deployment.
+
+\subsection{Run procedure}
+From Ubuntu WSL with Docker Desktop's Linux engine running:
+\begin{verbatim}
+docker compose up -d --build --wait \
+  airflow-webserver airflow-scheduler airflow-triggerer
+python scripts/workshop_2/restore_sample_inputs.py
+\end{verbatim}
+Open \url{http://localhost:8080}, enable both DAGs, and trigger only
+\texttt{weather\_bronze\_ingestion} with:
+\begin{verbatim}
+{"partition": "OK_2021"}
+\end{verbatim}
+Bronze triggers Silver automatically. For the packaged offline demonstration,
+also use \texttt{USW00013967\_2021\_full} and
+\texttt{USW00013967\_2022\_full}. The full acquisition CLI is an explicit network
+operation, documented in the runbook; restoring samples requires no network.
+Bulk raw data is not committed.
+
+The common CLI supports historical ingestion and database status:
+\begin{verbatim}
+export DATABASE_URL='postgresql://weather:weather@127.0.0.1:55432/weather_monitoring'
+python ingest.py --mode historical --start 2021-01-01 --end 2025-12-31
+python ingest.py --mode status
+\end{verbatim}
+The historical command selects complete registered capture intervals; it does
+not truncate CSV rows by a requested subrange. Missing local captures must be
+acquired or restored first. Incremental mode explicitly remains Workshop 3.
+
+\section{DAG implementation and recovery}
+\subsection{Bronze ingestion}
+\texttt{weather\_bronze\_ingestion} uses TaskFlow \texttt{@dag}/\texttt{@task}.
+Its \texttt{publish\_bronze} task selects the explicit partition, checks the
+registered body hash, preserves the CSV input and publishes a JSON view.
+\texttt{trigger\_silver} passes the exact path through
+\texttt{TriggerDagRunOperator}; no large payload travels through XCom.
+Source acquisition is a separate explicit cached CLI operation; this historical
+DAG replays registered source captures rather than downloading every trigger.
+
+\subsection{Silver processing}
+\texttt{weather\_silver\_processing} validates that the supplied JSON path remains
+inside the Bronze landing directory. \texttt{wait\_for\_exact\_bronze} uses
+FileSensor with \texttt{reschedule}, a 5-second poke interval and a 180-second
+timeout. It waits for the specific batch, not any stale JSON [5].
+\texttt{load\_and\_export} verifies source metadata, original input hash and the
+parsed JSON against the CSV; it then parses, validates, commits and exports.
+
+Both DAGs use manual schedules for bounded historical backfills,
+\texttt{catchup=False}, one active run per DAG and one retry after ten seconds.
+These are deliberate historical settings rather than a copied daily live-feed
+schedule. Current-period NWS scheduling remains Workshop 3.
+
+\subsection{Transaction, idempotency and failure boundaries}
+A per-source advisory transaction lock serializes loads that may share business
+keys. Each partition commits accepted rows, quarantine, revisions, sightings,
+metrics and checkpoint together. A failure rolls back all these changes.
+Raw immutable files may remain available for safe replay.
+
+The Bronze body hash identifies a successful batch in the database. If the
+database committed but Parquet publication failed, retrying that batch reuses
+the same recorded run and exports its immutable revisions. Existing output
+files are accepted only when their table and metadata agree; conflicting output
+is rejected. A temporary file is never advertised as a ready batch.
+A new run of the same partition creates a separately traceable snapshot but
+does not duplicate canonical keys.
+
+\section{Results and verification}
+\input{results.tex}
+\subsection{Readable output and quality review}
+The submitted notebook starts with \texttt{pd.read\_parquet}, \texttt{head},
+\texttt{info}, dtypes and grouped \texttt{describe}. It then checks all sample
+hashes, accepted/unchanged row totals, business keys, time grain, coordinates,
+units and lineage. Boxplots review daily variables separately.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{assets/daily_distributions.png}
+\caption{Daily sample distributions for USW00013967, 2021--2022. Each variable
+has its own unit; boxplot flags are retained for review, not deleted.}
+\end{figure}
+
+\subsection{Evidence boundary}
+Successful task states and UTC timestamps were obtained from Airflow's local
+stable REST API and saved verbatim as structured evidence.
+Figure~\ref{fig:states} is a rendering of those recorded states, \textbf{not a
+screenshot of the Airflow UI}. Kevin supplied the actual UI overview in
+Figure~\ref{fig:ui}; its unchanged image hash is recorded in
+\path{workshop_2/evidence/user_screenshot.json}. Browser automation was unavailable,
+so the screenshot is attributed to the contributor rather than an automated
+capture. The two earlier Silver failures remain visible; successful subsequent
+runs are verified individually in the API receipt.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{assets/airflow_ui_overview.png}
+\caption{Actual Airflow UI overview supplied by Kevin. Both DAGs are active;
+Bronze shows 15 successful runs, while Silver shows 13 successes and two earlier
+failures retained from the dependency issue. The overview complements detailed
+per-partition API evidence.}\label{fig:ui}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.94\textwidth]{assets/airflow_task_states.png}
+\caption{Recorded successful task states for three genuine submitted batches
+(source: local Airflow API receipt).}\label{fig:states}
+\end{figure}
+
+\section{Challenges, decisions and limitations}
+\begin{enumerate}
+\item \textbf{Windows/WSL runtime:} Docker's initial socket startup failed from
+the application context; manual Windows Start launch resolved the observed
+failure. No volumes or sockets were deleted.
+\item \textbf{Wrong PostgreSQL endpoint:} pgAdmin on host port 5432 reached the
+native Windows server. The project is isolated on loopback port 55432.
+\item \textbf{Arrow compatibility:} Arrow 26 failed with Airflow's NumPy 1.26;
+upgrading NumPy conflicted with bundled pandas 2.1.4. Python 3.12 now uses
+Arrow 18.1 with the existing stack. Python 3.14 uses Arrow 26/NumPy 2.
+The image build requires \texttt{pip check}. Earlier failed task runs remain in
+Airflow rather than being relabelled as successful.
+\item \textbf{Weather semantics:} a daily measurement is not an event instant;
+missing zone-event points remain null; wind categories are not units.
+Hail units were added from the official bulk format and covered by a test.
+\item \textbf{Historical coverage:} five complete requested years are processed.
+The 2010--2025 semester target, additional Oklahoma stations and reviewed county
+assignments are not completed by this slice.
+\item \textbf{Scope alignment:} weather ingestion uses Python/Arrow rather than
+an unrelated NLP pipeline. The original handout's source-domain discrepancy,
+manual historical schedule and folder-name adaptation are explicit.
+\end{enumerate}
+
+\section{Delivery and team review}
+The three Moodle items map to:
+\begin{enumerate}
+\item \path{workshop_2/report/Workshop_2_Report.pdf}, with portable LaTeX source.
+\item \path{workshop_2/Workshop_2_Pipeline_Output_Samples.zip}, containing three
+genuine Bronze JSON files, three Parquet outputs, CSV inputs, lineage/manifest,
+the executed notebook and saved verification receipts.
+\item \url{https://github.com/KevMasMas/multi-hazard-weather-monitoring/tree/workflow-2},
+after Kevin reviews and pushes the selected local commit.
+\end{enumerate}
+
+Kevin leads NOAA/database/CLI work; Pablo leads GHCN/orchestration and evidence
+assembly, with reciprocal review. The single current assignment board remains
+\path{WORK_BOARD.md}. Technical execution evidence does not imply either
+student's personal approval. Workshop 1 approval is not reused for Workshop 2.
+Final review, commit/push and platform upload must be recorded
+only when actually performed.
+
+\section*{References}
+\begin{enumerate}[label={[\arabic*]}]
+\item Course project, 2026-II:
+\url{https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/CourseProject.pdf}.
+\item Workshop 2, published handout (2026-I):
+\url{https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/project/Workshop_2.pdf}.
+\item Course Airflow practice and guide:
+\url{https://github.com/EngAndres/ud-public/tree/main/courses/data-analysis-programming/practices/airflow_etl};
+\url{https://github.com/EngAndres/ud-public/blob/main/courses/data-analysis-programming/guides/Airflow-PostgreSQL-ETL.pdf}.
+\item Apache Airflow 2.10.4, TaskFlow and executors:
+\url{https://airflow.apache.org/docs/apache-airflow/2.10.4/tutorial/taskflow.html};
+\url{https://airflow.apache.org/docs/apache-airflow/2.10.4/core-concepts/executor/index.html}.
+\item Apache Airflow 2.10.4, FileSensor:
+\url{https://airflow.apache.org/docs/apache-airflow/2.10.4/howto/operator/file.html}.
+\item Apache Arrow, Parquet:
+\url{https://arrow.apache.org/docs/python/parquet.html}.
+\item PostgreSQL transactions / PostGIS:
+\url{https://www.postgresql.org/docs/16/tutorial-transactions.html};
+\url{https://postgis.net/documentation/}.
+\item NOAA NCEI, Storm Data Bulk Data Format:
+\url{https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/Storm-Data-Bulk-csv-Format.pdf}.
+\item NCEI Access Data Service API:
+\url{https://www.ncei.noaa.gov/support/access-data-service-api-user-documentation}.
+\item GHCN-Daily dataset documentation:
+\url{https://www.ncei.noaa.gov/pub/data/ghcn/daily/readme.txt}.
+\end{enumerate}
+\end{document}

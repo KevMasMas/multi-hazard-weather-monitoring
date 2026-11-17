@@ -17,6 +17,18 @@ This file is the durable context for Team 9's semester project. Update it when t
 
 ## Objective
 
+### Workshop 2 executed slice (2026-11-16)
+
+The current technical delivery executes 2021-2025: 13,561 Oklahoma Storm Events
+records and 5,478 measurements from GHCN station USW00013967. Ten genuine Airflow
+Bronze/Silver batches, typed Parquet exports, 29 passing tests and unchanged
+replay/restart evidence are recorded under `workshop_2/evidence/`. The prepared
+PDF/sample ZIP are local artifacts awaiting personal review and commit selection;
+no push or Moodle submission is inferred. This bounded slice does not replace
+the accepted 2010-2025 semester target or establish statewide station/county
+coverage. See ADR 0006 and the Workshop 2 change log. NWS incremental and CHI
+implementation remain later milestones.
+
 Design and implement a reproducible, multi-source data ingestion and analysis system that combines historical and periodically updated weather information, detects new or changed records, correlates multiple hazard types in time and space, and communicates current conditions relative to a historical baseline.
 
 The system is for monitoring and correlation. It must not be presented as a hazard-prediction system.

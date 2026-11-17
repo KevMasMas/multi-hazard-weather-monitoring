@@ -1,0 +1,368 @@
+{
+  "verified_at_utc": "2026-11-17T02:06:39.013911+00:00",
+  "weather_network": false,
+  "versions": [
+    {
+      "postgres": "PostgreSQL 16.16 (Debian 16.16-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+      "postgis": "POSTGIS=\"3.7.0 1fdbb1c\" [EXTENSION] PGSQL=\"160\" GEOS=\"3.15.0-CAPI-1.21.0\" PROJ=\"9.9.0 NETWORK_ENABLED=OFF URL_ENDPOINT=https://cdn.proj.org USER_WRITABLE_DIRECTORY=/var/lib/postgresql/.local/share/proj DATABASE_PATH=/usr/share/proj/proj.db\" (compiled against PROJ 9.9.0) LIBXML=\"2.9.14\" LIBJSON=\"0.18\" LIBPROTOBUF=\"1.5.1\" WAGYU=\"0.5.0 (Internal)\" TOPOLOGY"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "ghcn_daily",
+      "records": 5478,
+      "first_date": "2021-01-01",
+      "last_date": "2025-12-31",
+      "missing_point": 0
+    },
+    {
+      "source_id": "noaa_storm_events",
+      "records": 13561,
+      "first_date": "2021-01-01",
+      "last_date": "2025-12-23",
+      "missing_point": 7084
+    }
+  ],
+  "duplicate_business_keys": [],
+  "tables": [
+    {
+      "table_name": "daily_station_measurement"
+    },
+    {
+      "table_name": "historical_record"
+    },
+    {
+      "table_name": "historical_record_revision"
+    },
+    {
+      "table_name": "ingestion_run"
+    },
+    {
+      "table_name": "ingestion_state"
+    },
+    {
+      "table_name": "raw_capture"
+    },
+    {
+      "table_name": "record_capture_link"
+    },
+    {
+      "table_name": "region"
+    },
+    {
+      "table_name": "rejected_record"
+    },
+    {
+      "table_name": "schema_migration"
+    },
+    {
+      "table_name": "source_catalog"
+    },
+    {
+      "table_name": "source_geography"
+    },
+    {
+      "table_name": "spatial_ref_sys"
+    },
+    {
+      "table_name": "station"
+    },
+    {
+      "table_name": "station_location_observation"
+    },
+    {
+      "table_name": "station_region_assignment"
+    },
+    {
+      "table_name": "storm_event"
+    }
+  ],
+  "migrations": [
+    {
+      "filename": "001_historical_schema.sql",
+      "sha256": "0892bf0d7a229df6ac6abca9fe4b657931ae6e613aa1a2eee39e1f658a4c5c63",
+      "applied_at_utc": "2026-11-17 01:25:41.185381+00:00"
+    },
+    {
+      "filename": "002_historical_domains_and_revisions.sql",
+      "sha256": "b97529e3a40a5f3f58fa17d02e217ff6c4c990029acb80f5a446b34fb4ddacd3",
+      "applied_at_utc": "2026-11-17 01:25:41.277529+00:00"
+    },
+    {
+      "filename": "003_capture_revision_links.sql",
+      "sha256": "6c094e61d66fb4118bd6e915dfe9f4d270594c5412a12b8ae6b02550bd31eca9",
+      "applied_at_utc": "2026-11-17 01:46:09.903232+00:00"
+    },
+    {
+      "filename": "004_pipeline_batch_identity.sql",
+      "sha256": "182be0bbe700dd47a25a4fdfa32830a9071dcb06c3543990d2ed050ac8bdb499",
+      "applied_at_utc": "2026-11-17 01:46:09.910936+00:00"
+    }
+  ],
+  "latest_partitions": [
+    {
+      "run_id": 29,
+      "source_id": "ghcn_daily",
+      "partition_key": "USW00013967_2021_full",
+      "rows_read": 1095,
+      "rows_accepted": 0,
+      "rows_rejected": 0,
+      "rows_unchanged": 1095,
+      "status": "succeeded",
+      "finished_at_utc": "2026-11-17 02:06:09.925901+00:00"
+    },
+    {
+      "run_id": 31,
+      "source_id": "ghcn_daily",
+      "partition_key": "USW00013967_2022_full",
+      "rows_read": 1095,
+      "rows_accepted": 0,
+      "rows_rejected": 0,
+      "rows_unchanged": 1095,
+      "status": "succeeded",
+      "finished_at_utc": "2026-11-17 02:06:14.856894+00:00"
+    },
+    {
+      "run_id": 33,
+      "source_id": "ghcn_daily",
+      "partition_key": "USW00013967_2023_full",
+      "rows_read": 1095,
+      "rows_accepted": 0,
+      "rows_rejected": 0,
+      "rows_unchanged": 1095,
+      "status": "succeeded",
+      "finished_at_utc": "2026-11-17 02:06:23.312686+00:00"
+    },
+    {
+      "run_id": 35,
+      "source_id": "ghcn_daily",
+      "partition_key": "USW00013967_2024_full",
+      "rows_read": 1098,
+      "rows_accepted": 0,
+      "rows_rejected": 0,
+      "rows_unchanged": 1098,
+      "status": "succeeded",
+      "finished_at_utc": "2026-11-17 02:06:30.945106+00:00"
+    },
+    {
+      "run_id": 27,
+      "source_id": "ghcn_daily",
+      "partition_key": "USW00013967_2025",
+      "rows_read": 1095,
+      "rows_accepted": 0,
+      "rows_rejected": 0,
+      "rows_unchanged": 1095,
+      "status": "succeeded",
+      "finished_at_utc": "2026-11-17 02:06:05.797480+00:00"
+    },
+    {
+      "run_id": 37,
+      "source_id": "ghcn_daily",
+      "partition_key": "USW00013967_2025_full",
+      "rows_read": 1095,
+      "rows_accepted": 0,
+      "rows_rejected": 0,
+      "rows_unchanged": 1095,
+      "status": "succeeded",
+      "finished_at_utc": "2026-11-17 02:06:38.828586+00:00"
+    },
+    {
+      "run_id": 28,
+      "source_id": "noaa_storm_events",
+      "partition_key": "OK_2021",
+      "rows_read": 1324,
+      "rows_accepted": 0,
+      "rows_rejected": 0,
+      "rows_unchanged": 1324,
+      "status": "succeeded",
+      "finished_at_utc": "2026-11-17 02:06:08.081355+00:00"
+    },
+    {
+      "run_id": 30,
+      "source_id": "noaa_storm_events",
+      "partition_key": "OK_2022",
+      "rows_read": 2077,
+      "rows_accepted": 0,
+      "rows_rejected": 0,
+      "rows_unchanged": 2077,
+      "status": "succeeded",
+      "finished_at_utc": "2026-11-17 02:06:13.090846+00:00"
+    },
+    {
+      "run_id": 32,
+      "source_id": "noaa_storm_events",
+      "partition_key": "OK_2023",
+      "rows_read": 3764,
+      "rows_accepted": 0,
+      "rows_rejected": 0,
+      "rows_unchanged": 3764,
+      "status": "succeeded",
+      "finished_at_utc": "2026-11-17 02:06:21.540739+00:00"
+    },
+    {
+      "run_id": 34,
+      "source_id": "noaa_storm_events",
+      "partition_key": "OK_2024",
+      "rows_read": 3504,
+      "rows_accepted": 0,
+      "rows_rejected": 0,
+      "rows_unchanged": 3504,
+      "status": "succeeded",
+      "finished_at_utc": "2026-11-17 02:06:28.755391+00:00"
+    },
+    {
+      "run_id": 36,
+      "source_id": "noaa_storm_events",
+      "partition_key": "OK_2025",
+      "rows_read": 2892,
+      "rows_accepted": 0,
+      "rows_rejected": 0,
+      "rows_unchanged": 2892,
+      "status": "succeeded",
+      "finished_at_utc": "2026-11-17 02:06:36.988756+00:00"
+    },
+    {
+      "run_id": 26,
+      "source_id": "noaa_storm_events",
+      "partition_key": "sample_2024",
+      "rows_read": 250,
+      "rows_accepted": 0,
+      "rows_rejected": 0,
+      "rows_unchanged": 250,
+      "status": "succeeded",
+      "finished_at_utc": "2026-11-17 02:06:04.029801+00:00"
+    }
+  ],
+  "reject_reasons": [],
+  "domains": {
+    "historical_record_revision": 19039,
+    "record_capture_link": 44208,
+    "storm_event": 13561,
+    "station": 1,
+    "daily_station_measurement": 5478,
+    "source_geography": 154,
+    "region": 0,
+    "station_region_assignment": 0
+  },
+  "daily_years": [
+    {
+      "year": 2021,
+      "days": 365,
+      "measurements": 1095,
+      "stations": 1
+    },
+    {
+      "year": 2022,
+      "days": 365,
+      "measurements": 1095,
+      "stations": 1
+    },
+    {
+      "year": 2023,
+      "days": 365,
+      "measurements": 1095,
+      "stations": 1
+    },
+    {
+      "year": 2024,
+      "days": 366,
+      "measurements": 1098,
+      "stations": 1
+    },
+    {
+      "year": 2025,
+      "days": 365,
+      "measurements": 1095,
+      "stations": 1
+    }
+  ],
+  "event_years": [
+    {
+      "year": 2021,
+      "events": 1324,
+      "oklahoma_events": 1324
+    },
+    {
+      "year": 2022,
+      "events": 2077,
+      "oklahoma_events": 2077
+    },
+    {
+      "year": 2023,
+      "events": 3764,
+      "oklahoma_events": 3764
+    },
+    {
+      "year": 2024,
+      "events": 3504,
+      "oklahoma_events": 3504
+    },
+    {
+      "year": 2025,
+      "events": 2892,
+      "oklahoma_events": 2892
+    }
+  ],
+  "native_capture_checks": [
+    {
+      "partition": "OK_2021",
+      "verified": true,
+      "native_sha256": "60C1DAF96DBE8EAFD48C80DF5B70DF51A0125AB95D467EE7009A646761D57715",
+      "input_sha256": "78FB408F7BE505B6AD51DF631659F7DD70EDADA826B240398DD6443C3C27E086"
+    },
+    {
+      "partition": "USW00013967_2021_full",
+      "verified": true,
+      "native_sha256": "3AF94B20DFCB8276A79C6941A217569C9761470E790D39FAB806349866C84D2D",
+      "input_sha256": "3AF94B20DFCB8276A79C6941A217569C9761470E790D39FAB806349866C84D2D"
+    },
+    {
+      "partition": "OK_2022",
+      "verified": true,
+      "native_sha256": "7D6B79D0049A6EDEC96B061738289DADDBA90BE26FC9AFE7B0A6FD617F21452E",
+      "input_sha256": "F0D8704D815AE86141FA9DE572C1BC4870E6CD50410D6707CE04A6A19085748F"
+    },
+    {
+      "partition": "USW00013967_2022_full",
+      "verified": true,
+      "native_sha256": "16EC15440E86611E45F5AF1658C7559734886F5AE8206FE3A12BC03B7807218B",
+      "input_sha256": "16EC15440E86611E45F5AF1658C7559734886F5AE8206FE3A12BC03B7807218B"
+    },
+    {
+      "partition": "OK_2023",
+      "verified": true,
+      "native_sha256": "713784BED40D9E5A95B1D6240A654F865F3EF97703713105C7B35437270DA134",
+      "input_sha256": "28F3C76A58519D2AB5776D43076E88A381846646E1EC04CA00D05D878A27F02E"
+    },
+    {
+      "partition": "USW00013967_2023_full",
+      "verified": true,
+      "native_sha256": "60571EE59E2ED5CF9FECA46DB320CFAD48F6AB12781E95109515FA4E378F24F6",
+      "input_sha256": "60571EE59E2ED5CF9FECA46DB320CFAD48F6AB12781E95109515FA4E378F24F6"
+    },
+    {
+      "partition": "OK_2024",
+      "verified": true,
+      "native_sha256": "2070B83ECCAB041B36360AB73645B9A249C3EEFC5B92B5B3FC0CBBA4D9FCC09C",
+      "input_sha256": "01B5AC9548FDB66EFB90487D3147719C4FF05C8019F97401D7B3AB0D03B59D66"
+    },
+    {
+      "partition": "USW00013967_2024_full",
+      "verified": true,
+      "native_sha256": "CE96AA23F9DD50FD711F90F3D40D0B88CCBF3E61DD05059F564F8A0764393111",
+      "input_sha256": "CE96AA23F9DD50FD711F90F3D40D0B88CCBF3E61DD05059F564F8A0764393111"
+    },
+    {
+      "partition": "OK_2025",
+      "verified": true,
+      "native_sha256": "D9B46B4C6AAE554723CADBB9691F3D5258371C02E530BA815D6FE41E4550149F",
+      "input_sha256": "6F1ADFC68881F3B8832E6D0E18595635CA5A4EDF2C927480814DC0DCF45F652B"
+    },
+    {
+      "partition": "USW00013967_2025_full",
+      "verified": true,
+      "native_sha256": "D8EE9E0AFBFE25897C17BABE4A88DC0E12D4FECE8B74C26E8D817D5309FFB5AE",
+      "input_sha256": "D8EE9E0AFBFE25897C17BABE4A88DC0E12D4FECE8B74C26E8D817D5309FFB5AE"
+    }
+  ]
+}

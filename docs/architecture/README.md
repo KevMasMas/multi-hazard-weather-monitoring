@@ -1,4 +1,18 @@
-# Workshop 1 diagrams
+# Architecture diagrams
+
+## Workshop 2 - implemented historical slice
+
+- `workshop-2-pipeline.mmd`: acquisition, persistent raw/Bronze, exact-file sensor,
+  quarantine, canonical database, revision-based Parquet and planned consumers.
+- `workshop-2-er.mmd`: actual migrated entities and key fields. Unique source keys
+  are composite with source ID; consult SQL for the complete constraint groups.
+  Region/assignment structures are present but empty, pending reviewed geography.
+
+Paste into <https://mermaid.live/> to edit. The Workshop 2 PDF uses a portable
+TikZ architecture figure and key-field table; these Mermaid files provide editable
+source counterparts. They do not imply completed Gold/CHI/dashboard work.
+
+## Workshop 1 - preserved conceptual design
 
 Current editable Mermaid sources:
 

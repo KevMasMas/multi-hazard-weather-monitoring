@@ -4,6 +4,20 @@ This is the single operational entry point for Team 9. Read this file to know th
 
 ## Current state
 
+**Delivery preparation, 2026-11-16:** the Workshop 2 PDF, three genuine sample
+pairs and executed notebook are prepared for final team review. Ten actual
+Airflow source/year batches cover 2021-2025: 13,561 Oklahoma Storm Events and
+5,478 GHCN measurements (one station). All 29 tests pass without skips.
+A historical CLI rerun, container restart and three subsequent DAG replays
+preserved canonical counts with zero duplicates. Kevin supplied the actual UI
+screenshot. See `workshop_2/EVIDENCE_REGISTER.md` and the current change log.
+
+**Kevin next:** review the PDF and database/source limitations, select the commit,
+then perform commit/push and Moodle upload. **Pablo next:** cross-review DAGs,
+sample notebook/ZIP and the documented scope. Record approval only when received.
+The 2010-2020 years, broader station inventory, county assignments and later
+workshops remain open; the 2026-I handout discrepancy is not resolved.
+
 | Item | State |
 | --- | --- |
 | Repository foundation | Committed and pushed as `602143d` on `workflow-1` |
@@ -11,15 +25,15 @@ This is the single operational entry point for Team 9. Read this file to know th
 | Workshop 1 implementation | Final technical review and clean reproduction passed: five qualified wind-record pairs, Q1-Q5 quality concerns plus Q6-Q7, 32 cells/zero errors, 59 lock pins, scoped artifact scan. Kevin communicated both students' approval in TEAM_APPROVAL.md. Platform submission/reference still unrecorded |
 | Weather-source queries | NOAA 2024 archive retrieved; two empty NWS active polls plus a complete observed 238-alert recent pagination chain captured |
 | Selected US region | Accepted: Oklahoma study area with counties as analytical regions (ADR 0001) |
-| Architecture selection | Apache Airflow; Bronze native captures, Silver PostgreSQL/PostGIS with Parquet exports, planned Gold analytics (ADR 0005); design only |
+| Architecture selection | Airflow/LocalExecutor, native capture lineage, canonical PostGIS and Silver Parquet executed; Gold remains planned (ADRs 0005/0006) |
 | Temporal scope | Accepted: 2010-2025 complete-year baseline; rolling 24-hour current window; separate seven-day context (ADR 0003) |
 | Compound Hazard Index formula | Accepted as the Workshop 1 preliminary five-component proposal; empirical validation remains for Workshop 4 |
 | Pablo review | `PABLO_REVIEW.md` is historical and limited in scope; Kevin separately communicated both students' approval of the final Workshop 1 report/mapping/design in `TEAM_APPROVAL.md` |
-| Workshops 2-4 planning | `workflow-2` active; professor practice reviewed, offline NOAA/GHCN parsers and raw landing exercised with three saved captures, and initial SQL schema drafted. Only an offline audit summary exists; database/DAG and Silver output samples remain pending. Workshops 3-4 remain planning only |
-| Workshop 2 foundation review | `c2380c9` review identified R1-R6; R1-R3 are corrected, initial R4/R5 support and a transactional historical/status CLI draft are present, and ten focused tests pass. R6 schema remains unexecuted. See the dated reviews; no end-to-end pipeline is accepted |
+| Workshops 2-4 planning | Workshop 2 five-year slice and artifacts prepared; Workshops 3-4 remain planning only |
+| Workshop 2 foundation review | 29 passing tests; real schema/domain/revision/replay and two-source Airflow execution verified; wider station/county scope remains open |
 | Workshop 2 delivery target | Kevin's Moodle checklist: Technical Architecture/Pipeline PDF, Pipeline Output Samples, GitHub link. G0-G6 targets two TaskFlow DAGs, exact-batch FileSensor, canonical DB and genuine JSON/Parquet evidence; planning does not establish execution |
 | Specification conflict | Airflow and Bronze/Silver/Gold selected as the classroom workflow (ADR 0005); public-opinion/NLP/scraping wording and incompatible later-workshop details still require clarification |
-| Immediate goal | Continue G0-G6: Docker Desktop 4.99.0 and Compose v5.7.0 are installed, but WSL 2 is missing/outdated and the Linux engine cannot start. User is handling WSL setup/restart. Validate the new PostGIS Compose service, execute migration and historical/status CLI, verify rerun/rollback, then Airflow DAGs, Parquet outputs and PDF/sample packaging |
+| Immediate goal | Kevin/Pablo review PDF, samples and notebook; select local commit, push and upload manually. No final approval/upload claimed |
 
 ## Permanent ownership
 
