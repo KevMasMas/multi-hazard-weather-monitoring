@@ -4,6 +4,40 @@ Append entries; do not silently rewrite historical observations.
 
 ## Entries
 
+### [2026-11-16 America/Bogota] - W2-00/W2-12 planning - Bind work to Moodle deliverables
+
+- **Objective:** turn the supplied checklist into an ordered plan for all deliverables without confusing offline audit with a functional pipeline.
+- **Status:** delivery/implementation/acceptance plan updated; no code defect, service, DAG, output or PDF marked complete.
+- **Branch/commit:** `workflow-2` at `c2380c9`; earlier uncommitted pull-review documentation preserved. No commit or push.
+- **Requirements:** Technical Architecture and Pipeline Report PDF, Pipeline Output Samples and GitHub link, supported by code/notebook/run evidence.
+- **Files changed:** implementation plan, Workshop 2 README, current board and this log.
+- **Documentation completed:** mapped each item to artifacts/checks; added G0-G6, W2-13/W2-14, two TaskFlow DAGs/exact-file FileSensor, native CSV plus labelled JSON view, canonical DB/Parquet lineage and genuine sample-run requirements.
+- **Decisions/rationale:** adopt compatible technical handout requirements now; preserve the domain discrepancy. No unrelated NLP/scraper or false native-JSON claim. Three copied files are not three run outputs; 2026 smoke data is not 2010-2025 coverage. Supporting notebook/DAGs are not extra Moodle items.
+- **Verification:** plan has all three items, G0-G6 and W2-00 through W2-14. Existing guide/PDF review and R1-R6 findings used; no execution checkbox closed by planning. Docker not found on PATH/default queried paths; process/uninstall-registry query returned no entry in this session. Kevin explicitly reports Docker installed and needing launch/PATH configuration; runtime remains unverified.
+- **Evidence:** user-supplied checklist, plan section 3, submission index and prior pull-review report.
+- **Errors/corrections:** prior plan left technical TaskFlow/FileSensor/Parquet work conditional and lacked a direct package map. Made these explicit implementation targets, narrowed README verification claims and corrected a board patch context after inspecting its current wording.
+- **Risks/limits:** runtime access and R1-R6 unresolved; multi-year coverage and actual successful runs need evidence. Native CSV/derived JSON is a transparent weather adaptation, not professor clarification. No team approval or upload inferred for Workshop 2.
+- **Input:** Kevin supplied the three-item notice/requested completion-ready plans and confirmed Docker installed. Moodle was not independently authenticated.
+- **Handoff:** G0/G1 can progress independently; execute G2-G6 with actual results before checking completion. Ownership stays on the single board.
+- **Recovery:** revise proposals if corrected instructions arrive; retain dated evidence, source work and approved Workshop 1 files. No weather query, database run, output package or PDF build occurred.
+
+### [2026-11-16 America/Bogota] - Pull review - Pablo's historical foundation
+
+- **Objective:** review pulled Workshop 2 work against the course contract, current guide/practice and actual execution.
+- **Status:** review complete; useful partial foundation, confirmed defects and completion gaps recorded; no production fix or acceptance claimed.
+- **Branch or commit:** `workflow-2` at `c2380c9`, including Pablo's `c507a19` and merge `39844db`; clean before review.
+- **Requirements addressed:** historical parsing, raw evidence, units, validation, provenance, recoverability, canonical schema and Airflow/layer expectations.
+- **Files changed:** new dated pull-review report; review reference in the plan and board; this log. Existing source/schema code and Workshop 1 approved artifacts preserved.
+- **Implementation/documentation completed:** classified the three-file offline audit as preparation, mapped strengths and R1-R6 issues, recorded current academic hashes and ordered next actions.
+- **Decisions/rationale:** keep the modular foundation; correct physical units, enforce registered capture identity and repair Windows cleanup before extending it into a claimed pipeline. Treat absent canonical validation/DB/domain/DAG/Parquet as unfinished work, not passed tests.
+- **Verification/exact result:** real offline command reproduced 250 NOAA, 1,095 GHCN 2025 and 18 GHCN overlap records (1,363 total, zero parser rejects). Repeated synthetic landing reused one body; actual NOAA 1155308 emitted unit MG. Synthetic altered input was processed without expected-hash validation; synthetic negative PRCP was accepted; injected fsync failure yielded PermissionError and left one temporary file. Synthetic gzip was labelled csv; changed origin replaced its manifest field. These probes did not alter weather samples. Six inherited Workshop 1 manifest hashes match. Current guide, Compose, three DAGs and Workshop 2 PDF checked against official GitHub. Docker/psql not found on session PATH; no SQL/container result claimed.
+- **Evidence:** `docs/reports/workshop-2-pull-review-2026-11-16.md`, exact source locations and primary references there; original offline summary remains unchanged semantically.
+- **Errors/corrections:** no production code corrected in this review. Current-unit interpretation checked against NOAA bulk specification; nullable UNIQUE behavior checked against PostgreSQL 16 docs. Runtime data examples and synthetic fixtures are distinguished.
+- **Risks/limits:** parser accepted counts are not canonical quality acceptance, raw file reuse is not DB idempotency, DDL is unexecuted and the guide/handout trigger/format differences remain visible. No teacher/student approval, full multi-year coverage or source availability was inferred.
+- **Input:** Kevin requested review of the teammate pull and alignment with professor guide/classes before continuing Workshop 2.
+- **Handoff:** implement/test R1-R3, canonical validation and transaction/storage path, then Docker/Airflow and real Silver/report evidence; ownership remains on the single board.
+- **Recovery:** review is documentation only. Rerun the offline command from preserved samples; retain confirmed issue evidence and update dispositions only when actual fixes/checks pass. No weather query, commit or push performed by this review.
+
 ### [2026-11-16 America/Bogota] - W2 integration - Inherit completed Workshop 1 evidence
 
 - **Objective/status:** pull the four latest remote Workshop 1 commits and integrate the local Workshop 2 foundation; local merge completed, remote push not performed.

@@ -16,8 +16,10 @@ This is the single operational entry point for Team 9. Read this file to know th
 | Compound Hazard Index formula | Accepted as the Workshop 1 preliminary five-component proposal; empirical validation remains for Workshop 4 |
 | Pablo review | `PABLO_REVIEW.md` is historical and limited in scope; Kevin separately communicated both students' approval of the final Workshop 1 report/mapping/design in `TEAM_APPROVAL.md` |
 | Workshops 2-4 planning | `workflow-2` active; professor practice reviewed, offline NOAA/GHCN parsers and raw landing exercised with three saved captures, and initial SQL schema drafted. Only an offline audit summary exists; database/DAG and Silver output samples remain pending. Workshops 3-4 remain planning only |
+| Workshop 2 pulled-code review | `c2380c9` review reproduces 1,363 parsed records; units, input hash enforcement and Windows failure cleanup need fixes, with canonical validation/native-format/schema gaps explicit. See `workshop-2-pull-review-2026-11-16.md`; review does not mark implementation accepted |
+| Workshop 2 delivery target | Kevin's Moodle checklist: Technical Architecture/Pipeline PDF, Pipeline Output Samples, GitHub link. G0-G6 targets two TaskFlow DAGs, exact-batch FileSensor, canonical DB and genuine JSON/Parquet evidence; planning does not establish execution |
 | Specification conflict | Airflow and Bronze/Silver/Gold selected as the classroom workflow (ADR 0005); public-opinion/NLP/scraping wording and incompatible later-workshop details still require clarification |
-| Immediate goal | Complete the Workshop 2 historical path on `workflow-2`: raw capture, schema, transactional load, Docker/Airflow integration, Parquet outputs and report evidence; clarify the mismatched Workshop 2 PDF before claiming its conditional rubric satisfied |
+| Immediate goal | Execute G0-G6: resolve Docker access (Kevin reports installed), fix/test R1-R3 and validation, then transaction/CLI, real Airflow DAGs, historical/Parquet outputs and PDF/sample packaging. Domain mismatch remains documented without blocking selected compatible implementation |
 
 ## Permanent ownership
 
@@ -108,7 +110,7 @@ is silently treated as resolved. Workshops 3-4 remain planning only.
 | Gate/ID | Planned next action | Owner | Reviewer | Start condition |
 | --- | --- | --- | --- | --- |
 | XW-01 | Send the Workshop 2-4 specification-conflict questions to the professor and record the response | Both | Both | Can happen now |
-| W2-00 | Continue `deliveries/02-workshop-2/IMPLEMENTATION_PLAN.md` and review the architecture ADR | Kevin drafts | Pablo | User authorized compatible Workshop 2 work; professor conflict remains open |
+| W2-00 | Execute delivery-first plan G0-G6 and finalize runtime architecture details | Kevin drafts | Pablo | Workshop 1 review recorded; compatible technical path explicitly selected, no professor clarification inferred |
 | W2-K | Implement NOAA historical adapter, canonical DB/migrations and CLI | Kevin | Pablo | W2-00 accepted |
 | W2-P | Implement GHCN historical adapter, raw landing and orchestration | Pablo | Kevin | W2-00 accepted |
 | W3-K | Implement NWS Alerts polling, change detection and event grouping | Kevin | Pablo | Workshop 2 accepted |
