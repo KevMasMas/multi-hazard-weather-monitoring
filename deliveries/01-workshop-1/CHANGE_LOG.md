@@ -6,6 +6,17 @@ Use `deliveries/_templates/CHANGE_LOG.md` and include source-query timestamps an
 
 ## Entries
 
+### [2026-11-16 America/Bogota] - W1-D05 - Post-merge submission navigation audit
+
+- **Objective/status:** verify the approved Workshop 1 artifacts after integration into `workflow-2` and correct stale navigation text; technical verification complete, platform submission unrecorded.
+- **Branch/commit:** `workflow-2` after merge `39844db`; approved PDF, mapping, notebook, ZIP and receipt bytes unchanged from `origin/workflow-1`.
+- **Files changed:** `workshop_1/README.md`, root `README.md`, `WORK_BOARD.md`, `docs/reports/workshop-1-compliance-review.md`, this log; no approved artifact edited.
+- **Decision:** keep the five qualified Storm Events/GHCN wind pairs as primary rubric candidates with three shared GHCN daily records and their uncertainty; team approval is the scoped statement in `TEAM_APPROVAL.md`, not proof of Moodle upload or professor grading.
+- **Verification/evidence:** six of six `SUBMISSION_MANIFEST.json` artifact hashes match current files; PDF has 14 pages and its contact sheet shows no obvious clipping/blank page; notebook contains 32 executed code cells and zero stored errors; wind CSV contains five rows, five Storm IDs and three GHCN IDs. The earlier clean-environment and artifact-audit receipts remain in the repository. No new weather request or notebook rerun was made.
+- **Errors/corrections:** submission index still called the report a first review version and said no new team approval was implied; root README called it the first compiled PDF; compliance review listed superseded personal review actions. Updated those descriptions without changing approved content.
+- **Limitations/input/handoff:** user requested a complete review and merge with Workshop 2. Exact event equivalence/professor acceptance is not asserted; actual platform upload/reference is not recorded. No push was performed.
+- **Recovery:** revert these navigation/status edits if a later authenticated submission record supersedes them; retain the approved artifact hashes and earlier evidence.
+
 ### [2026-11-16 America/Bogota] - Verification follow-up - Stable published receipt bytes
 
 - **Objective/status:** make derived JSON/TeX hashes and the published notebook consistent after Git checkout; completed without material content change.

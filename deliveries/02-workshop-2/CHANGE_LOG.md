@@ -4,6 +4,17 @@ Append entries; do not silently rewrite historical observations.
 
 ## Entries
 
+### [2026-11-16 America/Bogota] - W2 integration - Inherit completed Workshop 1 evidence
+
+- **Objective/status:** pull the four latest remote Workshop 1 commits and integrate the local Workshop 2 foundation; local merge completed, remote push not performed.
+- **Branch/commit:** protected local Workshop 2 work in `c507a19`, fetched origin and merged `origin/workflow-1` at `6fea29b` into `workflow-2` as `39844db`. Both remote workflow branches pointed at `6fea29b` when fetched.
+- **Files changed:** inherited Workshop 1 wind-pair evidence, 14-page report, notebook/receipts and raw-sample byte policy; Workshop 2 parser, raw-landing, SQL and offline summary retained. Current navigation/status corrections are a follow-up local edit.
+- **Decision:** use the new five historical wind candidates as Workshop 1's primary overlap evidence. Preserve all approved Workshop 1 artifact bytes; treat the recorded team approval and clean reproduction as scoped evidence. Continue Workshop 2 from its existing source-specific adapters.
+- **Verification/evidence:** merge resolved automatically with no conflicts. After merge, `review_offline_captures.py` again produced three captures and 1363 parsed records with NOAA SHA-256 `987F5C64...`, matching the registered source; the summary did not change. Current Workshop 1 manifest hashes match six of six artifacts, notebook has 32/32 executed cells with zero stored errors, and PDF has 14 pages. Raw sample files under `data/raw/` remain ignored.
+- **Errors/corrections:** initial sandboxed `git fetch` could not write `.git/FETCH_HEAD`; authorized Git execution fetched successfully. Stale Workshop 1 navigation text was corrected separately; no approved PDF/sample/mapping was edited.
+- **Limitations/input/handoff:** user requested pull, full Workshop 1 audit and merge. Moodle upload is unrecorded; Docker, database, DAGs, Silver Parquet and Workshop 2 report remain open. Local branch is ahead of remote by integration commits; no push.
+- **Recovery:** local history retains `c507a19` and the four remote Workshop 1 commits; the merge is reviewable with `git log --graph`. Do not discard unpushed work.
+
 ### [2026-11-16 America/Bogota] - W2-03 partial - Initial historical schema
 
 - **Objective/status:** draft relational tables for capture provenance, runs, canonical historical records, rejects and successful partition state; SQL written, migration execution pending.

@@ -26,7 +26,7 @@ confirmation of both students' approval is separately recorded in
 For the professor: start with the [Workshop 1 submission index](workshop_1/README.md),
 the [executed notebook](notebooks/01_source_profiling.ipynb), and the
 [canonical mapping table](workshop_1/mapping.md). The LaTeX report project is in
-[`workshop_1/report/`](workshop_1/report/), including the first compiled PDF for review.
+[`workshop_1/report/`](workshop_1/report/), including the team-approved PDF.
 
 For team planning:
 

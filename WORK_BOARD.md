@@ -14,7 +14,7 @@ This is the single operational entry point for Team 9. Read this file to know th
 | Architecture selection | Apache Airflow; Bronze native captures, Silver PostgreSQL/PostGIS with Parquet exports, planned Gold analytics (ADR 0005); design only |
 | Temporal scope | Accepted: 2010-2025 complete-year baseline; rolling 24-hour current window; separate seven-day context (ADR 0003) |
 | Compound Hazard Index formula | Accepted as the Workshop 1 preliminary five-component proposal; empirical validation remains for Workshop 4 |
-| Pablo review | Historical workstream record in `deliveries/01-workshop-1/PABLO_REVIEW.md`; it does not approve the later daily comparisons, revised PDF or architecture |
+| Pablo review | `PABLO_REVIEW.md` is historical and limited in scope; Kevin separately communicated both students' approval of the final Workshop 1 report/mapping/design in `TEAM_APPROVAL.md` |
 | Workshops 2-4 planning | `workflow-2` active; professor practice reviewed, offline NOAA/GHCN parsers and raw landing exercised with three saved captures, and initial SQL schema drafted. Only an offline audit summary exists; database/DAG and Silver output samples remain pending. Workshops 3-4 remain planning only |
 | Specification conflict | Airflow and Bronze/Silver/Gold selected as the classroom workflow (ADR 0005); public-opinion/NLP/scraping wording and incompatible later-workshop details still require clarification |
 | Immediate goal | Complete the Workshop 2 historical path on `workflow-2`: raw capture, schema, transactional load, Docker/Airflow integration, Parquet outputs and report evidence; clarify the mismatched Workshop 2 PDF before claiming its conditional rubric satisfied |

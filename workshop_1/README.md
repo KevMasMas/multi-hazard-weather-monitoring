@@ -4,7 +4,7 @@ Moodle requests these four items:
 
 | Item | File |
 | --- | --- |
-| Project Definition Report (PDF) | [`report/Workshop_1_Report.pdf`](report/Workshop_1_Report.pdf); LaTeX source in `report/`. First version for review. |
+| Project Definition Report (PDF) | [`report/Workshop_1_Report.pdf`](report/Workshop_1_Report.pdf); LaTeX source in `report/`. Approved team artifact; platform upload is not recorded. |
 | Source Profile Notebook | `../notebooks/01_source_profiling.ipynb` |
 | Canonical Mapping Table | `mapping.md` |
 | GitHub link | https://github.com/KevMasMas/multi-hazard-weather-monitoring/tree/workflow-1 |
@@ -27,6 +27,8 @@ rows are supplemental. Q1-Q5 are primary quality concerns and Q6-Q7 additional.
 The notebook passed a fresh isolated 59-package locked environment: 32 cells,
 zero errors. Current artifact audit passed within its recorded scope.
 See `../docs/reports/workshop-1-compliance-review.md` and acceptance criteria
-A01-A09 in the Workshop 1 implementation plan. No new team approval is implied.
-Deliver the reviewed commit on `workflow-1` and record its hash after committing.
+A01-A09 in the Workshop 1 implementation plan. Kevin communicated both students'
+approval of the identified report/mapping/design artifacts in `TEAM_APPROVAL.md`;
+their hashes are recorded in `SUBMISSION_MANIFEST.json`. Actual platform upload
+and its submitted reference remain unrecorded.
 No final tag is claimed; `v1.0-final` belongs to the semester's final project.

@@ -88,25 +88,15 @@ wind summaries instead. One bounded announced GHCN request was made; no NWS
 request or NOAA redownload. The technical review considers these candidate
 examples defensible with date/peak-time and shared-lineage limitations preserved.
 
-## Remaining review actions (ownership stays in WORK_BOARD.md)
+## Final delivery boundary
 
-### Kevin
-
-1. Cross-review the NOAA/Alerts proposals and citations. Their hourly/partition contracts and rough volume screen are documented; exact multi-year totals and a separately stated NOAA license remain unverified.
-2. Cross-review the new quality records, volume screens, contract proposals, traceability matrix, and final report claims.
-3. Review the final canonical mapping and report claims against the notebook.
-
-### Pablo
-
-1. Cross-review the GHCN and station-observation profile/contract additions; full regional station inventory and multi-year coverage are still unmeasured.
-2. Review the exact GHCN/station quality example rows and report traceability.
-3. Review the existing PDF; its export is already complete.
-
-### Both
-
-1. Cross-review the five concrete quality examples with exact source references.
-2. Review the four-source mapping, draft ingestion contracts and architecture.
-3. Team content approval is now explicitly recorded in `TEAM_APPROVAL.md`; select the final delivery reference and upload. Locked clean execution and scoped artifact checks are separate evidence, not inferred personal approval.
+The technical review and Kevin's communicated team approval cover the identified
+report, mapping and shared design artifacts; their hashes are in
+`deliveries/01-workshop-1/SUBMISSION_MANIFEST.json`. Full statewide station
+coverage and measured multi-year totals are later implementation work, not
+claims made for this source-validation workshop. Actual Moodle upload and the
+submitted commit/reference remain unrecorded. Locked clean execution and scoped
+artifact checks are separate evidence, not inferred personal approval.
 
 ## Explicitly not required yet
 
