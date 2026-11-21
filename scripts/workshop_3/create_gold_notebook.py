@@ -13,7 +13,7 @@ def main():
 
 Team 9 - Multi-Hazard Weather Impact Monitoring.
 
-These are real outputs of the local PySpark/Airflow Gold pipeline. We inspect
+These are verified outputs of a local PySpark Gold run. We inspect
 the two saved datasets with Pandas. This notebook does not run Spark, query NWS
 or access PostgreSQL. The first quality notebook motivates the methods; the
 Gold contract documents the fields, estimators and dashboard questions.''')
@@ -25,8 +25,8 @@ import matplotlib.pyplot as plt
 from IPython.display import display
 
 root = next(p for p in [Path.cwd().resolve(), *Path.cwd().resolve().parents]
-            if (p / "workshop_3/evidence/gold_samples.json").exists())
-register = json.loads((root / "workshop_3/evidence/gold_samples.json").read_text())
+            if (p / "workshop_3/evidence/guide_gold_samples.json").exists())
+register = json.loads((root / "workshop_3/evidence/guide_gold_samples.json").read_text())
 tables = {}
 for name, item in register["outputs"].items():
     path = root / item["path"]
@@ -34,7 +34,7 @@ for name, item in register["outputs"].items():
     tables[name] = pd.read_parquet(path)
     assert len(tables[name]) == item["rows"]
 governance, storytelling = tables["governance"], tables["storytelling"]
-print("Actual Airflow run:", register["dag_run_id"])
+print("Verified local PySpark batch:", register["batch_id"])
 display(governance.head())
 display(storytelling.head())''')
     md('''## 1. Schema and keys
@@ -84,13 +84,27 @@ axes[2].set_ylabel("mm")
 plt.tight_layout()
 plt.show()
 display(daily[["station", "period", "event_type", "record_count", "measured_count", "mean_value", "precipitation_total_mm"]].head(9))''')
-    md('''## 4. Reconciliation and dashboard handoff
+    md('''## 4. Narrative storytelling: bounded 2021 scope
+
+These text columns cover registered Oklahoma 2021 NOAA records only. Keywords
+are descriptive token frequencies; lexical tone is not hazard severity.
+Other years have no portable narrative Silver in this delivery.''')
+    code('''text_story = storytelling[storytelling["text_record_count"].gt(0)].copy()
+assert text_story["text_record_count"].sum() == 1324
+assert (text_story[["positive_count", "neutral_count", "negative_count"]].sum(axis=1)
+        == text_story["text_record_count"]).all()
+display(text_story[["period", "event_type", "text_record_count", "mean_sentiment_score",
+                    "positive_count", "neutral_count", "negative_count", "top_keywords_json"]].head(12))
+display(text_story.groupby("period")[["text_record_count", "positive_count", "neutral_count", "negative_count"]].sum())
+display(governance[governance["metric"].str.contains("narrative|text_length", na=False)]
+        [["period", "metric", "value", "status"]].head(18))''')
+    md('''## 5. Reconciliation and dashboard handoff
 
 The separate Pandas reconciliation checks the same Silver input hashes,
 deduplication, source totals, sample shape estimators and station/month aggregates.
 These descriptive/diagnostic inputs are ready to inform dashboard design;
 they do not implement CHI, forecasting, causality or a completed Dash application.''')
-    code('''audit = json.loads((root / "workshop_3/evidence/gold_reconciliation.json").read_text())
+    code('''audit = json.loads((root / "workshop_3/evidence/guide_gold_reconciliation.json").read_text())
 assert audit["output_hashes_verified"] and audit["unique_gold_keys"]
 assert audit["source_record_totals_reconciled"] and audit["zero_iqr_not_fabricated"]
 display(pd.Series(audit))

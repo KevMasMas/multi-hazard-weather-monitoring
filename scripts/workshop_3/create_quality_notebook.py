@@ -177,6 +177,26 @@ should support event counts over time and station-specific weather distributions
 Exploratory associations do not establish causes. These are descriptive and
 exploratory diagnostic views, not forecasts or prescriptive safety advice.
 PySpark Gold, its DAG and incremental integration are not implemented by this notebook.''')
+    md('''## 7. Narrative quality and lexical tone
+
+The registered NOAA Oklahoma 2021 source supplies event or episode narratives.
+We retain original text and source identity, and score original English text with
+VADER 3.3.2. The score describes lexical tone, not hazard severity. Other years
+have no portable text Silver in this delivery; no labelled validation exists.''')
+    code('''text_manifest = json.loads((root / "workshop_3/samples/silver_text/noaa_oklahoma_2021_text.manifest.json").read_text())
+text_path = root / text_manifest["path"]
+assert hashlib.sha256(text_path.read_bytes()).hexdigest().upper() == text_manifest["sha256"]
+texts = pd.read_parquet(text_path)
+assert len(texts) == text_manifest["rows"] == 1324
+assert texts.source_key.is_unique and texts.raw_text.notna().all()
+display(texts[["text_field", "characters", "sentiment_score", "sentiment_label"]].describe(include="all"))
+display(texts.groupby("sentiment_label").size().rename("records"))
+from collections import Counter
+display(pd.DataFrame(Counter(t for tokens in texts.tokens for t in tokens).most_common(12), columns=["keyword", "mentions"]))
+fig, axes = plt.subplots(1, 2, figsize=(10, 3))
+texts.characters.hist(bins=30, ax=axes[0]); axes[0].set_title("Selected narrative length")
+texts.sentiment_score.hist(bins=30, ax=axes[1]); axes[1].set_title("VADER compound tone")
+plt.tight_layout(); plt.show()''')
     code('''summary.to_csv(out / "distribution_review.csv", index=False)
 seasonal.to_csv(out / "seasonal_review.csv", index=False)
 inventory.to_csv(out / "snapshot_inventory.csv")

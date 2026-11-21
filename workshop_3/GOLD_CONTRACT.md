@@ -1,5 +1,28 @@
 # Gold datasets and dashboard questions
 
+## Guide-aligned revision (2026-11-21)
+
+The current Gold job enumerates **all** numerical `*.parquet` files in
+`datalake_silver/`, including the 13 restored historical exports. Each baseline
+file must match its recorded SHA-256; each later file needs a sidecar manifest
+with its SHA-256 and repository path. A separate checked `datalake_silver/text/`
+sidecar holds the registered 2021 NOAA narratives. New Bronze and Silver tasks
+verify the source quality profile and publish narrative Silver. The local PySpark
+run writes `datalake_gold/`, with 650 governance and 607 storytelling rows.
+
+The 2021 text has 1,324 selected narratives. Governance exposes annual coverage
+and length mean/median/min/max, marking absent years unavailable. Storytelling
+adds `text_record_count`, `mean_sentiment_score`, three tone counts and
+`top_keywords_json` for month/type/unit groups. VADER 3.3.2 (MIT license) scores
+the original English narrative with compound thresholds ±0.05; token cleanup
+removes markup, URLs and mentions. Lexical tone is not hazard severity or a
+validated public-opinion measure. The original 625-row Airflow result below is
+historical evidence; this revision has only a local PySpark verification.
+
+The guide's 2026-I cover label is accepted by the team for Workshop 3.
+See `evidence/text_quality.json`, `evidence/guide_gold_reconciliation.json` and
+the new notebook execution receipts for current evidence.
+
 Implementation: `src/multi_hazard_weather_monitoring/gold.py`.
 Configuration: `config/workshop3_gold.json`. This is a versioned historical
 snapshot, not a live NWS feed or a forecast.
@@ -13,12 +36,10 @@ PySpark consolidation of multiple Silver Parquet files. This implementation uses
 the handout's Silver-to-Gold input path while preserving the guide's separation
 of stages. It does not claim the guide itself uses PySpark.
 
-The review notebook and Gold share the frozen set of 13 successful historical
+The original review notebook uses the frozen set of 13 successful historical
 and replay exports recorded in `workshop_3/evidence/silver_review.json`.
-Spark reads all those paths together as one DataFrame. Reading an unfiltered
-folder would also pick up older pilot exports not in that reviewed population.
-Adding input files requires an explicitly reviewed register update; the weekly
-schedule does not automatically acquire new data or expand the input list.
+The current Gold enumerates the folder and verifies each new file with a
+checksum sidecar. Unreviewed pilot files without sidecars cause a failure.
 No upstream time-window sensor is added to this frozen historical DAG: all
 registered exports must already exist and pass validation. This differs from
 the guide's live scheduled-curation dependency and must be revisited before
@@ -52,7 +73,8 @@ post-selection duplicate business-key fraction,
 source-specific null fractions, checked structural-schema compliance, monthly
 record volume, provider QC flags, distribution statistics and review flags.
 No ingestion-frequency compliance is invented for the historical manual backfill.
-No language/sentiment metric is added to the weather project.
+Narrative coverage and length metrics are included for the bounded 2021 source;
+unavailable years remain explicit.
 
 Schema compliance means the implemented structural checks passed; it is not a
 claim that all source-quality or meteorological validity tests passed. Daily

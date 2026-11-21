@@ -1,5 +1,20 @@
 # Project Context
 
+## Workshop 3 guide decision and current revision - 2026-11-21
+
+The team explicitly treats the supplied `Workshop_3.pdf` as the delivery guide
+despite its 2026-I cover. The revised local pipeline profiles Bronze text coverage,
+publishes source-bound NOAA narrative Silver, inventories every hash-checked
+numeric Parquet in `datalake_silver/`, and writes Gold in `datalake_gold/`.
+The registered 2021 Oklahoma CSV supplies 1,324 nonempty selected narratives;
+VADER 3.3.2 (MIT) yields 445 positive, 456 neutral and 423 negative lexical-tone
+labels. Other years' narrative metrics are unavailable. These labels do not
+measure hazard severity or validated public opinion. A real local PySpark run
+published 650 governance and 607 storytelling rows, reconciled independently.
+Both revised notebooks executed. The new DAG code has not been rerun in Airflow;
+the earlier 625-row Airflow success is historical version-specific evidence.
+No new personal approval, commit, push or submission is inferred.
+
 ## Latest implemented checkpoint - 2026-11-21
 
 Workshop 3 on `feat/workshop-3-quality-gold` now has verified historical Spark

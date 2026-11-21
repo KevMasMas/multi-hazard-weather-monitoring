@@ -11,6 +11,7 @@ from urllib.parse import quote
 from urllib.request import Request, urlopen
 
 ROOT=Path(__file__).resolve().parents[2]
+RECEIPT=ROOT/'workshop_3/evidence/guide_gold_airflow_run.json'
 
 
 def main():
@@ -35,18 +36,18 @@ def main():
         proof['logical_date']=run.get('logical_date') or run.get('execution_date')
         proof['tasks']=[{k:t[k] for k in ['task_id','state','try_number','start_date','end_date']} for t in tasks]
         proof['weather_network']=False
-        (ROOT/'workshop_3/evidence/gold_airflow_run.json').write_text(json.dumps(proof,indent=2)+'\n')
+        RECEIPT.write_text(json.dumps(proof,indent=2)+'\n')
         print(run['state'],flush=True)
         if run['state']=='success':
             value=api(path+'/taskInstances/summarize_silver/xcomEntries/return_value')['value']
             if value.startswith('"'):value=json.loads(value)
             relative=value.removeprefix('/opt/weather/')
             manifest=(ROOT/relative).resolve()
-            if not manifest.is_relative_to((ROOT/'data/gold').resolve()):raise ValueError('unexpected_gold_path')
+            if not manifest.is_relative_to((ROOT/'datalake_gold').resolve()):raise ValueError('unexpected_gold_path')
             proof['manifest_path']=relative
             proof['manifest_sha256']=hashlib.sha256(manifest.read_bytes()).hexdigest().upper()
             proof['outputs']=json.loads(manifest.read_text())['outputs']
-            (ROOT/'workshop_3/evidence/gold_airflow_run.json').write_text(json.dumps(proof,indent=2)+'\n')
+            RECEIPT.write_text(json.dumps(proof,indent=2)+'\n')
             print('Manifest: '+relative)
             return
         if run['state']=='failed':raise SystemExit('Gold DAG failed; inspect task log.')

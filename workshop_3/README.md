@@ -1,5 +1,22 @@
 # Workshop 3 - Silver quality and Gold preparation
 
+## Current guide-aligned result (2026-11-21)
+
+The team selected the supplied Workshop 3 PDF as this delivery's guide despite
+the 2026-I cover. A verified local PySpark run now reads every checked numerical
+Parquet in `datalake_silver/` plus the 2021 NOAA narrative sidecar, and publishes
+650 governance / 607 storytelling rows to `datalake_gold/`. Text coverage is
+bounded to 1,324 genuine NOAA Oklahoma 2021 narratives; 2022-2025 text is
+unavailable in the portable evidence. VADER lexical tone is descriptive, not
+hazard severity. Both notebooks were regenerated and executed in fresh kernels
+(8/6 code cells, zero errors). The report PDF and exact samples are linked below.
+
+The updated Bronze/Silver Airflow tasks and revised Gold DAG have not been rerun
+inside Airflow in this session. The earlier 625-row Airflow result documented
+below remains historical. Kevin and Pablo approval, commit, push and Moodle
+submission are not recorded. Evidence: `evidence/text_quality.json`,
+`evidence/guide_gold_reconciliation.json`, `evidence/guide_gold_samples.json`.
+
 Current branch: `feat/workshop-3-quality-gold`, based on Workshop 2 commit
 `f35c75c`. The quality/Gold pipeline, incremental core and report are prepared
 for team review. No commit, push, personal approval or platform submission is

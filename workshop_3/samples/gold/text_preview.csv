@@ -1,0 +1,7 @@
+period,event_type,text_record_count,mean_sentiment_score,positive_count,neutral_count,negative_count
+2021-01,Winter Storm,2,-0.5719,0,0,2
+2021-01,Thunderstorm Wind,1,0.0,0,1,0
+2021-02,Winter Storm,44,0.5880386363636364,42,1,1
+2021-02,Heavy Snow,65,0.007058461538461539,1,64,0
+2021-04,Thunderstorm Wind,19,-0.1922473684210526,4,6,9
+2021-05,Hail,74,-0.025862162162162146,34,4,36

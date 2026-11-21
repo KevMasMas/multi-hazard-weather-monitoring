@@ -1,5 +1,53 @@
 # Change Log - Workshop 3
 
+### [2026-11-21 America/Bogota] - Guide alignment, text Silver and full-folder Gold
+
+- **Objective/status:** close the first four audited gaps against the supplied
+  Workshop 3 handout: source-bound text analysis, real Bronze/Silver DAG changes,
+  accumulated Silver folder to Gold, and actual checkout artifact hashes. Local
+  technical package is ready for review; revised Airflow execution remains open.
+- **Branch/commit:** `feat/workshop-3-guide-alignment`, local and uncommitted.
+  No push, merge, Moodle submission or Kevin/Pablo approval is claimed.
+- **Files changed:** Bronze/Silver DAGs and historical pipeline, new
+  `text_silver.py`, Gold module/config and Docker mounts, VADER requirement,
+  restoration/sample/audit/finalization scripts, both notebooks, tests, report
+  LaTeX/assets/PDF, output samples/ZIP, manifests, ADR 0009 and current board,
+  context, contract, demo guide, plan, report and evidence register.
+- **Requirements/decisions:** the team selected `Workshop_3.pdf` despite its
+  2026-I cover. The registered NOAA Oklahoma 2021 native CSV supplies 1,324
+  selected narratives; 632 use event text and 692 episode fallback. Preserve
+  original text and lineage; use VADER 3.3.2 (MIT) for lexical tone only. Later
+  years' unavailable text is explicit. Check every numeric Parquet in
+  `datalake_silver/` by baseline register or sidecar and write Gold to
+  `datalake_gold/`. The existing 625-row Airflow output remains historical.
+- **Exact local verification:** native/text hashes verified; text audit finds
+  mean/median/min/max lengths 280.5264/177/13/1914 and tone counts 445/456/423.
+  Final local PySpark batch `w3_guide_alignment_final_20261121` produced 22,553
+  snapshots, 19,039 canonical records, 650 governance and 607 storytelling
+  rows. Independent Pandas checks matched 40 shape statistics, 180 station/month
+  and 427 storm/month/type/unit groups, plus 1,324 text rows and 85 text-bearing
+  story groups. Both notebooks executed in fresh kernels: 8 and 6 code cells,
+  zero errors. Eleven local tests ran: 8 passed, 3 Linux-only Spark fixtures
+  skipped on Windows; the complete real Spark data run succeeded. The nine-page
+  PDF was rendered and visually checked, with no unsafe text bounds. The sample
+  ZIP passed CRC and the current W1/W2 submission hashes match. `git diff
+  --check` passed after LF normalization.
+- **Errors/corrections:** first native Windows Spark fixture run failed because
+  Hadoop temporary writes/worker access need Linux; retained Linux fixture
+  tests with an explicit Windows skip, and verified the full data job locally.
+  Notebook execution first failed under restricted Jupyter ACLs; it succeeded
+  with permitted local runtime access. The earlier local Gold batch preceded a
+  source-code fix, so a new batch was run and all samples/receipts resealed.
+  Three W2 hashes were proven to be CRLF equivalents and corrected to current
+  LF bytes. Tectonic required its local font cache; final compilation succeeded.
+- **Evidence/limits/handoff:** `workshop_3/evidence/text_quality.json`,
+  `guide_gold_reconciliation.json`, two guide notebook receipts,
+  `guide_final_audit.json`, `report_qa.json`, sample manifest and final PDF.
+  No new weather call. Revised DAG tasks have not been rerun in Airflow; Docker
+  integration and human review are still needed. See demo guide for restoration
+  and recovery; never overwrite raw captures or prior run receipts.
+
+
 ### [2026-11-21 America/Bogota] - W3-G02..G05 - Real PySpark Gold and evidence
 
 - **Objective/status:** implement the requested Silver-to-Gold path, two outputs and reproducible documentation following the course guide/Workshop 3 technical pattern. Gold is verified; this does not close incremental integration or the final W3 PDF.

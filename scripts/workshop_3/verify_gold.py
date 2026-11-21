@@ -12,6 +12,7 @@ ROOT=Path(__file__).resolve().parents[2]
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--manifest',required=True)
+    parser.add_argument('--receipt',default='workshop_3/evidence/gold_reconciliation.json')
     args=parser.parse_args()
     path=Path(args.manifest)
     if not path.is_absolute():path=ROOT/path
@@ -88,14 +89,35 @@ def main():
         np.testing.assert_allclose(item['mean_value'],rows['severity_value'].mean(),rtol=1e-9)
         if element=='PRCP':np.testing.assert_allclose(item['precipitation_total_mm'],rows['severity_value'].sum(),rtol=1e-9)
         count_checks+=1
+    text_checks={}
+    if receipt['identity'].get('text_inputs'):
+        text_frames=[]
+        for name,expected in receipt['identity']['text_inputs'].items():
+            p=ROOT/name
+            assert hashlib.sha256(p.read_bytes()).hexdigest().upper()==expected
+            text_frames.append(pd.read_parquet(p))
+        text=pd.concat(text_frames,ignore_index=True)
+        assert not text.duplicated(['source','source_key']).any()
+        assert set(text['source_key']).issubset(set(current.loc[current.source.eq('noaa_storm_events'),'source_key']))
+        selected=story[story.source.eq('noaa_storm_events')]
+        for label in ('positive','neutral','negative'):
+            assert selected[label+'_count'].sum()==text.sentiment_label.eq(label).sum()
+        assert selected.text_record_count.sum()==text.raw_text.notna().sum()
+        for _,row in text.iterrows():
+            assert row.token_count==len(row.tokens)
+        text_checks={'text_rows':len(text),'text_records':int(text.raw_text.notna().sum()),
+                     'sentiment_distribution':{label:int(text.sentiment_label.eq(label).sum())
+                                               for label in ('positive','neutral','negative')},
+                     'keyword_json_rows':int(selected.top_keywords_json.notna().sum())}
     output=dict(manifest=path.relative_to(ROOT).as_posix(),manifest_sha256=hashlib.sha256(path.read_bytes()).hexdigest().upper(),
         counts=receipt['counts'],gold_rows={k:len(v) for k,v in tables.items()},
         matching_pandas_shape_statistics=shape_checks,matching_station_month_groups=count_checks,
         matching_storm_month_type_unit_groups=monthly_event_groups,
         output_hashes_verified=True,unique_gold_keys=True,source_record_totals_reconciled=True,
         no_temperature_or_event_magnitude_sums=True,zero_iqr_not_fabricated=True,
-        weather_network=False,method='Independent Pandas reconciliation of the same verified frozen Silver inputs')
-    target=ROOT/'workshop_3/evidence/gold_reconciliation.json'
+        text_checks=text_checks,weather_network=False,
+        method='Independent Pandas reconciliation of verified Silver folder and text sidecar')
+    target=ROOT/args.receipt
     target.write_text(json.dumps(output,indent=2)+'\n')
     print(json.dumps(output,indent=2))
 

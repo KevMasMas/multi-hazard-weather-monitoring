@@ -1,0 +1,19 @@
+{
+  "verified_at_utc": "2026-11-21T17:06:42.195480+00:00",
+  "workshop3": {
+    "total": 11,
+    "passed": 8,
+    "skipped": 3,
+    "failures": 0,
+    "output": "----------------------------------------------------------------------\nRan 11 tests in 0.892s\n\nOK (skipped=3)"
+  },
+  "workshop2_regression": {
+    "total": 29,
+    "passed": 21,
+    "skipped": 8,
+    "failures": 0,
+    "output": "----------------------------------------------------------------------\nRan 29 tests in 0.114s\n\nOK (skipped=8)"
+  },
+  "runtime_note": "Native Windows skips Linux Hadoop Spark fixtures and unavailable PostgreSQL integration; separate full local PySpark Gold batch verified.",
+  "weather_network": false
+}

@@ -1,0 +1,13 @@
+{
+  "path": "workshop_3/samples/silver_text/noaa_oklahoma_2021_text.parquet",
+  "rows": 1324,
+  "nonempty_text": 1324,
+  "event_narratives": 632,
+  "sha256": "C1AFB9407724B1B92DC9F13EFFD657DD5B41A5EB0A1C497F8B1BA9591A71A8F2",
+  "source_capture_sha256": "78FB408F7BE505B6AD51DF631659F7DD70EDADA826B240398DD6443C3C27E086",
+  "schema": "silver-narrative-v1",
+  "lake_path": "datalake_silver/text/noaa_oklahoma_2021_text.parquet",
+  "native_path": "workshop_2/samples/native/noaa_oklahoma_2021.csv",
+  "method": "VADER 3.3.2 on original English NOAA narrative; lexical tone only",
+  "scope": "2021 Oklahoma sample only; later raw years absent from portable package"
+}

@@ -1,5 +1,22 @@
 # Change Log - Workshop 2
 
+### [2026-11-21 America/Bogota] - Checkout hash correction
+
+- **Objective/status:** correct three submission-manifest hashes for the LF bytes
+  present in the current Git checkout; no source data or prior report content was
+  changed.
+- **Branch/commit:** `feat/workshop-3-guide-alignment`; local, uncommitted.
+- **Files:** `SUBMISSION_MANIFEST.json` only.
+- **Decision/evidence:** the original hashes for the W2 notebook, sample manifest
+  and LaTeX appendix exactly match replacing each current LF with CRLF. The
+  corrected entries now match the actual current files byte for byte. This is a
+  line-ending normalization correction, not a new W2 validation result.
+- **Verification:** SHA-256 comparison and CRLF reconstruction for all three;
+  no weather or database call. Recheck the W2 manifest in the final seal.
+- **Limits/handoff/recovery:** preserve original W2 artifacts; if line endings
+  change again, calculate hashes on the final checked-out bytes before delivery.
+
+
 Append entries; do not silently rewrite historical observations.
 
 ## Entries

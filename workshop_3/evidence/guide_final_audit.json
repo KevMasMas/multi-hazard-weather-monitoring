@@ -1,0 +1,45 @@
+{
+  "verified_at_utc": "2026-11-21T17:09:03.377765+00:00",
+  "branch": "feat/workshop-3-guide-alignment",
+  "prior_delivery_hashes_match": true,
+  "report_pages": 9,
+  "visual_review_passed": true,
+  "quality_notebook_cells": 8,
+  "gold_notebook_cells": 6,
+  "gold_rows": {
+    "governance": 650,
+    "storytelling": 607
+  },
+  "text_rows": 1324,
+  "sample_zip_entries": 18,
+  "sample_zip_crc_passed": true,
+  "git_diff_check_passed": true,
+  "current_local_tests": {
+    "workshop3": {
+      "total": 11,
+      "passed": 8,
+      "skipped": 3,
+      "failures": 0
+    },
+    "workshop2": {
+      "total": 29,
+      "passed": 21,
+      "skipped": 8,
+      "failures": 0
+    }
+  },
+  "new_airflow_run_verified": false,
+  "team_approval_recorded": false,
+  "artifacts": {
+    "workshop_3/Workshop_3_Pipeline_Improvements_and_Gold_Layer_Report.pdf": "4FAD348C8A063A4B5290ACC43319DB5C8347E3D3138547413B66F6A8E3B0D474",
+    "workshop_3/Workshop_3_Pipeline_Output_Samples.zip": "E5E5B28696C1CE470135F5E3F0A09C7129A97BB6CEE79826EEF65C37BD86705B",
+    "workshop_3/Workshop_3_Silver_Reproduction_Inputs.zip": "B01835F142E7A85F8387421AFBC44CA853C65E8D908E8355523F5C708DCC905F",
+    "notebooks/03_silver_quality_review.ipynb": "F6FFEE700DEC9546F88B1EB962566ED9EA5D2751F9E363BB93AF181220BAA61C",
+    "notebooks/04_gold_review.ipynb": "F702C08AAF2CA4C37C359C81EBC4C1F9C86E1DAA2D5C953B3C0EDBF460D2F9CA",
+    "workshop_3/samples/gold/governance_20261121_144319_caeba6938516.parquet": "C21E050DB77E0F941B99F028740FEDF96FD5C38DF2262AF55F5817190705F4F8",
+    "workshop_3/samples/gold/governance_20261121_170000_383a89102438.parquet": "C37F7ACDE8CF49F405624D514B639E58EFB24E28B9652DD2CD9939C0D886D675",
+    "workshop_3/samples/gold/storytelling_20261121_144319_caeba6938516.parquet": "63C1FA56AD8919F4B2361F5588A43D85614E39763D34C9523A4369BE40A35097",
+    "workshop_3/samples/gold/storytelling_20261121_170000_383a89102438.parquet": "B7660E83A25A7006AF1034AF2C57A2DF02CA65375D55B2115B9B075595429D0E",
+    "workshop_3/samples/silver_text/noaa_oklahoma_2021_text.parquet": "C1AFB9407724B1B92DC9F13EFFD657DD5B41A5EB0A1C497F8B1BA9591A71A8F2"
+  }
+}

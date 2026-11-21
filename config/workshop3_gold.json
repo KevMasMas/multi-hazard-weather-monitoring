@@ -1,6 +1,10 @@
 {
   "schema_version": "weather-gold-v1",
   "input_register": "workshop_3/evidence/silver_review.json",
+  "silver_folder": "datalake_silver",
+  "text_register": "workshop_3/samples/silver_text/noaa_oklahoma_2021_text.manifest.json",
+  "text_folder": "datalake_silver/text",
+  "output_folder": "datalake_gold",
   "start": "2021-01-01",
   "end": "2025-12-31",
   "spark_master": "local[2]",

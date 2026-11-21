@@ -1,5 +1,24 @@
 # Implementation Plan - Workshop 3
 
+## Guide-alignment addendum - 2026-11-21
+
+The user resolved the guide interpretation: use the supplied Workshop 3 PDF
+even though the cover says 2026-I. P0 implementation now includes source text
+quality, VADER lexical tone, keyword summaries, actual Bronze/Silver DAG changes,
+full-folder Silver discovery and `datalake_gold/` output. The 2021 NOAA registered
+capture is the only portable narrative source, so other years are marked
+unavailable. The local Spark result (650/607 rows), independent reconciliation,
+text audit and two executed notebooks are the acceptance evidence. Updated DAG
+code still needs an Airflow run; neither student approval nor merge gate is
+satisfied. Earlier 625-row descriptions below refer to the previous version.
+
+Owner/reviewer: Kevin and Pablo jointly review schema, text interpretation,
+Airflow task behavior and the PDF; neither approval is recorded yet. Out of
+scope: creating missing 2022-2025 raw narratives by live download, CHI and
+dashboard. Recovery: restore the 13 checked numerical files, copy the committed
+2021 text sidecar, rerun local Gold and verify the manifest before any Airflow
+attempt. The package must not replace historical receipts.
+
 **Latest verification, 2026-11-21:** the real Gold DAG succeeded with 625
 governance and 607 storytelling rows from 19,039 unique records. Eight new tests
 and 29 W2 regressions passed; both notebooks execute without errors (7/5 cells).

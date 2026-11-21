@@ -1,5 +1,33 @@
 # Workshop 3 demonstration
 
+## Current guide-aligned offline reproduction
+
+Use the supplied Workshop 3 handout despite its 2026-I cover. From the repository
+root, install `requirements-workshop3-runtime.txt` in a suitable Python/Java 17
+environment, then run:
+
+```bash
+python scripts/workshop_3/restore_silver.py
+python scripts/workshop_3/audit_text.py
+python scripts/workshop_3/run_gold.py --batch-id your_unique_review_id --logical-time 2026-11-21T17:00:00+00:00
+python scripts/workshop_3/verify_gold.py --manifest datalake_gold/ACTUAL_BATCH/manifest.json --receipt workshop_3/evidence/guide_gold_reconciliation.json
+```
+
+Replace `ACTUAL_BATCH` with the path printed by `run_gold.py`. Restoration puts
+the 13 checked numerical files in `datalake_silver/` and copies the committed
+2021 narrative Silver sample into its `text/` subfolder. Gold checks all files
+and writes `datalake_gold/`. The verified local batch in this package has 650
+governance and 607 storytelling rows. The two executed notebooks are
+`notebooks/03_silver_quality_review.ipynb` and `04_gold_review.ipynb`.
+`workshop_3/evidence/guide_final_audit.json` and the submission manifest identify
+the exact review artifacts. VADER tone is not hazard severity.
+
+The revised Bronze/Silver and Gold DAG code still needs a fresh Airflow run. The
+old 625-row Airflow evidence and instructions below refer to the prior revision;
+do not treat them as proof that the new DAGs ran. Kevin/Pablo approval and push
+remain separate actions after review. Docker Compose now mounts both datalake
+folders. It must be rebuilt for the VADER runtime dependency.
+
 Branch: `feat/workshop-3-quality-gold`. Use the actual execution receipts for
 verification status; this runbook alone does not establish a successful run.
 No commit or push is performed by these commands.
@@ -117,7 +145,8 @@ python scripts/workshop_3/verify_airflow_gold.py
 ```
 
 The command records actual DAG/task state in
-`workshop_3/evidence/gold_airflow_run.json` and prints the committed manifest path.
+`workshop_3/evidence/guide_gold_airflow_run.json` and prints the committed
+manifest path. The earlier `gold_airflow_run.json` stays as historical evidence.
 No weather requests are made. For a direct CLI run inside Docker, use your own
 explicit batch ID and timezone-aware timestamp:
 
@@ -128,7 +157,7 @@ docker compose exec -T airflow-scheduler python /opt/weather/scripts/workshop_3/
 
 Reusing exactly the same identity verifies/reuses a committed output. Do not
 change its inputs/config/code and expect it to overwrite the earlier batch.
-Publication produces a batch directory under ignored `data/gold/`, containing
+The current revision publishes under ignored `datalake_gold/`, containing
 two actual `.parquet` files and `manifest.json`. Do not combine all dated Gold
 snapshots to count events; select one successfully committed manifest.
 
@@ -136,12 +165,12 @@ snapshots to count events; select one successfully committed manifest.
 
 ```bash
 docker compose exec -T airflow-scheduler python /opt/weather/scripts/workshop_3/run_tests.py
-python scripts/workshop_3/verify_gold.py --manifest data/gold/ACTUAL_BATCH/manifest.json
-python scripts/workshop_3/prepare_gold_samples.py
+python scripts/workshop_3/verify_gold.py --manifest datalake_gold/ACTUAL_BATCH/manifest.json
+python scripts/workshop_3/prepare_guide_samples.py --manifest datalake_gold/ACTUAL_BATCH/manifest.json
 python scripts/workshop_3/create_gold_notebook.py
 python scripts/workshop_2/execute_review_notebook.py \
   --notebook notebooks/04_gold_review.ipynb \
-  --receipt workshop_3/evidence/gold_notebook_execution.json
+  --receipt workshop_3/evidence/guide_gold_notebook_execution.json
 ```
 
 Replace the example manifest placeholder with the actual committed path from the

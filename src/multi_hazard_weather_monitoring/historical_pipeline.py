@@ -37,6 +37,23 @@ def capture_config(partition):
     return matches[0]
 
 
+def bronze_quality_profile(rows, source):
+    """Count genuine source text coverage without changing native CSV bytes."""
+    result={"source_rows":len(rows),"text_applicable":source=="noaa_storm_events"}
+    if result["text_applicable"]:
+        result["event_narrative_rows"]=sum(bool((r.get("EVENT_NARRATIVE") or "").strip()) for r in rows)
+        result["episode_narrative_rows"]=sum(bool((r.get("EPISODE_NARRATIVE") or "").strip()) for r in rows)
+    return result
+
+
+def verify_bronze_profile(path):
+    payload=json.loads(checked_bronze_path(path).read_text(encoding="utf-8"))
+    expected=bronze_quality_profile(payload["rows"],payload["source"]["source"])
+    if payload.get("quality_profile")!=expected:
+        raise ValueError("bronze_quality_profile_mismatch")
+    return str(checked_bronze_path(path))
+
+
 def publish_bronze(partition, batch_id, logical_time):
     from .storage.raw_landing import land_capture,require_registered_capture
     source=capture_config(partition)
@@ -50,10 +67,11 @@ def publish_bronze(partition, batch_id, logical_time):
     timestamp=parsed.astimezone(timezone.utc).strftime('%Y%m%d_%H%M%S')
     token=hashlib.sha256(batch_id.encode()).hexdigest()[:12]
     path=ROOT/'data/bronze'/f"{source['source']}_{timestamp}_{token}.json"
+    rows=list(csv.DictReader(io.StringIO(body.decode('utf-8-sig'),newline='')))
     payload=dict(schema='bronze-csv-view-v1',batch_id=batch_id,logical_time=logical_time,
         source=source,original_capture=capture,
         evidence_type='Parsed registered CSV view, not an original JSON response. See source_format and acquisition_manifest for native response and subset lineage.',
-        rows=list(csv.DictReader(io.StringIO(body.decode('utf-8-sig'),newline=''))))
+        quality_profile=bronze_quality_profile(rows,source['source']),rows=rows)
     _atomic_json(path,payload)
     return str(path)
 
@@ -71,6 +89,7 @@ def process_bronze(path):
     from .storage.raw_landing import require_registered_capture
     from .storage.postgres_historical import load_partition
     from .storage.silver_export import export_run
+    from .text_silver import mirror_numeric_silver
     path=checked_bronze_path(path)
     encoded=path.read_bytes();payload=json.loads(encoded)
     if payload.get('schema')!='bronze-csv-view-v1':
@@ -91,6 +110,8 @@ def process_bronze(path):
         raise ValueError('bronze_native_capture_mismatch')
     if payload['rows']!=list(csv.DictReader(io.StringIO(body.decode('utf-8-sig'),newline=''))):
         raise ValueError('bronze_parsed_view_mismatch')
+    if 'quality_profile' in payload and payload['quality_profile']!=bronze_quality_profile(payload['rows'],source['source']):
+        raise ValueError('bronze_quality_profile_mismatch')
     with closing(_connect()) as connection:
         migrate(connection)
         metrics=load_partition(connection,source=source,capture=capture,
@@ -103,4 +124,5 @@ def process_bronze(path):
         metrics=metrics,silver=output)
     manifest=destination.with_suffix('.manifest.json')
     _atomic_json(manifest,receipt)
+    mirror_numeric_silver(destination, ROOT)
     return str(manifest)

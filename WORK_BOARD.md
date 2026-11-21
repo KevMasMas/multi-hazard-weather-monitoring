@@ -1,5 +1,17 @@
 # Team Work Board
 
+## Current Workshop 3 guide alignment - 2026-11-21
+
+On local branch `feat/workshop-3-guide-alignment`, the first four audited gaps
+have code and local evidence: genuine 2021 NOAA narrative Silver, revised
+Bronze/Silver DAG tasks, all-file checked `datalake_silver/` to `datalake_gold/`
+PySpark, and corrected checkout hashes. The local Gold batch has 650 governance
+and 607 storytelling rows; independent reconciliation includes 1,324 text
+records. Both updated notebooks execute with zero errors. The report and samples
+are being resealed for review. The revised DAGs have not been run in Airflow.
+Kevin and Pablo must review the final artifacts before approval; approval is not
+recorded. The historical 625-row Airflow run below remains valid for its version.
+
 This is the single operational entry point for Team 9. Read this file to know the current state, who owns each workstream, and what must happen next.
 
 ## Current state

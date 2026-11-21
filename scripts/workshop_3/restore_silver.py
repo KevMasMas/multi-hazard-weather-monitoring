@@ -29,6 +29,26 @@ def restore(destination):
         if not target.exists():
             target.parent.mkdir(parents=True,exist_ok=True)
             with target.open('xb') as stream:stream.write(body)
+        lake=destination/'datalake_silver'/Path(name).name
+        if lake.exists() and lake.read_bytes()!=body:raise ValueError('existing_lake_silver_differs:'+name)
+        if not lake.exists():
+            lake.parent.mkdir(parents=True,exist_ok=True)
+            with lake.open('xb') as stream:stream.write(body)
+    text_manifest=ROOT/'workshop_3/samples/silver_text/noaa_oklahoma_2021_text.manifest.json'
+    if text_manifest.exists():
+        text=json.loads(text_manifest.read_text(encoding='utf-8'))
+        body=(ROOT/text['path']).read_bytes()
+        if hashlib.sha256(body).hexdigest().upper()!=text['sha256']:
+            raise ValueError('text_silver_sample_hash_mismatch')
+        target=destination/text['lake_path']
+        if target.exists() and target.read_bytes()!=body:
+            raise ValueError('existing_text_silver_differs')
+        if not target.exists():
+            target.parent.mkdir(parents=True,exist_ok=True)
+            with target.open('xb') as stream:stream.write(body)
+        sidecar=target.with_suffix('.manifest.json')
+        if not sidecar.exists():sidecar.write_bytes(text_manifest.read_bytes())
+        elif sidecar.read_bytes()!=text_manifest.read_bytes():raise ValueError('text_silver_manifest_differs')
     return len(bodies)
 
 

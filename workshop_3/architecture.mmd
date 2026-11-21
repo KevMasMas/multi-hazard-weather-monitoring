@@ -1,11 +1,16 @@
 flowchart TD
-    H[NOAA and GHCN native captures] --> B[Historical Bronze JSON]
+    H[NOAA and GHCN native captures] --> B[Historical Bronze JSON plus quality profile]
+    B --> BV[Bronze profile verification task]
     B --> V[Validation and historical transaction]
-    V --> S[Registered Silver Parquet snapshots]
+    V --> S[Checked numeric Silver in datalake_silver]
+    BV --> V
+    B --> T[NOAA narrative Silver task]
+    T --> TS[Checked 2021 text Parquet in datalake_silver]
     V --> Q[rejected_record quarantine]
-    S --> G[Local PySpark reviewed consolidation]
-    G --> GOV[Governance Parquet]
-    G --> STORY[Storytelling Parquet]
+    S --> G[Local PySpark all-file consolidation]
+    TS --> G
+    G --> GOV[Governance Parquet in datalake_gold]
+    G --> STORY[Storytelling Parquet in datalake_gold]
     N[NWS Alerts and KOKC observations] --> CLI[Explicit ingestion CLI]
     A[Airflow incremental DAG] --> CLI
     CLI --> RAW[Immutable raw GeoJSON and receipts]

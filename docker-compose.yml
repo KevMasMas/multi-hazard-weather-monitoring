@@ -29,6 +29,8 @@ x-airflow-common: &airflow-common
     - ./airflow/dags:/opt/weather/airflow/dags:ro
     - ./workshop_1/samples:/opt/weather/workshop_1/samples:ro
     - ./data:/opt/weather/data
+    - ./datalake_silver:/opt/weather/datalake_silver
+    - ./datalake_gold:/opt/weather/datalake_gold
     - ./workshop_2/evidence:/opt/weather/workshop_2/evidence
     - ./workshop_3:/opt/weather/workshop_3
     - ./tests:/opt/weather/tests:ro

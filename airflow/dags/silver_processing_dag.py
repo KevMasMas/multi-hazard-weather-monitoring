@@ -25,7 +25,14 @@ def silver_processing():
         return process_bronze(manifest_path)
 
     output=load_and_export(path)
+    @task
+    def publish_narrative(bronze_path):
+        from multi_hazard_weather_monitoring.text_silver import publish_narrative_from_bronze
+        return publish_narrative_from_bronze(bronze_path)
+
+    narrative=publish_narrative(path)
     path >> wait >> output
+    output >> narrative
 
 
 silver_processing()

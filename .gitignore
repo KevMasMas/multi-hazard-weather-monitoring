@@ -35,11 +35,14 @@ data/raw/**
 !data/raw/.gitkeep
 data/processed/
 data/curated/
+datalake_silver/
+datalake_gold/
 data/bronze/
 data/gold/
 *.parquet
 !workshop_2/samples/silver/*.parquet
 !workshop_3/samples/gold/*.parquet
+!workshop_3/samples/silver_text/*.parquet
 *.duckdb
 *.sqlite
 *.db

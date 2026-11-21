@@ -1,0 +1,65 @@
+{
+  "source": "NOAA Storm Events Oklahoma 2021 registered CSV subset",
+  "native_capture_sha256": "78FB408F7BE505B6AD51DF631659F7DD70EDADA826B240398DD6443C3C27E086",
+  "text_silver_sha256": "C1AFB9407724B1B92DC9F13EFFD657DD5B41A5EB0A1C497F8B1BA9591A71A8F2",
+  "source_rows": 1324,
+  "nonempty_selected_narratives": 1324,
+  "event_narrative_rows": 632,
+  "episode_fallback_rows": 692,
+  "characters": {
+    "mean": 280.5264350453172,
+    "median": 177.0,
+    "min": 13,
+    "max": 1914
+  },
+  "lexical_tone_counts": {
+    "positive": 445,
+    "neutral": 456,
+    "negative": 423
+  },
+  "top_tokens": [
+    [
+      "th",
+      895
+    ],
+    [
+      "oklahoma",
+      812
+    ],
+    [
+      "wind",
+      595
+    ],
+    [
+      "drought",
+      444
+    ],
+    [
+      "county",
+      394
+    ],
+    [
+      "reported",
+      350
+    ],
+    [
+      "hail",
+      346
+    ],
+    [
+      "afternoon",
+      345
+    ],
+    [
+      "developed",
+      339
+    ],
+    [
+      "thunderstorms",
+      327
+    ]
+  ],
+  "method": "VADER 3.3.2 raw English narrative; 0.05/-0.05 thresholds; not hazard severity",
+  "scope_limit": "2021 Oklahoma sample only; no labelled sentiment validation or full historical text coverage",
+  "weather_network": false
+}

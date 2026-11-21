@@ -1,0 +1,20 @@
+{
+  "dag_id": "weather_gold_processing",
+  "dag_run_id": "w3_gold_20261121T180831",
+  "state": "inconclusive_host_docker_failure",
+  "start_date": "2026-11-21T18:08:40.837845+00:00",
+  "end_date": null,
+  "logical_date": "2026-11-21T18:08:36.630637+00:00",
+  "tasks": [
+    {
+      "task_id": "summarize_silver",
+      "state": "running",
+      "try_number": 1,
+      "start_date": "2026-11-21T18:08:42.490985+00:00",
+      "end_date": null
+    }
+  ],
+  "weather_network": false,
+  "error": "The host Docker Desktop engine became intermittently unavailable (HTTP 500) while the Airflow API was being polled. The scheduler stopped updating its heartbeat; no successful task completion or new manifest was verified. Existing volume was preserved.",
+  "recovery": "Docker Desktop was started again and the engine returned to running, but Compose calls continued to receive HTTP 500. Do not treat this run as success; use the independently verified local PySpark batch and historical Airflow receipt."
+}

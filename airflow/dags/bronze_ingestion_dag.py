@@ -17,11 +17,17 @@ def bronze_ingestion():
         return publish(partition,context['run_id'],context['logical_date'].isoformat())
 
     ready=publish_bronze()
+    @task
+    def verify_text_coverage(manifest_path):
+        from multi_hazard_weather_monitoring.historical_pipeline import verify_bronze_profile
+        return verify_bronze_profile(manifest_path)
+
+    checked=verify_text_coverage(ready)
     trigger=TriggerDagRunOperator(task_id='trigger_silver',trigger_dag_id='weather_silver_processing',
         trigger_run_id='silver__{{ run_id }}',
-        conf={'manifest_path':"{{ ti.xcom_pull(task_ids='publish_bronze') }}"},
+        conf={'manifest_path':"{{ ti.xcom_pull(task_ids='verify_text_coverage') }}"},
         reset_dag_run=True,wait_for_completion=False)
-    ready >> trigger
+    checked >> trigger
 
 
 bronze_ingestion()

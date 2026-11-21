@@ -35,7 +35,9 @@ analysis, a local PySpark Gold stage, and transactional NWS incremental ingestio
 The successful Gold DAG consolidates 13 verified Silver exports containing
 22,553 snapshot rows into \textbf{19,039 unique source records}: 13,561 NOAA
 Storm Events records and 5,478 GHCN-Daily measurements for 2021--2025.
-It publishes \textbf{625 governance rows and 607 storytelling rows}.
+The earlier Airflow run published 625 governance and 607 storytelling rows.
+The guide-aligned local PySpark rerun publishes \textbf{650 governance rows and
+607 storytelling rows}, including bounded narrative quality metrics.
 The 3,514 additional snapshot rows are repeated exports, not independent events.
 
 Saved NWS replay ingests 238 alerts and 700 observations; replaying the bytes
@@ -47,12 +49,12 @@ tests and two executed notebooks support the previously verified Gold results.
 Technical evidence does not establish personal approval or platform submission.
 
 The 2026-II project assigns this milestone incremental ingestion and integration.
-The supplied Workshop 3 handout is labelled 2026-I and describes a sentiment
-project with PySpark governance/storytelling outputs [1,2]. Following the team's
-instruction, we implement the compatible technical requirements for weather and
-retain the incremental workstream. Language, sentiment and text-length metrics
-are not weather quality measures. This interpretation is documented; written
-professor clarification has not been recorded. The 2010--2025 semester baseline,
+The supplied Workshop 3 handout is labelled 2026-I; the team selected it as the
+authoritative guide for this delivery [1,2]. Its text, sentiment and keyword
+requirements are implemented on genuine NOAA Storm Events narratives where
+portable source text exists: registered Oklahoma 2021. VADER lexical tone is
+not hazard severity, and this result is not generalized to other years.
+The 2010--2025 semester baseline,
 broader station inventory, county crosswalk, CHI validation and dashboard remain
 separate work. The current historical measurements represent one station.
 
@@ -62,10 +64,10 @@ separate work. The current historical measurements represent one station.
 \toprule
 Area & Workshop 2 baseline & Workshop 3 change and justification\\
 \midrule
-Historical inputs & Raw captures, Bronze JSON, validation, database and run-specific Silver Parquet. & Preserve all existing files and applied SQL 001--004. Add JSON/GeoJSON native landing support; rerun historical regressions.\\
-Snapshot analysis & Repeated successful exports available as separate snapshots. & Freeze and hash 13 reviewed inputs; reconcile source/key revisions before statistics, avoiding inflated counts.\\
+Historical inputs & Raw captures, Bronze JSON, validation, database and run-specific Silver Parquet. & Add a Bronze quality-profile verification task and a Silver narrative publication task; mirror checked numerical exports in \path{datalake_silver/}. Raw bytes stay unchanged.\\
+Snapshot analysis & Repeated successful exports available as separate snapshots. & Discover every numerical Parquet in \path{datalake_silver/}; require registered hashes or a sidecar; reconcile source/key revisions before statistics.\\
 Quality handling & Structural/physical validation and quarantine. & Add source-aware missingness, distribution shape, IQR/Z-score comparison and seasonal context. Review flags do not delete weather extremes.\\
-Analytical layer & No executed Gold output. & Local Spark produces typed governance and monthly storytelling datasets, independently reconciled with Pandas.\\
+Analytical layer & No executed Gold output. & Local Spark produces typed governance and monthly storytelling datasets in \path{datalake_gold/}, independently reconciled with Pandas.\\
 Current ingestion & Incremental CLI was a placeholder. & Add NWS adapters, per-scope state, immutable revisions, quarantine, bounded polling, replay and failure recovery.\\
 \bottomrule
 \end{tabularx}
@@ -73,9 +75,9 @@ Current ingestion & Incremental CLI was a placeholder. & Add NWS adapters, per-s
 \subsection{Implemented paths}
 The Airflow practice motivates persistent layer mounts, reusable transformations
 outside DAGs and separate acquisition/curation stages [3]. The Workshop 3 handout
-specifies local Spark over multiple Silver files; the guide itself is not claimed
-to implement this exact Spark job. No unnecessary historical Bronze/Silver
-rewrite is presented as an improvement.
+specifies local Spark over accumulated Silver files. The revised Bronze
+verification and Silver narrative tasks are implemented but have not yet been
+executed in Airflow. Local component and Gold runs are identified separately.
 
 \begin{figure}[!htbp]
 \centering
@@ -86,7 +88,7 @@ arr/.style={-{Latex[length=2mm]},thick,draw=HeaderBlue}]
 \node[box,right=of historic] (nws) {NWS Alerts / KOKC observations};
 \node[box,below=of historic] (silver) {Historical Bronze + validated Silver\\exact registered Parquet snapshots};
 \node[box,below=of nws] (raw) {Ingestion CLI / hourly-ready Airflow DAG\\immutable raw GeoJSON + poll receipt};
-\node[box,below=of silver] (spark) {Reviewed consolidation / local PySpark\\625 governance + 607 storytelling rows};
+\node[box,below=of silver] (spark) {Verified Silver folder + NOAA 2021 text\\local PySpark: 650 governance / 607 story rows};
 \node[box,below=of raw] (db) {PostGIS transaction: current records, revisions,\\sightings, quarantine, state, candidate links};
 \node[box,below=of spark] (notebooks) {Pandas quality / Gold-preview notebooks\\independent output reconciliation};
 \node[box,below=of db,dashed,fill=white] (dash) {Later dashboard / CHI\\historical Gold and integrated database views};
@@ -228,8 +230,8 @@ hashes and schemas are verified rather than adding a time-window sensor that
 could select unrelated files. A weekly schedule is configured; the evidenced
 run was manually triggered, not a claim of a week's scheduled operation.
 
-Processing steps are: verify register/config/code/input hashes; read the reviewed
-Parquet paths as one Spark DataFrame; enforce the common schema; reject conflicting
+Processing steps are: verify register/config/code/input hashes; read every checked
+Parquet path in the Silver folder as one Spark DataFrame; enforce the common schema; reject conflicting
 same-key/revision copies; select the latest successful local snapshot; compute
 DataFrame/SQL aggregates; write both typed outputs; read back; and atomically
 publish one batch manifest. Spark supports this multi-file Parquet pattern [6].
@@ -246,6 +248,17 @@ Successful DAG run: \texttt{w3\_gold\_20261121T144317}, 21 November 2026,
 directory count. Independent Pandas comparison verified all monthly groups,
 40 shape statistics, unique output keys and source totals.
 
+The guide-aligned local PySpark rerun uses all 13 hash-verified numerical Parquet
+files present in \path{datalake_silver/} and a checked NOAA 2021 narrative
+sidecar. A new numerical file requires a checksum sidecar, so accumulated input
+cannot silently escape the audit. Its batch
+\texttt{w3\_guide\_alignment\_20261121} writes \textbf{650 governance rows and
+607 storytelling rows} under \path{datalake_gold/}. The output samples and
+independent Pandas reconciliation verify 1,324 narrative records in 85 monthly
+type groups. This was a local PySpark run using the Windows Arrow publication
+fallback; it was not a new Airflow DAG run. The prior 625-row Airflow output is
+retained as historical evidence.
+
 \begin{figure}[!htbp]
 \centering\includegraphics[width=\textwidth]{assets/governance_preview.png}
 \caption{Rendered contents of the actual governance Parquet sample. This is a
@@ -257,6 +270,28 @@ provided in \protect\path{samples/gold/governance_preview.csv}.}
 \caption{Rendered contents of the actual storytelling Parquet sample. Displayed
 decimals are rounded; the Parquet and CSV retain stored values. Null precipitation
 totals for temperatures are deliberate.}
+\end{figure}
+
+\subsection{Narrative quality, sentiment and keywords}
+The registered NOAA Oklahoma 2021 CSV contains 1,324 rows. Selection uses
+\texttt{EVENT\_NARRATIVE} for 632 rows and falls back to
+\texttt{EPISODE\_NARRATIVE} for 692; every selected text is nonempty. Original
+text remains in the checked Silver sidecar. Its length has mean 280.53,
+median 177, minimum 13 and maximum 1,914 characters. Tokens are lowercased
+after HTML, URL and mention cleanup; source identity and text-field provenance
+are retained. VADER 3.3.2 scores original English text with compound thresholds
+$\geq0.05$ positive and $\leq-0.05$ negative [8]. The observed labels are
+445 positive, 456 neutral and 423 negative. Gold exposes annual narrative
+coverage and length statistics, and monthly/type sentiment counts, mean score
+and frequent keywords. These are lexical descriptions of provider narratives,
+not weather severity, public opinion, causal explanation or validated accuracy.
+The other years have no portable narrative Silver in this delivery, so their
+text metrics are marked unavailable, not zero. No live weather call was made.
+
+\begin{figure}[!htbp]
+\centering\includegraphics[width=\textwidth]{assets/text_preview.png}
+\caption{Rows rendered from the verified local Gold storytelling Parquet.
+The underlying sample and exact CSV are under \protect\path{samples/gold/}.}
 \end{figure}
 
 \section{Incremental ingestion, state and integration}
@@ -349,11 +384,12 @@ Reviewed county allocation and quantitative match precision/recall remain open.
 \section{Verification, reproducibility and handoff}
 \begin{tabularx}{\textwidth}{L{4.2cm}YY}
 \toprule Check & Result & Traceable evidence\\\midrule
-Spark fixtures & 8 passed; no failures/errors/skips. & \path{evidence/spark_tests.json}\\
-Historical regression & 29 passed after additive migration; no skips. & \path{evidence/workshop2_regression.json}\\
+Spark fixtures & Earlier Airflow revision: 8 passed in Docker. The new local Windows fixture suite is constrained by Hadoop/Python worker setup; the full revised PySpark data run succeeded. & \path{evidence/spark_tests.json}; \path{evidence/guide_gold_reconciliation.json}\\
+Narrative and folder guards & Current local run: 8 passed, 3 Linux Spark fixtures skipped on Windows. & \path{evidence/guide_tests.json}\\
+Historical regression & Earlier Docker run: 29 passed with no skips. Current Windows run: 21 passed, 8 PostgreSQL cases skipped. & \path{evidence/workshop2_regression.json}; \path{evidence/guide_tests.json}\\
 Incremental fixtures/PostGIS & 12 passed: revisions, unchanged replay, late arrivals, empty/partial state, quarantine, retries, pagination and rollback. & \path{evidence/incremental_tests.json}; synthetic fixtures are not weather observations.\\
-Gold output comparison & 40 shape statistics; 180 station and 427 event groups match Pandas. & \path{evidence/gold_reconciliation.json}\\
-Notebooks & Quality: 7 code cells; Gold preview: 5. Both execute without errors from fresh kernels. & Execution receipts under \path{evidence/}; existing environment, not a newly installed dependency environment.\\
+Gold output comparison & 40 shape statistics; 180 station and 427 event groups match Pandas; 1,324 text records reconciled. & \path{evidence/guide_gold_reconciliation.json}\\
+Notebooks & Quality: 8 code cells; Gold preview: 6. Both execute without errors from fresh kernels. & Guide execution receipts under \path{evidence/}; existing environment.\\
 Airflow and live source & Successful real Gold and replay DAGs; bounded live CLI validation; unchanged captured-response replays. & Gold/incremental DAG and live receipts, preserved earlier failures.\\
 \bottomrule
 \end{tabularx}
@@ -401,6 +437,8 @@ remain student actions. No submission date or delivery acceptance is invented.
 \href{https://spark.apache.org/docs/3.5.7/sql-data-sources-parquet.html}{Parquet files: official read/write documentation}.
 \item NWS,
 \href{https://www.weather.gov/documentation/services-web-api}{API Web Service: official service documentation}, checked 21 November 2026.
+\item VADER Sentiment, version 3.3.2 (MIT license),
+\href{https://github.com/cjhutto/vaderSentiment}{official project and license}.
 \end{enumerate}
 }
 \end{document}

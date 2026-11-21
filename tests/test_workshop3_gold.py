@@ -2,6 +2,7 @@
 from datetime import date
 import hashlib
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -20,7 +21,7 @@ class GoldInputTests(unittest.TestCase):
         # Hash-validation fixture only, never passed to a Spark reader.
         self.file.write_bytes(b'synthetic registry bytes')
         self.register=self.root/'register.json'
-        self.config={'input_register':'register.json'}
+        self.config={'input_register':'register.json','output_folder':'data/gold'}
         self.register.write_text(json.dumps({'input_sha256':{
             'data/curated/silver/fixture.parquet':hashlib.sha256(self.file.read_bytes()).hexdigest()}}))
 
@@ -56,6 +57,7 @@ class GoldInputTests(unittest.TestCase):
         self.assertEqual(manifest.read_bytes(),before)
 
 
+@unittest.skipIf(os.name == 'nt', 'Spark fixture temp writes require Linux Hadoop runtime; full Windows data run is verified separately')
 class GoldSparkTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
