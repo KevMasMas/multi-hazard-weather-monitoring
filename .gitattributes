@@ -22,3 +22,13 @@ workshop_2/samples/lineage/*.json -text
 workshop_2/samples/silver/*.parquet binary
 requirements*.txt text eol=lf
 Dockerfile text eol=lf
+
+# Preserve recorded W3 evidence and native Gold manifests across checkouts.
+workshop_3/evidence/*.json -text
+workshop_3/evidence/*.csv -text
+workshop_3/samples/gold/*.json -text
+workshop_3/samples/gold/*.parquet binary
+workshop_3/samples/gold/*.csv -text
+workshop_3/samples/incremental/*.json -text
+workshop_3/*.zip binary
+workshop_3/*.pdf binary

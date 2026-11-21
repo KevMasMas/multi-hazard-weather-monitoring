@@ -1,0 +1,18 @@
+{
+  "dag_run_id": "w3_gold_20261121T144317",
+  "manifest_source": "data/gold/20261121_144319_caeba6938516/manifest.json",
+  "outputs": {
+    "governance": {
+      "path": "workshop_3/samples/gold/governance_20261121_144319_caeba6938516.parquet",
+      "sha256": "C21E050DB77E0F941B99F028740FEDF96FD5C38DF2262AF55F5817190705F4F8",
+      "rows": 625,
+      "bytes": 9689
+    },
+    "storytelling": {
+      "path": "workshop_3/samples/gold/storytelling_20261121_144319_caeba6938516.parquet",
+      "sha256": "63C1FA56AD8919F4B2361F5588A43D85614E39763D34C9523A4369BE40A35097",
+      "rows": 607,
+      "bytes": 14007
+    }
+  }
+}

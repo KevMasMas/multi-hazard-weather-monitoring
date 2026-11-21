@@ -1,0 +1,452 @@
+[
+  {
+    "candidate_key": "3e1bc125694595f745af68b09eb6f8ae271056d3bca484045c6cb2edcaa2df55",
+    "left_id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a3cd7345a6466040a26f925894944cb38222d521.002.1",
+    "right_id": "https://api.weather.gov/stations/KOKC/observations/2026-11-02T19:05:00+00:00",
+    "rule_version": "nws_polygon_validity_v1",
+    "review_status": "candidate_not_confirmed",
+    "relationship": "intra_NWS_temporal_spatial_association",
+    "independence": "same NWS API; not independent source evidence",
+    "geometry_rule": "ST_Covers(alert polygon, station point)",
+    "time_rule": "observation inside effective/expires interval",
+    "observation_timestamp": "2026-11-02T19:05:00+00:00",
+    "alert_severity": "Severe",
+    "station_measurements": {
+      "dewpoint": {
+        "unit": "degC",
+        "value": null,
+        "source_unit": "wmoUnit:degC",
+        "source_value": null,
+        "quality_control": "Z",
+        "conversion_status": "missing"
+      },
+      "windGust": {
+        "unit": "m/s",
+        "value": 12.9,
+        "source_unit": "wmoUnit:km_h-1",
+        "source_value": 46.44,
+        "quality_control": "S",
+        "conversion_status": "converted"
+      },
+      "windSpeed": {
+        "unit": "m/s",
+        "value": 8.200000000000001,
+        "source_unit": "wmoUnit:km_h-1",
+        "source_value": 29.52,
+        "quality_control": "V",
+        "conversion_status": "converted"
+      },
+      "temperature": {
+        "unit": "degC",
+        "value": 20.6,
+        "source_unit": "wmoUnit:degC",
+        "source_value": 20.6,
+        "quality_control": "V",
+        "conversion_status": "converted"
+      },
+      "relativeHumidity": {
+        "unit": "%",
+        "value": null,
+        "source_unit": "wmoUnit:percent",
+        "source_value": null,
+        "quality_control": "V",
+        "conversion_status": "missing"
+      },
+      "barometricPressure": {
+        "unit": "Pa",
+        "value": 100810,
+        "source_unit": "wmoUnit:Pa",
+        "source_value": 100810,
+        "quality_control": "V",
+        "conversion_status": "converted"
+      },
+      "precipitationLastHour": {
+        "unit": "mm",
+        "value": 1.5,
+        "source_unit": "wmoUnit:mm",
+        "source_value": 1.5,
+        "quality_control": "C",
+        "conversion_status": "converted"
+      },
+      "precipitationLast3Hours": {
+        "unit": "mm",
+        "value": null,
+        "source_unit": "wmoUnit:mm",
+        "source_value": null,
+        "quality_control": "Z",
+        "conversion_status": "missing"
+      },
+      "precipitationLast6Hours": {
+        "unit": "mm",
+        "value": null,
+        "source_unit": "wmoUnit:mm",
+        "source_value": null,
+        "quality_control": "Z",
+        "conversion_status": "missing"
+      }
+    },
+    "left_content_sha256": "ca6c8a5ab692aafce7ec3d67c9d928feb04fa7b9f20e6e687d7cf1331152fd1c",
+    "right_content_sha256": "d171a11da6a2176a829dca7d8647188ad90f1a102d8de1918067426b74db5380",
+    "limitation": "Association does not verify an impact or a shared physical event."
+  },
+  {
+    "candidate_key": "d91242ae553bee54f5e6065c064d282fd68846f3ea682b7d1320a8be42e7df5e",
+    "left_id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a3cd7345a6466040a26f925894944cb38222d521.001.1",
+    "right_id": "https://api.weather.gov/stations/KOKC/observations/2026-11-02T19:05:00+00:00",
+    "rule_version": "nws_polygon_validity_v1",
+    "review_status": "candidate_not_confirmed",
+    "relationship": "intra_NWS_temporal_spatial_association",
+    "independence": "same NWS API; not independent source evidence",
+    "geometry_rule": "ST_Covers(alert polygon, station point)",
+    "time_rule": "observation inside effective/expires interval",
+    "observation_timestamp": "2026-11-02T19:05:00+00:00",
+    "alert_severity": "Minor",
+    "station_measurements": {
+      "dewpoint": {
+        "unit": "degC",
+        "value": null,
+        "source_unit": "wmoUnit:degC",
+        "source_value": null,
+        "quality_control": "Z",
+        "conversion_status": "missing"
+      },
+      "windGust": {
+        "unit": "m/s",
+        "value": 12.9,
+        "source_unit": "wmoUnit:km_h-1",
+        "source_value": 46.44,
+        "quality_control": "S",
+        "conversion_status": "converted"
+      },
+      "windSpeed": {
+        "unit": "m/s",
+        "value": 8.200000000000001,
+        "source_unit": "wmoUnit:km_h-1",
+        "source_value": 29.52,
+        "quality_control": "V",
+        "conversion_status": "converted"
+      },
+      "temperature": {
+        "unit": "degC",
+        "value": 20.6,
+        "source_unit": "wmoUnit:degC",
+        "source_value": 20.6,
+        "quality_control": "V",
+        "conversion_status": "converted"
+      },
+      "relativeHumidity": {
+        "unit": "%",
+        "value": null,
+        "source_unit": "wmoUnit:percent",
+        "source_value": null,
+        "quality_control": "V",
+        "conversion_status": "missing"
+      },
+      "barometricPressure": {
+        "unit": "Pa",
+        "value": 100810,
+        "source_unit": "wmoUnit:Pa",
+        "source_value": 100810,
+        "quality_control": "V",
+        "conversion_status": "converted"
+      },
+      "precipitationLastHour": {
+        "unit": "mm",
+        "value": 1.5,
+        "source_unit": "wmoUnit:mm",
+        "source_value": 1.5,
+        "quality_control": "C",
+        "conversion_status": "converted"
+      },
+      "precipitationLast3Hours": {
+        "unit": "mm",
+        "value": null,
+        "source_unit": "wmoUnit:mm",
+        "source_value": null,
+        "quality_control": "Z",
+        "conversion_status": "missing"
+      },
+      "precipitationLast6Hours": {
+        "unit": "mm",
+        "value": null,
+        "source_unit": "wmoUnit:mm",
+        "source_value": null,
+        "quality_control": "Z",
+        "conversion_status": "missing"
+      }
+    },
+    "left_content_sha256": "8b322658e906777b1f5f1088981f6e0881bc4513079a236829ca6d2830ae765e",
+    "right_content_sha256": "d171a11da6a2176a829dca7d8647188ad90f1a102d8de1918067426b74db5380",
+    "limitation": "Association does not verify an impact or a shared physical event."
+  },
+  {
+    "candidate_key": "14eee6ab30a7d3ea2192c414dd4e98d6a69a8342d82f837256d75e089ef197da",
+    "left_id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0710dfe5c94f00e728cc7292fcb45645de625323.001.1",
+    "right_id": "https://api.weather.gov/stations/KOKC/observations/2026-11-02T19:05:00+00:00",
+    "rule_version": "nws_polygon_validity_v1",
+    "review_status": "candidate_not_confirmed",
+    "relationship": "intra_NWS_temporal_spatial_association",
+    "independence": "same NWS API; not independent source evidence",
+    "geometry_rule": "ST_Covers(alert polygon, station point)",
+    "time_rule": "observation inside effective/expires interval",
+    "observation_timestamp": "2026-11-02T19:05:00+00:00",
+    "alert_severity": "Severe",
+    "station_measurements": {
+      "dewpoint": {
+        "unit": "degC",
+        "value": null,
+        "source_unit": "wmoUnit:degC",
+        "source_value": null,
+        "quality_control": "Z",
+        "conversion_status": "missing"
+      },
+      "windGust": {
+        "unit": "m/s",
+        "value": 12.9,
+        "source_unit": "wmoUnit:km_h-1",
+        "source_value": 46.44,
+        "quality_control": "S",
+        "conversion_status": "converted"
+      },
+      "windSpeed": {
+        "unit": "m/s",
+        "value": 8.200000000000001,
+        "source_unit": "wmoUnit:km_h-1",
+        "source_value": 29.52,
+        "quality_control": "V",
+        "conversion_status": "converted"
+      },
+      "temperature": {
+        "unit": "degC",
+        "value": 20.6,
+        "source_unit": "wmoUnit:degC",
+        "source_value": 20.6,
+        "quality_control": "V",
+        "conversion_status": "converted"
+      },
+      "relativeHumidity": {
+        "unit": "%",
+        "value": null,
+        "source_unit": "wmoUnit:percent",
+        "source_value": null,
+        "quality_control": "V",
+        "conversion_status": "missing"
+      },
+      "barometricPressure": {
+        "unit": "Pa",
+        "value": 100810,
+        "source_unit": "wmoUnit:Pa",
+        "source_value": 100810,
+        "quality_control": "V",
+        "conversion_status": "converted"
+      },
+      "precipitationLastHour": {
+        "unit": "mm",
+        "value": 1.5,
+        "source_unit": "wmoUnit:mm",
+        "source_value": 1.5,
+        "quality_control": "C",
+        "conversion_status": "converted"
+      },
+      "precipitationLast3Hours": {
+        "unit": "mm",
+        "value": null,
+        "source_unit": "wmoUnit:mm",
+        "source_value": null,
+        "quality_control": "Z",
+        "conversion_status": "missing"
+      },
+      "precipitationLast6Hours": {
+        "unit": "mm",
+        "value": null,
+        "source_unit": "wmoUnit:mm",
+        "source_value": null,
+        "quality_control": "Z",
+        "conversion_status": "missing"
+      }
+    },
+    "left_content_sha256": "22e2e3959ad31578b9cc09c68580d8acaa07a1832ca98a4fbb75822fcf8ca633",
+    "right_content_sha256": "d171a11da6a2176a829dca7d8647188ad90f1a102d8de1918067426b74db5380",
+    "limitation": "Association does not verify an impact or a shared physical event."
+  },
+  {
+    "candidate_key": "8cc4418a61bf73cd015d900b28bb2c3f972e57777cc1e08c139e1fce1a330bb8",
+    "left_id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.04b1e8e45e3c90c5853f6f02ed5e2b922ee2ecd1.001.1",
+    "right_id": "https://api.weather.gov/stations/KOKC/observations/2026-11-02T19:05:00+00:00",
+    "rule_version": "nws_polygon_validity_v1",
+    "review_status": "candidate_not_confirmed",
+    "relationship": "intra_NWS_temporal_spatial_association",
+    "independence": "same NWS API; not independent source evidence",
+    "geometry_rule": "ST_Covers(alert polygon, station point)",
+    "time_rule": "observation inside effective/expires interval",
+    "observation_timestamp": "2026-11-02T19:05:00+00:00",
+    "alert_severity": "Severe",
+    "station_measurements": {
+      "dewpoint": {
+        "unit": "degC",
+        "value": null,
+        "source_unit": "wmoUnit:degC",
+        "source_value": null,
+        "quality_control": "Z",
+        "conversion_status": "missing"
+      },
+      "windGust": {
+        "unit": "m/s",
+        "value": 12.9,
+        "source_unit": "wmoUnit:km_h-1",
+        "source_value": 46.44,
+        "quality_control": "S",
+        "conversion_status": "converted"
+      },
+      "windSpeed": {
+        "unit": "m/s",
+        "value": 8.200000000000001,
+        "source_unit": "wmoUnit:km_h-1",
+        "source_value": 29.52,
+        "quality_control": "V",
+        "conversion_status": "converted"
+      },
+      "temperature": {
+        "unit": "degC",
+        "value": 20.6,
+        "source_unit": "wmoUnit:degC",
+        "source_value": 20.6,
+        "quality_control": "V",
+        "conversion_status": "converted"
+      },
+      "relativeHumidity": {
+        "unit": "%",
+        "value": null,
+        "source_unit": "wmoUnit:percent",
+        "source_value": null,
+        "quality_control": "V",
+        "conversion_status": "missing"
+      },
+      "barometricPressure": {
+        "unit": "Pa",
+        "value": 100810,
+        "source_unit": "wmoUnit:Pa",
+        "source_value": 100810,
+        "quality_control": "V",
+        "conversion_status": "converted"
+      },
+      "precipitationLastHour": {
+        "unit": "mm",
+        "value": 1.5,
+        "source_unit": "wmoUnit:mm",
+        "source_value": 1.5,
+        "quality_control": "C",
+        "conversion_status": "converted"
+      },
+      "precipitationLast3Hours": {
+        "unit": "mm",
+        "value": null,
+        "source_unit": "wmoUnit:mm",
+        "source_value": null,
+        "quality_control": "Z",
+        "conversion_status": "missing"
+      },
+      "precipitationLast6Hours": {
+        "unit": "mm",
+        "value": null,
+        "source_unit": "wmoUnit:mm",
+        "source_value": null,
+        "quality_control": "Z",
+        "conversion_status": "missing"
+      }
+    },
+    "left_content_sha256": "23212430e27aea5e02feaca4838bcb2b0271f2966ba0bc0adb9e9f917589e978",
+    "right_content_sha256": "d171a11da6a2176a829dca7d8647188ad90f1a102d8de1918067426b74db5380",
+    "limitation": "Association does not verify an impact or a shared physical event."
+  },
+  {
+    "candidate_key": "124b63be0b2530c718bb48ef1595caa5939c76b82692f8d5e18115fe9d841a06",
+    "left_id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7314bc0bfb7671012c20632bba902ba8e61d77d0.001.1",
+    "right_id": "https://api.weather.gov/stations/KOKC/observations/2026-11-02T18:52:00+00:00",
+    "rule_version": "nws_polygon_validity_v1",
+    "review_status": "candidate_not_confirmed",
+    "relationship": "intra_NWS_temporal_spatial_association",
+    "independence": "same NWS API; not independent source evidence",
+    "geometry_rule": "ST_Covers(alert polygon, station point)",
+    "time_rule": "observation inside effective/expires interval",
+    "observation_timestamp": "2026-11-02T18:52:00+00:00",
+    "alert_severity": "Moderate",
+    "station_measurements": {
+      "dewpoint": {
+        "unit": "degC",
+        "value": null,
+        "source_unit": "wmoUnit:degC",
+        "source_value": null,
+        "quality_control": "Z",
+        "conversion_status": "missing"
+      },
+      "windGust": {
+        "unit": "m/s",
+        "value": 12.4,
+        "source_unit": "wmoUnit:km_h-1",
+        "source_value": 44.64,
+        "quality_control": "C",
+        "conversion_status": "converted"
+      },
+      "windSpeed": {
+        "unit": "m/s",
+        "value": 7.200000000000001,
+        "source_unit": "wmoUnit:km_h-1",
+        "source_value": 25.92,
+        "quality_control": "V",
+        "conversion_status": "converted"
+      },
+      "temperature": {
+        "unit": "degC",
+        "value": 21.1,
+        "source_unit": "wmoUnit:degC",
+        "source_value": 21.1,
+        "quality_control": "V",
+        "conversion_status": "converted"
+      },
+      "relativeHumidity": {
+        "unit": "%",
+        "value": null,
+        "source_unit": "wmoUnit:percent",
+        "source_value": null,
+        "quality_control": "V",
+        "conversion_status": "missing"
+      },
+      "barometricPressure": {
+        "unit": "Pa",
+        "value": 100810,
+        "source_unit": "wmoUnit:Pa",
+        "source_value": 100810,
+        "quality_control": "V",
+        "conversion_status": "converted"
+      },
+      "precipitationLastHour": {
+        "unit": "mm",
+        "value": 0,
+        "source_unit": "wmoUnit:mm",
+        "source_value": 0,
+        "quality_control": "C",
+        "conversion_status": "converted"
+      },
+      "precipitationLast3Hours": {
+        "unit": "mm",
+        "value": null,
+        "source_unit": "wmoUnit:mm",
+        "source_value": null,
+        "quality_control": "Z",
+        "conversion_status": "missing"
+      },
+      "precipitationLast6Hours": {
+        "unit": "mm",
+        "value": null,
+        "source_unit": "wmoUnit:mm",
+        "source_value": null,
+        "quality_control": "Z",
+        "conversion_status": "missing"
+      }
+    },
+    "left_content_sha256": "737c77eb0809afdaabab8e7da18c0ea1b4c4327b95b5dcec23d4e2561fb9302f",
+    "right_content_sha256": "55cf3acb6e4dd679532f2b6054c85cc103dcfb288343e03e39c60b6c8a96c430",
+    "limitation": "Association does not verify an impact or a shared physical event."
+  }
+]

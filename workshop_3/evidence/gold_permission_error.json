@@ -1,0 +1,11 @@
+{
+  "log_content_sha256": "BD0DF6DF486B87667C31EEC18F69600ED293621E630D913C85C96CB777CEAD03",
+  "source": "Airflow local REST API task log, attempt 1",
+  "dag_run_id": "w3_gold_20261121T012921",
+  "error_lines": [
+    ": ExitCodeException exitCode=1: chmod: changing permissions of \\'/opt/weather/data/gold/.gold_pending_lb03s3xm/governance_parts\\': Operation not permitted",
+    ": ExitCodeException exitCode=1: chmod: changing permissions of \\'/opt/weather/data/gold/.gold_pending_lb03s3xm/governance_parts\\': Operation not permitted",
+    ": ExitCodeException exitCode=1: chmod: changing permissions of \\'/opt/weather/data/gold/.gold_pending_lb03s3xm/governance_parts\\': Operation not permitted"
+  ],
+  "captured_at_utc": "2026-11-21T14:49:29.6356487Z"
+}

@@ -1,0 +1,12 @@
+{
+  "operation": "Same batch identity replay; existing committed path returned before Spark startup",
+  "batch_id": "w3_gold_20261121T144317",
+  "logical_time": "2026-11-21T14:43:19.294389+00:00",
+  "manifest_path": "data/gold/20261121_144319_caeba6938516/manifest.json",
+  "manifest_sha256_before": "A413FAB0E5CDA49CBD6B814915261D830CDE2D886C25F0D4379B2CA072ADAE3C",
+  "manifest_sha256_after": "A413FAB0E5CDA49CBD6B814915261D830CDE2D886C25F0D4379B2CA072ADAE3C",
+  "batch_folders_before": 1,
+  "batch_folders_after": 1,
+  "output_hashes_unchanged": true,
+  "weather_network": false
+}

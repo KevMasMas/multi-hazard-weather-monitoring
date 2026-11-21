@@ -1,0 +1,13 @@
+{
+  "executed_at_utc": "2026-11-21T14:45:35.134836+00:00",
+  "notebook": "04_gold_review.ipynb",
+  "sha256": "A7067C216C1FABB9C11A94F217FE02E93681497B56B2D86C1C1B30DFB00B41AD",
+  "code_cells": 5,
+  "error_outputs": 0,
+  "python": "3.12.16",
+  "pandas": "3.1.1",
+  "pyarrow": "18.1.0",
+  "weather_network": false,
+  "database_network": false,
+  "environment": "Existing dependency environment, fresh kernel; no cached notebook variables reused."
+}

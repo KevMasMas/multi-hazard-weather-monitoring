@@ -1,0 +1,3 @@
+# Python 3.12 notebook/review environment; Spark itself runs in Docker with Java 17.
+-r requirements-workshop2.in
+pyspark==3.5.7

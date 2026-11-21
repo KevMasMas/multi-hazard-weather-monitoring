@@ -1,0 +1,559 @@
+{
+  "executed_at_utc": "2026-11-21T15:17:06.439694+00:00",
+  "weather_network": false,
+  "cli_commands": [
+    {
+      "args": [
+        "--mode",
+        "incremental",
+        "--replay",
+        "config/workshop3_nws_replay.json"
+      ],
+      "exit_code": 0,
+      "output": {
+        "mode": "incremental",
+        "result": [
+          {
+            "poll_id": 13,
+            "source": "nws_alerts",
+            "namespace": "replay",
+            "scope": "OK",
+            "queried_at_utc": "2026-11-04T21:45:50+00:00",
+            "coverage_complete": true,
+            "watermark_advanced": true,
+            "read": 238,
+            "new": 0,
+            "changed": 0,
+            "unchanged": 238,
+            "rejected": 0
+          },
+          {
+            "poll_id": 14,
+            "source": "nws_station_observations",
+            "namespace": "replay",
+            "scope": "KOKC",
+            "queried_at_utc": "2026-11-05T12:52:29.958729+00:00",
+            "coverage_complete": false,
+            "watermark_advanced": false,
+            "read": 700,
+            "new": 0,
+            "changed": 0,
+            "unchanged": 700,
+            "rejected": 0
+          }
+        ]
+      }
+    },
+    {
+      "args": [
+        "--mode",
+        "status"
+      ],
+      "exit_code": 0,
+      "output": {
+        "mode": "status",
+        "result": {
+          "historical": [
+            {
+              "source": "ghcn_daily",
+              "partition": "USW00013967_2022_full",
+              "status": "succeeded",
+              "read": 1095,
+              "accepted": 0,
+              "rejected": 0,
+              "unchanged": 1095,
+              "started_at_utc": "2026-11-17 02:19:48.254890+00:00",
+              "finished_at_utc": "2026-11-17 02:19:49.663868+00:00"
+            },
+            {
+              "source": "ghcn_daily",
+              "partition": "USW00013967_2021_full",
+              "status": "succeeded",
+              "read": 1095,
+              "accepted": 0,
+              "rejected": 0,
+              "unchanged": 1095,
+              "started_at_utc": "2026-11-17 02:19:42.164693+00:00",
+              "finished_at_utc": "2026-11-17 02:19:43.840694+00:00"
+            },
+            {
+              "source": "noaa_storm_events",
+              "partition": "OK_2021",
+              "status": "succeeded",
+              "read": 1324,
+              "accepted": 0,
+              "rejected": 0,
+              "unchanged": 1324,
+              "started_at_utc": "2026-11-17 02:19:35.399208+00:00",
+              "finished_at_utc": "2026-11-17 02:19:37.512014+00:00"
+            },
+            {
+              "source": "ghcn_daily",
+              "partition": "USW00013967_2025_full",
+              "status": "succeeded",
+              "read": 1095,
+              "accepted": 0,
+              "rejected": 0,
+              "unchanged": 1095,
+              "started_at_utc": "2026-11-17 02:06:36.997498+00:00",
+              "finished_at_utc": "2026-11-17 02:06:38.828586+00:00"
+            },
+            {
+              "source": "noaa_storm_events",
+              "partition": "OK_2025",
+              "status": "succeeded",
+              "read": 2892,
+              "accepted": 0,
+              "rejected": 0,
+              "unchanged": 2892,
+              "started_at_utc": "2026-11-17 02:06:30.967088+00:00",
+              "finished_at_utc": "2026-11-17 02:06:36.988756+00:00"
+            },
+            {
+              "source": "ghcn_daily",
+              "partition": "USW00013967_2024_full",
+              "status": "succeeded",
+              "read": 1098,
+              "accepted": 0,
+              "rejected": 0,
+              "unchanged": 1098,
+              "started_at_utc": "2026-11-17 02:06:28.762387+00:00",
+              "finished_at_utc": "2026-11-17 02:06:30.945106+00:00"
+            },
+            {
+              "source": "noaa_storm_events",
+              "partition": "OK_2024",
+              "status": "succeeded",
+              "read": 3504,
+              "accepted": 0,
+              "rejected": 0,
+              "unchanged": 3504,
+              "started_at_utc": "2026-11-17 02:06:23.341696+00:00",
+              "finished_at_utc": "2026-11-17 02:06:28.755391+00:00"
+            },
+            {
+              "source": "ghcn_daily",
+              "partition": "USW00013967_2023_full",
+              "status": "succeeded",
+              "read": 1095,
+              "accepted": 0,
+              "rejected": 0,
+              "unchanged": 1095,
+              "started_at_utc": "2026-11-17 02:06:21.550404+00:00",
+              "finished_at_utc": "2026-11-17 02:06:23.312686+00:00"
+            },
+            {
+              "source": "noaa_storm_events",
+              "partition": "OK_2023",
+              "status": "succeeded",
+              "read": 3764,
+              "accepted": 0,
+              "rejected": 0,
+              "unchanged": 3764,
+              "started_at_utc": "2026-11-17 02:06:14.877201+00:00",
+              "finished_at_utc": "2026-11-17 02:06:21.540739+00:00"
+            },
+            {
+              "source": "ghcn_daily",
+              "partition": "USW00013967_2022_full",
+              "status": "succeeded",
+              "read": 1095,
+              "accepted": 0,
+              "rejected": 0,
+              "unchanged": 1095,
+              "started_at_utc": "2026-11-17 02:06:13.099133+00:00",
+              "finished_at_utc": "2026-11-17 02:06:14.856894+00:00"
+            },
+            {
+              "source": "noaa_storm_events",
+              "partition": "OK_2022",
+              "status": "succeeded",
+              "read": 2077,
+              "accepted": 0,
+              "rejected": 0,
+              "unchanged": 2077,
+              "started_at_utc": "2026-11-17 02:06:09.944939+00:00",
+              "finished_at_utc": "2026-11-17 02:06:13.090846+00:00"
+            },
+            {
+              "source": "ghcn_daily",
+              "partition": "USW00013967_2021_full",
+              "status": "succeeded",
+              "read": 1095,
+              "accepted": 0,
+              "rejected": 0,
+              "unchanged": 1095,
+              "started_at_utc": "2026-11-17 02:06:08.115823+00:00",
+              "finished_at_utc": "2026-11-17 02:06:09.925901+00:00"
+            },
+            {
+              "source": "noaa_storm_events",
+              "partition": "OK_2021",
+              "status": "succeeded",
+              "read": 1324,
+              "accepted": 0,
+              "rejected": 0,
+              "unchanged": 1324,
+              "started_at_utc": "2026-11-17 02:06:05.815409+00:00",
+              "finished_at_utc": "2026-11-17 02:06:08.081355+00:00"
+            },
+            {
+              "source": "ghcn_daily",
+              "partition": "USW00013967_2025",
+              "status": "succeeded",
+              "read": 1095,
+              "accepted": 0,
+              "rejected": 0,
+              "unchanged": 1095,
+              "started_at_utc": "2026-11-17 02:06:04.045200+00:00",
+              "finished_at_utc": "2026-11-17 02:06:05.797480+00:00"
+            },
+            {
+              "source": "noaa_storm_events",
+              "partition": "sample_2024",
+              "status": "succeeded",
+              "read": 250,
+              "accepted": 0,
+              "rejected": 0,
+              "unchanged": 250,
+              "started_at_utc": "2026-11-17 02:06:03.655024+00:00",
+              "finished_at_utc": "2026-11-17 02:06:04.029801+00:00"
+            },
+            {
+              "source": "ghcn_daily",
+              "partition": "USW00013967_2025_full",
+              "status": "succeeded",
+              "read": 1095,
+              "accepted": 0,
+              "rejected": 0,
+              "unchanged": 1095,
+              "started_at_utc": "2026-11-17 02:04:02.546494+00:00",
+              "finished_at_utc": "2026-11-17 02:04:03.669592+00:00"
+            },
+            {
+              "source": "noaa_storm_events",
+              "partition": "OK_2025",
+              "status": "succeeded",
+              "read": 2892,
+              "accepted": 2892,
+              "rejected": 0,
+              "unchanged": 0,
+              "started_at_utc": "2026-11-17 02:03:54.057603+00:00",
+              "finished_at_utc": "2026-11-17 02:03:59.007781+00:00"
+            },
+            {
+              "source": "ghcn_daily",
+              "partition": "USW00013967_2024_full",
+              "status": "succeeded",
+              "read": 1098,
+              "accepted": 1098,
+              "rejected": 0,
+              "unchanged": 0,
+              "started_at_utc": "2026-11-17 02:03:47.594758+00:00",
+              "finished_at_utc": "2026-11-17 02:03:49.347235+00:00"
+            },
+            {
+              "source": "noaa_storm_events",
+              "partition": "OK_2024",
+              "status": "succeeded",
+              "read": 3504,
+              "accepted": 3254,
+              "rejected": 0,
+              "unchanged": 250,
+              "started_at_utc": "2026-11-17 02:03:34.808717+00:00",
+              "finished_at_utc": "2026-11-17 02:03:43.417013+00:00"
+            },
+            {
+              "source": "ghcn_daily",
+              "partition": "USW00013967_2023_full",
+              "status": "succeeded",
+              "read": 1095,
+              "accepted": 1095,
+              "rejected": 0,
+              "unchanged": 0,
+              "started_at_utc": "2026-11-17 02:03:27.872797+00:00",
+              "finished_at_utc": "2026-11-17 02:03:30.079535+00:00"
+            }
+          ],
+          "incremental": {
+            "states": [
+              {
+                "source_id": "nws_alerts",
+                "namespace": "live",
+                "scope": "OK",
+                "last_successful_query_at_utc": "2026-11-21 15:05:04.789054+00:00",
+                "state_age": "0:12:01.113964"
+              },
+              {
+                "source_id": "nws_alerts",
+                "namespace": "replay",
+                "scope": "OK",
+                "last_successful_query_at_utc": "2026-11-04 21:45:50+00:00",
+                "state_age": "16 days, 17:31:15.903028"
+              },
+              {
+                "source_id": "nws_station_observations",
+                "namespace": "live",
+                "scope": "KOKC",
+                "last_successful_query_at_utc": "2026-11-21 15:05:05.528848+00:00",
+                "state_age": "0:12:00.374182"
+              }
+            ],
+            "recent_polls": [
+              {
+                "poll_id": 14,
+                "source_id": "nws_station_observations",
+                "namespace": "replay",
+                "scope": "KOKC",
+                "queried_at_utc": "2026-11-05 12:52:29.958729+00:00",
+                "status": "succeeded",
+                "coverage_complete": false,
+                "rows_read": 700,
+                "rows_new": 0,
+                "rows_changed": 0,
+                "rows_unchanged": 700,
+                "rows_rejected": 0,
+                "error_code": null
+              },
+              {
+                "poll_id": 13,
+                "source_id": "nws_alerts",
+                "namespace": "replay",
+                "scope": "OK",
+                "queried_at_utc": "2026-11-04 21:45:50+00:00",
+                "status": "succeeded",
+                "coverage_complete": true,
+                "rows_read": 238,
+                "rows_new": 0,
+                "rows_changed": 0,
+                "rows_unchanged": 238,
+                "rows_rejected": 0,
+                "error_code": null
+              },
+              {
+                "poll_id": 12,
+                "source_id": "nws_station_observations",
+                "namespace": "replay",
+                "scope": "KOKC",
+                "queried_at_utc": "2026-11-05 12:52:29.958729+00:00",
+                "status": "succeeded",
+                "coverage_complete": false,
+                "rows_read": 700,
+                "rows_new": 0,
+                "rows_changed": 0,
+                "rows_unchanged": 700,
+                "rows_rejected": 0,
+                "error_code": null
+              },
+              {
+                "poll_id": 11,
+                "source_id": "nws_alerts",
+                "namespace": "replay",
+                "scope": "OK",
+                "queried_at_utc": "2026-11-04 21:45:50+00:00",
+                "status": "succeeded",
+                "coverage_complete": true,
+                "rows_read": 238,
+                "rows_new": 0,
+                "rows_changed": 0,
+                "rows_unchanged": 238,
+                "rows_rejected": 0,
+                "error_code": null
+              },
+              {
+                "poll_id": 10,
+                "source_id": "nws_station_observations",
+                "namespace": "live",
+                "scope": "KOKC",
+                "queried_at_utc": "2026-11-21 15:05:05.528848+00:00",
+                "status": "succeeded",
+                "coverage_complete": true,
+                "rows_read": 903,
+                "rows_new": 0,
+                "rows_changed": 0,
+                "rows_unchanged": 903,
+                "rows_rejected": 0,
+                "error_code": null
+              },
+              {
+                "poll_id": 9,
+                "source_id": "nws_station_observations",
+                "namespace": "live",
+                "scope": "KOKC",
+                "queried_at_utc": "2026-11-21 15:05:05.528848+00:00",
+                "status": "succeeded",
+                "coverage_complete": true,
+                "rows_read": 903,
+                "rows_new": 903,
+                "rows_changed": 0,
+                "rows_unchanged": 0,
+                "rows_rejected": 0,
+                "error_code": null
+              },
+              {
+                "poll_id": 8,
+                "source_id": "nws_alerts",
+                "namespace": "live",
+                "scope": "OK",
+                "queried_at_utc": "2026-11-21 15:05:04.789054+00:00",
+                "status": "succeeded",
+                "coverage_complete": true,
+                "rows_read": 0,
+                "rows_new": 0,
+                "rows_changed": 0,
+                "rows_unchanged": 0,
+                "rows_rejected": 0,
+                "error_code": null
+              },
+              {
+                "poll_id": 7,
+                "source_id": "nws_alerts",
+                "namespace": "live",
+                "scope": "OK",
+                "queried_at_utc": "2026-11-21 15:05:04.789054+00:00",
+                "status": "succeeded",
+                "coverage_complete": true,
+                "rows_read": 0,
+                "rows_new": 0,
+                "rows_changed": 0,
+                "rows_unchanged": 0,
+                "rows_rejected": 0,
+                "error_code": null
+              },
+              {
+                "poll_id": 6,
+                "source_id": "nws_station_observations",
+                "namespace": "replay",
+                "scope": "KOKC",
+                "queried_at_utc": "2026-11-05 12:52:29.958729+00:00",
+                "status": "succeeded",
+                "coverage_complete": false,
+                "rows_read": 700,
+                "rows_new": 0,
+                "rows_changed": 0,
+                "rows_unchanged": 700,
+                "rows_rejected": 0,
+                "error_code": null
+              },
+              {
+                "poll_id": 5,
+                "source_id": "nws_alerts",
+                "namespace": "replay",
+                "scope": "OK",
+                "queried_at_utc": "2026-11-04 21:45:50+00:00",
+                "status": "succeeded",
+                "coverage_complete": true,
+                "rows_read": 238,
+                "rows_new": 0,
+                "rows_changed": 0,
+                "rows_unchanged": 238,
+                "rows_rejected": 0,
+                "error_code": null
+              },
+              {
+                "poll_id": 4,
+                "source_id": "nws_station_observations",
+                "namespace": "replay",
+                "scope": "KOKC",
+                "queried_at_utc": "2026-11-05 12:52:29.958729+00:00",
+                "status": "succeeded",
+                "coverage_complete": false,
+                "rows_read": 700,
+                "rows_new": 0,
+                "rows_changed": 0,
+                "rows_unchanged": 700,
+                "rows_rejected": 0,
+                "error_code": null
+              },
+              {
+                "poll_id": 3,
+                "source_id": "nws_alerts",
+                "namespace": "replay",
+                "scope": "OK",
+                "queried_at_utc": "2026-11-04 21:45:50+00:00",
+                "status": "succeeded",
+                "coverage_complete": true,
+                "rows_read": 238,
+                "rows_new": 0,
+                "rows_changed": 0,
+                "rows_unchanged": 238,
+                "rows_rejected": 0,
+                "error_code": null
+              },
+              {
+                "poll_id": 2,
+                "source_id": "nws_station_observations",
+                "namespace": "replay",
+                "scope": "KOKC",
+                "queried_at_utc": "2026-11-05 12:52:29.958729+00:00",
+                "status": "succeeded",
+                "coverage_complete": false,
+                "rows_read": 700,
+                "rows_new": 700,
+                "rows_changed": 0,
+                "rows_unchanged": 0,
+                "rows_rejected": 0,
+                "error_code": null
+              },
+              {
+                "poll_id": 1,
+                "source_id": "nws_alerts",
+                "namespace": "replay",
+                "scope": "OK",
+                "queried_at_utc": "2026-11-04 21:45:50+00:00",
+                "status": "succeeded",
+                "coverage_complete": true,
+                "rows_read": 238,
+                "rows_new": 238,
+                "rows_changed": 0,
+                "rows_unchanged": 0,
+                "rows_rejected": 0,
+                "error_code": null
+              }
+            ],
+            "record_counts": [
+              {
+                "source": "nws_alerts",
+                "namespace": "replay",
+                "records": 238
+              },
+              {
+                "source": "nws_station_observations",
+                "namespace": "live",
+                "records": 903
+              },
+              {
+                "source": "nws_station_observations",
+                "namespace": "replay",
+                "records": 700
+              }
+            ],
+            "revision_count": 1841
+          }
+        }
+      }
+    }
+  ],
+  "database_counts": {
+    "historical_record": 19039,
+    "incremental_record": 1841,
+    "incremental_revision": 1841,
+    "incremental_reject": 0,
+    "integrated_weather_record": 19942,
+    "event_candidate": 10
+  },
+  "integrated_keys_unique": true,
+  "replay_excluded_from_operational_view": true,
+  "partial_station_replay_has_no_coverage_watermark": true,
+  "no_automatic_candidate_approvals": true,
+  "raw_response_sha256_verified": {
+    "data/raw/nws_alerts/OK/70ad394cf9e7399accb5cea7b0a3b8e55526f01c314e68136439ea8442e966c3.geojson": "70AD394CF9E7399ACCB5CEA7B0A3B8E55526F01C314E68136439EA8442E966C3",
+    "data/raw/nws_alerts/OK/4cb866fdd600eac1ebdffef103b4f8b27e84d15eb8221914167420d158261574.geojson": "4CB866FDD600EAC1EBDFFEF103B4F8B27E84D15EB8221914167420D158261574",
+    "data/raw/nws_station_observations/KOKC/7857dd85fb4f35e33fa4a0eefb0f07e6634e457d96f6a0d4c30560b5cdd07d79.geojson": "7857DD85FB4F35E33FA4A0EEFB0F07E6634E457D96F6A0D4C30560B5CDD07D79",
+    "data/raw/nws_station_observations/KOKC/a13720f4e561ac3b20e56dd15f9d43224a1ef1abe84d37e58df5bf5fe38ba5cd.geojson": "A13720F4E561AC3B20E56DD15F9D43224A1EF1ABE84D37E58DF5BF5FE38BA5CD",
+    "data/raw/nws_alerts/OK/1e07f074e8201206764a9592a06c4a0f21933c0087f3a2cad8548a1f37341e0b.geojson": "1E07F074E8201206764A9592A06C4A0F21933C0087F3A2CAD8548A1F37341E0B",
+    "data/raw/nws_station_observations/KOKC/68fcc318a38bbf2111b19e0980f41ddc98c76d502f4c72f35fc46fc009571f65.geojson": "68FCC318A38BBF2111B19E0980F41DDC98C76D502F4C72F35FC46FC009571F65",
+    "data/raw/nws_station_observations/KOKC/ceda13e5cd355d6362a0f7a7597891059d6531cd14efa17c05fcc5ce82301f10.geojson": "CEDA13E5CD355D6362A0F7A7597891059D6531CD14EFA17C05FCC5CE82301F10",
+    "data/raw/nws_station_observations/KOKC/a59a1df06b9b1bd3629d880e75e40784a40d5c9c7be28a87a9bd4c48ad39169e.geojson": "A59A1DF06B9B1BD3629D880E75E40784A40D5C9C7BE28A87A9BD4C48AD39169E"
+  }
+}

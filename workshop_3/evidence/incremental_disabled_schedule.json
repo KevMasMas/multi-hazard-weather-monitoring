@@ -1,0 +1,117 @@
+{
+  "explanation": "Unpausing the initial hourly DAG queued a scheduled run without explicit mode. The network guard rejected it before any weather call. Cancelled by marking the run failed; corrected DAG has no automatic schedule until NWS_POLL_MODE=live.",
+  "before": {
+    "conf": {},
+    "dag_id": "weather_incremental_ingestion",
+    "dag_run_id": "scheduled__2026-11-21T14:00:00+00:00",
+    "data_interval_end": "2026-11-21T15:00:00+00:00",
+    "data_interval_start": "2026-11-21T14:00:00+00:00",
+    "end_date": null,
+    "execution_date": "2026-11-21T14:00:00+00:00",
+    "external_trigger": false,
+    "last_scheduling_decision": "2026-11-21T15:04:19.265500+00:00",
+    "logical_date": "2026-11-21T14:00:00+00:00",
+    "note": null,
+    "run_type": "scheduled",
+    "start_date": "2026-11-21T15:03:21.930665+00:00",
+    "state": "running"
+  },
+  "task_instances": {
+    "task_instances": [
+      {
+        "dag_id": "weather_incremental_ingestion",
+        "dag_run_id": "scheduled__2026-11-21T14:00:00+00:00",
+        "duration": 0.518179,
+        "end_date": "2026-11-21T15:04:04.355856+00:00",
+        "execution_date": "2026-11-21T14:00:00+00:00",
+        "executor": null,
+        "executor_config": "{}",
+        "hostname": "f89b5e2fcd08",
+        "map_index": -1,
+        "max_tries": 2,
+        "note": null,
+        "operator": "_PythonDecoratedOperator",
+        "pid": 46886,
+        "pool": "default_pool",
+        "pool_slots": 1,
+        "priority_weight": 1,
+        "queue": "default",
+        "queued_when": "2026-11-21T15:04:03.288846+00:00",
+        "rendered_fields": {
+          "op_args": [
+            "nws_station_observations",
+            "KOKC"
+          ],
+          "op_kwargs": {},
+          "templates_dict": null
+        },
+        "rendered_map_index": null,
+        "sla_miss": null,
+        "start_date": "2026-11-21T15:04:03.837677+00:00",
+        "state": "up_for_retry",
+        "task_display_name": "poll_station",
+        "task_id": "poll_station",
+        "trigger": null,
+        "triggerer_job": null,
+        "try_number": 2,
+        "unixname": "airflow"
+      },
+      {
+        "dag_id": "weather_incremental_ingestion",
+        "dag_run_id": "scheduled__2026-11-21T14:00:00+00:00",
+        "duration": 0.337565,
+        "end_date": "2026-11-21T15:04:13.165926+00:00",
+        "execution_date": "2026-11-21T14:00:00+00:00",
+        "executor": null,
+        "executor_config": "{}",
+        "hostname": "f89b5e2fcd08",
+        "map_index": -1,
+        "max_tries": 2,
+        "note": null,
+        "operator": "_PythonDecoratedOperator",
+        "pid": 46890,
+        "pool": "default_pool",
+        "pool_slots": 1,
+        "priority_weight": 1,
+        "queue": "default",
+        "queued_when": "2026-11-21T15:04:12.399563+00:00",
+        "rendered_fields": {
+          "op_args": [
+            "nws_alerts",
+            "OK"
+          ],
+          "op_kwargs": {},
+          "templates_dict": null
+        },
+        "rendered_map_index": null,
+        "sla_miss": null,
+        "start_date": "2026-11-21T15:04:12.828361+00:00",
+        "state": "up_for_retry",
+        "task_display_name": "poll_alerts",
+        "task_id": "poll_alerts",
+        "trigger": null,
+        "triggerer_job": null,
+        "try_number": 2,
+        "unixname": "airflow"
+      }
+    ],
+    "total_entries": 2
+  },
+  "after": {
+    "conf": {},
+    "dag_id": "weather_incremental_ingestion",
+    "dag_run_id": "scheduled__2026-11-21T14:00:00+00:00",
+    "data_interval_end": "2026-11-21T15:00:00+00:00",
+    "data_interval_start": "2026-11-21T14:00:00+00:00",
+    "end_date": "2026-11-21T15:04:20.609608+00:00",
+    "execution_date": "2026-11-21T14:00:00+00:00",
+    "external_trigger": false,
+    "last_scheduling_decision": "2026-11-21T15:04:20.340671+00:00",
+    "logical_date": "2026-11-21T14:00:00+00:00",
+    "note": null,
+    "run_type": "scheduled",
+    "start_date": "2026-11-21T15:03:21.930665+00:00",
+    "state": "failed"
+  },
+  "weather_network": false
+}

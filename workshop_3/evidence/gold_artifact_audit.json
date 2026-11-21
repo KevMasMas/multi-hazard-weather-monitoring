@@ -1,0 +1,42 @@
+{
+  "verified_at_utc": "2026-11-21T15:18:32.452179+00:00",
+  "spark_tests_passed": 8,
+  "workshop2_regression_passed": 29,
+  "gold_dag_run": "w3_gold_20261121T144317",
+  "counts": {
+    "snapshot_rows": 22553,
+    "unique_business_records": 19039,
+    "source_counts": {
+      "noaa_storm_events": 13561,
+      "ghcn_daily": 5478
+    },
+    "repeated_snapshot_rows": 3514
+  },
+  "gold_output_rows": {
+    "governance": 625,
+    "storytelling": 607
+  },
+  "notebooks": [
+    {
+      "path": "notebooks/03_silver_quality_review.ipynb",
+      "code_cells": 7,
+      "errors": 0
+    },
+    {
+      "path": "notebooks/04_gold_review.ipynb",
+      "code_cells": 5,
+      "errors": 0
+    }
+  ],
+  "input_and_output_hashes_verified": true,
+  "preserved_prior_delivery_artifacts": 12,
+  "committed_batch_retry_unchanged": true,
+  "reviewed_file_findings": [],
+  "secret_scan_scope": "Recognized GitHub/AWS/private-key patterns, not an exhaustive guarantee.",
+  "weather_network": false,
+  "commit_or_push": false,
+  "limits": [
+    "This audit covers Gold only; see the current W3 final review for incremental/report status.",
+    "No new full dependency environment was installed for notebook execution; fresh kernels used existing environment."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "executed_at_utc": "2026-11-21T15:24:19.592662+00:00",
+  "tests": 12,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "successful": true,
+  "weather_network": false,
+  "fixture_scope": "Synthetic fault scenarios in disposable UUID schemas; never weather evidence.",
+  "input_sha256": {
+    "src/multi_hazard_weather_monitoring/incremental.py": "36AA9F527E2CC05220A043A890D157B286B268667A7B1AB7F837E359B4D2A6B6",
+    "src/multi_hazard_weather_monitoring/event_candidates.py": "017862A5D2AEEBB136D9066F72D82430D1566A733C141B6A039790CE7710957C",
+    "src/multi_hazard_weather_monitoring/storage/raw_landing.py": "B11E8D1A844005C04E722B69F5CA88B6E523E2F354AF02E70F3F80521EF49726",
+    "sql/005_incremental_ingestion.sql": "111B7C21834325BBFBE0F6A0209F0C8EC91A957C5C1A2EE2520965D048669DE7",
+    "tests/test_incremental.py": "A3877F852A166CDA8CB4A6CB6DA92C9471DB280FBE6FD50FD8A23F7C00CE81A8",
+    "config/workshop3_nws_replay.json": "00219F0DA7791764CF3AD5D18F159D6498DCD5A23437034CF1396641BE03D4DC",
+    "config/workshop3_incremental.json": "63AF45AF08CF9E876E544BF1E202D5CFB11013468B327C9946A2FFF8E8BCDE0C",
+    "ingest.py": "B30B7624984781561830E93CF33F07D783C4FEDDFA13335B9FFD950760AB6EA0",
+    "airflow/dags/incremental_ingestion_dag.py": "4034B16BE0B5AB306970E231A11BE9CDF5E641EE0F678153EDB5080E1021B53C"
+  }
+}

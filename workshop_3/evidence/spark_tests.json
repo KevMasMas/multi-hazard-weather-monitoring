@@ -1,0 +1,15 @@
+{
+  "executed_at_utc": "2026-11-21T14:43:07.114668+00:00",
+  "tests": 8,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "successful": true,
+  "fixtures": "Synthetic Spark fixtures, not weather evidence.",
+  "input_sha256": {
+    "src/multi_hazard_weather_monitoring/gold.py": "0FB577A674B3AC30F4DBB0F72EAF0B1A8A826DB7C0CE2ED6F3F6273B290C424E",
+    "tests/test_workshop3_gold.py": "14A6078268ED088CD49621C7828F34FC07402A5B7180EDCE75AB87483C197464",
+    "config/workshop3_gold.json": "00F70BC0FDA4B10C439B2F3C73374277A72C1E7250160D369DA3A2FC572E4685",
+    "airflow/dags/gold_processing_dag.py": "94D423CDFB60F134E6B4D2497AEC6873A160D29428F520C2C1F92FCC4BEE2AAF"
+  }
+}

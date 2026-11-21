@@ -1,0 +1,45 @@
+{
+  "description": "Saved W1 evidence replay. Historical capture timestamps; never current conditions. Station pages are non-contiguous partial snapshots, not a complete seven-day chain.",
+  "polls": [
+    {
+      "source": "nws_alerts",
+      "scope": "OK",
+      "queried_at_utc": "2026-11-04T21:45:50Z",
+      "coverage_complete": true,
+      "pages": [
+        {
+          "path": "workshop_1/samples/nws_alerts/recent_7d_page_1.geojson",
+          "url": "https://api.weather.gov/alerts?area=OK",
+          "retrieved_at_utc": "2026-11-04T21:43:09Z",
+          "sha256": "70ad394cf9e7399accb5cea7b0a3b8e55526f01c314e68136439ea8442e966c3"
+        },
+        {
+          "path": "workshop_1/samples/nws_alerts/recent_7d_page_2.geojson",
+          "url": "https://api.weather.gov/alerts?area%5B0%5D=OK&limit=500&cursor=eyJ0IjoxNzkzNDEyNjYwLCJpIjoidXJuOm9pZDoyLjQ5LjAuMS44NDAuMC5lZTFjNDNiZGU4MTc5YzE2Y2U0ZWRlNGIzOTIyYzFhYzUyN2E1NTY4LjAwMS4xIn0%3D",
+          "retrieved_at_utc": "2026-11-04T21:45:50Z",
+          "sha256": "4cb866fdd600eac1ebdffef103b4f8b27e84d15eb8221914167420d158261574"
+        }
+      ]
+    },
+    {
+      "source": "nws_station_observations",
+      "scope": "KOKC",
+      "queried_at_utc": "2026-11-05T12:52:29.9587295Z",
+      "coverage_complete": false,
+      "pages": [
+        {
+          "path": "workshop_1/samples/region_comparison/nws_kokc_observations_poll_2.geojson",
+          "url": "https://api.weather.gov/stations/KOKC/observations?limit=200",
+          "retrieved_at_utc": "2026-11-05T12:39:36.9519380Z",
+          "sha256": "7857dd85fb4f35e33fa4a0eefb0f07e6634e457d96f6a0d4c30560b5cdd07d79"
+        },
+        {
+          "path": "workshop_1/samples/candidate_pairs/nws_kokc_observations_page_2.geojson",
+          "url": "https://api.weather.gov/stations/KOKC/observations?cursor=eyJzIjoiMjAyNi0xMS0wM1QyMTo1MjowMCswMDowMCJ9",
+          "retrieved_at_utc": "2026-11-05T12:52:29.9587295Z",
+          "sha256": "a13720f4e561ac3b20e56dd15f9d43224a1ef1abe84d37e58df5bf5fe38ba5cd"
+        }
+      ]
+    }
+  ]
+}

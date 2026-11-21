@@ -1,0 +1,187 @@
+[
+  {
+    "source": "nws_alerts",
+    "source_key": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0036c8d050b9698b7d0118770b0be224de604185.001.1",
+    "fields": {
+      "ends": null,
+      "sent": "2026-11-02T13:33:00-06:00",
+      "event": "Special Weather Statement",
+      "onset": "2026-11-02T13:33:00-06:00",
+      "status": "Actual",
+      "expires": "2026-11-02T14:00:00-06:00",
+      "geocode": {
+        "UGC": [
+          "OKZ014",
+          "OKZ021"
+        ],
+        "SAME": [
+          "040129",
+          "040009"
+        ]
+      },
+      "urgency": "Expected",
+      "severity": "Moderate",
+      "certainty": "Observed",
+      "effective": "2026-11-02T13:33:00-06:00",
+      "references": [],
+      "messageType": "Alert",
+      "affectedZones": [
+        "https://api.weather.gov/zones/forecast/OKZ014",
+        "https://api.weather.gov/zones/forecast/OKZ021"
+      ]
+    }
+  },
+  {
+    "source": "nws_alerts",
+    "source_key": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.00cc085829d955b2e1cf49f375677da4a8d99da2.001.1",
+    "fields": {
+      "ends": "2026-11-03T03:00:00-06:00",
+      "sent": "2026-11-02T23:57:00-06:00",
+      "event": "Tornado Watch",
+      "onset": "2026-11-02T23:57:00-06:00",
+      "status": "Actual",
+      "expires": "2026-11-03T00:12:57-06:00",
+      "geocode": {
+        "UGC": [
+          "OKC037",
+          "OKC107",
+          "OKC113",
+          "OKC117"
+        ],
+        "SAME": [
+          "040037",
+          "040107",
+          "040113",
+          "040117"
+        ]
+      },
+      "urgency": "Past",
+      "severity": "Minor",
+      "certainty": "Observed",
+      "effective": "2026-11-02T23:57:00-06:00",
+      "references": [
+        {
+          "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.627d41a2696acbdfe1874ae741ac7a2fb112028e.001.1",
+          "sent": "2026-11-02T19:33:00-06:00",
+          "sender": "w-nws.webmaster@noaa.gov",
+          "identifier": "urn:oid:2.49.0.1.840.0.627d41a2696acbdfe1874ae741ac7a2fb112028e.001.1"
+        }
+      ],
+      "messageType": "Cancel",
+      "affectedZones": [
+        "https://api.weather.gov/zones/county/OKC037",
+        "https://api.weather.gov/zones/county/OKC107",
+        "https://api.weather.gov/zones/county/OKC113",
+        "https://api.weather.gov/zones/county/OKC117"
+      ]
+    }
+  },
+  {
+    "source": "nws_alerts",
+    "source_key": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.00cc085829d955b2e1cf49f375677da4a8d99da2.002.1",
+    "fields": {
+      "ends": "2026-11-03T03:00:00-06:00",
+      "sent": "2026-11-02T23:57:00-06:00",
+      "event": "Tornado Watch",
+      "onset": "2026-11-02T23:57:00-06:00",
+      "status": "Actual",
+      "expires": "2026-11-03T03:00:00-06:00",
+      "geocode": {
+        "UGC": [
+          "ARC007",
+          "ARC033",
+          "ARC131",
+          "ARC143",
+          "OKC001",
+          "OKC021",
+          "OKC023",
+          "OKC035",
+          "OKC041",
+          "OKC061",
+          "OKC077",
+          "OKC079",
+          "OKC091",
+          "OKC097",
+          "OKC101",
+          "OKC105",
+          "OKC111",
+          "OKC115",
+          "OKC121",
+          "OKC127",
+          "OKC131",
+          "OKC135",
+          "OKC143",
+          "OKC145",
+          "OKC147"
+        ],
+        "SAME": [
+          "005007",
+          "005033",
+          "005131",
+          "005143",
+          "040001",
+          "040021",
+          "040023",
+          "040035",
+          "040041",
+          "040061",
+          "040077",
+          "040079",
+          "040091",
+          "040097",
+          "040101",
+          "040105",
+          "040111",
+          "040115",
+          "040121",
+          "040127",
+          "040131",
+          "040135",
+          "040143",
+          "040145",
+          "040147"
+        ]
+      },
+      "urgency": "Future",
+      "severity": "Extreme",
+      "certainty": "Possible",
+      "effective": "2026-11-02T23:57:00-06:00",
+      "references": [
+        {
+          "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.627d41a2696acbdfe1874ae741ac7a2fb112028e.001.1",
+          "sent": "2026-11-02T19:33:00-06:00",
+          "sender": "w-nws.webmaster@noaa.gov",
+          "identifier": "urn:oid:2.49.0.1.840.0.627d41a2696acbdfe1874ae741ac7a2fb112028e.001.1"
+        }
+      ],
+      "messageType": "Update",
+      "affectedZones": [
+        "https://api.weather.gov/zones/county/ARC007",
+        "https://api.weather.gov/zones/county/ARC033",
+        "https://api.weather.gov/zones/county/ARC131",
+        "https://api.weather.gov/zones/county/ARC143",
+        "https://api.weather.gov/zones/county/OKC001",
+        "https://api.weather.gov/zones/county/OKC021",
+        "https://api.weather.gov/zones/county/OKC023",
+        "https://api.weather.gov/zones/county/OKC035",
+        "https://api.weather.gov/zones/county/OKC041",
+        "https://api.weather.gov/zones/county/OKC061",
+        "https://api.weather.gov/zones/county/OKC077",
+        "https://api.weather.gov/zones/county/OKC079",
+        "https://api.weather.gov/zones/county/OKC091",
+        "https://api.weather.gov/zones/county/OKC097",
+        "https://api.weather.gov/zones/county/OKC101",
+        "https://api.weather.gov/zones/county/OKC105",
+        "https://api.weather.gov/zones/county/OKC111",
+        "https://api.weather.gov/zones/county/OKC115",
+        "https://api.weather.gov/zones/county/OKC121",
+        "https://api.weather.gov/zones/county/OKC127",
+        "https://api.weather.gov/zones/county/OKC131",
+        "https://api.weather.gov/zones/county/OKC135",
+        "https://api.weather.gov/zones/county/OKC143",
+        "https://api.weather.gov/zones/county/OKC145",
+        "https://api.weather.gov/zones/county/OKC147"
+      ]
+    }
+  }
+]

@@ -2,3 +2,8 @@
 !Dockerfile
 !requirements-workshop2-runtime.txt
 !requirements-workshop2-pipeline.txt
+!requirements-workshop3-runtime.txt
+!docker/
+!docker/package-cache/
+!docker/package-cache/.gitkeep
+!docker/package-cache/*.tar.gz

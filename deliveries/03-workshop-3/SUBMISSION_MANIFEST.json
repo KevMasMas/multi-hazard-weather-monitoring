@@ -1,0 +1,23 @@
+{
+  "prepared_at_utc": "2026-11-21T15:29:47.604878+00:00",
+  "branch": "feat/workshop-3-quality-gold",
+  "status": "technical_review_ready_not_personally_approved_or_submitted",
+  "report_pages": 8,
+  "artifacts": {
+    "workshop_3/Workshop_3_Pipeline_Improvements_and_Gold_Layer_Report.pdf": "0728EF7BA195E302DF765694521E20E3806D057CF1DAA9E23ECE3D59FA19CDFA",
+    "workshop_3/Workshop_3_Pipeline_Output_Samples.zip": "74813503B8F210EEECCF656F14279888C5DBBB9FF551113D6FEFEA88F8A26DE9",
+    "workshop_3/Workshop_3_Silver_Reproduction_Inputs.zip": "B01835F142E7A85F8387421AFBC44CA853C65E8D908E8355523F5C708DCC905F",
+    "notebooks/03_silver_quality_review.ipynb": "FF631F091E38AF1C5043B899E70876E4D8A68E14E4D5F22E29320351342A7BB7",
+    "notebooks/04_gold_review.ipynb": "A7067C216C1FABB9C11A94F217FE02E93681497B56B2D86C1C1B30DFB00B41AD",
+    "workshop_3/samples/gold/governance_20261121_144319_caeba6938516.parquet": "C21E050DB77E0F941B99F028740FEDF96FD5C38DF2262AF55F5817190705F4F8",
+    "workshop_3/samples/gold/storytelling_20261121_144319_caeba6938516.parquet": "63C1FA56AD8919F4B2361F5588A43D85614E39763D34C9523A4369BE40A35097"
+  },
+  "repository": "https://github.com/KevMasMas/multi-hazard-weather-monitoring",
+  "remote_branch_upload": "Student must commit/push this local branch before supplying its review URL.",
+  "limitations": [
+    "County allocation and labelled match evaluation pending.",
+    "Professor specification discrepancy and exact class-formula comparison unresolved.",
+    "W3 Kevin/Pablo review, commit/push and submission not recorded.",
+    "Dashboard/CHI and wider baseline/stations remain later work."
+  ]
+}

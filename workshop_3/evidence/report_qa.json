@@ -1,0 +1,69 @@
+{
+  "verified_at_utc": "2026-11-21T15:29:46.332398+00:00",
+  "pdf_path": "workshop_3/Workshop_3_Pipeline_Improvements_and_Gold_Layer_Report.pdf",
+  "pdf_sha256": "0728EF7BA195E302DF765694521E20E3806D057CF1DAA9E23ECE3D59FA19CDFA",
+  "pages": 8,
+  "page_checks": [
+    {
+      "page": 1,
+      "width": 595.28,
+      "height": 841.89,
+      "text_characters": 345,
+      "words_outside_safe_bounds": 0
+    },
+    {
+      "page": 2,
+      "width": 595.28,
+      "height": 841.89,
+      "text_characters": 3656,
+      "words_outside_safe_bounds": 0
+    },
+    {
+      "page": 3,
+      "width": 595.28,
+      "height": 841.89,
+      "text_characters": 3302,
+      "words_outside_safe_bounds": 0
+    },
+    {
+      "page": 4,
+      "width": 595.28,
+      "height": 841.89,
+      "text_characters": 1421,
+      "words_outside_safe_bounds": 0
+    },
+    {
+      "page": 5,
+      "width": 595.28,
+      "height": 841.89,
+      "text_characters": 3371,
+      "words_outside_safe_bounds": 0
+    },
+    {
+      "page": 6,
+      "width": 595.28,
+      "height": 841.89,
+      "text_characters": 3189,
+      "words_outside_safe_bounds": 0
+    },
+    {
+      "page": 7,
+      "width": 595.28,
+      "height": 841.89,
+      "text_characters": 4780,
+      "words_outside_safe_bounds": 0
+    },
+    {
+      "page": 8,
+      "width": 595.28,
+      "height": 841.89,
+      "text_characters": 4121,
+      "words_outside_safe_bounds": 0
+    }
+  ],
+  "visual_review_passed": true,
+  "visual_review": "All 8 final pages rendered at 90 DPI and inspected in contact sheet; actual Parquet preview page inspected separately. No clipping/overlap or artificial blank pages observed.",
+  "overfull_tex_boxes": 0,
+  "nonblocking_tex_note": "One underfull hbox; cached fonts rendered despite host fontconfig diagnostic.",
+  "weather_network": false
+}

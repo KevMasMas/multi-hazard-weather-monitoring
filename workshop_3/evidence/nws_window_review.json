@@ -1,0 +1,30 @@
+{
+  "verified_at_utc": "2026-11-21T15:27:15.949387+00:00",
+  "weather_network": false,
+  "requested_window": {
+    "end_utc": "2026-11-21T15:05:05.528848+00:00",
+    "start_utc": "2026-11-14T15:05:05.528848+00:00",
+    "reconciliation": "full",
+    "retention_gap_before_utc": null
+  },
+  "returned_records": 903,
+  "within_requested_interval": 902,
+  "before_requested_start": 1,
+  "after_requested_end": 0,
+  "minimum_observed_at_utc": "2026-11-14T14:52:00+00:00",
+  "maximum_observed_at_utc": "2026-11-21T14:35:00+00:00",
+  "outside_records": [
+    {
+      "source_key": "https://api.weather.gov/stations/KOKC/observations/2026-11-14T14:52:00+00:00",
+      "timestamp": "2026-11-14T14:52:00+00:00",
+      "position": "before_requested_start"
+    }
+  ],
+  "input_sha256": {
+    "data/raw/nws_station_observations/KOKC/68fcc318a38bbf2111b19e0980f41ddc98c76d502f4c72f35fc46fc009571f65.geojson": "68FCC318A38BBF2111B19E0980F41DDC98C76D502F4C72F35FC46FC009571F65",
+    "data/raw/nws_station_observations/KOKC/ceda13e5cd355d6362a0f7a7597891059d6531cd14efa17c05fcc5ce82301f10.geojson": "CEDA13E5CD355D6362A0F7A7597891059D6531CD14EFA17C05FCC5CE82301F10",
+    "data/raw/nws_station_observations/KOKC/a59a1df06b9b1bd3629d880e75e40784a40d5c9c7be28a87a9bd4c48ad39169e.geojson": "A59A1DF06B9B1BD3629D880E75E40784A40D5C9C7BE28A87A9BD4C48AD39169E"
+  },
+  "handling": "Preserve all returned records and raw evidence; analytics must apply explicit timestamp filters. Complete pagination does not prove all timestamps satisfy request bounds.",
+  "interpretation": "Observed response/request-boundary discrepancy; cause not verified."
+}

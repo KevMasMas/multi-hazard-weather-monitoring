@@ -1,0 +1,3 @@
+source,observed_at_utc,observed_date,latitude,longitude,severity_value,severity_unit,quality_attributes
+ghcn_daily,1.0,0.0,0.0,0.0,0.0,0.0,0.0
+noaa_storm_events,0.0,1.0,0.5223803554310155,0.5223803554310155,0.5621266868225057,0.5621266868225057,1.0

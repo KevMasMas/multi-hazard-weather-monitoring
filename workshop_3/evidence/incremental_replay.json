@@ -1,0 +1,164 @@
+{
+  "executed_at_utc": "2026-11-21T15:02:13.961186+00:00",
+  "weather_network": false,
+  "applied_migrations": [
+    "005_incremental_ingestion.sql"
+  ],
+  "before": {
+    "states": [],
+    "recent_polls": [],
+    "record_counts": [],
+    "revision_count": 0
+  },
+  "first": [
+    {
+      "poll_id": 1,
+      "source": "nws_alerts",
+      "namespace": "replay",
+      "scope": "OK",
+      "queried_at_utc": "2026-11-04T21:45:50+00:00",
+      "coverage_complete": true,
+      "watermark_advanced": true,
+      "read": 238,
+      "new": 238,
+      "changed": 0,
+      "unchanged": 0,
+      "rejected": 0
+    },
+    {
+      "poll_id": 2,
+      "source": "nws_station_observations",
+      "namespace": "replay",
+      "scope": "KOKC",
+      "queried_at_utc": "2026-11-05T12:52:29.958729+00:00",
+      "coverage_complete": false,
+      "watermark_advanced": false,
+      "read": 700,
+      "new": 700,
+      "changed": 0,
+      "unchanged": 0,
+      "rejected": 0
+    }
+  ],
+  "second": [
+    {
+      "poll_id": 3,
+      "source": "nws_alerts",
+      "namespace": "replay",
+      "scope": "OK",
+      "queried_at_utc": "2026-11-04T21:45:50+00:00",
+      "coverage_complete": true,
+      "watermark_advanced": true,
+      "read": 238,
+      "new": 0,
+      "changed": 0,
+      "unchanged": 238,
+      "rejected": 0
+    },
+    {
+      "poll_id": 4,
+      "source": "nws_station_observations",
+      "namespace": "replay",
+      "scope": "KOKC",
+      "queried_at_utc": "2026-11-05T12:52:29.958729+00:00",
+      "coverage_complete": false,
+      "watermark_advanced": false,
+      "read": 700,
+      "new": 0,
+      "changed": 0,
+      "unchanged": 700,
+      "rejected": 0
+    }
+  ],
+  "after": {
+    "states": [
+      {
+        "source_id": "nws_alerts",
+        "namespace": "replay",
+        "scope": "OK",
+        "last_successful_query_at_utc": "2026-11-04 21:45:50+00:00",
+        "state_age": "16 days, 17:16:23.949694"
+      }
+    ],
+    "recent_polls": [
+      {
+        "poll_id": 4,
+        "source_id": "nws_station_observations",
+        "namespace": "replay",
+        "scope": "KOKC",
+        "queried_at_utc": "2026-11-05 12:52:29.958729+00:00",
+        "status": "succeeded",
+        "coverage_complete": false,
+        "rows_read": 700,
+        "rows_new": 0,
+        "rows_changed": 0,
+        "rows_unchanged": 700,
+        "rows_rejected": 0,
+        "error_code": null
+      },
+      {
+        "poll_id": 3,
+        "source_id": "nws_alerts",
+        "namespace": "replay",
+        "scope": "OK",
+        "queried_at_utc": "2026-11-04 21:45:50+00:00",
+        "status": "succeeded",
+        "coverage_complete": true,
+        "rows_read": 238,
+        "rows_new": 0,
+        "rows_changed": 0,
+        "rows_unchanged": 238,
+        "rows_rejected": 0,
+        "error_code": null
+      },
+      {
+        "poll_id": 2,
+        "source_id": "nws_station_observations",
+        "namespace": "replay",
+        "scope": "KOKC",
+        "queried_at_utc": "2026-11-05 12:52:29.958729+00:00",
+        "status": "succeeded",
+        "coverage_complete": false,
+        "rows_read": 700,
+        "rows_new": 700,
+        "rows_changed": 0,
+        "rows_unchanged": 0,
+        "rows_rejected": 0,
+        "error_code": null
+      },
+      {
+        "poll_id": 1,
+        "source_id": "nws_alerts",
+        "namespace": "replay",
+        "scope": "OK",
+        "queried_at_utc": "2026-11-04 21:45:50+00:00",
+        "status": "succeeded",
+        "coverage_complete": true,
+        "rows_read": 238,
+        "rows_new": 238,
+        "rows_changed": 0,
+        "rows_unchanged": 0,
+        "rows_rejected": 0,
+        "error_code": null
+      }
+    ],
+    "record_counts": [
+      {
+        "source": "nws_alerts",
+        "namespace": "replay",
+        "records": 238
+      },
+      {
+        "source": "nws_station_observations",
+        "namespace": "replay",
+        "records": 700
+      }
+    ],
+    "revision_count": 938
+  },
+  "historical_records_preserved": 19039,
+  "operational_nws_records": 0,
+  "nws_candidate_count": 5,
+  "reused_W1_historical_candidates": 5,
+  "limitation": "KOKC snapshots are partial and have no complete-coverage watermark; replay never populates live records."
+}

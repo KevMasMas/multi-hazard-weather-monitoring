@@ -1,0 +1,7 @@
+{
+  "evidence_type": "parsed_response_excerpt_not_original_HTTP_body",
+  "source_response_sha256": "1e07f074e8201206764a9592a06c4a0f21933c0087f3a2cad8548a1f37341e0b",
+  "source_url": "https://api.weather.gov/alerts/active?area=OK",
+  "retrieved_at_utc": "2026-11-21T15:05:05.384646+00:00",
+  "features": []
+}

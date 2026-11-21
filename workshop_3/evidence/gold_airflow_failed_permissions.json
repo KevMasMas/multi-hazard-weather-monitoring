@@ -1,0 +1,18 @@
+{
+  "dag_id": "weather_gold_processing",
+  "dag_run_id": "w3_gold_20261121T012921",
+  "state": "failed",
+  "start_date": "2026-11-21T01:29:22.707231+00:00",
+  "end_date": "2026-11-21T01:31:27.848093+00:00",
+  "logical_date": "2026-11-21T01:29:22.225855+00:00",
+  "tasks": [
+    {
+      "task_id": "summarize_silver",
+      "state": "failed",
+      "try_number": 2,
+      "start_date": "2026-11-21T01:30:47.375928+00:00",
+      "end_date": "2026-11-21T01:31:27.540920+00:00"
+    }
+  ],
+  "weather_network": false
+}

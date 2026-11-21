@@ -1,0 +1,51 @@
+{
+  "before": {
+    "observed_at_utc": "2026-11-21T15:18:03.292956+00:00",
+    "postgres_started_at_utc": "2026-11-21 01:17:05.954149+00:00",
+    "tables": {
+      "incremental_state": {
+        "rows": 3,
+        "sha256": "CF74AF5B3AD7ECDFA31BCB2FB07B014811B82039CEA5A91BD85DF34CB2925863"
+      },
+      "incremental_record": {
+        "rows": 1841,
+        "sha256": "5898EEC43F4E0695D9F06AB162B6ED3C363B9058873BA9400CC71C0F1B2A2269"
+      },
+      "incremental_revision": {
+        "rows": 1841,
+        "sha256": "B3E217211F932ECCA8F34B17EFD29907E4EC4538D5330124158D66CF48962890"
+      },
+      "event_candidate": {
+        "rows": 10,
+        "sha256": "5E13395D5F5315E267402F7532AE8643FCF51A4104A023767E8E023C87B6F8A8"
+      }
+    },
+    "historical_records": 19039
+  },
+  "weather_network": false,
+  "after": {
+    "observed_at_utc": "2026-11-21T15:18:20.947306+00:00",
+    "postgres_started_at_utc": "2026-11-21 15:18:05.313158+00:00",
+    "tables": {
+      "incremental_state": {
+        "rows": 3,
+        "sha256": "CF74AF5B3AD7ECDFA31BCB2FB07B014811B82039CEA5A91BD85DF34CB2925863"
+      },
+      "incremental_record": {
+        "rows": 1841,
+        "sha256": "5898EEC43F4E0695D9F06AB162B6ED3C363B9058873BA9400CC71C0F1B2A2269"
+      },
+      "incremental_revision": {
+        "rows": 1841,
+        "sha256": "B3E217211F932ECCA8F34B17EFD29907E4EC4538D5330124158D66CF48962890"
+      },
+      "event_candidate": {
+        "rows": 10,
+        "sha256": "5E13395D5F5315E267402F7532AE8643FCF51A4104A023767E8E023C87B6F8A8"
+      }
+    },
+    "historical_records": 19039
+  },
+  "database_restarted": true,
+  "persisted_rows_and_hashes_unchanged": true
+}

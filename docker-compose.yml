@@ -12,6 +12,10 @@ x-airflow-common: &airflow-common
     AIRFLOW_CONN_FS_DEFAULT: '{"conn_type":"fs","extra":{"path":"/"}}'
     DATABASE_URL: postgresql://weather:${POSTGRES_PASSWORD:-weather}@postgres:5432/weather_monitoring
     PYTHONPATH: /opt/weather:/opt/weather/src
+    SPARK_LOCAL_IP: 127.0.0.1
+    PYSPARK_PYTHON: /usr/local/bin/python
+    NWS_USER_AGENT: ${NWS_USER_AGENT:-}
+    NWS_POLL_MODE: ${NWS_POLL_MODE:-disabled}
   volumes:
     - ./airflow/dags:/opt/airflow/dags:ro
     - airflow_logs:/opt/airflow/logs
@@ -20,9 +24,14 @@ x-airflow-common: &airflow-common
     - ./sql:/opt/weather/sql:ro
     - ./scripts:/opt/weather/scripts:ro
     - ./ingest.py:/opt/weather/ingest.py:ro
+    - ./Dockerfile:/opt/weather/Dockerfile:ro
+    - ./requirements-workshop2-pipeline.txt:/opt/weather/requirements-workshop2-pipeline.txt:ro
+    - ./airflow/dags:/opt/weather/airflow/dags:ro
     - ./workshop_1/samples:/opt/weather/workshop_1/samples:ro
     - ./data:/opt/weather/data
     - ./workshop_2/evidence:/opt/weather/workshop_2/evidence
+    - ./workshop_3:/opt/weather/workshop_3
+    - ./tests:/opt/weather/tests:ro
 
 services:
   postgres:

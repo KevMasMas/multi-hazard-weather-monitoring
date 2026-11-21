@@ -9,7 +9,36 @@ Events, GHCN-Daily, NWS Alerts and NWS station observations. The planned analyti
 output is a Compound Hazard Index. The accepted semester target is 2010-2025,
 with a rolling 24-hour current window and separate seven-day context.
 
-## Current delivery: Workshop 2
+## Workshop 3 review package
+
+The local Airflow/PySpark Gold DAG now produces two real, verified summaries:
+625 governance rows and 607 monthly storytelling rows. Eight new tests and all
+29 prior regression tests pass. See the [Workshop 3 index](workshop_3/README.md),
+[Gold contract](workshop_3/GOLD_CONTRACT.md),
+[executed Gold notebook](notebooks/04_gold_review.ipynb) and
+[demo guide](deliveries/03-workshop-3/DEMO_GUIDE.md).
+
+Start the same Compose stack, then enable/trigger `weather_gold_processing`.
+It uses Java 17/PySpark 3.5.7 in local[2] mode and a frozen register of 13 reviewed
+Silver exports; it makes no weather requests. The weekly schedule rebuilds that
+historical snapshot. Selected real Parquet samples are in `workshop_3/samples/gold/`.
+The [Workshop 3 PDF](workshop_3/Workshop_3_Pipeline_Improvements_and_Gold_Layer_Report.pdf)
+and two executed notebooks are ready for team review. NWS ingestion now preserves
+revisions, quarantine, commit-safe state and candidate links; 12 additional tests
+pass. Saved replay loaded 238 alerts and 700 observations with unchanged reruns.
+Announced live validation returned zero active OK alerts and 903 KOKC observations.
+The incremental DAG's three replay tasks succeeded; it was left paused.
+See the [incremental contract](workshop_3/INCREMENTAL_CONTRACT.md).
+
+For offline reproduction after cloning, run
+`python scripts/workshop_3/restore_silver.py`: the small committed ZIP restores
+all 13 exact reviewed Silver exports without weather queries or overwriting
+different files. Then follow the demo guide. Team approval, operational
+activation, professor clarification, county assignment, CHI and dashboard remain
+open; technical tests do not establish delivery acceptance.
+Current branch: `feat/workshop-3-quality-gold`; no commit/push performed by the agent.
+
+## Workshop 2 reference
 
 Start with the [delivery index](workshop_2/README.md), [PDF](workshop_2/report/Workshop_2_Report.pdf),
 [sample ZIP](workshop_2/Workshop_2_Pipeline_Output_Samples.zip),
@@ -24,7 +53,8 @@ The notebook executes nine code cells without errors.
 
 The PDF/ZIP are prepared for team review. Personal approval, commit/push and
 Moodle upload are not inferred. The full 2010-2025 target, broader station
-inventory/county assignments, NWS incremental ingestion and CHI remain open.
+inventory/county assignments and CHI remain open. NWS implementation status is
+documented separately in the Workshop 3 section above.
 The published Workshop 2 handout's 2026-I public-opinion wording is a documented
 discrepancy; no professor clarification is claimed.
 
@@ -92,7 +122,7 @@ committed.
 Kevin leads NOAA/database/CLI; Pablo leads GHCN/orchestration, with reciprocal
 review. Read [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md) for requirements,
 [AGENTS.md](AGENTS.md) for working rules and the active delivery change log for
-verified work. Current branch: `workflow-2`; Kevin performs commit/push after review.
+verified work. Current branch: `feat/workshop-3-quality-gold`; Kevin performs commit/push after review.
 
 [Workshop 1](workshop_1/README.md) remains preserved, including its approved report,
 [source notebook](notebooks/01_source_profiling.ipynb), [mapping](workshop_1/mapping.md)

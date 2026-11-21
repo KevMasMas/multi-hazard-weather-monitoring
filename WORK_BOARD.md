@@ -4,6 +4,46 @@ This is the single operational entry point for Team 9. Read this file to know th
 
 ## Current state
 
+**Workshop 3 technical closure, 2026-11-21:** quality/Gold, incremental core and
+the English report are prepared on `feat/workshop-3-quality-gold`. Twelve new
+incremental tests plus 29 historical regressions pass; Gold has eight passing
+tests. Saved NWS replay is 238 alerts / 700 observations, all unchanged on repeat.
+Announced live validation returned zero active OK alerts / 903 KOKC records.
+The three-task incremental replay DAG succeeded and was left paused. Historical
+Gold remains 625 governance / 607 storytelling rows. The small offline Silver
+archive restores all 13 exact reviewed inputs; prior delivery artifacts are intact.
+
+**Current next actions:** Kevin reviews PDF/notebooks, source semantics and the
+diff, then selects commit/push/upload. Pablo cross-reviews scheduling, replay,
+failure tests and Gold outputs. Both review ADR 0008 and candidate limitations.
+No W3 personal approval is recorded. County allocation, match evaluation,
+professor clarification and Workshop 4 CHI/dashboard remain open. Earlier dated
+checkpoints below describe their original scope, not the current pending list.
+
+**Gold verification, 2026-11-21:** `weather_gold_processing` completed a real
+Airflow/PySpark run on `feat/workshop-3-quality-gold`. Governance has 625 rows;
+storytelling has 607 rows, representing 19,039 unique records from 13 verified
+Silver exports. Eight new tests and 29 W2 regression tests passed without skips.
+Both notebooks execute without errors (7 quality cells, 5 Gold-preview cells).
+Independent Pandas checks matched 40 shape statistics, 180 station/month groups
+and 427 storm/month/type/unit groups; same-batch replay left hashes unchanged.
+Actual output samples and the register are in `workshop_3/`. Prior W1/W2 delivery
+artifacts remain unchanged. No commit, push or personal approval is claimed.
+
+**Next:** Kevin reviews source keys, units and Gold metric definitions; Pablo
+reviews the scheduled DAG, replay and preview evidence. Then complete the NWS
+incremental/integration workstream and Workshop 3 report. Plotly Dash itself and
+CHI remain later work; exact classroom formula conventions still need review.
+
+**Workshop 3 start, 2026-11-20:** branch `feat/workshop-3-quality-gold` starts
+from `f35c75c`, preserving the two prior planning edits. The new seven-cell
+Silver quality notebook executes without errors: 13 verified exports, 22,553
+snapshot rows, 19,039 unique business records. Precipitation's all-day IQR is
+zero; retain data and review positive-rain and seasonal populations separately.
+Next technical work: reusable Spark consolidation and two Gold datasets/DAG.
+Kevin reviews source-key/revision contracts; Pablo reviews orchestration and
+distribution evidence. No new API calls, Gold execution, commit or push claimed.
+
 **Report review update, 2026-11-16:** the revised PDF has 12 pages, including
 literal Bronze/Silver excerpts, verified naming/contract tables and neutral
 delivery wording. Data, migrations, executed notebook, sample ZIP and prior run
@@ -32,11 +72,11 @@ workshops remain open; the 2026-I handout discrepancy is not resolved.
 | Workshop 1 implementation | Final technical review and clean reproduction passed: five qualified wind-record pairs, Q1-Q5 quality concerns plus Q6-Q7, 32 cells/zero errors, 59 lock pins, scoped artifact scan. Kevin communicated both students' approval in TEAM_APPROVAL.md. Platform submission/reference still unrecorded |
 | Weather-source queries | NOAA 2024 archive retrieved; two empty NWS active polls plus a complete observed 238-alert recent pagination chain captured |
 | Selected US region | Accepted: Oklahoma study area with counties as analytical regions (ADR 0001) |
-| Architecture selection | Airflow/LocalExecutor, native capture lineage, canonical PostGIS and Silver Parquet executed; Gold remains planned (ADRs 0005/0006) |
+| Architecture selection | Airflow/LocalExecutor, native lineage, PostGIS and Silver executed; historical PySpark Gold and NWS incremental core verified (ADRs 0005-0008) |
 | Temporal scope | Accepted: 2010-2025 complete-year baseline; rolling 24-hour current window; separate seven-day context (ADR 0003) |
 | Compound Hazard Index formula | Accepted as the Workshop 1 preliminary five-component proposal; empirical validation remains for Workshop 4 |
 | Pablo review | `PABLO_REVIEW.md` is historical and limited in scope; Kevin separately communicated both students' approval of the final Workshop 1 report/mapping/design in `TEAM_APPROVAL.md` |
-| Workshops 2-4 planning | Workshop 2 five-year slice and artifacts prepared; Workshops 3-4 remain planning only |
+| Workshops 2-4 planning | W2 five-year slice preserved; W3 technical package ready for team review; W4 remains planned |
 | Workshop 2 foundation review | 29 passing tests; real schema/domain/revision/replay and two-source Airflow execution verified; wider station/county scope remains open |
 | Workshop 2 delivery target | Kevin's Moodle checklist: Technical Architecture/Pipeline PDF, Pipeline Output Samples, GitHub link. G0-G6 targets two TaskFlow DAGs, exact-batch FileSensor, canonical DB and genuine JSON/Parquet evidence; planning does not establish execution |
 | Specification conflict | Airflow and Bronze/Silver/Gold selected as the classroom workflow (ADR 0005); public-opinion/NLP/scraping wording and incompatible later-workshop details still require clarification |
@@ -124,9 +164,9 @@ Every observation must be indexed in `deliveries/01-workshop-1/EVIDENCE_REGISTER
 
 ## Milestone queue
 
-Workshop 2 is active at the compatible offline core by user instruction. The
-specification conflict and Workshop 1 acceptance caveat remain recorded; neither
-is silently treated as resolved. Workshops 3-4 remain planning only.
+Workshop 3 is active at technical review and delivery preparation. The
+specification conflict remains recorded. Workshop 4 has not started. The table
+below retains workstream ownership; the current review actions are listed above.
 
 | Gate/ID | Planned next action | Owner | Reviewer | Start condition |
 | --- | --- | --- | --- | --- |

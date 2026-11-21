@@ -1,0 +1,2 @@
+-r requirements-workshop2-pipeline.txt
+pyspark==3.5.7

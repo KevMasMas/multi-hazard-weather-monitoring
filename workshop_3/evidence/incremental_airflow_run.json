@@ -1,0 +1,33 @@
+{
+  "dag_id": "weather_incremental_ingestion",
+  "dag_run_id": "w3_nws_replay_20261121T151137",
+  "state": "success",
+  "start_date": "2026-11-21T15:11:39.191595+00:00",
+  "end_date": "2026-11-21T15:11:45.455710+00:00",
+  "mode": "replay",
+  "weather_network": false,
+  "tasks": [
+    {
+      "task_id": "poll_alerts",
+      "state": "success",
+      "try_number": 1,
+      "start_date": "2026-11-21T15:11:40.103042+00:00",
+      "end_date": "2026-11-21T15:11:41.799012+00:00"
+    },
+    {
+      "task_id": "poll_station",
+      "state": "success",
+      "try_number": 1,
+      "start_date": "2026-11-21T15:11:40.125105+00:00",
+      "end_date": "2026-11-21T15:11:43.342832+00:00"
+    },
+    {
+      "task_id": "group_candidates",
+      "state": "success",
+      "try_number": 1,
+      "start_date": "2026-11-21T15:11:44.137430+00:00",
+      "end_date": "2026-11-21T15:11:44.984001+00:00"
+    }
+  ],
+  "paused_after_verification": true
+}

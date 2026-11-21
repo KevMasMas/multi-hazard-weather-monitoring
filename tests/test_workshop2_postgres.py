@@ -88,7 +88,7 @@ class PostGISIntegrationTests(unittest.TestCase):
             target.write_text('-- changed already applied migration\n')
             with self.assertRaisesRegex(ValueError,'applied_migration_changed'):
                 migrate(self.conn,Path(directory))
-        self.assertEqual(self.count('schema_migration'),4)
+        self.assertEqual(self.count('schema_migration'),len(list((ROOT/'sql').glob('[0-9][0-9][0-9]_*.sql'))))
 
     def test_pipeline_batch_retry_reuses_committed_run(self):
         key='f'*64

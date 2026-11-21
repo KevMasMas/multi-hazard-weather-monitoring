@@ -1,5 +1,21 @@
 # Project Context
 
+## Latest implemented checkpoint - 2026-11-21
+
+Workshop 3 on `feat/workshop-3-quality-gold` now has verified historical Spark
+Gold, two executed notebooks, NWS incremental/revision/state logic, real replay
+DAG evidence and an English review PDF. Twelve incremental tests and 29 historical
+regressions pass; eight Spark tests are recorded separately. Saved NWS replay is
+238 alerts / 700 observations; announced live validation returned zero active OK
+alerts / 903 KOKC records. Reprocessing captured bytes adds no records/versions.
+The incremental DAG remains paused; automatic network mode defaults disabled.
+Five replay associations are intra-NWS candidates, not independent/confirmed events.
+The exact reviewed Silver inputs are available in a small offline reproduction ZIP.
+See `workshop_3/README.md`, ADR 0008 and the current W3 change-log entry.
+Personal W3 review/approval, professor discrepancy, reviewed county allocation,
+match evaluation, broader baseline/stations, CHI and dashboard remain open.
+No commit, push, merge or platform submission has been performed by this work.
+
 ## Purpose
 
 This file is the durable context for Team 9's semester project. Update it when the professor changes a requirement or the team approves a material technical decision. Do not record unverified results as facts.
@@ -16,6 +32,19 @@ This file is the durable context for Team 9's semester project. Update it when t
 - Required geographic family: a region of the United States because the assigned NOAA/NWS sources are US services
 
 ## Objective
+
+### Workshop 3 Gold slice (2026-11-21)
+
+The technical Gold path now executes in Airflow 2.10.4 with PySpark 3.5.7 and
+Java 17, reading the frozen 13-export Silver quality-review register. It publishes
+625 governance rows and 607 monthly storytelling rows for 19,039 unique records.
+Statistics/flags are explicit review aids, not deletion rules or predictions.
+Independent Pandas reconciliation, eight new tests, 29 prior regression tests
+and unchanged batch-replay evidence are under `workshop_3/evidence/`. Both review
+notebooks execute successfully. The first real output attempt failed on Hadoop
+chmod on the Windows mount; Linux temporary writes plus staged file copying
+resolved it. Incremental integration, final Workshop 3 PDF and the later dashboard
+remain open; no personal approval or pushed commit is inferred.
 
 ### Workshop 2 executed slice (2026-11-16)
 

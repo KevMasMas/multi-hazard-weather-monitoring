@@ -1,0 +1,13 @@
+{
+  "scope": "First executed quality slice; no Gold or incremental execution",
+  "sha256": {
+    "notebooks/03_silver_quality_review.ipynb": "FF631F091E38AF1C5043B899E70876E4D8A68E14E4D5F22E29320351342A7BB7",
+    "scripts/workshop_3/create_quality_notebook.py": "96CFE50F9F979A0C4D316414387225C5AD7C5EDBF17835AFE2DF6CB7FC7458B5",
+    "workshop_3/evidence/distribution_review.csv": "A7FF53473A8758F225D5D27B44B134ED5E4FF50F035214D53D821F339B24FED9",
+    "workshop_3/evidence/seasonal_review.csv": "E270E6C83C7F8CF6E72D9F433B0B1C7493229F7A8555C3001481386AC0452861",
+    "workshop_3/evidence/snapshot_inventory.csv": "6B81F21FDD37FE252714767771F0545AE74A5372EC1C2FE954EA6FE32AA4E9EE",
+    "workshop_3/evidence/source_missingness.csv": "9BAF6C46340CBE87394DD65A7285C3643B345C717E1258A47821F507AA9A4EA0",
+    "workshop_3/evidence/notebook_execution.json": "55C61B98F55E5FF1B93007C8FB2571F326DD40E0DC6C776B4D0F272AF1E99969",
+    "workshop_3/evidence/silver_review.json": "CAAEAFFA6F3C7C656B7C91487DED77A5FA569FECC0A46C9E259B9FFB91C14C25"
+  }
+}

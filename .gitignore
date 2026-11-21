@@ -14,6 +14,9 @@ __pycache__/
 
 # LaTeX build files
 workshop_2/report/main.pdf
+workshop_3/report/main.pdf
+workshop_3/report/*.xdv
+tmp/pdfs/
 *.aux
 *.fls
 *.fdb_latexmk
@@ -33,8 +36,10 @@ data/raw/**
 data/processed/
 data/curated/
 data/bronze/
+data/gold/
 *.parquet
 !workshop_2/samples/silver/*.parquet
+!workshop_3/samples/gold/*.parquet
 *.duckdb
 *.sqlite
 *.db
@@ -47,6 +52,7 @@ logs/
 *.log
 
 # Containers and local database state
+docker/package-cache/*.tar.gz
 postgres-data/
 airflow/logs/
 airflow/plugins/__pycache__/

@@ -1,0 +1,20 @@
+flowchart TD
+    H[NOAA and GHCN native captures] --> B[Historical Bronze JSON]
+    B --> V[Validation and historical transaction]
+    V --> S[Registered Silver Parquet snapshots]
+    V --> Q[rejected_record quarantine]
+    S --> G[Local PySpark reviewed consolidation]
+    G --> GOV[Governance Parquet]
+    G --> STORY[Storytelling Parquet]
+    N[NWS Alerts and KOKC observations] --> CLI[Explicit ingestion CLI]
+    A[Airflow incremental DAG] --> CLI
+    CLI --> RAW[Immutable raw GeoJSON and receipts]
+    RAW --> P[Transactional normalization and change detection]
+    P --> DB[PostGIS records revisions sightings]
+    P --> R[incremental_reject quarantine]
+    P --> STATE[Commit-safe per-source scope state]
+    DB --> E[Versioned unconfirmed candidate links]
+    DB --> VIEW[Operational integrated view]
+    GOV -. Future .-> DASH[Dashboard and CHI]
+    STORY -. Future .-> DASH
+    VIEW -. Project contract consumer .-> DASH

@@ -28,7 +28,8 @@ def land_capture(body: bytes, *, source: str, partition: str,
         raise ValueError("invalid_source_name")
     if not re.fullmatch(r"[A-Za-z0-9_-]+", partition):
         raise ValueError("invalid_partition_name")
-    formats = {"text/csv": "csv", "application/gzip": "gz"}
+    formats = {"text/csv": "csv", "application/gzip": "gz",
+               "application/geo+json": "geojson", "application/json": "json"}
     if content_type not in formats:
         raise ValueError("unsupported_content_type")
     native_format = formats[content_type]

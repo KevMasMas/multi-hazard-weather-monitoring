@@ -1,0 +1,12 @@
+{
+  "schema_version": "weather-gold-v1",
+  "input_register": "workshop_3/evidence/silver_review.json",
+  "start": "2021-01-01",
+  "end": "2025-12-31",
+  "spark_master": "local[2]",
+  "driver_memory": "1g",
+  "shuffle_partitions": 2,
+  "iqr_multiplier": 1.5,
+  "zscore_threshold": 3.0,
+  "schedule": "0 6 * * 1"
+}

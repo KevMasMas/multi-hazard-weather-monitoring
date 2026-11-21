@@ -40,6 +40,9 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--start", help="Inclusive start date (YYYY-MM-DD) for saved capture selection")
     parser.add_argument("--end", help="Inclusive end date (YYYY-MM-DD) for saved capture selection")
+    parser.add_argument("--replay", help="Checksum-locked NWS manifest; performs no network requests")
+    parser.add_argument("--source", choices=('nws_alerts','nws_station_observations'), help="Live incremental source; requires NWS_USER_AGENT")
+    parser.add_argument("--scope", help="OK for alerts or configured station ID, e.g. KOKC")
     return parser
 
 
@@ -107,17 +110,28 @@ def _status(connection) -> list[dict]:
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    if args.mode == "incremental":
-        print(json.dumps({"mode": args.mode, "status": "planned_for_workshop_3"}))
-        return 2
+    if args.mode == 'incremental' and (bool(args.replay) == bool(args.source)):
+        build_parser().error('incremental requires either --replay or --source (live), exclusively')
+    if args.mode != 'incremental' and (args.replay or args.source or args.scope):
+        build_parser().error('NWS arguments require incremental mode')
+    if args.mode == 'incremental' and (args.start or args.end):
+        build_parser().error('incremental windows are managed by source state, not historical dates')
     if args.mode == "historical" and (not args.start or not args.end):
         build_parser().error("historical mode requires both --start and --end")
     if args.mode == "status" and (args.start or args.end):
         build_parser().error("status mode does not accept --start or --end")
     try:
         with closing(_connect()) as connection:
-            result = (_historical(connection, args.start, args.end)
-                      if args.mode == "historical" else _status(connection))
+            if args.mode == 'incremental':
+                from multi_hazard_weather_monitoring.incremental import replay, live
+                _migrate(connection)
+                result = replay(connection, ROOT, (ROOT / args.replay)) if args.replay else live(connection, ROOT, args.source, args.scope or ('OK' if args.source=='nws_alerts' else 'KOKC'))
+            elif args.mode == 'historical':
+                result = _historical(connection, args.start, args.end)
+            else:
+                from multi_hazard_weather_monitoring.incremental import status
+                _migrate(connection)
+                result = {'historical':_status(connection),'incremental':status(connection)}
         print(json.dumps({"mode": args.mode, "result": result}, default=str))
         return 0
     except (OSError, ValueError, RuntimeError) as exc:

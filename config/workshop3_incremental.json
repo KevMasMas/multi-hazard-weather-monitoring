@@ -1,0 +1,9 @@
+{
+  "schedule": "0 * * * *",
+  "area": "OK",
+  "stations": ["KOKC"],
+  "station_overlap_hours": 1,
+  "station_retention_days": 7,
+  "full_reconciliation_hours": 24,
+  "policy_status": "Team implementation policy; operational activation and review pending"
+}
