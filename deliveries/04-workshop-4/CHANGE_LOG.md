@@ -21,3 +21,12 @@ Append entries; do not silently rewrite historical observations.
 - **Input received from:** Kevin requested implementation plans for every newly published workshop.
 - **Handoff to:** both students for review after Workshop 3 contracts and CHI inputs are supported by implemented evidence.
 - **Recovery or rollback:** revise the proposed plan after clarification while preserving this planning history.
+
+
+### [2026-11-23 America/Bogota] - Input handoff only
+
+- **Objective/status:** record verified W3 runtime inputs for future W4 planning; no W4 code or dashboard/CHI implementation.
+- **Branch/commit:** local documentation on `feat/workshop-3-quality-gold`, base `6fa48a9`; no commit/push, approval or W4 branch creation.
+- **Files/decision:** added the verified-input paragraph to this delivery plan and this log. Select the actual successful 650/607 Gold batch through `workshop_3/evidence/runtime_20261123/gold_samples.json`; preserve source/time/unit and narrative-coverage boundaries.
+- **Verification/evidence:** revised Bronze/Silver/Gold succeeded; 54 Linux tests passed without skips; 20 delivered W3 artifact hashes and accepted historical record/revision hashes are unchanged. Actual receipts, logs and hashes are in the W3 runtime supplement. No new test/implementation execution is attributed to W4 itself.
+- **Input/limits/handoff:** Kevin requested closing runtime gaps to continue with W4 and preserving the delivered document. Team review of W4 guide/input/CHI/county scope remains open; no personal approval or professor clarification inferred. Follow the current work board; selecting a new analytical scope must not overwrite submitted W3 artifacts.

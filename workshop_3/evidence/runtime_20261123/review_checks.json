@@ -1,0 +1,8 @@
+{
+  "modified_or_new_text_files_scanned": 47,
+  "recognized_secret_findings": [],
+  "scope": "Recognizable GitHub/AWS/private-key patterns, not an exhaustive guarantee.",
+  "git_diff_check_passed": true,
+  "delivered_artifacts_unchanged": 20,
+  "commit_or_push": false
+}

@@ -32,3 +32,6 @@ workshop_3/samples/gold/*.csv -text
 workshop_3/samples/incremental/*.json -text
 workshop_3/*.zip binary
 workshop_3/*.pdf binary
+workshop_3/evidence/runtime_20261123/*.json -text
+workshop_3/samples/runtime_20261123/*.parquet binary
+workshop_3/samples/runtime_20261123/*.json -text

@@ -9,6 +9,27 @@ import pandas as pd
 ROOT=Path(__file__).resolve().parents[2]
 
 
+def reconcile_text_snapshots(frames):
+    """Independently reconcile repeated text exports before comparing aggregates.
+
+    Source keys may recur across captures. Conflicting narrative content fails;
+    identical exports are evidence of one source record, not additional text.
+    """
+    snapshots=pd.concat(frames,ignore_index=True)
+    if snapshots[['source','source_key','_text_file']].isna().any().any():
+        raise ValueError('missing_text_snapshot_identity')
+    def signature(row):
+        return json.dumps([None if pd.isna(row.raw_text) else row.raw_text,
+                           None if pd.isna(row.sentiment_score) else float(row.sentiment_score),
+                           list(row.tokens) if row.tokens is not None else None],sort_keys=True)
+    snapshots['_signature']=snapshots.apply(signature,axis=1)
+    if (snapshots.groupby(['source','source_key'])['_signature'].nunique()>1).any():
+        raise ValueError('conflicting_text_snapshot_content')
+    selected=(snapshots.sort_values('_text_file').drop_duplicates(['source','source_key'],keep='last')
+              .drop(columns=['_signature']))
+    return selected,len(snapshots)
+
+
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--manifest',required=True)
@@ -95,8 +116,9 @@ def main():
         for name,expected in receipt['identity']['text_inputs'].items():
             p=ROOT/name
             assert hashlib.sha256(p.read_bytes()).hexdigest().upper()==expected
-            text_frames.append(pd.read_parquet(p))
-        text=pd.concat(text_frames,ignore_index=True)
+            frame=pd.read_parquet(p);frame['_text_file']=name
+            text_frames.append(frame)
+        text,text_snapshot_rows=reconcile_text_snapshots(text_frames)
         assert not text.duplicated(['source','source_key']).any()
         assert set(text['source_key']).issubset(set(current.loc[current.source.eq('noaa_storm_events'),'source_key']))
         selected=story[story.source.eq('noaa_storm_events')]
@@ -105,7 +127,9 @@ def main():
         assert selected.text_record_count.sum()==text.raw_text.notna().sum()
         for _,row in text.iterrows():
             assert row.token_count==len(row.tokens)
-        text_checks={'text_rows':len(text),'text_records':int(text.raw_text.notna().sum()),
+        text_checks={'text_rows':len(text),'text_snapshot_rows':text_snapshot_rows,
+                     'repeated_text_snapshot_rows':text_snapshot_rows-len(text),
+                     'text_records':int(text.raw_text.notna().sum()),
                      'sentiment_distribution':{label:int(text.sentiment_label.eq(label).sum())
                                                for label in ('positive','neutral','negative')},
                      'keyword_json_rows':int(selected.top_keywords_json.notna().sum())}

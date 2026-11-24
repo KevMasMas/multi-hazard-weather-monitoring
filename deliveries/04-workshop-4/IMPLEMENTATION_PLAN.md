@@ -1,5 +1,17 @@
 # Implementation Plan - Workshop 4
 
+## Verified input handoff - 2026-11-23
+
+The updated W3 runtime prerequisite is now exercised: revised Bronze/Silver/Gold
+succeeded in Docker/Airflow, producing 650 governance / 607 storytelling rows,
+with 54 Linux tests passing without skips. Select the actual successful batch
+through `workshop_3/evidence/runtime_20261123/gold_samples.json`; portable copies
+are under `workshop_3/samples/runtime_20261123/`. Preserve 19,039 unique historical
+records and reconcile snapshots; text remains the recorded 2021 NOAA subset.
+This technical handoff does not accept W4 scope, approve a CHI/county mapping,
+provide fresh live weather or start dashboard implementation. The selected W4
+guide and input contract still need team review before creating its branch.
+
 - **Team:** Team 9 - Pablo Garzon and Kevin Rincon
 - **Target date:** TBD - no submission date appears in the reviewed specification
 - **Proposed working branch:** `feat/workshop-4-analytics-dashboard`

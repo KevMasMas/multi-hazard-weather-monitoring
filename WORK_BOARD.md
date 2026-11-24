@@ -1,6 +1,22 @@
 # Team Work Board
 
-## Current Workshop 3 guide alignment - 2026-11-21
+## Current runtime closure - 2026-11-23
+
+On `feat/workshop-3-quality-gold` after pull `6fa48a9`, revised Bronze, Silver
+and Gold all succeeded in Docker/Airflow. Actual Gold output is 650 governance /
+607 storytelling rows. All 54 Linux tests passed, zero skips; PostgreSQL records
+and revision hashes are unchanged. Twenty delivered W3 artifact hashes match,
+including the PDF/LaTeX and notebooks. Kevin reported the document was submitted;
+this supplement changes no delivered artifact. All four DAGs are left paused.
+Evidence: `workshop_3/evidence/runtime_20261123/README.md` and its runtime index.
+
+**Kevin next:** review/commit/push the supplementary runtime evidence and source
+verification fix, then agree the W4 scope. **Pablo next:** review the real task
+logs, text-replay reconciliation and portable Gold contract for W4. No W3/W4
+personal approval is attributed. W4 implementation has not started; county
+allocation, wider baseline/station coverage, CHI and dashboard remain future work.
+
+## Historical Workshop 3 guide-alignment checkpoint - 2026-11-21
 
 On local branch `feat/workshop-3-guide-alignment`, the first four audited gaps
 have code and local evidence: genuine 2021 NOAA narrative Silver, revised

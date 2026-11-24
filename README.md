@@ -11,17 +11,25 @@ with a rolling 24-hour current window and separate seven-day context.
 
 ## Workshop 3 review package
 
+**Post-submission verification, 23 November:** revised Bronze, Silver and Gold
+all succeeded in Docker/Airflow. Gold produced **650 governance / 607 storytelling
+rows**; **54 Linux tests passed without skips**, including the previously skipped
+Spark/PostGIS cases. The submitted PDF/package remain unchanged. Start with the
+[runtime evidence and W4 handoff](workshop_3/evidence/runtime_20261123/README.md).
+
 The local Airflow/PySpark Gold DAG now produces two real, verified summaries:
-625 governance rows and 607 monthly storytelling rows. Eight new tests and all
-29 prior regression tests pass. See the [Workshop 3 index](workshop_3/README.md),
+650 governance rows and 607 monthly storytelling rows. Current Linux suites pass
+54 tests. See the [Workshop 3 index](workshop_3/README.md),
 [Gold contract](workshop_3/GOLD_CONTRACT.md),
 [executed Gold notebook](notebooks/04_gold_review.ipynb) and
 [demo guide](deliveries/03-workshop-3/DEMO_GUIDE.md).
 
 Start the same Compose stack, then enable/trigger `weather_gold_processing`.
 It uses Java 17/PySpark 3.5.7 in local[2] mode and a frozen register of 13 reviewed
-Silver exports; it makes no weather requests. The weekly schedule rebuilds that
-historical snapshot. Selected real Parquet samples are in `workshop_3/samples/gold/`.
+Silver exports as its baseline and includes newer checked files in `datalake_silver/`;
+it makes no weather requests. The weekly schedule rebuilds the historical snapshot.
+The latest real Airflow samples are in `workshop_3/samples/runtime_20261123/`;
+submitted samples remain in `workshop_3/samples/gold/`.
 The [Workshop 3 PDF](workshop_3/Workshop_3_Pipeline_Improvements_and_Gold_Layer_Report.pdf)
 and two executed notebooks are ready for team review. NWS ingestion now preserves
 revisions, quarantine, commit-safe state and candidate links; 12 additional tests

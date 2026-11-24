@@ -1,0 +1,11 @@
+{
+  "recorded_at_utc": "2026-11-24T00:31:14.444730+00:00",
+  "source_counts": {
+    "ghcn_daily": 5478,
+    "noaa_storm_events": 13561
+  },
+  "duplicate_source_keys": 0,
+  "accepted_records_sha256": "ECE407970397563953C49DB842A45217798E5C50670DB6F213929CEAFE92B55B",
+  "historical_revisions": 19039,
+  "weather_network": false
+}

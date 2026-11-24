@@ -1,0 +1,302 @@
+{
+  "verified_at_utc": "2026-11-24T00:41:53.589326+00:00",
+  "reference_commit": "6fa48a9",
+  "historical_run_receipt": "workshop_3/evidence/runtime_20261123/historical_20261124T003243.json",
+  "gold_run_receipt": "workshop_3/evidence/runtime_20261123/gold_20261124T003408.json",
+  "gold_dag_run": "w3_runtime_gold_20261124T003408",
+  "all_revised_dags_succeeded": true,
+  "test_counts": {
+    "workshop3": 13,
+    "postgres_and_historical": 29,
+    "incremental": 12
+  },
+  "total_tests_passed": 54,
+  "tests_skipped": 0,
+  "source_counts_preserved": {
+    "ghcn_daily": 5478,
+    "noaa_storm_events": 13561
+  },
+  "accepted_records_hash_unchanged": true,
+  "historical_revisions_unchanged": true,
+  "gold_counts": {
+    "snapshot_rows": 24972,
+    "unique_business_records": 19039,
+    "source_counts": {
+      "noaa_storm_events": 13561,
+      "ghcn_daily": 5478
+    },
+    "repeated_snapshot_rows": 5933
+  },
+  "gold_output_rows": {
+    "governance": 650,
+    "storytelling": 607
+  },
+  "gold_manifest_path": "datalake_gold/20261124_003409_54c0edb8d8a5/manifest.json",
+  "portable_outputs": {
+    "governance": {
+      "path": "datalake_gold/20261124_003409_54c0edb8d8a5/governance_20261124_003409_54c0edb8d8a5.parquet",
+      "rows": 650,
+      "sha256": "6DB90BCA2F130D6DC169D8E1ADD3A10E194A9737A9601F65F72BC1504E15AE04",
+      "bytes": 10127,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "source",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "station",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "population",
+            "type": "string",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "period",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "variable",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "unit",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "metric",
+            "type": "string",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "value",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "numerator",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "denominator",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "method",
+            "type": "string",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "batch_id",
+            "type": "string",
+            "nullable": false,
+            "metadata": {}
+          }
+        ]
+      },
+      "writer": "spark_parquet_linux",
+      "sample_path": "workshop_3/samples/runtime_20261123/governance_20261124_003409_54c0edb8d8a5.parquet"
+    },
+    "storytelling": {
+      "path": "datalake_gold/20261124_003409_54c0edb8d8a5/storytelling_20261124_003409_54c0edb8d8a5.parquet",
+      "rows": 607,
+      "sha256": "3B3B9B5C59F9EBC276BFBCCE2F6314EC858D0EC34BDDD3D15F358EAB50B4A3CA",
+      "bytes": 25429,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "source",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "period",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "event_type",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "station",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "geographic_scope",
+            "type": "string",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "severity_unit",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "record_count",
+            "type": "long",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "measured_count",
+            "type": "long",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "mean_value",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "min_value",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "max_value",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "observed_dates",
+            "type": "long",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "missing_point_count",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "precipitation_total_mm",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "batch_id",
+            "type": "string",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "analysis_type",
+            "type": "string",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "text_record_count",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "mean_sentiment_score",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "positive_count",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "neutral_count",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "negative_count",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "top_keywords_json",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "writer": "spark_parquet_linux",
+      "sample_path": "workshop_3/samples/runtime_20261123/storytelling_20261124_003409_54c0edb8d8a5.parquet"
+    }
+  },
+  "submitted_artifacts_unchanged": {
+    "deliveries/03-workshop-3/SUBMISSION_MANIFEST.json": "68822DE96D39377AA43FF695363E0CA7C6591CAE20CEC6C5E73F5568E17E6E56",
+    "notebooks/03_silver_quality_review.ipynb": "F6FFEE700DEC9546F88B1EB962566ED9EA5D2751F9E363BB93AF181220BAA61C",
+    "notebooks/04_gold_review.ipynb": "F702C08AAF2CA4C37C359C81EBC4C1F9C86E1DAA2D5C953B3C0EDBF460D2F9CA",
+    "workshop_3/Workshop_3_Pipeline_Improvements_and_Gold_Layer_Report.pdf": "4FAD348C8A063A4B5290ACC43319DB5C8347E3D3138547413B66F6A8E3B0D474",
+    "workshop_3/Workshop_3_Pipeline_Output_Samples.zip": "E5E5B28696C1CE470135F5E3F0A09C7129A97BB6CEE79826EEF65C37BD86705B",
+    "workshop_3/Workshop_3_Silver_Reproduction_Inputs.zip": "B01835F142E7A85F8387421AFBC44CA853C65E8D908E8355523F5C708DCC905F",
+    "workshop_3/report/assets/Escudo.png": "E0F1F6EDA8029C428E69579B72DBAD04FF8A7CE56912429363B50A059AD7AB1E",
+    "workshop_3/report/assets/governance_preview.png": "99ACDFCE9CBDEF995B3147685A4422B72456543E9ED4A3AF7617B69E33A7399F",
+    "workshop_3/report/assets/quality_1.png": "80146B76E7926EDD7D328C8DDBCBDDA61A19CB95C67F2E201344AEAF6DD409ED",
+    "workshop_3/report/assets/quality_2.png": "A3E708CDF44890A13BFA63D0F665A5EF47323A0F920A69A78341C3745A317EF4",
+    "workshop_3/report/assets/quality_3.png": "7AC8E7CA45C8E4765E1A5438FEC3B49D6FD33BB3222F4E292A37FBD8188D0EC2",
+    "workshop_3/report/assets/storytelling_preview.png": "785002A3AD278566AA3EBFD0BCD7E4E2B7591B236C9AE625E372B2A8B851412C",
+    "workshop_3/report/assets/text_preview.png": "D1EC944D787313BFE6589E043D26B5D8A4F0F757BF1A18A90842A0C25188A845",
+    "workshop_3/report/cover.tex": "15673FD327BDA2CAA50FE7D077DC697D41A646E22851F4CF47A2857F49D50DED",
+    "workshop_3/report/main.tex": "BF315BF13E89A8DC6737A7C52CBB144BEFC950C7DBD6B98B0507F02DB506EE3A",
+    "workshop_3/samples/gold/governance_20261121_144319_caeba6938516.parquet": "C21E050DB77E0F941B99F028740FEDF96FD5C38DF2262AF55F5817190705F4F8",
+    "workshop_3/samples/gold/governance_20261121_170000_383a89102438.parquet": "C37F7ACDE8CF49F405624D514B639E58EFB24E28B9652DD2CD9939C0D886D675",
+    "workshop_3/samples/gold/storytelling_20261121_144319_caeba6938516.parquet": "63C1FA56AD8919F4B2361F5588A43D85614E39763D34C9523A4369BE40A35097",
+    "workshop_3/samples/gold/storytelling_20261121_170000_383a89102438.parquet": "B7660E83A25A7006AF1034AF2C57A2DF02CA65375D55B2115B9B075595429D0E",
+    "workshop_3/samples/silver_text/noaa_oklahoma_2021_text.parquet": "C1AFB9407724B1B92DC9F13EFFD657DD5B41A5EB0A1C497F8B1BA9591A71A8F2"
+  },
+  "weather_network": false,
+  "commit_push_or_personal_approval": false,
+  "limits": [
+    "650-row Gold now has actual Airflow evidence; the previous 625-row run remains historical.",
+    "Narrative coverage is the recorded 2021 subset; lexical tone is not hazard severity or public opinion.",
+    "W4 dashboard/CHI, county allocation and broader baseline/station coverage are not implemented here."
+  ]
+}

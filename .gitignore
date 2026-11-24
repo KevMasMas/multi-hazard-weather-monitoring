@@ -43,6 +43,7 @@ data/gold/
 !workshop_2/samples/silver/*.parquet
 !workshop_3/samples/gold/*.parquet
 !workshop_3/samples/silver_text/*.parquet
+!workshop_3/samples/runtime_20261123/*.parquet
 *.duckdb
 *.sqlite
 *.db

@@ -1,5 +1,21 @@
 # Workshop 3 - Silver quality and Gold preparation
 
+## Post-submission runtime verification - 2026-11-23
+
+The pulled revision `6fa48a9` now has actual successful revised Bronze/Silver/Gold
+runs in Docker/Airflow, including the new text tasks. Gold run
+`w3_runtime_gold_20261124T003408` produced **650 governance / 607 storytelling
+rows**, independently reconciled. All **54 Linux tests passed without skips**,
+including three Spark fixtures and eight real PostGIS integration cases skipped
+previously on Windows. The extra two tests cover repeated/conflicting text exports.
+
+The delivered PDF, LaTeX/assets, notebooks, package ZIPs and submission manifest
+remain unchanged (20 baseline hashes checked). Kevin reported the document was
+already submitted; no platform receipt or new personal approval is inferred.
+See the [runtime evidence and W4 handoff](evidence/runtime_20261123/README.md)
+and [portable current Airflow outputs](samples/runtime_20261123/README.md).
+Earlier dated results below describe their original revisions.
+
 ## Current guide-aligned result (2026-11-21)
 
 The team selected the supplied Workshop 3 PDF as this delivery's guide despite
@@ -11,10 +27,9 @@ unavailable in the portable evidence. VADER lexical tone is descriptive, not
 hazard severity. Both notebooks were regenerated and executed in fresh kernels
 (8/6 code cells, zero errors). The report PDF and exact samples are linked below.
 
-The updated Bronze/Silver Airflow tasks and revised Gold DAG have not been rerun
-inside Airflow in this session. The earlier 625-row Airflow result documented
-below remains historical. Kevin and Pablo approval, commit, push and Moodle
-submission are not recorded. Evidence: `evidence/text_quality.json`,
+At the 21 November checkpoint the revised DAGs had not run in Airflow. This gap
+was closed by the 23 November supplement above; the earlier 625-row result remains
+historical. Personal approval is not inferred. Package evidence: `evidence/text_quality.json`,
 `evidence/guide_gold_reconciliation.json`, `evidence/guide_gold_samples.json`.
 
 Current branch: `feat/workshop-3-quality-gold`, based on Workshop 2 commit

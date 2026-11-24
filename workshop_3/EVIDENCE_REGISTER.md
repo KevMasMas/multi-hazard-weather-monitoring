@@ -1,5 +1,18 @@
 # Workshop 3 evidence register
 
+## Post-submission current runtime evidence - 2026-11-23
+
+Revised Bronze, Silver and Gold now have real successful Docker/Airflow runs.
+Gold is 650 governance / 607 storytelling rows; 54 Linux tests pass with no skips.
+See `evidence/runtime_20261123/README.md`, `runtime_verification.json`,
+`linux_tests.json`, `gold_reconciliation.json`, task logs and `sha256.json` there.
+Portable current outputs are indexed by `evidence/runtime_20261123/gold_samples.json`.
+Twenty delivered artifact hashes remain unchanged. The inventory below is the
+historical submitted-package snapshot at `6fa48a9`; current verifier/test hashes
+are recorded in the runtime supplement. Do not reseal the delivered PDF/package
+to record runtime evidence. No weather request, new personal approval or push
+was performed.
+
 ## Current guide-aligned package (2026-11-21)
 
 The supplied Workshop 3 PDF is the selected guide despite its 2026-I cover.

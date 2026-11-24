@@ -1,0 +1,175 @@
+{
+  "weather_network": false,
+  "logs": [
+    {
+      "path": "workshop_3/evidence/runtime_20261123/task_log_00_publish_bronze.json",
+      "sha256": "20A887B0F3978A2280671FF04387CFEB7237AF396B341257168DB7F09C2C110B",
+      "task_id": "publish_bronze",
+      "dag_run_id": "w2_delivery_20261124T003244_00_OK_2021"
+    },
+    {
+      "path": "workshop_3/evidence/runtime_20261123/task_log_01_verify_text_coverage.json",
+      "sha256": "DCBC1AEA54366341775F68F39E7941CBB1CB497BB8817108BFE6210432139235",
+      "task_id": "verify_text_coverage",
+      "dag_run_id": "w2_delivery_20261124T003244_00_OK_2021"
+    },
+    {
+      "path": "workshop_3/evidence/runtime_20261123/task_log_02_trigger_silver.json",
+      "sha256": "D1A2AA8B831ED3E2A9F2E79136ADAA20D208CDDCD6730EAEC438CF4A655C985B",
+      "task_id": "trigger_silver",
+      "dag_run_id": "w2_delivery_20261124T003244_00_OK_2021"
+    },
+    {
+      "path": "workshop_3/evidence/runtime_20261123/task_log_03_validate_manifest_path.json",
+      "sha256": "73CAB2A0E9F2AEA0103AA471DB46E1B827F654F2DBDD42ACD7A0448150B0ED4D",
+      "task_id": "validate_manifest_path",
+      "dag_run_id": "silver__w2_delivery_20261124T003244_00_OK_2021"
+    },
+    {
+      "path": "workshop_3/evidence/runtime_20261123/task_log_04_wait_for_exact_bronze.json",
+      "sha256": "9024252B4EA605003F594ABB4572AEC464875217AC8B4D9629AB75033C0BDF99",
+      "task_id": "wait_for_exact_bronze",
+      "dag_run_id": "silver__w2_delivery_20261124T003244_00_OK_2021"
+    },
+    {
+      "path": "workshop_3/evidence/runtime_20261123/task_log_05_load_and_export.json",
+      "sha256": "AE7D079DE6CF4BA1589C086228C26AC91B784F6E2FD765C636A14918AAFEB046",
+      "task_id": "load_and_export",
+      "dag_run_id": "silver__w2_delivery_20261124T003244_00_OK_2021"
+    },
+    {
+      "path": "workshop_3/evidence/runtime_20261123/task_log_06_publish_narrative.json",
+      "sha256": "432890569CBA835CB09E7D2ED5641A9B0F5A62C0DEF9C54F5DA47E4792E83B1B",
+      "task_id": "publish_narrative",
+      "dag_run_id": "silver__w2_delivery_20261124T003244_00_OK_2021"
+    },
+    {
+      "path": "workshop_3/evidence/runtime_20261123/task_log_07_publish_bronze.json",
+      "sha256": "DC0092BB41AF5927CAA273D42A62B90383955F0AD0BA85F2EA646D5BB7AE2DD3",
+      "task_id": "publish_bronze",
+      "dag_run_id": "w2_delivery_20261124T003244_01_USW00013967_2021_full"
+    },
+    {
+      "path": "workshop_3/evidence/runtime_20261123/task_log_08_verify_text_coverage.json",
+      "sha256": "CEE6227B192D1815DBBDA94731381184721BA6015A53AEAB761EE4EF2D0CD3A0",
+      "task_id": "verify_text_coverage",
+      "dag_run_id": "w2_delivery_20261124T003244_01_USW00013967_2021_full"
+    },
+    {
+      "path": "workshop_3/evidence/runtime_20261123/task_log_09_trigger_silver.json",
+      "sha256": "9048C6CAF02E7B59CB4469E3463065D8A579EAEAA2A22B2BDE303DA0D3CC6028",
+      "task_id": "trigger_silver",
+      "dag_run_id": "w2_delivery_20261124T003244_01_USW00013967_2021_full"
+    },
+    {
+      "path": "workshop_3/evidence/runtime_20261123/task_log_10_load_and_export.json",
+      "sha256": "580E115A40A7F11BFD95E2BAA092A188D74963C39939AD69701E5A862367C2E9",
+      "task_id": "load_and_export",
+      "dag_run_id": "silver__w2_delivery_20261124T003244_01_USW00013967_2021_full"
+    },
+    {
+      "path": "workshop_3/evidence/runtime_20261123/task_log_11_validate_manifest_path.json",
+      "sha256": "7A24B70489B4AC42B1B49A5A62467E98DB185C79FA7B662470EF6701DB62D3C7",
+      "task_id": "validate_manifest_path",
+      "dag_run_id": "silver__w2_delivery_20261124T003244_01_USW00013967_2021_full"
+    },
+    {
+      "path": "workshop_3/evidence/runtime_20261123/task_log_12_publish_narrative.json",
+      "sha256": "A4824945BE9F6F95EEB32D6A5B737FC3DFCF0AB3C33C5314A6157627C38C930B",
+      "task_id": "publish_narrative",
+      "dag_run_id": "silver__w2_delivery_20261124T003244_01_USW00013967_2021_full"
+    },
+    {
+      "path": "workshop_3/evidence/runtime_20261123/task_log_13_wait_for_exact_bronze.json",
+      "sha256": "DA3009510C92B34F9BF7FFA0E0925607F23B2E69193FC48CB21F8A592F5169D5",
+      "task_id": "wait_for_exact_bronze",
+      "dag_run_id": "silver__w2_delivery_20261124T003244_01_USW00013967_2021_full"
+    },
+    {
+      "path": "workshop_3/evidence/runtime_20261123/task_log_14_summarize_silver.json",
+      "sha256": "3731C6038D230C29DAF3E02E908560FE2337635A898582D651E29356D327D180",
+      "task_id": "summarize_silver",
+      "dag_run_id": "w3_runtime_gold_20261124T003408"
+    }
+  ],
+  "gold_recent_runs": [
+    {
+      "conf": {},
+      "dag_id": "weather_gold_processing",
+      "dag_run_id": "w3_runtime_gold_20261124T003408",
+      "data_interval_end": "2026-11-23T06:00:00+00:00",
+      "data_interval_start": "2026-11-16T06:00:00+00:00",
+      "end_date": "2026-11-24T00:36:29.903561+00:00",
+      "execution_date": "2026-11-24T00:34:09.335064+00:00",
+      "external_trigger": true,
+      "last_scheduling_decision": "2026-11-24T00:36:29.900671+00:00",
+      "logical_date": "2026-11-24T00:34:09.335064+00:00",
+      "note": null,
+      "run_type": "manual",
+      "start_date": "2026-11-24T00:35:18.670526+00:00",
+      "state": "success"
+    },
+    {
+      "conf": {},
+      "dag_id": "weather_gold_processing",
+      "dag_run_id": "scheduled__2026-11-16T06:00:00+00:00",
+      "data_interval_end": "2026-11-23T06:00:00+00:00",
+      "data_interval_start": "2026-11-16T06:00:00+00:00",
+      "end_date": "2026-11-24T00:35:17.629294+00:00",
+      "execution_date": "2026-11-16T06:00:00+00:00",
+      "external_trigger": false,
+      "last_scheduling_decision": "2026-11-24T00:35:17.627266+00:00",
+      "logical_date": "2026-11-16T06:00:00+00:00",
+      "note": null,
+      "run_type": "scheduled",
+      "start_date": "2026-11-24T00:34:09.630112+00:00",
+      "state": "success"
+    },
+    {
+      "conf": {},
+      "dag_id": "weather_gold_processing",
+      "dag_run_id": "w3_gold_20261121T144317",
+      "data_interval_end": "2026-11-16T06:00:00+00:00",
+      "data_interval_start": "2026-11-09T06:00:00+00:00",
+      "end_date": "2026-11-21T14:44:56.070947+00:00",
+      "execution_date": "2026-11-21T14:43:19.294389+00:00",
+      "external_trigger": true,
+      "last_scheduling_decision": "2026-11-21T14:44:56.052526+00:00",
+      "logical_date": "2026-11-21T14:43:19.294389+00:00",
+      "note": null,
+      "run_type": "manual",
+      "start_date": "2026-11-21T14:43:19.834700+00:00",
+      "state": "success"
+    },
+    {
+      "conf": {},
+      "dag_id": "weather_gold_processing",
+      "dag_run_id": "w3_gold_20261121T012921",
+      "data_interval_end": "2026-11-16T06:00:00+00:00",
+      "data_interval_start": "2026-11-09T06:00:00+00:00",
+      "end_date": "2026-11-21T01:31:27.848093+00:00",
+      "execution_date": "2026-11-21T01:29:22.225855+00:00",
+      "external_trigger": true,
+      "last_scheduling_decision": "2026-11-21T01:31:27.845680+00:00",
+      "logical_date": "2026-11-21T01:29:22.225855+00:00",
+      "note": null,
+      "run_type": "manual",
+      "start_date": "2026-11-21T01:29:22.707231+00:00",
+      "state": "failed"
+    }
+  ],
+  "dag_states": {
+    "weather_bronze_ingestion": {
+      "paused": true
+    },
+    "weather_silver_processing": {
+      "paused": true
+    },
+    "weather_gold_processing": {
+      "paused": true
+    },
+    "weather_incremental_ingestion": {
+      "paused": true
+    }
+  }
+}

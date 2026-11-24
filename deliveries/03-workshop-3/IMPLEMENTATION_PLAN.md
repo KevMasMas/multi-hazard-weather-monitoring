@@ -1,5 +1,18 @@
 # Implementation Plan - Workshop 3
 
+## Runtime acceptance supplement - 2026-11-23
+
+The revised-DAG/Linux-test execution gap from the guide-alignment addendum is
+closed: actual Bronze/Silver source runs and Gold run
+`w3_runtime_gold_20261124T003408` succeeded. Current output: 650 governance /
+607 storytelling rows; 54 Linux tests passed without skips. Source counts,
+accepted-record hash and revision count are unchanged. Evidence and exact
+run/test/output hashes: `workshop_3/evidence/runtime_20261123/`.
+The submitted PDF and 19 other baseline artifacts were not changed. Kevin
+reported document submission; no new personal approval or upload is inferred.
+This is technical closure for W4 handoff, not W4 implementation. Remaining
+review/domain/baseline/county/CHI boundaries below are not silently resolved.
+
 ## Guide-alignment addendum - 2026-11-21
 
 The user resolved the guide interpretation: use the supplied Workshop 3 PDF

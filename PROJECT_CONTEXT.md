@@ -1,5 +1,19 @@
 # Project Context
 
+## Latest runtime verification - 2026-11-23
+
+Pulled revision `6fa48a9` was exercised in Docker/Airflow: both revised historical
+source paths and revised Gold succeeded. Gold has 650 governance / 607 storytelling
+rows, independently reconciled with Pandas. Fifty-four Linux tests pass without
+skips, including the previously omitted Spark/PostGIS cases. Numeric/text replay
+snapshots are reconciled before counting source records. The independent text
+verifier now tests and handles identical repeated exports while rejecting conflicts.
+Kevin reported the document was already submitted; the PDF/LaTeX, notebooks,
+submitted ZIPs/samples/manifest remain unchanged (20 checked hashes). No weather
+API request, new approval, commit/push or W4 implementation was performed.
+All four DAGs remain paused. Current handoff evidence and portable output index:
+`workshop_3/evidence/runtime_20261123/README.md`.
+
 ## Workshop 3 guide decision and current revision - 2026-11-21
 
 The team explicitly treats the supplied `Workshop_3.pdf` as the delivery guide

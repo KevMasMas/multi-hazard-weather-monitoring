@@ -1,0 +1,44 @@
+{
+  "purpose": "Record pre-run state and pause historical/Gold DAGs before scheduler startup; no weather requests.",
+  "dags": {
+    "weather_bronze_ingestion": {
+      "is_paused": false,
+      "schedule_interval": null,
+      "last_parsed_time": "2026-11-22T16:52:17.933198+00:00",
+      "existing_running_runs": {
+        "dag_runs": [],
+        "total_entries": 0
+      }
+    },
+    "weather_silver_processing": {
+      "is_paused": false,
+      "schedule_interval": null,
+      "last_parsed_time": "2026-11-22T16:52:23.092917+00:00",
+      "existing_running_runs": {
+        "dag_runs": [],
+        "total_entries": 0
+      }
+    },
+    "weather_gold_processing": {
+      "is_paused": false,
+      "schedule_interval": {
+        "__type": "CronExpression",
+        "value": "0 6 * * 1"
+      },
+      "last_parsed_time": "2026-11-22T16:52:40.472286+00:00",
+      "existing_running_runs": {
+        "dag_runs": [],
+        "total_entries": 0
+      }
+    },
+    "weather_incremental_ingestion": {
+      "is_paused": true,
+      "schedule_interval": null,
+      "last_parsed_time": "2026-11-22T16:52:29.265418+00:00",
+      "existing_running_runs": {
+        "dag_runs": [],
+        "total_entries": 0
+      }
+    }
+  }
+}
