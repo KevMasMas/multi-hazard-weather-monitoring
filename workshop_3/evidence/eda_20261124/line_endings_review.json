@@ -1,0 +1,26 @@
+{
+  "files": [
+    {
+      "path": "notebooks/02_historical_ingestion_review.ipynb",
+      "checkout_sha256": "4FFD7E5B6D5E9856B58FF1299CB4640354C56301B52E828111F6300C1B98FE41",
+      "recorded_canonical_sha256": "AF34EDCED57A77BA1BE7384A5F54A7D3986A8D5B7CC1D390043A1C9393F85C61",
+      "crlf_lines": 1654,
+      "action": "Restore recorded LF bytes only; text/JSON content unchanged"
+    },
+    {
+      "path": "workshop_2/samples/manifest.json",
+      "checkout_sha256": "D2AEE0B5420BA9C12E6B21EB842D945ABB6BEA6D1064CFA7AE373F28CF3BDBDF",
+      "recorded_canonical_sha256": "428AEE99E795B2E23A69C4DDE342EBD16DD46BFB14C8E6F26EACAC3404745268",
+      "crlf_lines": 113,
+      "action": "Restore recorded LF bytes only; text/JSON content unchanged"
+    },
+    {
+      "path": "workshop_2/report/layer_appendix.tex",
+      "checkout_sha256": "85CE21031CCAAD0244BD486870642B36AF0EEE956A11086FFC9322AB6449BF93",
+      "recorded_canonical_sha256": "A04550B6241D4D2C163E3DA51FADD846FE737F48CB80AE373DD96DCEC8CB563C",
+      "crlf_lines": 216,
+      "action": "Restore recorded LF bytes only; text/JSON content unchanged"
+    }
+  ],
+  "source_values_changed": false
+}

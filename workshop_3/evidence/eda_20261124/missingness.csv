@@ -1,0 +1,15 @@
+source,field,null_count,records,null_percent
+ghcn_daily,observed_at_utc,5478,5478,100.0
+ghcn_daily,observed_date,0,5478,0.0
+ghcn_daily,latitude,0,5478,0.0
+ghcn_daily,longitude,0,5478,0.0
+ghcn_daily,severity_value,0,5478,0.0
+ghcn_daily,severity_unit,0,5478,0.0
+ghcn_daily,quality_attributes,0,5478,0.0
+noaa_storm_events,observed_at_utc,0,13561,0.0
+noaa_storm_events,observed_date,13561,13561,100.0
+noaa_storm_events,latitude,7084,13561,52.238035543101546
+noaa_storm_events,longitude,7084,13561,52.238035543101546
+noaa_storm_events,severity_value,7623,13561,56.212668682250566
+noaa_storm_events,severity_unit,7623,13561,56.212668682250566
+noaa_storm_events,quality_attributes,13561,13561,100.0

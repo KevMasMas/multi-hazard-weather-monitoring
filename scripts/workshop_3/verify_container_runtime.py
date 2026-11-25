@@ -22,9 +22,14 @@ def write(name, value):
 
 
 def main():
+    global EVIDENCE
     parser = argparse.ArgumentParser()
     parser.add_argument('--mode', choices=['baseline', 'tests', 'runtime','database-before','database-after'], required=True)
+    parser.add_argument('--evidence-dir',default='workshop_3/evidence/runtime_20261123')
     args = parser.parse_args()
+    EVIDENCE=(ROOT/args.evidence_dir).resolve()
+    if not EVIDENCE.is_relative_to((ROOT/'workshop_3/evidence').resolve()):
+        raise ValueError('Evidence directory outside Workshop 3')
     if args.mode == 'baseline':
         if (EVIDENCE/'submitted_artifacts_before.json').exists():
             raise ValueError('Preserve the original baseline; do not replace it')

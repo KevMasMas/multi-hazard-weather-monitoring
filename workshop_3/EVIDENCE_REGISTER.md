@@ -1,130 +1,32 @@
 # Workshop 3 evidence register
 
-## Post-submission current runtime evidence - 2026-11-23
+## Current course EDA review - 2026-11-24
 
-Revised Bronze, Silver and Gold now have real successful Docker/Airflow runs.
-Gold is 650 governance / 607 storytelling rows; 54 Linux tests pass with no skips.
-See `evidence/runtime_20261123/README.md`, `runtime_verification.json`,
-`linux_tests.json`, `gold_reconciliation.json`, task logs and `sha256.json` there.
-Portable current outputs are indexed by `evidence/runtime_20261123/gold_samples.json`.
-Twenty delivered artifact hashes remain unchanged. The inventory below is the
-historical submitted-package snapshot at `6fa48a9`; current verifier/test hashes
-are recorded in the runtime supplement. Do not reseal the delivered PDF/package
-to record runtime evidence. No weather request, new personal approval or push
-was performed.
+Kevin reopened W3 preparation after the reported extension and selected the instructor's methods. Extra estimator comparison is removed; no W4 model/dashboard/CHI is introduced.
 
-## Current guide-aligned package (2026-11-21)
+- `evidence/eda_20261124/academic_materials.json`: reviewed instructor commit/URLs/file hashes.
+- `evidence/eda_20261124/course_eda_review.json`: real source counts, checks, clipping experiment and HTML profile hashes.
+- `evidence/eda_20261124/*notebook_execution.json`: 16/6 executed code cells, zero errors, fresh isolated kernels.
+- `evidence/eda_20261124/runtime/`: 55 Linux tests with no skips and the actual successful v2 Gold DAG.
+- `evidence/eda_20261124/gold_reconciliation.json`: independent Pandas/SciPy checks against the class method.
+- `evidence/eda_20261124/report_qa.json`: current 10-page PDF, rendered and visually reviewed.
+- `evidence/eda_20261124/final_review.json` and `sha256.json`: current review/package/source verification.
+- `archive/Workshop_3_Pre_EDA_20261124.zip`: 20 previous-delivery artifacts preserved exactly.
+- Earlier dated receipts and v1 outputs remain historical; current v2 samples are indexed by `evidence/eda_20261124/gold_samples.json`.
 
-The supplied Workshop 3 PDF is the selected guide despite its 2026-I cover.
-The final local PySpark batch is `w3_guide_alignment_final_20261121`: 650 governance and 607 storytelling rows, including 1,324 real NOAA 2021 narratives. Other years have no portable narrative evidence.
-See `evidence/guide_final_audit.json`, `guide_gold_reconciliation.json`, `text_quality.json`, `guide_tests.json`, the two guide notebook receipts and `report_qa.json`.
-The earlier 625-row Airflow run remains historical. The revised DAGs have not been rerun in Airflow; team approval, commit, push and submission are not recorded. `evidence/final_artifact_audit.json` belongs to that earlier eight-page revision; `guide_final_audit.json` is the current seal.
+No new weather query, personal approval, commit/push or resubmission is inferred.
 
-## Current SHA-256 inventory
+## Current artifacts
 
 | Repository path | SHA-256 |
 | --- | --- |
-| `airflow/dags/bronze_ingestion_dag.py` | `B1DD495349544B0D29310B0F1F0C6C35F74375C2EF17396C7D6F22DF39F23AA9` |
-| `airflow/dags/gold_processing_dag.py` | `94D423CDFB60F134E6B4D2497AEC6873A160D29428F520C2C1F92FCC4BEE2AAF` |
-| `airflow/dags/incremental_ingestion_dag.py` | `4034B16BE0B5AB306970E231A11BE9CDF5E641EE0F678153EDB5080E1021B53C` |
-| `airflow/dags/silver_processing_dag.py` | `43587E76967050A16053787628773E224C710D928A3B1CD845990E753E94E10D` |
-| `config/workshop3_gold.json` | `F2AE8827F593F05D75DFCD40800B97439AD14FD7FD85A916FE2905D660908EBB` |
-| `config/workshop3_incremental.json` | `63AF45AF08CF9E876E544BF1E202D5CFB11013468B327C9946A2FFF8E8BCDE0C` |
-| `config/workshop3_nws_replay.json` | `00219F0DA7791764CF3AD5D18F159D6498DCD5A23437034CF1396641BE03D4DC` |
-| `deliveries/03-workshop-3/SUBMISSION_MANIFEST.json` | `68822DE96D39377AA43FF695363E0CA7C6591CAE20CEC6C5E73F5568E17E6E56` |
-| `docker-compose.yml` | `52C68E0E5620ADCC879879765010653BB9F0AB5CBAED4EAE96B40A7A0D9662B4` |
-| `ingest.py` | `B30B7624984781561830E93CF33F07D783C4FEDDFA13335B9FFD950760AB6EA0` |
-| `notebooks/03_silver_quality_review.ipynb` | `F6FFEE700DEC9546F88B1EB962566ED9EA5D2751F9E363BB93AF181220BAA61C` |
-| `notebooks/04_gold_review.ipynb` | `F702C08AAF2CA4C37C359C81EBC4C1F9C86E1DAA2D5C953B3C0EDBF460D2F9CA` |
-| `PROJECT_CONTEXT.md` | `4FA621233A0547D0E7BFB21751385A38B00E7964672AD35A74094927C2910953` |
-| `scripts/workshop_3/audit_gold_delivery.py` | `C9CC09D07BB09093C2E79BCFD6E7ABE4C76C81F52DB0AB5F0CE5B107571E7716` |
-| `scripts/workshop_3/audit_live_window.py` | `A5BF768F8691BA5B453F9395A375F6BA840B593FF1408E92688CCB6F88D3AD90` |
-| `scripts/workshop_3/cache_spark_package.py` | `258598D36BA7BDB20B310C3855FFF99090556D2BDD70984E957F67E581ED8323` |
-| `scripts/workshop_3/check_report.py` | `DA40ADCF38B356B77696ED16D36E6BEEBF170CC36EF4B0421FE62DA6809725CD` |
-| `scripts/workshop_3/create_gold_notebook.py` | `D9E641A256A64FC9ED2BA0A49AFAFE075C68E565368A18702859DB3026C18D77` |
-| `scripts/workshop_3/create_quality_notebook.py` | `4BE8E38E8BA721E1A5C898A94BD46523D722D1E13DE93EA295438EBA63A4DC5B` |
-| `scripts/workshop_3/create_report_assets.py` | `DF761008CDE09CC45D2AE174D8A35CE9F6549F3A7A62D602F672214692E9C80E` |
-| `scripts/workshop_3/finalize_guide_delivery.py` | `C0F9E4A3E5B4479785D9513C378BA30C2E953A998859948DC620080ED2CCD329` |
-| `scripts/workshop_3/prepare_gold_samples.py` | `1137ECD8E44E32134C8377497065794492FB0AB33614DE25197274C0BB36A19A` |
-| `scripts/workshop_3/record_runtime.py` | `4E68187CD1D346992BBE68E8F2383CFF13D499A01D3E90CE018F7F311561A8DE` |
-| `scripts/workshop_3/restore_silver.py` | `86C96CA9B7F36D6009410E5812612FFCE44F5240D372FE39B6D73C193A1E1B5B` |
-| `scripts/workshop_3/run_gold.py` | `E7624A1414210E2DA8155DAC42904C47F05207530A43E3A3B240AA54A01672A3` |
-| `scripts/workshop_3/run_guide_tests.py` | `ACCCA97BC6B1657F03D0A1431F17A4B5E06BE5378FD90736079DA84A9B74ADD1` |
-| `scripts/workshop_3/run_tests.py` | `6DE905F48141260AD451C4E42257774F4F40D8ADD170D4581EE8D8676345EC95` |
-| `scripts/workshop_3/seal_delivery.py` | `B1BACF66E27EA05E1A25154DF06C25DFE341969B05139DEC374E1ED76A3CC197` |
-| `scripts/workshop_3/verify_airflow_gold.py` | `4DE6F3519086EF5150D02D0E876DBF11890CC6E98512DEDCC249B2E1E8582FB6` |
-| `scripts/workshop_3/verify_cli.py` | `4E7203B49567BF8F2B882AC1F17B76DAB3A2A3A59210DB9D847E279A5E28A586` |
-| `scripts/workshop_3/verify_gold.py` | `2C61BEA64CF59A9A99608D3E950FC4BC38FFB0C235B1BD6FDD2051CDC0F547E1` |
-| `scripts/workshop_3/verify_incremental.py` | `84AF521BED9F701CB2321F22151FD78FEEE043F971C59568D62B29898E3F0B5A` |
-| `scripts/workshop_3/verify_incremental_airflow.py` | `86A455B9393813CF8DAA48DA74985FEF47314FEBEE45543ADE0CDD92184C10DF` |
-| `scripts/workshop_3/verify_live.py` | `6A8E728C873C273AEEA07A87EA8270E91DDD1ECC932CE6BA87F17BEF5A9D7E14` |
-| `scripts/workshop_3/verify_restart.py` | `BE6640908E4A5E209C3340BEED499DC8116720A1EB6EE6C91AC4806A65F06C1E` |
-| `sql/005_incremental_ingestion.sql` | `111B7C21834325BBFBE0F6A0209F0C8EC91A957C5C1A2EE2520965D048669DE7` |
-| `src/multi_hazard_weather_monitoring/event_candidates.py` | `017862A5D2AEEBB136D9066F72D82430D1566A733C141B6A039790CE7710957C` |
-| `src/multi_hazard_weather_monitoring/gold.py` | `DA622992456ABA2FCC22B87F5C141B83C84D3FBC9F9A158ED6C5AA4240F4E5E8` |
-| `src/multi_hazard_weather_monitoring/incremental.py` | `36AA9F527E2CC05220A043A890D157B286B268667A7B1AB7F837E359B4D2A6B6` |
-| `src/multi_hazard_weather_monitoring/text_silver.py` | `17862356A41A4FF4F3DB2EF92D0B0D217D687BC2C84A1843F1CDC3F0ABD5310F` |
-| `tests/test_incremental.py` | `A3877F852A166CDA8CB4A6CB6DA92C9471DB280FBE6FD50FD8A23F7C00CE81A8` |
-| `tests/test_workshop3_text.py` | `3538BF17075E907CEEFE41FB9739916BD20AB269E33A841CDA373CAE7F8C1744` |
-| `WORK_BOARD.md` | `791DAEE72D466CC5C5E64D16623075E79B03FF14BB6D3C8EC833C9A2007084B8` |
-| `workshop_3/architecture.mmd` | `7EBA88023A7EC9878DE4FD0A93AF0D764DB525D472EA4B76351FF93236ABA539` |
-| `workshop_3/evidence/distribution_review.csv` | `4E950004AF9974B7F99DBFDEE87EC7DA3317B887D12A69F43836FCE1BA265ABB` |
-| `workshop_3/evidence/final_artifact_audit.json` | `C585138D235B966A88775EC9F7AFE380050B769D2E508986E5D26BE740F711B3` |
-| `workshop_3/evidence/gold_airflow_failed_permissions.json` | `89D443F52368B0B0502B82355BAD40C407F94E257C4D40C4D8B23700222B62C1` |
-| `workshop_3/evidence/gold_airflow_run.json` | `3224F09F2F281B1348A626A82670DBCE9DAFBCA54EAF51E6B0D8AB60F27898F9` |
-| `workshop_3/evidence/gold_artifact_audit.json` | `86E6765CE38B302452F7BB7ADD481FF0361572A94568C33E4338CCF2DF9A2D22` |
-| `workshop_3/evidence/gold_notebook_execution.json` | `5BA843026AD7C9D1BA36034487A2BAB9E43219EDEF8C599E3B51A3A6B0DF3B81` |
-| `workshop_3/evidence/gold_permission_error.json` | `1390E4EE05E81865C9302AB727FCC0A5447F922D400E1F4402760A14C3BAE637` |
-| `workshop_3/evidence/gold_reconciliation.json` | `84E0CB0550F63A64823E693882601B4D7C1137E6B64ED274B9B41E2D945CBD2B` |
-| `workshop_3/evidence/gold_retry_verification.json` | `1D5262E2A51C211220265DCFFE048DCCC54D6DF55AA0497183D25135E83B71EE` |
-| `workshop_3/evidence/gold_samples.json` | `B470E8506D68141E077DC6B66853A847243912A8B6BE2489E4F5B1A4AAC7DCC6` |
-| `workshop_3/evidence/guide_final_audit.json` | `23BFAA73686823B803A7DE0C9EA5F4E76E4A9E015AEAC4BAE4CB4CDF36090F24` |
-| `workshop_3/evidence/guide_gold_notebook_execution.json` | `14A683D4F28CA7E38E0AD4C02248D44BDA86C167D482BCB397BC7496406D7F40` |
-| `workshop_3/evidence/guide_gold_reconciliation.json` | `3BE4C5148C7DBAC6DE1C931C17DA8067126E2A9B72B613FDEE40CA72F53FDCFB` |
-| `workshop_3/evidence/guide_gold_samples.json` | `82B70B31B460B53C636821DB1385524E62FC83AD9218C5D6C9B3CAA80609C533` |
-| `workshop_3/evidence/guide_quality_notebook_execution.json` | `B68C8696705D57245D28B6C1D31025E9FE653C21748ED133ECB4993DA7611995` |
-| `workshop_3/evidence/guide_tests.json` | `10B33B063095B1B695A278F86B9E4D3B71A2F1C26DBA01FFA8E017AF4864FFBC` |
-| `workshop_3/evidence/incremental_airflow_run.json` | `5DFB404D6FA5930FE22B7437063DC533E84903D48159CADE0975204ADC7219B8` |
-| `workshop_3/evidence/incremental_database_audit.json` | `EDB934113E6525D8CA8F0A468577876E264A20878384F72E9DFCE0133F1395FA` |
-| `workshop_3/evidence/incremental_disabled_schedule.json` | `A5FA71FFED67D55E310721C0FB9AE0BF2C9465D0601F6AB5741A93955EF42896` |
-| `workshop_3/evidence/incremental_live.json` | `086F78B5533EF3D07689D559C7E5CA288CAA91C61DE71A98CA26591320221AB2` |
-| `workshop_3/evidence/incremental_replay.json` | `FBDE7A133BC43DCE26BA27140897F204AAD0B8B6BA825B4D7507E6CB021C87CE` |
-| `workshop_3/evidence/incremental_restart.json` | `4C1F773162647BCD68A82150E9F01B5CB32A1A190D2991DD2FC4561CF354A10B` |
-| `workshop_3/evidence/incremental_tests.json` | `F1EC916D065579777DCB6B39EFF2386229FBEE2D0BF63BF63FF9A124DD209413` |
-| `workshop_3/evidence/notebook_execution.json` | `55C61B98F55E5FF1B93007C8FB2571F326DD40E0DC6C776B4D0F272AF1E99969` |
-| `workshop_3/evidence/nws_window_review.json` | `19046F010F5D70937026115803D730D1C302C98F8C777F1AA12E0ECB0E856A4C` |
-| `workshop_3/evidence/quality_artifact_hashes.json` | `E8F4C99D54B082A7318FB7216CC963AAA8E987005884A5E7638C48EFBBCA8098` |
-| `workshop_3/evidence/report_qa.json` | `BA692B1837BE7DE00EC5A2FA9B30C3C57C666B4A5F33AC1D470B9A1C1A7DF3D7` |
-| `workshop_3/evidence/runtime.json` | `CA36D62540F3F278A52E2E88C80657C26F333A1F819E2F5B1D5593EF8CDE3EA3` |
-| `workshop_3/evidence/seasonal_review.csv` | `F1EF7CC506BBA09DC0E34BDCEE3F568D2739F744C6555427F0A3DA86153C6FB3` |
-| `workshop_3/evidence/silver_review.json` | `CAAEAFFA6F3C7C656B7C91487DED77A5FA569FECC0A46C9E259B9FFB91C14C25` |
-| `workshop_3/evidence/snapshot_inventory.csv` | `CE67D12FE74AC90170C2806AD33965951241A679CDBE2276C7550F5B35A41721` |
-| `workshop_3/evidence/source_missingness.csv` | `037CAF0E4BEEEC76A9C6C12287F595A97D3480B57379882AB7A7762E618066A8` |
-| `workshop_3/evidence/spark_tests.json` | `012B2FA728C6113BDBB980FC7C1FF7299D72F6774EF6212355983BC3EC77607D` |
-| `workshop_3/evidence/text_quality.json` | `099C1CAA1DC8A082704AB1A4B7718E56091F8C898086E5A81CB4317D4FFC8D12` |
-| `workshop_3/evidence/workshop2_regression.json` | `4C04596BCAECC77F7C6A5BBE0B2CC0CDD57B83603A87CAEE5AA3EEDAE8719DD0` |
-| `workshop_3/GOLD_CONTRACT.md` | `D83C29E636A65D2AC0876B72382D42C7BC1AFD413515BA0288EC39AECF310785` |
-| `workshop_3/INCREMENTAL_CONTRACT.md` | `CF0784983DA57D991D3F156331031D5D9DA233CC0285F5AD4304CC687E8DB2D4` |
-| `workshop_3/report/assets/Escudo.png` | `E0F1F6EDA8029C428E69579B72DBAD04FF8A7CE56912429363B50A059AD7AB1E` |
-| `workshop_3/report/assets/governance_preview.png` | `99ACDFCE9CBDEF995B3147685A4422B72456543E9ED4A3AF7617B69E33A7399F` |
-| `workshop_3/report/assets/quality_1.png` | `80146B76E7926EDD7D328C8DDBCBDDA61A19CB95C67F2E201344AEAF6DD409ED` |
-| `workshop_3/report/assets/quality_2.png` | `A3E708CDF44890A13BFA63D0F665A5EF47323A0F920A69A78341C3745A317EF4` |
-| `workshop_3/report/assets/storytelling_preview.png` | `785002A3AD278566AA3EBFD0BCD7E4E2B7591B236C9AE625E372B2A8B851412C` |
-| `workshop_3/report/cover.tex` | `15673FD327BDA2CAA50FE7D077DC697D41A646E22851F4CF47A2857F49D50DED` |
-| `workshop_3/report/main.tex` | `BF315BF13E89A8DC6737A7C52CBB144BEFC950C7DBD6B98B0507F02DB506EE3A` |
-| `workshop_3/samples/gold/governance_20261121_144319_caeba6938516.parquet` | `C21E050DB77E0F941B99F028740FEDF96FD5C38DF2262AF55F5817190705F4F8` |
-| `workshop_3/samples/gold/governance_preview.csv` | `2AAEB58D0FC601C576881804F5AB3E5BEB46210D47B23C75E2AD65EDBBB423DB` |
-| `workshop_3/samples/gold/manifest.json` | `A413FAB0E5CDA49CBD6B814915261D830CDE2D886C25F0D4379B2CA072ADAE3C` |
-| `workshop_3/samples/gold/README.md` | `22153A72EE31959C4BE34D146165FE6E22C9B4BD6F302B95CC17CD3EF90DC3F0` |
-| `workshop_3/samples/gold/storytelling_20261121_144319_caeba6938516.parquet` | `63C1FA56AD8919F4B2361F5588A43D85614E39763D34C9523A4369BE40A35097` |
-| `workshop_3/samples/gold/storytelling_preview.csv` | `C74BE0E97EA696933FA461CD0F90F530E6D2A63E6107D8123EF88D2C222F70C2` |
-| `workshop_3/samples/incremental/live_nws_candidates.json` | `37517E5F3DC66819F61F5A7BB8ACE1921282415F10551D2DEFA5C3EB0985B570` |
-| `workshop_3/samples/incremental/normalized_preview.json` | `2D6E98952162A25743F99B7846B9F158DB18FD80099D446B6161CAE3C4B1C914` |
-| `workshop_3/samples/incremental/nws_alerts_live_excerpt.json` | `EDFBD2AE8361B8590F58B8AE3C08E6E465AF9184466C468FAF64FF6B692CCD08` |
-| `workshop_3/samples/incremental/nws_candidates.json` | `3849C005C11919C6DAF0842829E2A24D86806DCBDB22904257989AB5265BE9F8` |
-| `workshop_3/samples/incremental/nws_station_observations_live_excerpt.json` | `EDBABE8C50B85CF259A7BD657DB9C6A96A4383EA788DC1363CD3B4C401037A4A` |
-| `workshop_3/samples/incremental/README.md` | `F9268A7261A9F73D22B540D2E51AAC841713806AF0413983084FF947A290869A` |
-| `workshop_3/samples/silver_text/noaa_oklahoma_2021_text.parquet` | `C1AFB9407724B1B92DC9F13EFFD657DD5B41A5EB0A1C497F8B1BA9591A71A8F2` |
-| `workshop_3/Workshop_3_Pipeline_Improvements_and_Gold_Layer_Report.pdf` | `4FAD348C8A063A4B5290ACC43319DB5C8347E3D3138547413B66F6A8E3B0D474` |
-| `workshop_3/Workshop_3_Pipeline_Output_Samples.zip` | `E5E5B28696C1CE470135F5E3F0A09C7129A97BB6CEE79826EEF65C37BD86705B` |
+| `workshop_3/Workshop_3_Pipeline_Improvements_and_Gold_Layer_Report.pdf` | `548F29F3D9806E8B4B412D490868FD7018AF6B11397BF17440C19EDCD5383958` |
+| `workshop_3/Workshop_3_Pipeline_Output_Samples.zip` | `6E34E921A548155EBFB1E475818D6EBA15448646AB8657C6DB80737B943EC533` |
+| `workshop_3/Workshop_3_LaTeX_Source.zip` | `D9A2CCE3333283B150453E5FEEE24BC9280BBD9C028B86BF8E6E41CF98A427E1` |
 | `workshop_3/Workshop_3_Silver_Reproduction_Inputs.zip` | `B01835F142E7A85F8387421AFBC44CA853C65E8D908E8355523F5C708DCC905F` |
+| `notebooks/03_silver_quality_review.ipynb` | `4B059C35AE2F289C7B365E41FA4CFD56807AFC698CA52404E142E3BB48E0374C` |
+| `notebooks/04_gold_review.ipynb` | `70A370C5F08E868B4F2CAA767E2C2151959CA98D6C6B994DE9912C268AA1883B` |
+| `workshop_3/samples/eda_20261124/governance_20261125_000455_f6258c571a43.parquet` | `E5D7E1F9AC1DB100DF9E3BB50991D3C4B7BE653CBA28841E46682E56378FD7E7` |
+| `workshop_3/samples/eda_20261124/storytelling_20261125_000455_f6258c571a43.parquet` | `FD610E13DC96D3A6CE190D0C981D3B6909C98D51B27B216D967BDC1067BC490A` |
+| `workshop_3/profiling/ghcn_station_quality.html` | `23BE939223E922D477C9EEDFB5456DDFB8E725866E05A7AF1AA6143B8F3A39A6` |
+| `workshop_3/profiling/silver_source_quality.html` | `DFE189C6F4E7F9DC1E30ACB65B00BDB60F990C9F46BCF54F131754CD26488887` |

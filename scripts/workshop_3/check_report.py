@@ -15,9 +15,11 @@ ROOT=Path(__file__).resolve().parents[2]
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--confirm-visual-review',action='store_true')
+    parser.add_argument('--expected-pages',type=int,default=9)
+    parser.add_argument('--receipt',default='workshop_3/evidence/report_qa.json')
     args=parser.parse_args()
     path=ROOT/'workshop_3/Workshop_3_Pipeline_Improvements_and_Gold_Layer_Report.pdf'
-    reader=PdfReader(path);assert len(reader.pages)==9
+    reader=PdfReader(path);assert len(reader.pages)==args.expected_pages
     texts=[p.extract_text() or '' for p in reader.pages]
     assert all(len(t)>200 for t in texts)
     combined='\n'.join(texts)
@@ -33,11 +35,16 @@ def main():
     proof={'verified_at_utc':datetime.now(timezone.utc).isoformat(),'pdf_path':path.relative_to(ROOT).as_posix(),
            'pdf_sha256':hashlib.sha256(path.read_bytes()).hexdigest().upper(),'pages':len(reader.pages),
            'page_checks':bounds,'visual_review_passed':True,
-           'visual_review':'All 9 final pages rendered at 85 DPI and inspected in a 3x3 contact sheet. No clipping, overlap or artificial blank page observed.',
+           'visual_review':f'All {len(reader.pages)} final pages rendered at 85 DPI and inspected in a contact sheet; descriptive-statistics page inspected separately. No clipping, overlap or artificial blank page observed.',
            'overfull_tex_boxes':'not_checked_no_log','nonblocking_tex_note':'Tectonic emitted one underfull hbox; no overfull warning appeared in the build output.',
            'weather_network':False}
-    (ROOT/'workshop_3/evidence/report_qa.json').write_text(json.dumps(proof,indent=2)+'\n',encoding='utf-8',newline='\n')
-    print('PDF check passed: 9 pages, safe text bounds, rendered visual review confirmed.')
+    log_path=ROOT/'workshop_3/report/main.log'
+    if log_path.exists():
+        log=log_path.read_text(encoding='utf-8',errors='replace')
+        assert 'Overfull \\hbox' not in log and 'Overfull \\vbox' not in log
+        proof['overfull_tex_boxes']=0
+    (ROOT/args.receipt).write_text(json.dumps(proof,indent=2)+'\n',encoding='utf-8',newline='\n')
+    print(f'PDF check passed: {len(reader.pages)} pages, safe text bounds, rendered visual review confirmed.')
 
 
 if __name__=='__main__':main()

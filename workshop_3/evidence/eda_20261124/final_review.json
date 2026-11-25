@@ -1,0 +1,66 @@
+{
+  "verified_at_utc": "2026-11-25T00:24:39.278831+00:00",
+  "branch": "feat/workshop-3-quality-gold",
+  "tests_passed": 55,
+  "tests_skipped": 0,
+  "quality_code_cells": 16,
+  "gold_code_cells": 6,
+  "notebook_errors": 0,
+  "real_gold_dag_run": "w3_runtime_gold_20261125T000455",
+  "gold_rows": {
+    "governance": 650,
+    "storytelling": 607
+  },
+  "profiles_verified": {
+    "station": {
+      "path": "workshop_3/profiling/ghcn_station_quality.html",
+      "sha256": "23BE939223E922D477C9EEDFB5456DDFB8E725866E05A7AF1AA6143B8F3A39A6",
+      "rows": 1826,
+      "columns": 4,
+      "alerts": [
+        "[TMAX] is highly overall correlated with [TMIN]",
+        "[TMIN] is highly overall correlated with [TMAX]",
+        "[date] has unique values",
+        "[PRCP] has 1436 (78.6%) zeros",
+        "[TMIN] has 39 (2.1%) zeros"
+      ]
+    },
+    "source_quality": {
+      "path": "workshop_3/profiling/silver_source_quality.html",
+      "sha256": "DFE189C6F4E7F9DC1E30ACB65B00BDB60F990C9F46BCF54F131754CD26488887",
+      "rows": 19039,
+      "columns": 7,
+      "alerts": [
+        "Dataset has 501 (2.6%) duplicate rows",
+        "[observed_date] 13561 (71.2%) missing values",
+        "[observed_at_utc] 5478 (28.8%) missing values",
+        "[latitude] 7084 (37.2%) missing values",
+        "[longitude] 7084 (37.2%) missing values"
+      ]
+    }
+  },
+  "report_pages": 10,
+  "report_visual_qa_passed": true,
+  "class_method_comparison_removed": true,
+  "gold_matches_course_notebook": true,
+  "frozen_silver_register_unchanged": true,
+  "prior_delivery_archived": 20,
+  "prior_W1_W2_manifests_match": true,
+  "recognized_secret_findings": [],
+  "secret_scan_scope": "Recognizable GitHub/AWS/private-key patterns; not exhaustive.",
+  "git_diff_check_passed": true,
+  "weather_network": false,
+  "commit_push_or_personal_approval": false,
+  "artifacts": {
+    "workshop_3/Workshop_3_Pipeline_Improvements_and_Gold_Layer_Report.pdf": "548F29F3D9806E8B4B412D490868FD7018AF6B11397BF17440C19EDCD5383958",
+    "workshop_3/Workshop_3_Pipeline_Output_Samples.zip": "6E34E921A548155EBFB1E475818D6EBA15448646AB8657C6DB80737B943EC533",
+    "workshop_3/Workshop_3_LaTeX_Source.zip": "D9A2CCE3333283B150453E5FEEE24BC9280BBD9C028B86BF8E6E41CF98A427E1",
+    "workshop_3/Workshop_3_Silver_Reproduction_Inputs.zip": "B01835F142E7A85F8387421AFBC44CA853C65E8D908E8355523F5C708DCC905F",
+    "notebooks/03_silver_quality_review.ipynb": "4B059C35AE2F289C7B365E41FA4CFD56807AFC698CA52404E142E3BB48E0374C",
+    "notebooks/04_gold_review.ipynb": "70A370C5F08E868B4F2CAA767E2C2151959CA98D6C6B994DE9912C268AA1883B",
+    "workshop_3/samples/eda_20261124/governance_20261125_000455_f6258c571a43.parquet": "E5D7E1F9AC1DB100DF9E3BB50991D3C4B7BE653CBA28841E46682E56378FD7E7",
+    "workshop_3/samples/eda_20261124/storytelling_20261125_000455_f6258c571a43.parquet": "FD610E13DC96D3A6CE190D0C981D3B6909C98D51B27B216D967BDC1067BC490A",
+    "workshop_3/profiling/ghcn_station_quality.html": "23BE939223E922D477C9EEDFB5456DDFB8E725866E05A7AF1AA6143B8F3A39A6",
+    "workshop_3/profiling/silver_source_quality.html": "DFE189C6F4E7F9DC1E30ACB65B00BDB60F990C9F46BCF54F131754CD26488887"
+  }
+}

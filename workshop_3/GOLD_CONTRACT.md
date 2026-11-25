@@ -1,5 +1,15 @@
 # Gold datasets and dashboard questions
 
+## Current course EDA revision - 2026-11-24
+
+Kevin selected the instructor's methods after the reported delivery extension.
+The current v2 Gold and revised 16/6-cell notebooks use those methods; the
+extra estimator comparison was removed. Latest exact outputs are indexed in
+`evidence/eda_20261124/gold_samples.json`, supported by a new real Airflow success
+and 55 passing Linux tests. The prior delivered revision is archived. Older
+dated observations below describe earlier versions; do not mix their metric
+names/values with v2.
+
 ## Guide-aligned revision (2026-11-21)
 
 The current Gold job enumerates **all** numerical `*.parquet` files in
@@ -81,24 +91,19 @@ claim that all source-quality or meteorological validity tests passed. Daily
 missing UTC instants and missing storm dates are expected record semantics.
 Nonempty GHCN QC flags are retained and reported, not silently certified valid.
 
-Distribution metrics use exact interpolated quartiles, sample standard deviation
-(ddof=1), bias-corrected sample skewness and sample excess kurtosis (normal
-reference zero). Spark's population skewness/kurtosis are transformed to the
-sample conventions used in the Pandas notebook:
+Distribution metrics use the instructor's SciPy shape convention: `skew()`
+and `kurtosis()` with their defaults, implemented by the equivalent Spark
+`skewness` and `kurtosis` aggregates. Current metric names are `skewness` and
+`excess_kurtosis` under `weather-gold-v2-course-eda`; fewer than ten values or
+constant groups yield unavailable shape statistics. Pandas `std()` (ddof=1)
+and linear `quantile()` follow the same class Z-score and IQR examples.
 
-```text
-sample_skew = sqrt(n*(n-1))/(n-2) * spark_skew
-sample_excess_kurtosis = (n-1)/((n-2)*(n-3)) * ((n+1)*spark_excess_kurtosis + 6)
-```
-
-Insufficient/constant groups return unavailable shape statistics. IQR review
-uses 1.5 times the IQR only when IQR > 0. Z-score > 3 uses sample standard
-deviation only when positive. The zero-heavy all-day PRCP series has zero IQR,
-so its IQR rate is unavailable; positive reported rain (`PRCP > 0 mm`) is a
-separate exploratory population. It is not a provider-defined wet-day threshold.
-Temperatures also have month-specific context. No flags delete or modify data.
-These thresholds are explicit project review choices, pending exact class-example
-comparison, not a verified instruction to discard weather extremes.
+IQR uses 1.5 fences when IQR >0; Z-score comparison uses absolute sample Z-score
+>3 with positive standard deviation. Positive reported rain and calendar-month
+temperature populations remain explicit. The clipping/log1p classroom experiment
+is performed on an analytical copy and is not applied to Silver/Gold; no raw
+extreme or missing value is silently replaced. The separate automatic profiles
+support a source-aware quality review before Gold.
 
 ## Storytelling - monthly weather summaries
 

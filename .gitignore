@@ -1,6 +1,7 @@
 # Local environments and secrets
 .env
 .venv/
+.venv-eda/
 .venv-wsl/
 venv/
 __pycache__/
@@ -44,6 +45,7 @@ data/gold/
 !workshop_3/samples/gold/*.parquet
 !workshop_3/samples/silver_text/*.parquet
 !workshop_3/samples/runtime_20261123/*.parquet
+!workshop_3/samples/eda_20261124/*.parquet
 *.duckdb
 *.sqlite
 *.db

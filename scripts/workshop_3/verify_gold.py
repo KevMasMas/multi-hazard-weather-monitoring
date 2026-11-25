@@ -31,6 +31,7 @@ def reconcile_text_snapshots(frames):
 
 
 def main():
+    from scipy import stats as sp_stats
     parser=argparse.ArgumentParser()
     parser.add_argument('--manifest',required=True)
     parser.add_argument('--receipt',default='workshop_3/evidence/gold_reconciliation.json')
@@ -91,7 +92,7 @@ def main():
             q1,q3=values.quantile([.25,.75]);iqr=q3-q1;sd=values.std(ddof=1)
             expected={'measurement_count':len(values),'mean':values.mean(),'median':values.median(),
                       'std_ddof1':sd,'q1':q1,'q3':q3,'iqr':iqr,'zero_fraction':values.eq(0).mean(),
-                      'sample_skewness':values.skew(),'sample_excess_kurtosis':values.kurt()}
+                      'skewness':sp_stats.skew(values),'excess_kurtosis':sp_stats.kurtosis(values)}
             for metric,value in expected.items():
                 np.testing.assert_allclose(actual.loc[metric,'value'],value,rtol=1e-8,atol=1e-8,equal_nan=True)
                 shape_checks+=1

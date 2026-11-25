@@ -1,0 +1,83 @@
+{
+  "verified_at_utc": "2026-11-25T00:20:43.227774+00:00",
+  "pdf_path": "workshop_3/Workshop_3_Pipeline_Improvements_and_Gold_Layer_Report.pdf",
+  "pdf_sha256": "548F29F3D9806E8B4B412D490868FD7018AF6B11397BF17440C19EDCD5383958",
+  "pages": 10,
+  "page_checks": [
+    {
+      "page": 1,
+      "width": 595.28,
+      "height": 841.89,
+      "text_characters": 345,
+      "words_outside_safe_bounds": 0
+    },
+    {
+      "page": 2,
+      "width": 595.28,
+      "height": 841.89,
+      "text_characters": 4075,
+      "words_outside_safe_bounds": 0
+    },
+    {
+      "page": 3,
+      "width": 595.28,
+      "height": 841.89,
+      "text_characters": 3388,
+      "words_outside_safe_bounds": 0
+    },
+    {
+      "page": 4,
+      "width": 595.28,
+      "height": 841.89,
+      "text_characters": 1437,
+      "words_outside_safe_bounds": 0
+    },
+    {
+      "page": 5,
+      "width": 595.28,
+      "height": 841.89,
+      "text_characters": 3088,
+      "words_outside_safe_bounds": 0
+    },
+    {
+      "page": 6,
+      "width": 595.28,
+      "height": 841.89,
+      "text_characters": 3955,
+      "words_outside_safe_bounds": 0
+    },
+    {
+      "page": 7,
+      "width": 595.28,
+      "height": 841.89,
+      "text_characters": 3687,
+      "words_outside_safe_bounds": 0
+    },
+    {
+      "page": 8,
+      "width": 595.28,
+      "height": 841.89,
+      "text_characters": 3274,
+      "words_outside_safe_bounds": 0
+    },
+    {
+      "page": 9,
+      "width": 595.28,
+      "height": 841.89,
+      "text_characters": 3891,
+      "words_outside_safe_bounds": 0
+    },
+    {
+      "page": 10,
+      "width": 595.28,
+      "height": 841.89,
+      "text_characters": 2432,
+      "words_outside_safe_bounds": 0
+    }
+  ],
+  "visual_review_passed": true,
+  "visual_review": "All 10 final pages rendered at 85 DPI and inspected in a contact sheet; descriptive-statistics page inspected separately. No clipping, overlap or artificial blank page observed.",
+  "overfull_tex_boxes": 0,
+  "nonblocking_tex_note": "Tectonic emitted one underfull hbox; no overfull warning appeared in the build output.",
+  "weather_network": false
+}

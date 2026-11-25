@@ -1,0 +1,306 @@
+{
+  "signature": "A99861018A0FA3C928D5557D38A7C33DB4D29FF8E3656317A4ABC26771F081B3",
+  "identity": {
+    "batch_id": "w3_runtime_gold_20261125T000455",
+    "logical_time": "2026-11-25T00:04:55.538702+00:00",
+    "config": {
+      "schema_version": "weather-gold-v2-course-eda",
+      "input_register": "workshop_3/evidence/silver_review.json",
+      "silver_folder": "datalake_silver",
+      "text_register": "workshop_3/samples/silver_text/noaa_oklahoma_2021_text.manifest.json",
+      "text_folder": "datalake_silver/text",
+      "output_folder": "datalake_gold",
+      "start": "2021-01-01",
+      "end": "2025-12-31",
+      "spark_master": "local[2]",
+      "driver_memory": "1g",
+      "shuffle_partitions": 2,
+      "iqr_multiplier": 1.5,
+      "zscore_threshold": 3.0,
+      "schedule": "0 6 * * 1"
+    },
+    "config_path": "config/workshop3_gold.json",
+    "config_sha256": "31363E72D7D102DE2CEB444ED89F48E06AEF5DAB03801CD07146F2A65214FB16",
+    "input_register_sha256": "CAAEAFFA6F3C7C656B7C91487DED77A5FA569FECC0A46C9E259B9FFB91C14C25",
+    "inputs": {
+      "datalake_silver/ghcn_daily_20261117_020238_88d38c9a6dc3.parquet": "F3AED4BC4DFDEAE8C01D209CBFE5BC1F310F32B419EA9C2F279F59EF2DB5CE5D",
+      "datalake_silver/ghcn_daily_20261117_020238_e13254eec873.parquet": "2A3D8EE747C240D87C33F0B4D5B8D0DB7FA0AEC6B62C95C863489AB7F5F74093",
+      "datalake_silver/ghcn_daily_20261117_020239_2280dbdf1be4.parquet": "C7825F772611148C50BA65794D8948F558081F911F5849529B23799900112CA6",
+      "datalake_silver/ghcn_daily_20261117_020239_2ef2b0ec14e0.parquet": "0BF4B0F90849451979EF079B921196996B16959D39CE2B36C8B06F3053143116",
+      "datalake_silver/ghcn_daily_20261117_020239_d0aafd11f6d4.parquet": "140F479CDA3DD5D37C97B0F9FC72966000D38A6F3DE220FC3D1B0BA1BCB48049",
+      "datalake_silver/ghcn_daily_20261117_021929_d69196a12cbe.parquet": "E153C68080FF40DD10E931C34EB5AACA72706482862B541D59B2677D59C98507",
+      "datalake_silver/ghcn_daily_20261117_021930_2459d4fd6d59.parquet": "285787E16B4BD54C2E5A2EBFF1344FC4E8AB3B84AAF641FCD50D30A328E7454D",
+      "datalake_silver/ghcn_daily_20261124_003244_b5ee6e4cb1c9.parquet": "BD154EE81773A226787C340F2B9A64B80B22450C6EB3C7BF63413B763ABF77A4",
+      "datalake_silver/noaa_storm_events_20261117_020238_7f88a3503007.parquet": "DECFDA1BF67C2A425021CEDDC9CCAC3181CEB27C66AD6F8377B95D62FBA32496",
+      "datalake_silver/noaa_storm_events_20261117_020238_c0b5c9ad0bca.parquet": "BFF661C98F64237DF5493F6DABFAD6F931FCE64B62FEBCD1073FC75DA8D28429",
+      "datalake_silver/noaa_storm_events_20261117_020239_5e125c6d2da4.parquet": "61C038F08A7D59D992CF6AA219E77CD1B8913856901B7E5439486EA4D977EEEB",
+      "datalake_silver/noaa_storm_events_20261117_020239_99a0190a1848.parquet": "304614848D28729AA6BD4FEA95C70A0358125926EFFF0BC09C6701F7181321BA",
+      "datalake_silver/noaa_storm_events_20261117_020239_a47ff5bbbb16.parquet": "DF8349409ADA95980E1065D14ED2A58CE9B9E5E56C0392B392E445D8B0A33DD4",
+      "datalake_silver/noaa_storm_events_20261117_021929_e0608e1bf9d9.parquet": "432B3BD3BB62DD8470A9840576532AB572ECF151D7C7E190C6166AC1C3CA6ECF",
+      "datalake_silver/noaa_storm_events_20261124_003244_3843c6d2975a.parquet": "82FA4D7A40EE8CED323C7D881EC3B1B9D2970133DFB009241AA0966BB71D4FF2"
+    },
+    "text_inputs": {
+      "datalake_silver/text/noaa_oklahoma_2021_text.parquet": "C1AFB9407724B1B92DC9F13EFFD657DD5B41A5EB0A1C497F8B1BA9591A71A8F2",
+      "datalake_silver/text/noaa_storm_events_20261124_003244_3843c6d2975a.parquet": "FAAC0312A769A2B4427D1EF1ADB3AA80C1409A8B321C112F507A1ADAC64FF681"
+    },
+    "implementation_sha256": "8F2232DA9EACD9EF81F0D6A61C6F54DB0B5FEE5A3F3C43158592426137BCA5FC"
+  },
+  "outputs": {
+    "governance": {
+      "path": "datalake_gold/20261125_000455_f6258c571a43/governance_20261125_000455_f6258c571a43.parquet",
+      "rows": 650,
+      "sha256": "E5D7E1F9AC1DB100DF9E3BB50991D3C4B7BE653CBA28841E46682E56378FD7E7",
+      "bytes": 10113,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "source",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "station",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "population",
+            "type": "string",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "period",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "variable",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "unit",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "metric",
+            "type": "string",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "value",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "numerator",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "denominator",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "method",
+            "type": "string",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "batch_id",
+            "type": "string",
+            "nullable": false,
+            "metadata": {}
+          }
+        ]
+      },
+      "writer": "spark_parquet_linux"
+    },
+    "storytelling": {
+      "path": "datalake_gold/20261125_000455_f6258c571a43/storytelling_20261125_000455_f6258c571a43.parquet",
+      "rows": 607,
+      "sha256": "FD610E13DC96D3A6CE190D0C981D3B6909C98D51B27B216D967BDC1067BC490A",
+      "bytes": 25429,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "source",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "period",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "event_type",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "station",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "geographic_scope",
+            "type": "string",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "severity_unit",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "record_count",
+            "type": "long",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "measured_count",
+            "type": "long",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "mean_value",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "min_value",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "max_value",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "observed_dates",
+            "type": "long",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "missing_point_count",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "precipitation_total_mm",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "batch_id",
+            "type": "string",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "analysis_type",
+            "type": "string",
+            "nullable": false,
+            "metadata": {}
+          },
+          {
+            "name": "text_record_count",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "mean_sentiment_score",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "positive_count",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "neutral_count",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "negative_count",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "top_keywords_json",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "writer": "spark_parquet_linux"
+    }
+  },
+  "counts": {
+    "snapshot_rows": 24972,
+    "unique_business_records": 19039,
+    "source_counts": {
+      "noaa_storm_events": 13561,
+      "ghcn_daily": 5478
+    },
+    "repeated_snapshot_rows": 5933
+  },
+  "generated_at_utc": "2026-11-25T00:06:29.249298+00:00",
+  "spark_version": "3.5.7",
+  "spark_configuration": {
+    "spark.master": "local[2]",
+    "spark.driver.memory": "1g",
+    "spark.sql.shuffle.partitions": "2",
+    "spark.sql.session.timeZone": "UTC"
+  },
+  "limitations": [
+    "One GHCN station; no county assignments or forecasting.",
+    "Reviewed registered historical snapshot; not an automatically expanding input folder.",
+    "Review flags preserve extremes; missing-inapplicable columns remain explicit."
+  ]
+}

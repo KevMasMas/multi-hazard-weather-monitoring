@@ -1,5 +1,19 @@
 # Project Context
 
+## Reopened W3 delivery and selected course methods - 2026-11-24
+
+Kevin reported extra submission time and authorized revision using the latest
+instructor EDA notebooks/slides. He explicitly selected the instructor's method
+and removal of unrelated additions. Use SciPy skew/kurtosis as in class, Pandas
+std/quantile, 1.5-IQR, absolute Z-score >3, basic bivariate review and automatic
+profiling; no additional estimator comparison or predictive model is introduced.
+Gold contract is now `weather-gold-v2-course-eda`, verified by a new actual
+650/607 Airflow run, independent comparison and 55 passing Linux tests. Quality
+and preview notebooks execute 16/6 code cells with zero errors. The previous
+20 delivery artifacts are preserved in `workshop_3/archive/Workshop_3_Pre_EDA_20261124.zip`.
+The current 10-page package is prepared for review under the extension; no
+precise new deadline, final approval, commit/push or upload is inferred.
+
 ## Latest runtime verification - 2026-11-23
 
 Pulled revision `6fa48a9` was exercised in Docker/Airflow: both revised historical

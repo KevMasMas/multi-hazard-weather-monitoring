@@ -240,12 +240,10 @@ def governance(raw,current,config,batch_id,text_current=None):
             metric(values,name,F.col(column),method='exact_spark_sql_sample_std_linear_percentile')
         metric(values,'zero_fraction',F.col('zeros')/F.col('n'),F.col('zeros'),F.col('n'))
         n=F.col('n').cast('double')
-        # Spark returns population moments; transform to Pandas' sample estimators.
-        skew=F.sqrt(n*(n-1))/(n-2)*F.col('skew_pop')
-        kurt=(n-1)/((n-2)*(n-3))*((n+1)*F.col('kurt_pop')+6)
-        for name,expression,minimum in [('sample_skewness',skew,3),('sample_excess_kurtosis',kurt,4)]:
-            available=(n>=minimum)&(F.col('std')>0)
-            metric(values,name,F.when(available,expression),method='bias_corrected_sample_from_spark_population_moments',
+        # Match the instructor's scipy.stats.skew/kurtosis defaults.
+        for name,expression in [('skewness',F.col('skew_pop')),('excess_kurtosis',F.col('kurt_pop'))]:
+            available=(n>=10)&(F.col('std')>0)
+            metric(values,name,F.when(available,expression),method='course_scipy_defaults_spark_equivalent',
                    status=F.when(available,'available').otherwise('unavailable_insufficient_or_constant'))
         for name,count,available,method in [
             ('iqr_review_fraction','iqr_flags',F.col('iqr')>0,f'linear_quartiles_{k}_iqr_review_only'),

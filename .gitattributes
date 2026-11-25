@@ -11,6 +11,7 @@ workshop_1/samples/*.geojson -text
 *.json text eol=lf
 *.ipynb text eol=lf
 *.tex text eol=lf
+*.mmd text eol=lf
 *.py text eol=lf
 *.sql text eol=lf
 *.ps1 text eol=crlf
@@ -35,3 +36,10 @@ workshop_3/*.pdf binary
 workshop_3/evidence/runtime_20261123/*.json -text
 workshop_3/samples/runtime_20261123/*.parquet binary
 workshop_3/samples/runtime_20261123/*.json -text
+workshop_3/evidence/eda_20261124/**/*.json -text
+workshop_3/evidence/eda_20261124/*.json -text
+workshop_3/evidence/eda_20261124/*.csv -text
+workshop_3/samples/eda_20261124/*.json -text
+workshop_3/samples/eda_20261124/*.parquet binary
+workshop_3/profiling/*.html -text
+workshop_3/archive/*.zip binary

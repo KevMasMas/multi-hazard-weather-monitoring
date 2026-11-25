@@ -30,3 +30,11 @@ Append entries; do not silently rewrite historical observations.
 - **Files/decision:** added the verified-input paragraph to this delivery plan and this log. Select the actual successful 650/607 Gold batch through `workshop_3/evidence/runtime_20261123/gold_samples.json`; preserve source/time/unit and narrative-coverage boundaries.
 - **Verification/evidence:** revised Bronze/Silver/Gold succeeded; 54 Linux tests passed without skips; 20 delivered W3 artifact hashes and accepted historical record/revision hashes are unchanged. Actual receipts, logs and hashes are in the W3 runtime supplement. No new test/implementation execution is attributed to W4 itself.
 - **Input/limits/handoff:** Kevin requested closing runtime gaps to continue with W4 and preserving the delivered document. Team review of W4 guide/input/CHI/county scope remains open; no personal approval or professor clarification inferred. Follow the current work board; selecting a new analytical scope must not overwrite submitted W3 artifacts.
+
+
+### [2026-11-24 America/Bogota] - Revised input contract only
+
+- **Objective/status:** update the future W4 input pointer after Kevin selected the professor's EDA method for the reopened W3 delivery. Planning/handoff only, no W4 implementation.
+- **Branch/files:** local `feat/workshop-3-quality-gold`; W4 plan and this log. No new branch, commit/push, dashboard or CHI.
+- **Decision/evidence:** current v2 Gold uses `skewness` / `excess_kurtosis`; exact actual 650/607 outputs and a successful Airflow run, 55 Linux tests, 16/6-cell notebooks and automatic profiles are recorded under `workshop_3/evidence/eda_20261124/`.
+- **Input/limits/handoff:** Kevin asked to follow class examples and remove unrelated additions. The class-course review distinguishes W3 quality methods from later dashboard work. Team review/approval, broader coverage/county mapping and W4 implementation remain pending. Do not mix current v2 keys with archived v1 outputs.

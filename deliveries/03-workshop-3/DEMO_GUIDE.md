@@ -1,5 +1,25 @@
 # Workshop 3 demonstration
 
+## Current 24 November course revision
+
+Use the v2 current index at `workshop_3/README.md`; old dated runs below remain
+historical. Restore the saved Silver with `restore_silver.py`, create the separate
+EDA environment described in `workshop_3/profiling/README.md`, and execute both
+notebooks with `execute_eda_notebooks.py`. No notebook installs packages or calls
+weather services. The quality notebook runs 16 code cells; the Gold preview runs 6.
+
+Current exact Parquet samples come from actual successful Airflow run
+`w3_runtime_gold_20261125T000455`. Current evidence is under
+`workshop_3/evidence/eda_20261124/`; do not run old finalization scripts that target
+previous 8/9-page, v1 or Windows-skipped-test packages. Use
+`finalize_course_eda.py` only after executing notebooks and verifying the current
+PDF/rendered pages. The previous delivery ZIP archive must remain unchanged.
+
+The current PDF source can be edited in `workshop_3/report/main.tex`, or upload
+`Workshop_3_LaTeX_Source.zip` to Overleaf. Review the report, notebooks, sample
+ZIP and GitHub branch before resubmitting; no final approval/upload is inferred.
+
+
 ## Current guide-aligned offline reproduction
 
 Use the supplied Workshop 3 handout despite its 2026-I cover. From the repository

@@ -1,0 +1,7 @@
+finding,decision
+Repeated exports,Reconcile by source/key and reviewed lineage; do not count snapshots twice
+Source-inapplicable nulls,Keep explicit time grain; no global median/KNN filling
+Missing storm point/magnitude,Keep source evidence and completeness metrics; no invented point or zero
+Zero-heavy and right-skewed PRCP,Separate all-day and positive-rain review; zero-IQR method unavailable
+Seasonal temperature / rare extremes,Use monthly context; retain flags without removal
+Automatic profiling warnings,Review with source/unit/key semantics; warnings are not validated errors

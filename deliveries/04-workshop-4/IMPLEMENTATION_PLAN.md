@@ -1,5 +1,17 @@
 # Implementation Plan - Workshop 4
 
+## Revised course-method inputs - 2026-11-24
+
+Use the current `weather-gold-v2-course-eda` manifest/sample index at
+`workshop_3/evidence/eda_20261124/gold_samples.json` for the later W4 branch.
+Metric keys `skewness` / `excess_kurtosis` now follow the instructor's method;
+older v1 metric keys are historical. The EDA/visualization review identifies
+quality profiling and descriptive figures for W3, while dashboard design and
+interactive filtering remain later work. No model training/feature selection,
+CHI or W4 app is introduced. The current W3 delivery is reopened for review
+under the reported extension; final team approval is not inferred.
+
+
 ## Verified input handoff - 2026-11-23
 
 The updated W3 runtime prerequisite is now exercised: revised Bronze/Silver/Gold

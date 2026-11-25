@@ -118,10 +118,23 @@ class GoldSparkTests(unittest.TestCase):
         metrics=governance(frame,frame,self.config,'fixture')
         row=metrics.filter("metric='iqr_review_fraction' AND population='all_days'").first()
         self.assertIsNone(row['value']);self.assertEqual(row['status'],'unavailable_zero_or_missing_scale')
-        skew=metrics.filter("metric='sample_skewness' AND population='all_days'").first()
+        skew=metrics.filter("metric='skewness' AND population='all_days'").first()
         self.assertIsNone(skew['value'])
         temps=frame.withColumn('event_type',F.lit('TMAX')).withColumn('severity_unit',F.lit('degC'))
         self.assertIsNone(storytelling(temps,'fixture').first()['precipitation_total_mm'])
+
+    def test_shape_uses_course_default_moments(self):
+        import numpy as np
+        from pyspark.sql import functions as F
+        values=np.array([0.,0.,0.,0.,1.,1.,2.,3.,5.,12.])
+        fixture=[dict(self.rows()[0],record_id=i+1,source_key=f'S/fixture/{i}',severity_value=float(value))
+                 for i,value in enumerate(values)]
+        data=self.spark.createDataFrame(fixture,self.schema).withColumn('_date',F.col('observed_date'))
+        metrics=governance(data,data,self.config,'fixture').filter("population='all_days' AND period='all'")
+        actual={r['metric']:r['value'] for r in metrics.collect()}
+        centered=values-values.mean();m2=np.mean(centered**2)
+        self.assertAlmostEqual(actual['skewness'],np.mean(centered**3)/m2**1.5)
+        self.assertAlmostEqual(actual['excess_kurtosis'],np.mean(centered**4)/m2**2-3)
 
 
 if __name__=='__main__':unittest.main(verbosity=2)

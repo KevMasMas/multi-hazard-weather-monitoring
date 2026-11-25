@@ -1,0 +1,39 @@
+{
+  "manifest": "datalake_gold/20261125_000455_f6258c571a43/manifest.json",
+  "manifest_sha256": "7B2E8A78F355AD655117E540F1CB257EC4C1446B6C12118C3293BAA783FF4889",
+  "counts": {
+    "snapshot_rows": 24972,
+    "unique_business_records": 19039,
+    "source_counts": {
+      "noaa_storm_events": 13561,
+      "ghcn_daily": 5478
+    },
+    "repeated_snapshot_rows": 5933
+  },
+  "gold_rows": {
+    "governance": 650,
+    "storytelling": 607
+  },
+  "matching_pandas_shape_statistics": 40,
+  "matching_station_month_groups": 180,
+  "matching_storm_month_type_unit_groups": 427,
+  "output_hashes_verified": true,
+  "unique_gold_keys": true,
+  "source_record_totals_reconciled": true,
+  "no_temperature_or_event_magnitude_sums": true,
+  "zero_iqr_not_fabricated": true,
+  "text_checks": {
+    "text_rows": 1324,
+    "text_snapshot_rows": 2648,
+    "repeated_text_snapshot_rows": 1324,
+    "text_records": 1324,
+    "sentiment_distribution": {
+      "positive": 445,
+      "neutral": 456,
+      "negative": 423
+    },
+    "keyword_json_rows": 85
+  },
+  "weather_network": false,
+  "method": "Independent Pandas reconciliation of verified Silver folder and text sidecar"
+}

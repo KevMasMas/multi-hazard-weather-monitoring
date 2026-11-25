@@ -1,5 +1,41 @@
 # Implementation Plan - Workshop 3
 
+## Reopened delivery and course EDA alignment - 2026-11-24
+
+**Verified review package:** both notebooks execute 16/6 code cells without errors;
+55 Linux tests pass with zero skips; actual v2 Gold run
+`w3_runtime_gold_20261125T000455` succeeds with 650/607 rows; two HTML profiles
+are generated. The revised 10-page PDF was rendered/inspected with safe text
+bounds and zero overfull boxes. The new manifest, sample ZIP and Overleaf ZIP
+are sealed by `evidence/eda_20261124/final_review.json`. Final team approval,
+commit/push and resubmission remain unrecorded.
+
+
+Kevin reported a submission extension and requested the latest EDA slides and
+three instructor notebooks, then explicitly requested using the instructor's
+methods and removing additions too far from the course. The previous delivered
+revision is preserved in `workshop_3/archive/Workshop_3_Pre_EDA_20261124.zip`
+(20 original baseline artifacts), before revising the current review package.
+
+Reviewed instructor update: `d938aa2acb2d33067588aece5bb9e10f6951a692`;
+latest downloaded source head and file hashes are in
+`workshop_3/evidence/eda_20261124/academic_materials.json`. W3 scope is DataFrame
+inspection, source-aware nulls/duplicates, descriptive statistics, SciPy skewness
+and excess kurtosis as used in class, sample-std Z-score / 1.5-IQR review,
+correlation, documented curation decisions and automatic profiling. The separate
+EDA environment does not alter Airflow dependencies. Gold moves to the same
+course moment convention under `weather-gold-v2-course-eda`; no extra estimator
+comparison is part of the revised notebook/report. Original Silver is preserved.
+
+Execution/packaging gate: execute both revised notebooks from fresh kernels,
+verify automatic HTML reports and tables, test and rerun revised Gold in real
+Airflow, update the PDF/LaTeX with actual current evidence and inspect all pages,
+then seal a new review manifest/sample ZIP without claiming personal approval.
+Model training, feature-selection experiments, dashboard implementation, CHI,
+county allocation and expanded live acquisition remain outside this revision.
+No weather calls, commit, push or upload are authorized by these checks.
+
+
 ## Runtime acceptance supplement - 2026-11-23
 
 The revised-DAG/Linux-test execution gap from the guide-alignment addendum is

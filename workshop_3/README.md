@@ -1,5 +1,33 @@
 # Workshop 3 - Silver quality and Gold preparation
 
+## Current delivery revision - course EDA, 2026-11-24
+
+The professor's EDA update is now incorporated using the methods Kevin selected:
+DataFrame inspection, null/duplicate audit, descriptive statistics, SciPy
+skewness/kurtosis, IQR/Z-score, correlations and `ydata-profiling`. The extra
+estimator comparison was removed. No predictive model, feature selector or W4
+application was added.
+
+- **Current report:** `Workshop_3_Pipeline_Improvements_and_Gold_Layer_Report.pdf`
+  (10 pages), editable `report/` and `Workshop_3_LaTeX_Source.zip` for Overleaf.
+- **Notebooks:** `notebooks/03_silver_quality_review.ipynb` (16 executed code
+  cells) and `notebooks/04_gold_review.ipynb` (6); zero errors.
+- **Automatic profiles:** [station](profiling/ghcn_station_quality.html) and
+  [source quality](profiling/silver_source_quality.html), with interpretation in
+  [profiling/README.md](profiling/README.md).
+- **Actual current Gold:** 650 governance / 607 storytelling rows, successful
+  Airflow run `w3_runtime_gold_20261125T000455` (24 November America/Bogota).
+  Current samples/index: `samples/eda_20261124/` and `evidence/eda_20261124/`.
+- **Verification:** 55 Linux tests without skips; actual independent
+  Pandas/SciPy reconciliation; source/Silver values unchanged.
+- **Previous delivery:** 20 original artifacts preserved in
+  `archive/Workshop_3_Pre_EDA_20261124.zip`. Earlier dated receipts below remain
+  historical. The current v2 metric keys are `skewness` and `excess_kurtosis`.
+
+Kevin reported the extended delivery window; final review, commit/push and
+resubmission are student actions. Course-source review and the W3/W4 boundary:
+`docs/reports/2026-11-24-course-eda-workshop3-review.md`.
+
 ## Post-submission runtime verification - 2026-11-23
 
 The pulled revision `6fa48a9` now has actual successful revised Bronze/Silver/Gold

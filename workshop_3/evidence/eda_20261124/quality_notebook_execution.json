@@ -1,0 +1,23 @@
+{
+  "started_at_utc": "2026-11-25T00:18:09.750435+00:00",
+  "finished_at_utc": "2026-11-25T00:18:25.144742+00:00",
+  "notebook": "notebooks/03_silver_quality_review.ipynb",
+  "sha256": "4B059C35AE2F289C7B365E41FA4CFD56807AFC698CA52404E142E3BB48E0374C",
+  "code_cells": 16,
+  "executed_cells": 16,
+  "error_outputs": 0,
+  "successful": true,
+  "python_executable": "D:\\usuarios\\Monitores\\AppData\\Local\\Temp\\team9-eda-20261124\\Scripts\\python.exe",
+  "packages": {
+    "pandas": "2.3.3",
+    "numpy": "2.2.6",
+    "scipy": "1.16.3",
+    "matplotlib": "3.10.0",
+    "pyarrow": "18.1.0",
+    "ydata-profiling": "4.18.4"
+  },
+  "weather_network": false,
+  "error": null,
+  "executed_bytes_sha256": "F1BB43F7B6B6BF1732C0897893520276153165DE0100577C55D06758EB5F14A9",
+  "serialization": "Canonical LF after execution; parsed cells, code and outputs unchanged"
+}

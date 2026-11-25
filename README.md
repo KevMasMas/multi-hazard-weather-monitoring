@@ -11,6 +11,13 @@ with a rolling 24-hour current window and separate seven-day context.
 
 ## Workshop 3 review package
 
+**Current revision, 24 November:** the reopened delivery follows the professor's
+updated EDA methods. The 10-page report, 16/6-cell executed notebooks, two HTML
+profiles and new 650/607 Airflow Gold run are in the [W3 delivery index](workshop_3/README.md).
+Fifty-five Linux tests pass without skips. The previous submitted revision is
+archived; this revision adds no W4 model/dashboard and makes no weather queries.
+
+
 **Post-submission verification, 23 November:** revised Bronze, Silver and Gold
 all succeeded in Docker/Airflow. Gold produced **650 governance / 607 storytelling
 rows**; **54 Linux tests passed without skips**, including the previously skipped

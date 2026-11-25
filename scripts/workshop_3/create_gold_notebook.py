@@ -13,7 +13,7 @@ def main():
 
 Team 9 - Multi-Hazard Weather Impact Monitoring.
 
-These are verified outputs of a local PySpark Gold run. We inspect
+These are verified outputs of the successful revised Airflow/PySpark Gold run. We inspect
 the two saved datasets with Pandas. This notebook does not run Spark, query NWS
 or access PostgreSQL. The first quality notebook motivates the methods; the
 Gold contract documents the fields, estimators and dashboard questions.''')
@@ -25,16 +25,20 @@ import matplotlib.pyplot as plt
 from IPython.display import display
 
 root = next(p for p in [Path.cwd().resolve(), *Path.cwd().resolve().parents]
-            if (p / "workshop_3/evidence/guide_gold_samples.json").exists())
-register = json.loads((root / "workshop_3/evidence/guide_gold_samples.json").read_text())
+            if (p / "workshop_3/evidence/eda_20261124/gold_samples.json").exists())
+register = json.loads((root / "workshop_3/evidence/eda_20261124/gold_samples.json").read_text())
+manifest_path = root / "workshop_3/samples/eda_20261124/gold_manifest.json"
+assert hashlib.sha256(manifest_path.read_bytes()).hexdigest().upper() == register["manifest_sha256"]
+manifest = json.loads(manifest_path.read_text())
+assert manifest["identity"]["config"]["schema_version"] == "weather-gold-v2-course-eda"
 tables = {}
 for name, item in register["outputs"].items():
-    path = root / item["path"]
+    path = root / item["sample_path"]
     assert hashlib.sha256(path.read_bytes()).hexdigest().upper() == item["sha256"]
     tables[name] = pd.read_parquet(path)
     assert len(tables[name]) == item["rows"]
 governance, storytelling = tables["governance"], tables["storytelling"]
-print("Verified local PySpark batch:", register["batch_id"])
+print("Verified Airflow batch:", manifest["identity"]["batch_id"])
 display(governance.head())
 display(storytelling.head())''')
     md('''## 1. Schema and keys
@@ -57,7 +61,7 @@ display(governance[governance["metric"].isin(metrics)][["source", "metric", "val
 nulls = governance[governance["metric"].eq("null_fraction")]
 display(nulls.pivot(index="variable", columns="source", values="value"))
 review = governance[governance["population"].isin(["all_days", "positive_reported_precipitation"]) &
-                    governance["metric"].isin(["sample_skewness", "sample_excess_kurtosis", "iqr_review_fraction", "zscore_review_fraction"])]
+                    governance["metric"].isin(["skewness", "excess_kurtosis", "iqr_review_fraction", "zscore_review_fraction"])]
 display(review[["station", "variable", "population", "metric", "value", "numerator", "denominator", "status"]])
 zero_iqr = review[review["variable"].eq("PRCP") & review["population"].eq("all_days") & review["metric"].eq("iqr_review_fraction")]
 assert zero_iqr["value"].isna().all()

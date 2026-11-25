@@ -1,0 +1,44 @@
+{
+  "instructor_commit": "626b7090f349e01b8df9941a611be1ceb2234b8c",
+  "commit_date": "2026-11-24T21:22:59Z",
+  "commit_message": "Cloud examples",
+  "files": [
+    {
+      "academic_path": "slides/ExploratoryDataAnalysis.pdf",
+      "path": "data/curated/course_review_20261124/ExploratoryDataAnalysis.pdf",
+      "url": "https://raw.githubusercontent.com/EngAndres/ud-public/626b7090f349e01b8df9941a611be1ceb2234b8c/courses/data-analysis-programming/slides/ExploratoryDataAnalysis.pdf",
+      "sha256": "4A3388E4003CB578C631E0ACF8133F03756AE899010C38DDCE42DE4792FA3777",
+      "bytes": 7135014
+    },
+    {
+      "academic_path": "notebooks/eda_data_curation.ipynb",
+      "path": "data/curated/course_review_20261124/eda_data_curation.ipynb",
+      "url": "https://raw.githubusercontent.com/EngAndres/ud-public/626b7090f349e01b8df9941a611be1ceb2234b8c/courses/data-analysis-programming/notebooks/eda_data_curation.ipynb",
+      "sha256": "080FB259D8D8F8C9D89B9583592FC9834DE052C3436FCAB9E483E24F2F8E8F23",
+      "bytes": 1541470
+    },
+    {
+      "academic_path": "notebooks/eda_visualizations.ipynb",
+      "path": "data/curated/course_review_20261124/eda_visualizations.ipynb",
+      "url": "https://raw.githubusercontent.com/EngAndres/ud-public/626b7090f349e01b8df9941a611be1ceb2234b8c/courses/data-analysis-programming/notebooks/eda_visualizations.ipynb",
+      "sha256": "50A90ADC381B312A48BB5D88EB8D9BEF986D1255F660D93F18A80B2B5D9BF9EF",
+      "bytes": 1982490
+    },
+    {
+      "academic_path": "notebooks/eda_ydata_profiling.ipynb",
+      "path": "data/curated/course_review_20261124/eda_ydata_profiling.ipynb",
+      "url": "https://raw.githubusercontent.com/EngAndres/ud-public/626b7090f349e01b8df9941a611be1ceb2234b8c/courses/data-analysis-programming/notebooks/eda_ydata_profiling.ipynb",
+      "sha256": "4CFD0F808A8108A22A64721E8DCB4685E0EF29A5B348DF622676AB0E9DDE5C19",
+      "bytes": 14855266
+    },
+    {
+      "academic_path": "project/Workshop_3.pdf",
+      "path": "data/curated/course_review_20261124/Workshop_3.pdf",
+      "url": "https://raw.githubusercontent.com/EngAndres/ud-public/626b7090f349e01b8df9941a611be1ceb2234b8c/courses/data-analysis-programming/project/Workshop_3.pdf",
+      "sha256": "9D5A0447E60B93D1DE66479DA8F0D54100D58A9EF8870F43BC28C6CE1CD3BEF2",
+      "bytes": 226854
+    }
+  ],
+  "requested_update_commit": "d938aa2acb2d33067588aece5bb9e10f6951a692",
+  "review_date_local": "2026-11-24 America/Bogota"
+}

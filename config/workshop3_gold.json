@@ -1,5 +1,5 @@
 {
-  "schema_version": "weather-gold-v1",
+  "schema_version": "weather-gold-v2-course-eda",
   "input_register": "workshop_3/evidence/silver_review.json",
   "silver_folder": "datalake_silver",
   "text_register": "workshop_3/samples/silver_text/noaa_oklahoma_2021_text.manifest.json",

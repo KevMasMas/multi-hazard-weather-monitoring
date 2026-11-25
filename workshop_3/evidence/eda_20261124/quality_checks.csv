@@ -1,0 +1,5 @@
+dimension,check,count,denominator,handling
+Uniqueness,Duplicate canonical source/key groups,0,19039,Reject conflicting snapshots; retain one reviewed record
+Completeness,Missing station dates in 2021-2025,0,1826,Report gaps; do not fabricate measurements
+Validity,Negative recorded precipitation,0,1826,Review/quarantine physical invalidity
+Consistency,TMIN exceeds TMAX on the same source date,0,1826,Review paired source values

@@ -1,0 +1,2 @@
+experiment,p5_mm,p95_mm,changed_measurements,measurements,original_max_mm,trial_max_mm,original_total_mm,trial_total_mm,decision
+P5-P95 clipping on a copy,0.0,16.3,91,1826,167.4,16.3,4373.7,2819.6000000000004,Not applied: retain recorded extremes and physical totals

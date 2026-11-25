@@ -14,6 +14,16 @@ REPORT=ROOT/'workshop_3/report'
 
 def main():
     assets=REPORT/'assets';assets.mkdir(parents=True,exist_ok=True)
+    summary=pd.read_csv(ROOT/'workshop_3/evidence/eda_20261124/distribution_review.csv')
+    labels={('PRCP','all_days'):'PRCP, all days (mm)',
+            ('PRCP','positive_reported_precipitation'):r'PRCP $>0$ mm',
+            ('TMAX','all_days'):'TMAX (degrees C)',('TMIN','all_days'):'TMIN (degrees C)'}
+    rows=[r'\begin{tabularx}{\textwidth}{Yrrrrrr}',r'\toprule Population & $n$ & Mean & Median & SD & Skewness & Excess kurtosis\\\midrule']
+    for item in summary.to_dict(orient='records'):
+        rows.append(labels[(item['element'],item['population'])]+' & '+f"{int(item['n']):,}"+' & '+
+                    ' & '.join(f"{item[key]:.3f}" for key in ['mean','median','std_ddof1','skewness','excess_kurtosis'])+r'\\')
+    rows.extend([r'\bottomrule',r'\end{tabularx}'])
+    (REPORT/'course_statistics.tex').write_text('\n'.join(rows)+'\n',encoding='utf-8',newline='\n')
     shutil.copyfile(ROOT/'workshop_2/report/assets/Escudo.png',assets/'Escudo.png')
     notebook=json.loads((ROOT/'notebooks/03_silver_quality_review.ipynb').read_text())
     index=0
@@ -22,16 +32,19 @@ def main():
             encoded=output.get('data',{}).get('image/png')
             if encoded:
                 index+=1
-                (assets/f'quality_{index}.png').write_bytes(base64.b64decode(encoded))
-    register=json.loads((ROOT/'workshop_3/evidence/guide_gold_samples.json').read_text())
+                name=cell.get('metadata',{}).get('report_figure',f'quality_{index}')
+                if name not in ['quality_1','quality_2','quality_3','quality_correlations']:
+                    continue
+                (assets/(name+'.png')).write_bytes(base64.b64decode(encoded))
+    register=json.loads((ROOT/'workshop_3/evidence/eda_20261124/gold_samples.json').read_text())
     for kind in ('governance','storytelling'):
-        path=ROOT/register['outputs'][kind]['path']
+        path=ROOT/register['outputs'][kind]['sample_path']
         data=pd.read_parquet(path)
         if kind=='governance':
             preview=data[(data['source']=='ghcn_daily') & (data['metric']=='monthly_records')].head(5)[['source','period','metric','value']]
         else:
             preview=data.head(5)[['period','event_type','severity_unit','record_count','mean_value','precipitation_total_mm']]
-        preview.to_csv(ROOT/f'workshop_3/samples/gold/{kind}_preview.csv',index=False)
+        preview.to_csv(ROOT/f'workshop_3/samples/gold/{kind}_preview.csv',index=False,lineterminator='\n')
         shown=preview.astype(object).fillna('null')
         for col in shown:
             shown[col]=shown[col].map(lambda x:f'{x:.4f}' if isinstance(x,float) else str(x))
@@ -45,11 +58,11 @@ def main():
             cell.set_edgecolor('#CCD6DD')
         ax.set_title(f'{kind.title()}: rendered preview of actual Spark Parquet ({len(data):,} rows)',fontsize=12,pad=8)
         fig.tight_layout();fig.savefig(assets/(kind+'_preview.png'),dpi=180,bbox_inches='tight');plt.close(fig)
-    story=pd.read_parquet(ROOT/register['outputs']['storytelling']['path'])
+    story=pd.read_parquet(ROOT/register['outputs']['storytelling']['sample_path'])
     text=story[story.text_record_count.gt(0)]
     preview=text[['period','event_type','text_record_count','mean_sentiment_score',
                   'positive_count','neutral_count','negative_count']].head(6)
-    preview.to_csv(ROOT/'workshop_3/samples/gold/text_preview.csv',index=False)
+    preview.to_csv(ROOT/'workshop_3/samples/gold/text_preview.csv',index=False,lineterminator='\n')
     shown=preview.astype(object).fillna('null')
     for col in shown:
         shown[col]=shown[col].map(lambda x:f'{x:.3f}' if isinstance(x,float) else str(x))

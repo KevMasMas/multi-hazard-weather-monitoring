@@ -1,5 +1,22 @@
 # Team Work Board
 
+## Current W3 course revision - 2026-11-24
+
+Kevin reported a submission extension and requested the instructor's latest EDA
+approach, removing unrelated additions. Current notebooks use the class SciPy
+shape calls, IQR/Z-score, source-aware profiling and documented curation on a copy.
+The extra estimator comparison is removed. New v2 Gold succeeded in Airflow with
+650/607 rows; 55 Linux tests pass without skips. The 16/6-cell notebooks execute
+without errors and two actual HTML profiles are generated. No weather calls.
+
+**Review next:** Kevin checks the revised PDF/notebook flow and submission files;
+Pablo cross-checks the source/metric contract, actual Gold evidence and report.
+The previous 20 delivered artifacts are archived before this authorized revision.
+Current evidence: `workshop_3/evidence/eda_20261124/`; class review and W3/W4 scope:
+`docs/reports/2026-11-24-course-eda-workshop3-review.md`. W4 models/dashboard/CHI
+are not implemented; final team approval, commit/push and resubmission remain
+unrecorded. Earlier dated checkpoints below describe their original versions.
+
 ## Current runtime closure - 2026-11-23
 
 On `feat/workshop-3-quality-gold` after pull `6fa48a9`, revised Bronze, Silver

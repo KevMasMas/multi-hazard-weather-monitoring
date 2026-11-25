@@ -90,11 +90,11 @@ qc = daily["quality_attributes"].fillna("").str.split(",").str[1].fillna("")
 display(qc.value_counts().rename_axis("Provider quality flag").to_frame("records"))''')
     md('''## 3. Shape, IQR and Z-score
 
-Pandas `skew()` uses bias-corrected sample skewness; `kurt()` reports sample
-excess kurtosis (normal reference 0). Standard deviation uses ddof=1. Quantiles
-use Pandas linear interpolation. Statistics are unavailable for insufficient or
-constant samples rather than an invented zero. We compare 1.5-IQR fences with
-absolute sample Z-score >3, without deleting any observation.
+We use `scipy.stats.skew()` and `scipy.stats.kurtosis()` as in the instructor's
+notebook; kurtosis is excess kurtosis (normal reference 0). Standard deviation
+uses Pandas `std()` and quartiles use `quantile()`. Shape statistics are shown
+for nonconstant groups with at least ten values, following the class loop.
+We compare 1.5-IQR fences with absolute Z-score >3, without deleting observations.
 
 Do not select a method by which one flags fewer records. Skewed precipitation,
 zero-heavy distributions and seasonal temperatures require different context.''')
@@ -109,8 +109,8 @@ zero-heavy distributions and seasonal temperatures require different context.'''
     z_valid = pd.notna(sd) and sd > 0
     return {"n": n, "mean": values.mean(), "median": values.median(), "std_ddof1": sd,
             "q1": q1, "q3": q3, "iqr": iqr,
-            "skewness": values.skew() if varying and n >= 3 else float("nan"),
-            "excess_kurtosis": values.kurt() if varying and n >= 4 else float("nan"),
+            "skewness": sp_stats.skew(values) if varying and n >= 10 else float("nan"),
+            "excess_kurtosis": sp_stats.kurtosis(values) if varying and n >= 10 else float("nan"),
             "zero_fraction": values.eq(0).mean(),
             "iqr_lower": q1 - 1.5 * iqr, "iqr_upper": q3 + 1.5 * iqr,
             "iqr_flags": int(((values < q1 - 1.5 * iqr) | (values > q3 + 1.5 * iqr)).sum()) if iqr_valid else None,
@@ -213,6 +213,8 @@ audit = {"input_sha256": hashes, "verified_exports": len(files),
 (out / "silver_review.json").write_text(json.dumps(audit, indent=2) + "\\n")
 print("Saved evidence:", out)
 print("Unique business records:", len(canonical))''')
+    from course_eda_cells import extend_course_review
+    cells=extend_course_review(cells)
     nb=nbf.v4.new_notebook(cells=cells,metadata={'kernelspec':{'display_name':'Python 3','language':'python','name':'python3'}})
     nbf.write(nb,ROOT/'notebooks/03_silver_quality_review.ipynb')
 

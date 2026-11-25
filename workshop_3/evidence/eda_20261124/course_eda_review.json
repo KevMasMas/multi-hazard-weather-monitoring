@@ -1,0 +1,110 @@
+{
+  "input_sha256": {
+    "data/curated/silver/ghcn_daily_20261117_020238_88d38c9a6dc3.parquet": "F3AED4BC4DFDEAE8C01D209CBFE5BC1F310F32B419EA9C2F279F59EF2DB5CE5D",
+    "data/curated/silver/ghcn_daily_20261117_020238_e13254eec873.parquet": "2A3D8EE747C240D87C33F0B4D5B8D0DB7FA0AEC6B62C95C863489AB7F5F74093",
+    "data/curated/silver/ghcn_daily_20261117_020239_2280dbdf1be4.parquet": "C7825F772611148C50BA65794D8948F558081F911F5849529B23799900112CA6",
+    "data/curated/silver/ghcn_daily_20261117_020239_2ef2b0ec14e0.parquet": "0BF4B0F90849451979EF079B921196996B16959D39CE2B36C8B06F3053143116",
+    "data/curated/silver/ghcn_daily_20261117_020239_d0aafd11f6d4.parquet": "140F479CDA3DD5D37C97B0F9FC72966000D38A6F3DE220FC3D1B0BA1BCB48049",
+    "data/curated/silver/ghcn_daily_20261117_021929_d69196a12cbe.parquet": "E153C68080FF40DD10E931C34EB5AACA72706482862B541D59B2677D59C98507",
+    "data/curated/silver/ghcn_daily_20261117_021930_2459d4fd6d59.parquet": "285787E16B4BD54C2E5A2EBFF1344FC4E8AB3B84AAF641FCD50D30A328E7454D",
+    "data/curated/silver/noaa_storm_events_20261117_020238_7f88a3503007.parquet": "DECFDA1BF67C2A425021CEDDC9CCAC3181CEB27C66AD6F8377B95D62FBA32496",
+    "data/curated/silver/noaa_storm_events_20261117_020238_c0b5c9ad0bca.parquet": "BFF661C98F64237DF5493F6DABFAD6F931FCE64B62FEBCD1073FC75DA8D28429",
+    "data/curated/silver/noaa_storm_events_20261117_020239_5e125c6d2da4.parquet": "61C038F08A7D59D992CF6AA219E77CD1B8913856901B7E5439486EA4D977EEEB",
+    "data/curated/silver/noaa_storm_events_20261117_020239_99a0190a1848.parquet": "304614848D28729AA6BD4FEA95C70A0358125926EFFF0BC09C6701F7181321BA",
+    "data/curated/silver/noaa_storm_events_20261117_020239_a47ff5bbbb16.parquet": "DF8349409ADA95980E1065D14ED2A58CE9B9E5E56C0392B392E445D8B0A33DD4",
+    "data/curated/silver/noaa_storm_events_20261117_021929_e0608e1bf9d9.parquet": "432B3BD3BB62DD8470A9840576532AB572ECF151D7C7E190C6166AC1C3CA6ECF"
+  },
+  "frozen_input_register_sha256": "CAAEAFFA6F3C7C656B7C91487DED77A5FA569FECC0A46C9E259B9FFB91C14C25",
+  "verified_exports": 13,
+  "snapshot_rows": 22553,
+  "unique_source_records": 19039,
+  "source_counts": {
+    "ghcn_daily": 5478,
+    "noaa_storm_events": 13561
+  },
+  "station_dates": 1826,
+  "complete_paired_dates": 1826,
+  "quality_checks": [
+    {
+      "dimension": "Uniqueness",
+      "check": "Duplicate canonical source/key groups",
+      "count": 0,
+      "denominator": 19039,
+      "handling": "Reject conflicting snapshots; retain one reviewed record"
+    },
+    {
+      "dimension": "Completeness",
+      "check": "Missing station dates in 2021-2025",
+      "count": 0,
+      "denominator": 1826,
+      "handling": "Report gaps; do not fabricate measurements"
+    },
+    {
+      "dimension": "Validity",
+      "check": "Negative recorded precipitation",
+      "count": 0,
+      "denominator": 1826,
+      "handling": "Review/quarantine physical invalidity"
+    },
+    {
+      "dimension": "Consistency",
+      "check": "TMIN exceeds TMAX on the same source date",
+      "count": 0,
+      "denominator": 1826,
+      "handling": "Review paired source values"
+    }
+  ],
+  "clipping_experiment": [
+    {
+      "experiment": "P5-P95 clipping on a copy",
+      "p5_mm": 0.0,
+      "p95_mm": 16.3,
+      "changed_measurements": 91,
+      "measurements": 1826,
+      "original_max_mm": 167.4,
+      "trial_max_mm": 16.3,
+      "original_total_mm": 4373.7,
+      "trial_total_mm": 2819.6000000000004,
+      "decision": "Not applied: retain recorded extremes and physical totals"
+    }
+  ],
+  "profiles": {
+    "station": {
+      "path": "workshop_3/profiling/ghcn_station_quality.html",
+      "sha256": "23BE939223E922D477C9EEDFB5456DDFB8E725866E05A7AF1AA6143B8F3A39A6",
+      "rows": 1826,
+      "columns": 4,
+      "alerts": [
+        "[TMAX] is highly overall correlated with [TMIN]",
+        "[TMIN] is highly overall correlated with [TMAX]",
+        "[date] has unique values",
+        "[PRCP] has 1436 (78.6%) zeros",
+        "[TMIN] has 39 (2.1%) zeros"
+      ]
+    },
+    "source_quality": {
+      "path": "workshop_3/profiling/silver_source_quality.html",
+      "sha256": "DFE189C6F4E7F9DC1E30ACB65B00BDB60F990C9F46BCF54F131754CD26488887",
+      "rows": 19039,
+      "columns": 7,
+      "alerts": [
+        "Dataset has 501 (2.6%) duplicate rows",
+        "[observed_date] 13561 (71.2%) missing values",
+        "[observed_at_utc] 5478 (28.8%) missing values",
+        "[latitude] 7084 (37.2%) missing values",
+        "[longitude] 7084 (37.2%) missing values"
+      ]
+    }
+  },
+  "weather_requests": false,
+  "raw_or_silver_changed": false,
+  "class_methods": "scipy.stats.skew(), scipy.stats.kurtosis(), Pandas std() and quantile(); IQR 1.5 and absolute Z-score >3",
+  "gold_methods": "Equivalent Spark skewness/excess kurtosis; sample std and linear quartiles",
+  "versions": {
+    "pandas": "2.3.3",
+    "numpy": "2.2.6",
+    "scipy": "1.16.3",
+    "matplotlib": "3.10.0",
+    "ydata-profiling": "4.18.4"
+  }
+}

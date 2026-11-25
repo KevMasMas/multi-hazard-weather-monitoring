@@ -22,10 +22,14 @@ def write(path, value):
 
 
 def main():
+    global EVIDENCE
     parser=argparse.ArgumentParser()
     parser.add_argument('--stage', choices=['historical','gold'],required=True)
     parser.add_argument('--resume', help='Complete evidence for an already successful historical receipt; does not retrigger DAGs')
+    parser.add_argument('--evidence-dir',default='workshop_3/evidence/runtime_20261123')
     args=parser.parse_args()
+    EVIDENCE=(ROOT/args.evidence_dir).resolve()
+    if not EVIDENCE.is_relative_to((ROOT/'workshop_3/evidence').resolve()):raise ValueError('Evidence directory outside Workshop 3')
     credentials=(os.environ.get('AIRFLOW_ADMIN_USERNAME','airflow')+':'+os.environ.get('AIRFLOW_ADMIN_PASSWORD','airflow')).encode()
     headers={'Authorization':'Basic '+base64.b64encode(credentials).decode(),'Content-Type':'application/json'}
     def api(path,data=None,method=None):
